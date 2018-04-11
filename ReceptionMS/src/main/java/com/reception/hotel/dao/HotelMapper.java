@@ -13,15 +13,15 @@ import com.reception.hotel.model.HotelInfoEntity;
 @Mapper
 public interface HotelMapper {
 
-	@Insert(value = { "" })
+	@Insert("insert into hotel_info(hotel_name,linkman,telphone,phone,area,address,plane_graph,remark) values(#{hotelName},#{linkman},#{telphone},#{phone},#{area},#{address},#{planeGraph},#{remark} ")
 	public int addHotelInfo(HotelInfoEntity hotel);
 	
-	@Update(value = { "" })
+	@Update("update hotel_info set hotel_name=#{hotelName},linkman=#{linkman},telphone=#{telphone},phone=#{phone},area=#{area},address=#{address} ,plane_graph=#{planeGraph},remark=#{remark} where id=#{id}")
 	public int updateHotelInfo(HotelInfoEntity hotel);
 	
-	@Delete(value = { "" })
+	@Delete("delete from hotel_info where id = #{id}")
 	public int deleteHotelInfo(HotelInfoEntity hotel);
 	
-	@Select(value = { "" })
+	@Select("select id,hotel_name,linkman,telphone,phone,area,address,plane_graph,remark from  hotel_info order by hotel_name")
 	public List<HotelInfoEntity> selectList();
 }
