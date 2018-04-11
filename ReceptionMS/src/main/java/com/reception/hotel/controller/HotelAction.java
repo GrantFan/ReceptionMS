@@ -4,37 +4,57 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.reception.hotel.model.HotelInfoEntity;
 import com.reception.hotel.service.HotelServiceImpl;
 import com.reception.util.JSONHelper;
 
-@Controller
+@RestController
+@RequestMapping(value = "/hotel")
 public class HotelAction {
 
 	@Resource
 	HotelServiceImpl hotelServiceImpl;
-	@RequestMapping
-	public String addHotelInfo(HotelInfoEntity hotel) {
-		hotelServiceImpl.addHotelInfo(hotel);
-		
-		return "";
+
+	@RequestMapping(value="/add",produces="application/text; charset=utf-8")
+	public @ResponseBody String addHotelInfo(HotelInfoEntity hotel) {
+		String flag = "false";
+		int i = hotelServiceImpl.addHotelInfo(hotel);
+		if(i>0){
+			flag = "true";
+		}
+		return flag;
 	};
 
+	@RequestMapping(value="/update",produces="application/text; charset=utf-8")
 	public String updateHotelInfo(HotelInfoEntity hotel) {
-		return "";
+		String flag = "false";
+		int i = hotelServiceImpl.updateHotelInfo(hotel);
+		if (i > 0) {
+			flag = "true";
+		}
+		return flag;
 	};
 
+	@RequestMapping(value="/delete",produces="application/text; charset=utf-8")
 	public String deleteHotelInfo(HotelInfoEntity hotel) {
-		return "";
+		String flag = "false";
+		int i = hotelServiceImpl.deleteHotelInfo(hotel);
+		if (i > 0) {
+			flag = "true";
+		}
+		return flag;
 	};
 
+	@RequestMapping(value="/list",produces="application/text; charset=utf-8")
 	public String selectList() {
 		List<HotelInfoEntity> list = hotelServiceImpl.selectList();
-		JSONHelper json = new JSONHelper();
-		
-		return json.toJSON(list);
+		JSONHelper jsonHelper = new JSONHelper();
+		String json = jsonHelper.toJSON(list);
+		System.out.println(json);
+		return json;
 	};
 }
