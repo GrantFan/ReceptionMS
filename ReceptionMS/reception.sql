@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-11 21:36:03
+Date: 2018-04-12 14:48:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -435,7 +435,6 @@ CREATE TABLE `reception_record` (
 DROP TABLE IF EXISTS `room_info`;
 CREATE TABLE `room_info` (
   `id` int(128) NOT NULL AUTO_INCREMENT,
-  `type_number` varchar(128) DEFAULT NULL COMMENT '类型编号',
   `room_number` varchar(128) DEFAULT NULL COMMENT '房间编号',
   `hotel` varchar(128) DEFAULT NULL COMMENT '所属酒店',
   `floor` varchar(10) DEFAULT NULL COMMENT '楼层',
@@ -451,8 +450,6 @@ CREATE TABLE `room_info` (
   `agreement_price` decimal(12,0) DEFAULT NULL COMMENT '协议价',
   `contain_food` varchar(10) DEFAULT NULL COMMENT '是否含餐',
   `state` varchar(10) DEFAULT NULL COMMENT '房间状态',
-  `reception_number` varchar(128) DEFAULT NULL COMMENT '接待编号',
-  `checkout_time` date DEFAULT NULL COMMENT '退房时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='房间信息';

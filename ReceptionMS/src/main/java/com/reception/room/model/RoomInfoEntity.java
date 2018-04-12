@@ -8,6 +8,10 @@ public class RoomInfoEntity {
 	private String roomNumber ;//房间号码
 	private String floor;//楼层
 	private String orientation;//房间朝向
+	private String roomType;//房间类型
+	private String specialType;//特殊类型
+	private String supportFacilities;//配套设施
+	private String specialServe;//特色服务
 	private String outsidePhone;//外线电话
 	private String innerlinePhone;//内线电话
 	private String responsiblePerson;//房间负责人
@@ -15,13 +19,8 @@ public class RoomInfoEntity {
 	private String agreementPrice;//协议价
 	private String containFood;//是否含餐
 	private String state;//房间状态
-	private String roomType;//房间类型
-	private String specialType;//特殊类型
-	private String supportFacilities;//配套设施
-	private String specialServe;//特色服务
 	private String remark;
-	
-	private HotelInfoEntity hotel;
+	private String hotel;//所属酒店
 
 	
 	
@@ -153,13 +152,13 @@ public class RoomInfoEntity {
 		this.remark = remark;
 	}
 
-	public HotelInfoEntity getHotel() {
+	public String getHotel() {
 		return hotel;
 	}
 
-	public void setHotel(HotelInfoEntity hotel) {
+	public void setHotel(String hotel) {
 		this.hotel = hotel;
 	}
-	
+
 	
 }
