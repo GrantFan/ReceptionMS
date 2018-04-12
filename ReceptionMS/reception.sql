@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-12 14:48:37
+Date: 2018-04-12 16:28:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,31 +35,6 @@ CREATE TABLE `accommodation_record` (
 -- ----------------------------
 -- Records of accommodation_record
 -- ----------------------------
-
--- ----------------------------
--- Table structure for accommodation_record1
--- ----------------------------
-DROP TABLE IF EXISTS `accommodation_record1`;
-CREATE TABLE `accommodation_record1` (
-  `id` int(128) NOT NULL AUTO_INCREMENT,
-  `reception_number` varchar(128) DEFAULT NULL COMMENT '接待编号',
-  `reception_date` datetime DEFAULT NULL COMMENT '接待日期',
-  `reception_person` varchar(255) DEFAULT NULL COMMENT '接待人',
-  `guest_name` varchar(255) DEFAULT NULL COMMENT '宾客姓名',
-  `hotel` varchar(255) DEFAULT NULL COMMENT '住宿酒店',
-  `room_type_number` varchar(128) DEFAULT NULL COMMENT '房间类型编号',
-  `room_number` varchar(128) DEFAULT NULL COMMENT '房间号码',
-  `checkin_time` date DEFAULT NULL COMMENT '入住时间',
-  `checkout_time` date DEFAULT NULL COMMENT '退房时间',
-  `hobby` varchar(255) DEFAULT NULL COMMENT '宾客喜好',
-  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待住房记录';
-
--- ----------------------------
--- Records of accommodation_record1
--- ----------------------------
-INSERT INTO `accommodation_record1` VALUES ('1', 'JZ20180203001', '2018-02-03 00:00:00', null, '徐立毅', '东方国际大酒店', 'F00001', '8302', '2018-02-03', '2018-02-04', null, null);
 
 -- ----------------------------
 -- Table structure for conference_info
@@ -117,33 +92,6 @@ INSERT INTO `conference_record` VALUES ('2', 'H20180207002', '东二楼多功能
 INSERT INTO `conference_record` VALUES ('3', 'H20180207003', '侯见厅', '东方国际大酒店', '2018-02-08', '9:00:00', '12:00:00', null, '10', null);
 INSERT INTO `conference_record` VALUES ('4', 'H20180207004', '多功能厅', '敦煌宾馆', '2018-02-08', '13:00:00', '17:00:00', null, '50', null);
 INSERT INTO `conference_record` VALUES ('5', 'H20180208001', '孟兰厅', '酒店名称\r\n东方国际大酒店', '2018-02-08', '15:00:00', '16:00:00', null, '2', null);
-
--- ----------------------------
--- Table structure for conference_record1
--- ----------------------------
-DROP TABLE IF EXISTS `conference_record1`;
-CREATE TABLE `conference_record1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `use_number` varchar(128) DEFAULT NULL COMMENT '会议室使用编号',
-  `conference_name` varchar(255) DEFAULT NULL COMMENT '会议室名称',
-  `hotel_name` varchar(255) DEFAULT NULL COMMENT '酒店名称',
-  `use_date` date DEFAULT NULL COMMENT '使用日期',
-  `start_time` varchar(255) DEFAULT NULL COMMENT '开始时间',
-  `end_time` varchar(255) DEFAULT NULL COMMENT '结束时间',
-  `purpose` varchar(255) DEFAULT NULL COMMENT '用途说明',
-  `guest_num` int(10) DEFAULT NULL COMMENT '来宾人数',
-  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='会议室使用记录';
-
--- ----------------------------
--- Records of conference_record1
--- ----------------------------
-INSERT INTO `conference_record1` VALUES ('1', 'H20180207001', '东二楼多功能厅', '敦煌丝路怡苑大酒店', '2018-02-07', '08:00', '09:00', null, '10', null);
-INSERT INTO `conference_record1` VALUES ('2', 'H20180207002', '东二楼多功能厅', '敦煌丝路怡苑大酒店', '2018-02-07', '13:00:00', '15:00:00', null, '20', null);
-INSERT INTO `conference_record1` VALUES ('3', 'H20180207003', '侯见厅', '东方国际大酒店', '2018-02-08', '9:00:00', '12:00:00', null, '10', null);
-INSERT INTO `conference_record1` VALUES ('4', 'H20180207004', '多功能厅', '敦煌宾馆', '2018-02-08', '13:00:00', '17:00:00', null, '50', null);
-INSERT INTO `conference_record1` VALUES ('5', 'H20180208001', '孟兰厅', '酒店名称\r\n东方国际大酒店', '2018-02-08', '15:00:00', '16:00:00', null, '2', null);
 
 -- ----------------------------
 -- Table structure for food_info
@@ -360,28 +308,6 @@ CREATE TABLE `meals_record` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for meals_record1
--- ----------------------------
-DROP TABLE IF EXISTS `meals_record1`;
-CREATE TABLE `meals_record1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `reception_number` varchar(128) DEFAULT NULL COMMENT '接待编号',
-  `reception_date` varchar(18) DEFAULT NULL COMMENT '接待日期',
-  `reception_person` varchar(64) DEFAULT NULL COMMENT '接待人',
-  `guest_name` varchar(64) DEFAULT NULL COMMENT '宾客姓名',
-  `menu_number` varchar(128) DEFAULT NULL COMMENT '套餐编号',
-  `meals_time` varchar(64) DEFAULT NULL COMMENT '用餐时间',
-  `hobby` varchar(255) DEFAULT NULL COMMENT '宾客喜好',
-  `ramark` varchar(255) DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
-
--- ----------------------------
--- Records of meals_record1
--- ----------------------------
-INSERT INTO `meals_record1` VALUES ('1', 'J180203001', '2018/2/3', '占三', '徐立毅', 'T00002', '18:00', '', '');
-
--- ----------------------------
 -- Table structure for menu_info
 -- ----------------------------
 DROP TABLE IF EXISTS `menu_info`;
@@ -474,4 +400,109 @@ CREATE TABLE `room_type` (
 
 -- ----------------------------
 -- Records of room_type
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for sys_module
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_module`;
+CREATE TABLE `sys_module` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module_name` varchar(255) DEFAULT NULL COMMENT '模块名称',
+  `module_id` int(11) DEFAULT NULL COMMENT '模块id',
+  `module_parent_id` int(11) DEFAULT NULL COMMENT '模块上级id',
+  `url` varchar(255) DEFAULT NULL COMMENT '模块页面地址',
+  `remark` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_module
+-- ----------------------------
+INSERT INTO `sys_module` VALUES ('1', '系统管理', '1', '0', null, null);
+INSERT INTO `sys_module` VALUES ('2', '用户设置', '2', '1', null, null);
+INSERT INTO `sys_module` VALUES ('3', '角色设置', '3', '1', null, null);
+INSERT INTO `sys_module` VALUES ('4', '模块设置', '4', '1', null, null);
+INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', null, null);
+INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', null, null);
+INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null);
+INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', null, null);
+INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', null, null);
+INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null);
+INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', null, null);
+INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', null, null);
+INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, null);
+INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', null, null);
+INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '', '');
+INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', null, null);
+INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null);
+INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', null, null);
+
+-- ----------------------------
+-- Table structure for sys_operation_log
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_operation_log`;
+CREATE TABLE `sys_operation_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `operator` varchar(255) DEFAULT NULL COMMENT '操作用户',
+  `module` varchar(255) DEFAULT NULL COMMENT '操作模块',
+  `operation` varchar(255) DEFAULT NULL COMMENT '操作内容',
+  `time` varchar(255) DEFAULT NULL COMMENT '操作时间',
+  `compuer_ip` varchar(255) DEFAULT NULL COMMENT '操作电脑IP地址',
+  `compuer_name` varchar(255) DEFAULT NULL COMMENT '操作电脑名',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='操作日志表';
+
+-- ----------------------------
+-- Records of sys_operation_log
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for sys_role
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role` (
+  `id` int(11) NOT NULL,
+  `role_name` varchar(255) DEFAULT NULL COMMENT '角色名',
+  `description` varchar(255) DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_role
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for sys_role_module
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role_module`;
+CREATE TABLE `sys_role_module` (
+  `id` int(11) NOT NULL,
+  `role_id` int(11) DEFAULT NULL COMMENT '角色id',
+  `module_id` varchar(255) DEFAULT NULL COMMENT '模块id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_role_module
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for sys_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user` (
+  `id` int(128) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(64) DEFAULT NULL COMMENT '用户名',
+  `password` varchar(64) DEFAULT NULL COMMENT '密码',
+  `last_login_computer` varchar(128) DEFAULT NULL COMMENT '上次登录电脑名',
+  `last_login_time` datetime DEFAULT NULL COMMENT '上次登录时间',
+  `enable` varchar(4) DEFAULT NULL,
+  `role_id` int(64) DEFAULT NULL COMMENT '角色id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- ----------------------------
+-- Records of sys_user
 -- ----------------------------
