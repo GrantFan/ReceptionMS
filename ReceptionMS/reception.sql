@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-12 16:28:31
+Date: 2018-04-13 18:28:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `accommodation_record` (
   `record_time` datetime DEFAULT NULL COMMENT '录入时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待住房记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接待住房记录';
 
 -- ----------------------------
 -- Records of accommodation_record
@@ -272,7 +272,7 @@ CREATE TABLE `hotel_info` (
   `plane_graph` varchar(255) DEFAULT NULL COMMENT '酒店平面图',
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='酒店信息';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='酒店信息';
 
 -- ----------------------------
 -- Records of hotel_info
@@ -301,7 +301,7 @@ CREATE TABLE `meals_record` (
   `hobby` varchar(255) DEFAULT NULL COMMENT '宾客喜好',
   `ramark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
 
 -- ----------------------------
 -- Records of meals_record
@@ -349,7 +349,7 @@ CREATE TABLE `reception_record` (
   `record_time` datetime DEFAULT NULL COMMENT '录入时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接待记录';
 
 -- ----------------------------
 -- Records of reception_record
@@ -412,6 +412,9 @@ CREATE TABLE `sys_module` (
   `module_id` int(11) DEFAULT NULL COMMENT '模块id',
   `module_parent_id` int(11) DEFAULT NULL COMMENT '模块上级id',
   `url` varchar(255) DEFAULT NULL COMMENT '模块页面地址',
+  `sort` varchar(62) DEFAULT NULL COMMENT '排序',
+  `create_time` date DEFAULT NULL COMMENT '创建时间',
+  `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
@@ -419,24 +422,24 @@ CREATE TABLE `sys_module` (
 -- ----------------------------
 -- Records of sys_module
 -- ----------------------------
-INSERT INTO `sys_module` VALUES ('1', '系统管理', '1', '0', null, null);
-INSERT INTO `sys_module` VALUES ('2', '用户设置', '2', '1', null, null);
-INSERT INTO `sys_module` VALUES ('3', '角色设置', '3', '1', null, null);
-INSERT INTO `sys_module` VALUES ('4', '模块设置', '4', '1', null, null);
-INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', null, null);
-INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', null, null);
-INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null);
-INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', null, null);
-INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', null, null);
-INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null);
-INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', null, null);
-INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', null, null);
-INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, null);
-INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', null, null);
-INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '', '');
-INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', null, null);
-INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null);
-INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', null, null);
+INSERT INTO `sys_module` VALUES ('1', '系统管理', '1', '0', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('2', '用户设置', '2', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('3', '角色设置', '3', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('4', '模块设置', '4', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '', null, null, null, '');
+INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for sys_operation_log
@@ -463,30 +466,35 @@ CREATE TABLE `sys_operation_log` (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(255) DEFAULT NULL COMMENT '角色名',
   `description` varchar(255) DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
+INSERT INTO `sys_role` VALUES ('0', '超级管理员', '超级管理员');
+INSERT INTO `sys_role` VALUES ('1', '管理员', '普通管理员');
+INSERT INTO `sys_role` VALUES ('2', '用户', '普通用户');
 
 -- ----------------------------
 -- Table structure for sys_role_module
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_module`;
 CREATE TABLE `sys_role_module` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `role_id` int(11) DEFAULT NULL COMMENT '角色id',
   `module_id` varchar(255) DEFAULT NULL COMMENT '模块id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_role_module
 -- ----------------------------
+INSERT INTO `sys_role_module` VALUES ('1', '1', '1');
+INSERT INTO `sys_role_module` VALUES ('2', '2', '2');
 
 -- ----------------------------
 -- Table structure for sys_user
@@ -494,11 +502,14 @@ CREATE TABLE `sys_role_module` (
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
   `id` int(128) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(64) DEFAULT NULL COMMENT '用户名',
+  `user_name` varchar(128) DEFAULT NULL COMMENT '用户名',
+  `user_nick` varchar(128) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL COMMENT '密码',
   `last_login_computer` varchar(128) DEFAULT NULL COMMENT '上次登录电脑名',
   `last_login_time` datetime DEFAULT NULL COMMENT '上次登录时间',
-  `enable` varchar(4) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `modify_time` datetime DEFAULT NULL,
+  `enabled` varchar(4) DEFAULT NULL COMMENT '是否启用',
   `role_id` int(64) DEFAULT NULL COMMENT '角色id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
