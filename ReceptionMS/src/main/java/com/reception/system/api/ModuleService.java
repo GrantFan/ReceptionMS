@@ -1,0 +1,24 @@
+package com.reception.system.api;
+
+import java.util.List;
+
+
+import com.reception.system.model.Module;
+
+/**
+ * 模块管理
+ *
+ */
+public interface ModuleService{
+	
+	int addModule(Module module);
+	
+	int updateModule(Module module);
+	
+	int deleteModule(Module module);
+	
+	List<Module> selectModuleList(String moduleName) ;
+	
+	List<Module> selectModuleByRole(String role_id) ;
+
+}
