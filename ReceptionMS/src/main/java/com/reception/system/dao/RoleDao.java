@@ -35,7 +35,7 @@ public interface RoleDao {
 	 * @return int
 	 */
 	@Update({ "<script>", "UPDATE sys_role SET", "<if test=\"role_name != null and role_name != ''\">",
-			"role_name = #{roleName,jdbcType=VARCHAR},", "<if test=\"description != null and description != ''\">",
+			"role_name = #{roleName,jdbcType=VARCHAR},", "</if>", "<if test=\"description != null and description != ''\">",
 			"description = #{description,jdbcType=VARCHAR}", "</if> ", "where id = #{id}", "</script>" })
 	int updateRole(Role role);
 

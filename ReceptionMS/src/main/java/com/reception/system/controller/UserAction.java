@@ -33,7 +33,7 @@ public class UserAction {
 	// log日志
 	private static final Logger logger = Logger.getLogger(UserAction.class);
 	// 注入service层
-	@Resource(name = "userService")
+	@Resource
 	UserServiceImpl userService;
 
 	/**

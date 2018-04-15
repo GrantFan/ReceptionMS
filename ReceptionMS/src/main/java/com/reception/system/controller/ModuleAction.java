@@ -25,7 +25,7 @@ public class ModuleAction {
 	//private static final Logger logger = Logger.getLogger(ModuleAction.class);
 	// 注入service
 	@Resource
-	private ModuleServiceImpl moduleServiceImpl;
+	 ModuleServiceImpl moduleServiceImpl;
 
 	/**
 	 * 添加菜单

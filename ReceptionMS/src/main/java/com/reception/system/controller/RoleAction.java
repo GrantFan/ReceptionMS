@@ -30,8 +30,8 @@ public class RoleAction {
 	private static final Logger logger=Logger.getLogger(RoleAction.class);
 
 	//注入roleService层
-	@Resource(name="roleService")
-	private RoleServiceImpl roleService;
+	@Resource
+	RoleServiceImpl roleService;
  
 	/**
 	 * 查询角色
