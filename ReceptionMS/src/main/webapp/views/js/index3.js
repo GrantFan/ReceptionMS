@@ -10,23 +10,37 @@ function showModule() {
 		url : "../module/show",
 		success : function(data) {
 			console.log(data);
-			if (data.length > 0) {
-				$("#accordion").empty();
-				var li = "";
-				var ul = "<ul class=\"submenu\">";
-				for (var i = 0; i < data.length; i++) {
-					if (data[i].moduleParentId == '0') {
-						li += "<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>";
-						$("#accordion").html(li);
-					//console.log($("#accordion>li[name='"+ data[i].moduleId + "']"));
-					}
+			//			if (data.length > 0) {
+			//				$("#accordion").empty();
+			//				var li = "";
+			//				var ul = "<ul class=\"submenu\">";
+			//				for (var i = 0; i < data.length; i++) {
+			//					if (data[i].moduleParentId == '0') {
+			//						li += "<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>";
+			//						$("#accordion").html(li);
+			//					//console.log($("#accordion>li[name='"+ data[i].moduleId + "']"));
+			//					}
+			//					for (var j = 0; j < data.length; j++) {
+			//						if (data[j].moduleParentId == data[i].moduleId) {
+			//							console.log(data[j].moduleParentId,data[i].moduleId);
+			//							$("#accordion>li[name='"+ data[i].moduleId + "']").append("<ul class=\"submenu\"><li><a href='" + data[j].url + "' class=\"active\">" + data[j].moduleName + "</a></li></ul>");
+			//						}
+			//					}
+			//				
+			//				}
+			//			}
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].moduleParentId == '0') {
+					$("#accordion").append(
+						"<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>");
+				} else {
 					for (var j = 0; j < data.length; j++) {
-						if (data[j].moduleParentId == data[i].moduleId) {
-							console.log(data[j].moduleParentId,data[i].moduleId);
-							$("#accordion>li[name='"+ data[i].moduleId + "']").append("<ul class=\"submenu\"><li><a href='" + data[j].url + "' class=\"active\">" + data[j].moduleName + "</a></li></ul>");
+						if (data[i].moduleParentId == data[j].moduleId) {
+							$("li[name='" + data[i].moduleId + "']").append(
+								"<ul><li><a href='" + data[j].url + "' class=\"active\">" + data[j].moduleName + "</a></li></ul>")
 						}
+
 					}
-				
 				}
 			}
 		},
