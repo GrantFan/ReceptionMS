@@ -1,7 +1,6 @@
 package com.reception.system.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -81,14 +80,13 @@ public interface ModuleDao {
 	 * @return list
 	 */
 	@Select({"<script>",
-		"SELECT m.id,m.module_name,m.module_id,m.module_parent_id,m.url,m.sort,m.create_time,m.icon,m.remark FROM sys_module m,sys_role_module role",
-		"where 1=1 ",
-		"<if test=\"role_Id != 0\">",
-		" and m.module_id = role.module_id",
+		"SELECT m.id,m.module_name moduleName,m.module_id moduleId,m.module_parent_id moduleParentId,m.url,m.sort,m.create_time createTime,m.icon,m.remark FROM sys_module m",
+		"<if test=\"role_id != 0 \">",
+		" ,sys_role_module role where 1=1 and m.module_id = role.module_id",
 		" and role.role_id = #{role_id} ",
 		"</if>",
 		"</script>"})
-	List<Module> selectModuleByRole(@Param(value="role_id")String role_id) ;
+	List<Module> selectModuleByRole(@Param("role_id")String role_id) ;
 	
 	
 	/**

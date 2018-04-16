@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="operationsArea">
+					<div class="buttons">
+						<button onclick="add()">新增</button>
+						<button>复制新增</button>
+						<button onclick="edit()">编辑</button>
+						<button onclick="dele()">删除</button>
+						<button>打印预览</button>
+						<button>导入</button>
+						<button>导出</button>
+						<button>审核</button>
+						<button>撤销审核</button>
+						<button>刷新</button>
+						<!--<button onclick="resetting()">重置密码</button>-->
+						<button onclick="shut()">关闭</button>
+						<p>
+							<b>已选择条件展示 【SQL】</b>
+							<span>查询条件</span>
+						</p>
+					</div>
+					<div class="inputs">
+						<select name="">
+							<option value="">用户名</option>
+							<option value="">昵称</option>
+							<option value="">角色</option>
+							<option value="">在线</option>
+							<option value="">备注</option>
+						</select>
+						<select name="">
+							<option value="">等于</option>
+							<option value="">不等于</option>
+							<option value="">包含</option>
+							<option value="">不包含</option>
+							<option value="">开头是</option>
+							<option value="">开头不是</option>
+							<option value="">结尾是</option>
+							<option value="">结尾不是</option>
+							<option value="">为空</option>
+							<option value="">不为空</option>
+						</select>
+						<input type="text" />
+						<button>查询</button>
+						<button>清空</button>
+					</div>
+				</div>
+				<table class="table" cellspacing="0">
+					<thead>
+						<tr>
+							<th>在线</th>
+							<th>启用</th>
+							<th>用户名</th>
+							<th>昵称</th>
+							<th>角色</th>
+							<th>最后登录计算机</th>
+							<th>最后登录时间</th>
+							<th>备注</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>&nbsp;</td>
+							<td>√</td>
+							<td>user1</td>
+							<td>用户1</td>
+							<td>接待员</td>
+							<td>PC-201408031124</td>
+							<td>2018/3/10 11:13:30</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>√</td>
+							<td>√</td>
+							<td>admin</td>
+							<td>管理员</td>
+							<td>系统管理员</td>
+							<td>B0IM0BCXLXU54ZS</td>
+							<td>2018/4/10 11:53:43 </td>
+							<td>&nbsp;</td>
+						</tr>
+					</tbody>
+				</table>
+	</body>
+</html>

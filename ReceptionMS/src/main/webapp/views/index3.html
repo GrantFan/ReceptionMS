@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>接待管理平台</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<script src="js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			iframe{
+				width: calc(100% - 200px);
+				width: -moz-calc(100% - 200px);
+				width: -weblit-calc(100% - 200px);
+				height:94.45vh;
+				border: none; 
+				background: #fff;
+				position: absolute;
+				right: 0px;
+				bottom: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<div class="header" id="top">
+				<div class="menu overflow">
+					<span>
+<!--			 		 <i class="lt fa fa-list" aria-hidden="true"></i> 	-->
+			 		</span>
+				</div>
+			</div>
+			<nav id="menu" class="content lt" style="height: 94.45vh;">
+				<ul id="accordion" class="accordion">
+					<!--  <li>
+						<div class="link">接待管理<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+							<li>
+								<a href="./reception/register.html" class="active">接待登记</a>
+							</li>
+							<li>
+								<a href="./reception/receptionNews.html">接待信息管理</a>
+							</li>
+							<li>
+								<a href="./reception/boardroomUse.html">会议室使用登记</a>
+							</li>
+							<li>
+								<a href="./reception/guestInformation.html">宾客信息管理</a>
+							</li>							 
+						</ul>
+					</li>
+					<li>
+						<div class="link">酒店管理<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+							<li>
+								<a href="#">酒店信息管理</a>
+							</li>
+							<li>
+								<a href="#">酒店对比</a>
+							</li>
+							<li>
+								<a href="#">房间信息管理</a>
+							</li>
+							<li>
+								<a href="#">会议室信息管理</a>
+							</li>
+							<li>
+								<a href="#">套餐菜品信息管理</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<div class="link">系统管理<i class="fa fa-chevron-down"></i></div>
+						<ul class="submenu">
+							<li>
+								<a href="#">用户设置</a>
+							</li>
+							<li>
+								<a href="#">角色设置</a>
+							</li>
+							<li>
+								<a href="#">模块设置</a>
+							</li>
+							<li>
+								<a href="#">操作日志</a>
+							</li>
+							<li>
+								<a href="#">数据库配置</a>
+							</li>
+							<li>
+								<a href="#">数据字典维护</a>
+							</li>
+						</ul>
+					</li>-->
+		 		</ul>
+			</nav>		
+		</header>
+
+		<article id="right">
+			<ul id="Tab" class="overflow">
+			<!--<li class="TabStyle"><span>接待登记</span> <b>X</b></li>-->
+			</ul>
+			<div id="iframeBox">
+			<!--<div id="iframe" src="" style="">		
+			<div class="operationsArea">
+					<div class="buttons">
+						<button onclick="add()">新增</button>
+						<button onclick="edit()">编辑</button>
+						<button onclick="dele()">删除</button>
+						<button onclick="resetting()">重置密码</button>
+						<button onclick="shut()">关闭</button>
+						<p>
+							<b>已选择条件展示 【SQL】</b>
+							<span>查询条件</span>
+						</p>
+					</div>
+					<div class="inputs">
+						<select name="">
+							<option value="">用户名</option>
+							<option value="">昵称</option>
+							<option value="">角色</option>
+							<option value="">在线</option>
+							<option value="">备注</option>
+						</select>
+						<select name="">
+							<option value="">等于</option>
+							<option value="">不等于</option>
+							<option value="">包含</option>
+							<option value="">不包含</option>
+							<option value="">开头是</option>
+							<option value="">开头不是</option>
+							<option value="">结尾是</option>
+							<option value="">结尾不是</option>
+							<option value="">为空</option>
+							<option value="">不为空</option>
+						</select>
+						<input type="text" />
+						<button>查询</button>
+						<button>清空</button>
+					</div>
+				</div>
+				<table class="table" cellspacing="0">
+					<thead>
+						<tr>
+							<th>在线</th>
+							<th>启用</th>
+							<th>用户名</th>
+							<th>昵称</th>
+							<th>角色</th>
+							<th>最后登录计算机</th>
+							<th>最后登录时间</th>
+							<th>备注</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>&nbsp;</td>
+							<td>√</td>
+							<td>user1</td>
+							<td>用户1</td>
+							<td>接待员</td>
+							<td>PC-201408031124</td>
+							<td>2018/3/10 11:13:30</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>√</td>
+							<td>√</td>
+							<td>admin</td>
+							<td>管理员</td>
+							<td>系统管理员</td>
+							<td>B0IM0BCXLXU54ZS</td>
+							<td>2018/4/10 11:53:43 </td>
+							<td>&nbsp;</td>
+						</tr>
+					</tbody>
+				</table> -->
+			</div>
+		</article>
+
+		<div class="modal none">
+			<div class="box">
+				<h4 class="overflow">
+					<p class="lt">用户信息明细</p>
+					<p class="rt" id="close" onclick="$(this).parents('.modal').hide()">X</p>
+				</h4>
+				<div class="mbody">
+					<label for="user">
+						<strong>*用户名</strong>
+						<input type="text" name="user" id="user" value="" />
+					</label>
+					<label for="nickName">
+						<strong>*昵称</strong>
+						<input type="text" name="nickName" id="nickName" value="" />
+					</label>
+					<label for="password">
+						<span>密码</span>
+						<input type="text" name="password" id="password" value="123456" />
+					</label>
+					<label for="role">
+						<strong>*角色</strong>
+						<input type="text" name="role" id="role" value="" />
+					</label>
+					<label for="start">
+						<span>启用</span>						
+						<input type="checkbox" name="start" id="start" value="" />
+						<u></u>
+					</label>
+					<label for="remarks">
+						<span>备注</span>
+						<textarea name="" rows="5" cols="30" id="remarks"></textarea>
+					</label>
+				</div>
+				<div class="mfoot">
+					<button>保存</button>
+					<button>取消</button>
+				</div>
+			</div>
+		</div>
+		 
+	</body>
+	<script src="js/index3.js" type="text/javascript" charset="utf-8"></script>	 
+</html>

@@ -106,12 +106,13 @@ public class ModuleAction {
 	}
 
 	// 用户登录后查询一级菜单目录
-	@RequestMapping(value = "/listByRole", produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/show", produces = "application/json; charset=utf-8")
 	public @ResponseBody String getmodulesRoot(HttpSession session) {
 		// Login login = (Login)session.getAttribute("login");
 		List<Module> list = moduleServiceImpl.selectModuleByRole("0"); // 超级管理员role_id为0
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
+		System.out.println(json);
 		return json;
 	}
 
