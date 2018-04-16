@@ -33,15 +33,15 @@ function showModule() {
 				if (data[i].moduleParentId == '0') {
 					$("#accordion").append(
 						"<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>");
-				} else {
 					for (var j = 0; j < data.length; j++) {
-						if (data[i].moduleParentId == data[j].moduleId) {
-							$("li[name='" + data[i].moduleId + "']").append(
+						if (data[j].moduleParentId == data[i].moduleId) {
+							$("#accordion>li[name='"+ data[i].moduleId + "']").append(
 								"<ul><li><a href='" + data[j].url + "' class=\"active\">" + data[j].moduleName + "</a></li></ul>")
 						}
 
 					}
-				}
+				} 
+		
 			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
