@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-13 18:28:39
+Date: 2018-04-16 21:09:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -94,13 +94,198 @@ INSERT INTO `conference_record` VALUES ('4', 'H20180207004', '多功能厅', '�
 INSERT INTO `conference_record` VALUES ('5', 'H20180208001', '孟兰厅', '酒店名称\r\n东方国际大酒店', '2018-02-08', '15:00:00', '16:00:00', null, '2', null);
 
 -- ----------------------------
+-- Table structure for dm_area
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_area`;
+CREATE TABLE `dm_area` (
+  `name` varchar(255) DEFAULT NULL COMMENT '地区名称',
+  `value` varchar(255) DEFAULT NULL COMMENT '值',
+  `decription` varchar(255) DEFAULT NULL COMMENT '描述'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dm_area
+-- ----------------------------
+INSERT INTO `dm_area` VALUES ('华东', '1', '上海、江苏、浙江、安徽、江西');
+INSERT INTO `dm_area` VALUES ('华南', '2', '广东、福建、广西、海南');
+INSERT INTO `dm_area` VALUES ('华北', '3', '北京、天津、河北、山东、河南、山西、内蒙古');
+INSERT INTO `dm_area` VALUES ('华中', '4', '湖北、湖南');
+INSERT INTO `dm_area` VALUES ('西南', '5', '四川、重庆、贵州、云南、西藏');
+INSERT INTO `dm_area` VALUES ('东北', '6', '辽宁、吉林、黑龙江');
+INSERT INTO `dm_area` VALUES ('西北', '7', '陕西、甘肃、宁夏、青海、新疆');
+
+-- ----------------------------
+-- Table structure for dm_conference_type
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_conference_type`;
+CREATE TABLE `dm_conference_type` (
+  `name` varchar(255) DEFAULT NULL COMMENT '会议室类型',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='会议室类型';
+
+-- ----------------------------
+-- Records of dm_conference_type
+-- ----------------------------
+INSERT INTO `dm_conference_type` VALUES ('会议室', '1');
+INSERT INTO `dm_conference_type` VALUES ('讲座室', '2');
+INSERT INTO `dm_conference_type` VALUES ('演播室', '3');
+
+-- ----------------------------
+-- Table structure for dm_district
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_district`;
+CREATE TABLE `dm_district` (
+  `name` varchar(255) DEFAULT NULL COMMENT '行政区名称',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行政区';
+
+-- ----------------------------
+-- Records of dm_district
+-- ----------------------------
+INSERT INTO `dm_district` VALUES ('敦煌', '1');
+INSERT INTO `dm_district` VALUES ('肃州区', '2');
+INSERT INTO `dm_district` VALUES ('金塔县', '3');
+INSERT INTO `dm_district` VALUES ('玉门市', '4');
+
+-- ----------------------------
+-- Table structure for dm_education
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_education`;
+CREATE TABLE `dm_education` (
+  `name` varchar(128) DEFAULT NULL COMMENT '名称',
+  `value` varchar(64) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='学历表';
+
+-- ----------------------------
+-- Records of dm_education
+-- ----------------------------
+INSERT INTO `dm_education` VALUES ('高中及以下', '1');
+INSERT INTO `dm_education` VALUES ('大专', '2');
+INSERT INTO `dm_education` VALUES ('本科', '3');
+INSERT INTO `dm_education` VALUES ('硕士', '4');
+INSERT INTO `dm_education` VALUES ('博士', '5');
+
+-- ----------------------------
+-- Table structure for dm_meals_standard
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_meals_standard`;
+CREATE TABLE `dm_meals_standard` (
+  `name` varchar(255) DEFAULT NULL COMMENT '套餐标准',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='套餐标准';
+
+-- ----------------------------
+-- Records of dm_meals_standard
+-- ----------------------------
+INSERT INTO `dm_meals_standard` VALUES ('30', '1');
+INSERT INTO `dm_meals_standard` VALUES ('50', '2');
+INSERT INTO `dm_meals_standard` VALUES ('120', '3');
+
+-- ----------------------------
+-- Table structure for dm_meals_time
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_meals_time`;
+CREATE TABLE `dm_meals_time` (
+  `name` varchar(255) DEFAULT NULL COMMENT '用餐时间类别',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用餐时间类别';
+
+-- ----------------------------
+-- Records of dm_meals_time
+-- ----------------------------
+INSERT INTO `dm_meals_time` VALUES ('早餐', '1');
+INSERT INTO `dm_meals_time` VALUES ('正餐', '2');
+INSERT INTO `dm_meals_time` VALUES ('晚餐', '3');
+
+-- ----------------------------
+-- Table structure for dm_meals_type
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_meals_type`;
+CREATE TABLE `dm_meals_type` (
+  `name` varchar(255) DEFAULT NULL COMMENT '用餐方式类别',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dm_meals_type
+-- ----------------------------
+INSERT INTO `dm_meals_type` VALUES ('餐桌', '1');
+INSERT INTO `dm_meals_type` VALUES ('自助餐', '2');
+INSERT INTO `dm_meals_type` VALUES ('工作餐', '3');
+
+-- ----------------------------
+-- Table structure for dm_menu_type
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_menu_type`;
+CREATE TABLE `dm_menu_type` (
+  `name` varchar(255) DEFAULT NULL COMMENT '套餐类型名',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='套餐类型';
+
+-- ----------------------------
+-- Records of dm_menu_type
+-- ----------------------------
+INSERT INTO `dm_menu_type` VALUES ('一般套餐', '1');
+INSERT INTO `dm_menu_type` VALUES ('贵宾套餐', '2');
+
+-- ----------------------------
+-- Table structure for dm_nation
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_nation`;
+CREATE TABLE `dm_nation` (
+  `name` varchar(255) DEFAULT NULL COMMENT '民族名称',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='民族';
+
+-- ----------------------------
+-- Records of dm_nation
+-- ----------------------------
+INSERT INTO `dm_nation` VALUES ('汉族', '1');
+INSERT INTO `dm_nation` VALUES ('回族', '2');
+INSERT INTO `dm_nation` VALUES ('蒙古族', '3');
+INSERT INTO `dm_nation` VALUES ('藏族', '4');
+
+-- ----------------------------
+-- Table structure for dm_room_special_type
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_room_special_type`;
+CREATE TABLE `dm_room_special_type` (
+  `name` varchar(255) DEFAULT NULL COMMENT '房间特殊类型',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='房间特殊类型';
+
+-- ----------------------------
+-- Records of dm_room_special_type
+-- ----------------------------
+INSERT INTO `dm_room_special_type` VALUES ('有柱子', '1');
+INSERT INTO `dm_room_special_type` VALUES ('噪音大', '2');
+
+-- ----------------------------
+-- Table structure for dm_room_type
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_room_type`;
+CREATE TABLE `dm_room_type` (
+  `name` varchar(255) DEFAULT NULL COMMENT '房间类型',
+  `value` varchar(255) DEFAULT NULL COMMENT '值'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='房间类型表';
+
+-- ----------------------------
+-- Records of dm_room_type
+-- ----------------------------
+INSERT INTO `dm_room_type` VALUES ('普通标间', '1');
+INSERT INTO `dm_room_type` VALUES ('商务标间', '2');
+INSERT INTO `dm_room_type` VALUES ('商务单间', '3');
+INSERT INTO `dm_room_type` VALUES ('豪华套间', '4');
+
+-- ----------------------------
 -- Table structure for food_info
 -- ----------------------------
 DROP TABLE IF EXISTS `food_info`;
 CREATE TABLE `food_info` (
   `id` int(128) NOT NULL AUTO_INCREMENT,
-  `food_number` varchar(20) DEFAULT NULL COMMENT '套餐编号',
+  `food_number` varchar(20) DEFAULT NULL COMMENT '菜品编号',
   `food_name` varchar(255) DEFAULT NULL COMMENT '菜品名称',
+  `menu_number` varchar(128) DEFAULT NULL COMMENT '套餐编号',
   `price` decimal(12,0) DEFAULT NULL COMMENT '菜品单价',
   `flavor` varchar(255) DEFAULT NULL COMMENT '菜品口味',
   `type` varchar(255) DEFAULT NULL COMMENT '菜品类型（热菜/凉菜/主食/土产/饮品）',
@@ -111,122 +296,122 @@ CREATE TABLE `food_info` (
 -- ----------------------------
 -- Records of food_info
 -- ----------------------------
-INSERT INTO `food_info` VALUES ('1', '菜品编号', '菜品名称', null, null, '类型', null);
-INSERT INTO `food_info` VALUES ('2', 'T00005', '炝炒菜心', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('3', 'T00005', '木耳炒肉', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('4', 'T00005', '虎皮辣子', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('5', 'T00005', '肉末水蒸蛋', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('6', 'T00005', '酸辣海带结', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('7', 'T00005', '蒜泥肘花', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('8', 'T00005', '凉拌苜蓿', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('9', 'T00005', '牛肉面（现做）', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('10', 'T00005', '蒸鸡蛋', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('11', 'T00005', '特色包子', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('12', 'T00005', '糊锅', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('13', 'T00005', '油条', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('14', 'T00005', '烤肠', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('15', 'T00005', '烤番茄', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('16', 'T00005', '牛奶', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('17', 'T00005', '豆浆', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('18', 'T00006', '干煸四季豆', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('19', 'T00006', '小葱木耳', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('20', 'T00006', '烤番茄', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('21', 'T00006', '青笋肉片', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('22', 'T00006', '清炒菊花菜', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('23', 'T00006', '烤肉肠', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('24', 'T00006', '土豆片炒肉', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('25', 'T00006', '手撕甘蓝', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('26', 'T00006', '酱牛肉', null, null, '热菜', null);
-INSERT INTO `food_info` VALUES ('27', 'T00006', '千叶芹菜', null, null, '凉菜', null);
-INSERT INTO `food_info` VALUES ('28', 'T00006', '三色萝卜苗', null, null, '凉菜', null);
-INSERT INTO `food_info` VALUES ('29', 'T00006', '凉拌黄瓜', null, null, '凉菜', null);
-INSERT INTO `food_info` VALUES ('30', 'T00006', '口味海带结', null, null, '凉菜', null);
-INSERT INTO `food_info` VALUES ('31', 'T00006', '黄豆菜心', null, null, '凉菜', null);
-INSERT INTO `food_info` VALUES ('32', 'T00006', '手撕甘蓝', null, null, '凉菜', null);
-INSERT INTO `food_info` VALUES ('33', 'T00006', '大米粥', null, null, '凉菜', null);
-INSERT INTO `food_info` VALUES ('34', 'T00006', '玉米珍子粥', null, null, '粥类', null);
-INSERT INTO `food_info` VALUES ('35', 'T00006', '红枣糯米粥', null, null, '粥类', null);
-INSERT INTO `food_info` VALUES ('36', 'T00006', '现场煎鸡蛋', null, null, '粥类', null);
-INSERT INTO `food_info` VALUES ('37', 'T00006', '葫芦素包子', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('38', 'T00006', '小花卷', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('39', 'T00006', '油条', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('40', 'T00006', '牛奶', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('41', 'T00006', '牛肉面', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('42', 'T00006', '酸奶', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('43', 'T00006', '煮鸡蛋', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('44', 'T00006', '糊 锅', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('45', 'T00006', '蛋炒饭', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('46', 'T00006', '炒米线', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('47', 'T00006', '甜 点', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('48', 'T00006', '面 包', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('49', 'T00006', '蒸红萝卜', null, null, '主食', null);
-INSERT INTO `food_info` VALUES ('50', 'T00006', '土豆', null, null, '土产', null);
-INSERT INTO `food_info` VALUES ('51', 'T00006', '卤水核桃', null, null, '土产', null);
-INSERT INTO `food_info` VALUES ('52', 'T00006', '红薯', null, null, '土产', null);
-INSERT INTO `food_info` VALUES ('53', 'T00006', '咖啡', null, null, '土产', null);
-INSERT INTO `food_info` VALUES ('54', 'T00006', '橙汁', null, null, '饮 品', null);
-INSERT INTO `food_info` VALUES ('55', 'T00006', '茶水 柠檬水', null, null, '饮 品', null);
-INSERT INTO `food_info` VALUES ('56', 'T00007', '爽口海蜇丝', null, null, '饮 品', null);
-INSERT INTO `food_info` VALUES ('57', 'T00007', '芝麻菠菜 ', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('58', 'T00007', '炝拌西兰花', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('59', 'T00007', '炝拌萝卜皮 ', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('60', 'T00007', '雪菜土豆片', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('61', 'T00007', '香拌莲藕', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('62', 'T00007', '冬菜炒肉丝', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('63', 'T00007', '酱爆真菌', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('64', 'T00007', '烤番茄', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('65', 'T00007', '豆豉青椒圈', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('66', 'T00007', '香炝广菜心', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('67', 'T00007', '烤肉肠', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('68', 'T00007', '上海青炒肉', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('69', 'T00007', '醋溜西葫芦', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('70', 'T00007', '南瓜小米粥', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('71', 'T00007', '黑米粥', null, null, '粥 类', null);
-INSERT INTO `food_info` VALUES ('72', 'T00007', '现场煎鸡蛋', null, null, '粥 类', null);
-INSERT INTO `food_info` VALUES ('73', 'T00007', '甘蓝素包子', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('74', 'T00007', '花 卷', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('75', 'T00007', '油 条', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('76', 'T00007', '牛肉面', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('77', 'T00007', '酸 奶', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('78', 'T00007', '煮鸡蛋', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('79', 'T00007', '糊 锅', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('80', 'T00007', '蛋炒饭', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('81', 'T00007', '炒米线', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('82', 'T00007', '牛 奶', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('83', 'T00007', '甜 点', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('84', 'T00007', '面 包', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('85', 'T00007', '蒸红萝卜', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('86', 'T00007', '紫薯', null, null, '土 产', null);
-INSERT INTO `food_info` VALUES ('87', 'T00007', '铁杆山药', null, null, '土 产', null);
-INSERT INTO `food_info` VALUES ('88', 'T00007', '卤水花生', null, null, '土 产', null);
-INSERT INTO `food_info` VALUES ('89', 'T00007', '咖啡', null, null, '土 产', null);
-INSERT INTO `food_info` VALUES ('90', 'T00007', '橙汁', null, null, '饮 品', null);
-INSERT INTO `food_info` VALUES ('91', 'T00007', '茶水柠檬水', null, null, '饮 品', null);
-INSERT INTO `food_info` VALUES ('92', 'T00007', '大米粥', null, null, '饮 品', null);
-INSERT INTO `food_info` VALUES ('93', 'T00009', '白切鸡', null, null, '粥 类', null);
-INSERT INTO `food_info` VALUES ('94', 'T00009', '酸辣海带', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('95', 'T00009', '凉拌三丝', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('96', 'T00009', '爽口藕带', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('97', 'T00009', '菠菜面筋', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('98', 'T00009', '大拌菜', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('99', 'T00009', '蔬菜沙拉（生菜、苦菊、黄瓜、胡萝卜）', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('100', 'T00009', '尖椒牛肉丝', null, null, '凉 菜', null);
-INSERT INTO `food_info` VALUES ('101', 'T00009', '香辣蹄花', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('102', 'T00009', '蒜蓉油麦菜', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('103', 'T00009', '清炒芥兰圈', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('104', 'T00009', '牛肉面', null, null, '热 菜', null);
-INSERT INTO `food_info` VALUES ('105', 'T00009', '蛋炒米线', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('106', 'T00009', '糊锅', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('107', 'T00009', '油条', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('108', 'T00009', '地达菜包子', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('109', 'T00009', '牛奶 ', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('110', 'T00009', '面包', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('111', 'T00009', '烤番茄 ', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('112', 'T00009', '小蛋糕', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('113', 'T00009', '哈雷杯', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('114', 'T00009', '咖啡', null, null, '主 食', null);
-INSERT INTO `food_info` VALUES ('115', 'T00009', '橙汁', null, null, '饮 品', null);
-INSERT INTO `food_info` VALUES ('116', 'T00009', '茶水柠檬水', null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('1', '菜品编号', '菜品名称', null, null, null, '类型', null);
+INSERT INTO `food_info` VALUES ('2', 'T00005', '炝炒菜心', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('3', 'T00005', '木耳炒肉', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('4', 'T00005', '虎皮辣子', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('5', 'T00005', '肉末水蒸蛋', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('6', 'T00005', '酸辣海带结', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('7', 'T00005', '蒜泥肘花', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('8', 'T00005', '凉拌苜蓿', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('9', 'T00005', '牛肉面（现做）', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('10', 'T00005', '蒸鸡蛋', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('11', 'T00005', '特色包子', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('12', 'T00005', '糊锅', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('13', 'T00005', '油条', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('14', 'T00005', '烤肠', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('15', 'T00005', '烤番茄', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('16', 'T00005', '牛奶', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('17', 'T00005', '豆浆', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('18', 'T00006', '干煸四季豆', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('19', 'T00006', '小葱木耳', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('20', 'T00006', '烤番茄', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('21', 'T00006', '青笋肉片', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('22', 'T00006', '清炒菊花菜', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('23', 'T00006', '烤肉肠', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('24', 'T00006', '土豆片炒肉', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('25', 'T00006', '手撕甘蓝', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('26', 'T00006', '酱牛肉', null, null, null, '热菜', null);
+INSERT INTO `food_info` VALUES ('27', 'T00006', '千叶芹菜', null, null, null, '凉菜', null);
+INSERT INTO `food_info` VALUES ('28', 'T00006', '三色萝卜苗', null, null, null, '凉菜', null);
+INSERT INTO `food_info` VALUES ('29', 'T00006', '凉拌黄瓜', null, null, null, '凉菜', null);
+INSERT INTO `food_info` VALUES ('30', 'T00006', '口味海带结', null, null, null, '凉菜', null);
+INSERT INTO `food_info` VALUES ('31', 'T00006', '黄豆菜心', null, null, null, '凉菜', null);
+INSERT INTO `food_info` VALUES ('32', 'T00006', '手撕甘蓝', null, null, null, '凉菜', null);
+INSERT INTO `food_info` VALUES ('33', 'T00006', '大米粥', null, null, null, '凉菜', null);
+INSERT INTO `food_info` VALUES ('34', 'T00006', '玉米珍子粥', null, null, null, '粥类', null);
+INSERT INTO `food_info` VALUES ('35', 'T00006', '红枣糯米粥', null, null, null, '粥类', null);
+INSERT INTO `food_info` VALUES ('36', 'T00006', '现场煎鸡蛋', null, null, null, '粥类', null);
+INSERT INTO `food_info` VALUES ('37', 'T00006', '葫芦素包子', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('38', 'T00006', '小花卷', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('39', 'T00006', '油条', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('40', 'T00006', '牛奶', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('41', 'T00006', '牛肉面', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('42', 'T00006', '酸奶', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('43', 'T00006', '煮鸡蛋', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('44', 'T00006', '糊 锅', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('45', 'T00006', '蛋炒饭', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('46', 'T00006', '炒米线', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('47', 'T00006', '甜 点', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('48', 'T00006', '面 包', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('49', 'T00006', '蒸红萝卜', null, null, null, '主食', null);
+INSERT INTO `food_info` VALUES ('50', 'T00006', '土豆', null, null, null, '土产', null);
+INSERT INTO `food_info` VALUES ('51', 'T00006', '卤水核桃', null, null, null, '土产', null);
+INSERT INTO `food_info` VALUES ('52', 'T00006', '红薯', null, null, null, '土产', null);
+INSERT INTO `food_info` VALUES ('53', 'T00006', '咖啡', null, null, null, '土产', null);
+INSERT INTO `food_info` VALUES ('54', 'T00006', '橙汁', null, null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('55', 'T00006', '茶水 柠檬水', null, null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('56', 'T00007', '爽口海蜇丝', null, null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('57', 'T00007', '芝麻菠菜 ', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('58', 'T00007', '炝拌西兰花', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('59', 'T00007', '炝拌萝卜皮 ', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('60', 'T00007', '雪菜土豆片', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('61', 'T00007', '香拌莲藕', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('62', 'T00007', '冬菜炒肉丝', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('63', 'T00007', '酱爆真菌', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('64', 'T00007', '烤番茄', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('65', 'T00007', '豆豉青椒圈', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('66', 'T00007', '香炝广菜心', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('67', 'T00007', '烤肉肠', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('68', 'T00007', '上海青炒肉', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('69', 'T00007', '醋溜西葫芦', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('70', 'T00007', '南瓜小米粥', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('71', 'T00007', '黑米粥', null, null, null, '粥 类', null);
+INSERT INTO `food_info` VALUES ('72', 'T00007', '现场煎鸡蛋', null, null, null, '粥 类', null);
+INSERT INTO `food_info` VALUES ('73', 'T00007', '甘蓝素包子', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('74', 'T00007', '花 卷', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('75', 'T00007', '油 条', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('76', 'T00007', '牛肉面', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('77', 'T00007', '酸 奶', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('78', 'T00007', '煮鸡蛋', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('79', 'T00007', '糊 锅', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('80', 'T00007', '蛋炒饭', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('81', 'T00007', '炒米线', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('82', 'T00007', '牛 奶', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('83', 'T00007', '甜 点', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('84', 'T00007', '面 包', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('85', 'T00007', '蒸红萝卜', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('86', 'T00007', '紫薯', null, null, null, '土 产', null);
+INSERT INTO `food_info` VALUES ('87', 'T00007', '铁杆山药', null, null, null, '土 产', null);
+INSERT INTO `food_info` VALUES ('88', 'T00007', '卤水花生', null, null, null, '土 产', null);
+INSERT INTO `food_info` VALUES ('89', 'T00007', '咖啡', null, null, null, '土 产', null);
+INSERT INTO `food_info` VALUES ('90', 'T00007', '橙汁', null, null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('91', 'T00007', '茶水柠檬水', null, null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('92', 'T00007', '大米粥', null, null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('93', 'T00009', '白切鸡', null, null, null, '粥 类', null);
+INSERT INTO `food_info` VALUES ('94', 'T00009', '酸辣海带', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('95', 'T00009', '凉拌三丝', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('96', 'T00009', '爽口藕带', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('97', 'T00009', '菠菜面筋', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('98', 'T00009', '大拌菜', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('99', 'T00009', '蔬菜沙拉（生菜、苦菊、黄瓜、胡萝卜）', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('100', 'T00009', '尖椒牛肉丝', null, null, null, '凉 菜', null);
+INSERT INTO `food_info` VALUES ('101', 'T00009', '香辣蹄花', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('102', 'T00009', '蒜蓉油麦菜', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('103', 'T00009', '清炒芥兰圈', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('104', 'T00009', '牛肉面', null, null, null, '热 菜', null);
+INSERT INTO `food_info` VALUES ('105', 'T00009', '蛋炒米线', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('106', 'T00009', '糊锅', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('107', 'T00009', '油条', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('108', 'T00009', '地达菜包子', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('109', 'T00009', '牛奶 ', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('110', 'T00009', '面包', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('111', 'T00009', '烤番茄 ', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('112', 'T00009', '小蛋糕', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('113', 'T00009', '哈雷杯', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('114', 'T00009', '咖啡', null, null, null, '主 食', null);
+INSERT INTO `food_info` VALUES ('115', 'T00009', '橙汁', null, null, null, '饮 品', null);
+INSERT INTO `food_info` VALUES ('116', 'T00009', '茶水柠檬水', null, null, null, '饮 品', null);
 
 -- ----------------------------
 -- Table structure for guest_info
@@ -470,14 +655,14 @@ CREATE TABLE `sys_role` (
   `role_name` varchar(255) DEFAULT NULL COMMENT '角色名',
   `description` varchar(255) DEFAULT NULL COMMENT '描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('0', '超级管理员', '超级管理员');
 INSERT INTO `sys_role` VALUES ('1', '管理员', '普通管理员');
 INSERT INTO `sys_role` VALUES ('2', '用户', '普通用户');
+INSERT INTO `sys_role` VALUES ('3', '超级管理员', '超级管理员');
 
 -- ----------------------------
 -- Table structure for sys_role_module
