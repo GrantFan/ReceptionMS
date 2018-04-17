@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-17 10:07:28
+Date: 2018-04-17 18:42:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -617,7 +617,7 @@ INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null
 INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', './reception/register.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', './reception/receptionNews.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', './reception/HotelContrast.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', null, null, null, null, null);
 INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, null, null, null, null);
 INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', './reception/boardroomUse.html', null, null, null, null);
