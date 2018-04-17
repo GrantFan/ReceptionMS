@@ -1,0 +1,253 @@
+*{
+	margin: 0px;
+	padding:0px;
+	list-style: none;
+	box-sizing: border-box;
+}
+.none{
+	display: none;
+}
+.block{
+	display: block;
+}
+.overflow{
+	overflow: hidden;
+}
+.lt{
+	float: left !important;
+}
+.rt{
+	float: right !important;
+}
+.m-0{
+	margin: 0px !important;
+}
+a{
+	text-decoration: none;
+}
+/* 复选框 默认样式修改 */
+
+.table label{
+	position: relative;
+	top:4px;
+}
+
+.modal input[type=checkbox],.table input[type=checkbox] {
+	width: 16px;
+	height: 16px;
+	opacity: 0; 
+	margin:0px;
+	position: absolute;
+	top:0px;
+}
+
+.table input[type=checkbox]+u,.modal input[type=checkbox]+u{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background:url(../img/no.png) no-repeat 0px 0px;
+	background-size: 100% 100%;
+}
+			
+.table input[type=checkbox]:checked+u, .modal input[type=checkbox]:checked+u{
+	width: 16px;
+	height: 16px;
+	background:url(../img/yes.png) no-repeat 0px 0px;
+	background-size: 100% 100%;
+}
+
+
+html,body{
+	width: 100%;
+	height: 100%;
+	font:small-caps bold 14px/1.5em arial,verdana; 
+	color: #000;
+	word-wrap:break-word; 
+	word-break:break-all; 
+}
+.header{
+	width: 100%;
+	height: 5.55vh;
+	line-height: 5.55vh;
+	background-color: chartreuse;
+}
+header i.fa-list{
+	padding:2.1vh 1.1vw;
+}
+
+nav.content {
+	width: 200px;
+	background: #f1f1f1;
+	text-align: center; 
+	border-color: #CCCCCC;
+	border-style: solid;
+	border-width: 0 1px;
+}
+
+article td,article th{
+	border: 1px solid #aaa;
+}
+/* 菜单 */
+ .accordion {
+ 	width: 100%;
+ 	/*margin: 30px auto 20px;*/
+ 	background: #FFF;
+ 	-webkit-border-radius: 4px;
+ 	-moz-border-radius: 4px;
+ 	border-radius: 4px;
+ }
+
+.accordion .link {
+	cursor: pointer;
+	display: block;
+	padding: 15px 15px;
+	color: #4D4D4D;
+	font-size: 14px;
+	font-weight: 700;
+	border-bottom: 1px solid #CCC;
+	position: relative;
+	-webkit-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.accordion li.active{
+	background: red;
+}
+
+.accordion li:last-child .link {
+	border-bottom: 0;
+}
+
+.accordion li i {
+	position: absolute;
+	top: 16px;
+	left: 12px;
+	font-size: 18px;
+	color: #595959;
+	-webkit-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.accordion li i.fa-chevron-down {
+	right: 12px;
+	left: auto;
+	font-size: 16px;
+}
+
+.accordion li.open .link {
+	color: #b63b4d;
+}
+
+.accordion li.open i {
+	color: #b63b4d;
+}
+.accordion li.open i.fa-chevron-down {
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	-o-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+/**
+ * Submenu
+ -----------------------------*/
+ .submenu {
+ 	display: none;
+ 	background: #444359;
+ 	font-size: 14px;
+ }
+
+ .submenu li {
+ 	border-bottom: 1px solid #4b4a5e;
+ }
+
+ .submenu a {
+ 	display: block;
+ 	text-decoration: none;
+ 	color: #d9d9d9;
+ 	padding: 12px;
+ 	padding-left: 42px;
+ 	-webkit-transition: all 0.25s ease;
+ 	-o-transition: all 0.25s ease;
+ 	transition: all 0.25s ease;
+ }
+
+ .submenu a:hover {
+ 	background: #b63b4d;
+ 	color: #FFF;
+ }
+/*******************  内容展示区   ******************/
+#right>#Tab>li{
+	/*height: 1.5rem;*/
+	/*line-height: 1.5rem;*/
+	border: 1px solid #000;
+	float: left;
+	padding: 6px 8px;
+}
+#right>#Tab>li>span{
+	margin-right: 10px;
+}
+#right>#Tab>li>b{
+	cursor: pointer;
+}
+#right>#Tab>li>b:hover{
+	color: red;
+}
+#right>#iframe{
+	height: calc(100vh - 5.55vh - 34.8px);
+	width:calc(100% - 4px);
+}
+
+/****************** 模弹框 *****************/
+.modal{
+	width:100%;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.4);
+	position:absolute;
+	top: 0px;
+	z-index: 1;
+}
+.modal>.box{
+	width: 600px;	
+	margin: auto;	
+	padding: 2vh 1.2vw;
+	background-color: rgba(0,0,0,0.4);
+	position: relative;
+	top:24vh;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	color: #fff;
+	z-index: 2;
+}
+.modal>.box>h4{
+	border-bottom: 1px solid #7FFF00;
+}
+.modal>.box>h4>#close{
+	cursor: pointer;
+}
+.modal>.box>.mbody{
+	padding:0px  1.2vw;
+}
+.modal>.box label{
+	width: 100%;
+	display: block;
+	margin: 2vh 0px;
+	overflow: hidden;
+}
+.modal>.box>.mbody>label>strong,.modal>.box>.mbody>label>span{
+	float: left;
+	width: 40%;
+	text-align: left;
+}
+.modal>.box>.mbody>label>strong{
+	color: red;
+}
+.modal>.box>.mbody>label>input,.modal>.box>.mbody>label>textarea,.modal>.box>.mbody>label>select{
+	float: left;
+	text-align: left;
+	width: 59%;	 
+}
+

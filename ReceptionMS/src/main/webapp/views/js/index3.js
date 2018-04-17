@@ -1,7 +1,7 @@
 //init
 $(function() {
-	showModule(); //显示功能模块
-})
+	showModule();
+});
 
 //显示功能模块结构
 function showModule() {
@@ -9,40 +9,33 @@ function showModule() {
 		type : "post",
 		url : "../module/show",
 		success : function(data) {
-			console.log(data);
-			//			if (data.length > 0) {
-			//				$("#accordion").empty();
-			//				var li = "";
-			//				var ul = "<ul class=\"submenu\">";
-			//				for (var i = 0; i < data.length; i++) {
-			//					if (data[i].moduleParentId == '0') {
-			//						li += "<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>";
-			//						$("#accordion").html(li);
-			//					//console.log($("#accordion>li[name='"+ data[i].moduleId + "']"));
-			//					}
-			//					for (var j = 0; j < data.length; j++) {
-			//						if (data[j].moduleParentId == data[i].moduleId) {
-			//							console.log(data[j].moduleParentId,data[i].moduleId);
-			//							$("#accordion>li[name='"+ data[i].moduleId + "']").append("<ul class=\"submenu\"><li><a href='" + data[j].url + "' class=\"active\">" + data[j].moduleName + "</a></li></ul>");
-			//						}
-			//					}
-			//				
-			//				}
-			//			}
-			for (var i = 0; i < data.length; i++) {
-				if (data[i].moduleParentId == '0') {
-					$("#accordion").append(
-						"<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>");
-					for (var j = 0; j < data.length; j++) {
-						if (data[j].moduleParentId == data[i].moduleId) {
-							$("#accordion>li[name='"+ data[i].moduleId + "']").append(
-								"<ul><li><a href='" + data[j].url + "' class=\"active\">" + data[j].moduleName + "</a></li></ul>")
+			//console.log(data);
+			if (data.length > 0) {
+				for (var i = 0; i < data.length; i++) {
+					if (data[i].moduleParentId == '0') {
+						$("#accordion").append(
+							"<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>");
+						var ul = '<ul class=\"submenu\">';
+						for (var j = 0; j < data.length; j++) {
+							if (data[j].moduleParentId == data[i].moduleId) {
+								ul += "<li><a href='" + data[j].url + "'> " + data[j].moduleName + "</a></li>";
+							}
 						}
-
+						ul += "</ul>";
+						$("#accordion>li[name='" + data[i].moduleId + "']").append(ul);
 					}
-				} 
-		
+
+				}
 			}
+			var accordion = new Accordion($('#accordion'), false); // 导航 
+			$(".submenu>li").on("click", function(e) { // 点击展示区
+				$(this).addClass("active").siblings("li").removeClass("active");
+				//console.log($(this))
+				e.preventDefault();
+				//		li += "<li class='TabStyle' onclick='fn(this)'><span>"+$(this).text()+"</span> <b onclick='shut(this)'>X</b></li>";
+				html = "<iframe src='" + $(this).children('a').attr('href') + "'></iframe>";
+				$("#right>#iframeBox").html(html);
+			});
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(XMLHttpRequest.status);
@@ -52,51 +45,33 @@ function showModule() {
 	})
 }
 
-// iframe    .load($(this).children('a').attr('href'))
-$(".submenu>li").on("click", function(e) {
-	$(this).addClass("active").siblings("li").removeClass("active");
-	aText = $(this);
-	e.preventDefault();
-	//		li += "<li class='TabStyle' onclick='fn(this)'><span>"+$(this).text()+"</span> <b onclick='shut(this)'>X</b></li>";
-	html = "<iframe src='" + $(this).children('a').attr('href') + "'></iframe>";
+//显示功能模块
+var Accordion = function(el, multiple) {
+	this.el = el || {};
+	this.multiple = multiple || false;
 
-	$("#right>#iframeBox").html(html);
+	// Variables privadas
+	var links = this.el.find('.link');
+	// Evento
+	links.on('click', {
+		el : this.el,
+		multiple : this.multiple
+	}, this.dropdown)
+}
 
-});
+Accordion.prototype.dropdown = function(e) {
+	var $el = e.data.el;
+	$this = $(this),
+	$next = $this.next();
 
+	$next.slideToggle();
+	$this.parent().toggleClass('open');
 
-$(function() {
-	// 导航
-	var Accordion = function(el, multiple) {
-		this.el = el || {};
-		this.multiple = multiple || false;
-
-		// Variables privadas
-		var links = this.el.find('.link');
-		// Evento
-		links.on('click', {
-			el : this.el,
-			multiple : this.multiple
-		}, this.dropdown)
+	if (!e.data.multiple) {
+		$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
 	}
+}
 
-	Accordion.prototype.dropdown = function(e) {
-		var $el = e.data.el;
-		$this = $(this),
-		$next = $this.next();
-
-		$next.slideToggle();
-		$this.parent().toggleClass('open');
-
-		if (!e.data.multiple) {
-			$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
-		}
-		;
-	}
-
-	var accordion = new Accordion($('#accordion'), false);
-
-});
 
 // 增加
 function add() {
@@ -106,7 +81,7 @@ function add() {
 // 修改
 function edit() {
 	$(".modal").find('label').each(function() {
-		console.log($(this).attr('for'));
+		//console.log($(this).attr('for'));
 		if ($(this).attr('for') == 'user') {
 			$(this).css('color', '#ddd');
 			$(this).children('input').attr("disabled", true);
