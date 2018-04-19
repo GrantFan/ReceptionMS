@@ -20,8 +20,8 @@ public class User implements Serializable{
 	private String userName;//用户名
 	private String userNick;//用户昵称
 	private String password;//用户密码
-	private String lastLoginComputer;//是否删除
-	private String lastLoginTime;//是否删除
+	private String lastLoginComputer;//上次登录电脑
+	private String lastLoginTime;//上次登录时间
 	private String createTime;//创建时间 
 	private String modifyTime;//修改时间
 	private String enable;//是否使用
