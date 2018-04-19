@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-17 18:42:53
+Date: 2018-04-19 14:16:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -482,8 +482,10 @@ CREATE TABLE `meals_record` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `reception_number` varchar(128) DEFAULT NULL COMMENT '接待编号',
   `menu_number` varchar(128) DEFAULT NULL COMMENT '套餐编号',
+  `hotel` varchar(64) DEFAULT NULL COMMENT '酒店',
   `meals_time` varchar(64) DEFAULT NULL COMMENT '用餐时间',
   `hobby` varchar(255) DEFAULT NULL COMMENT '宾客喜好',
+  `record_time` datetime DEFAULT NULL COMMENT '登记时间',
   `ramark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
