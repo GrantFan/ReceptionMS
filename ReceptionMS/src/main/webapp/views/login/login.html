@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<script src="../js/jquery-1.10.2.min.js" type="text/javascript"
+	charset="utf-8"></script>
+<head>
+<meta charset="UTF-8">
+<title>接待管理平台登录</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+
+<body>
+	<div class="login">
+		<div class="loginBox rt">
+			<i class="head"></i>
+			<h4>欢迎登录</h4>
+			<label for="user"> <i class="user"></i> <span>用户名：</span> <input
+				type="text" name="" id="userName" value="" />
+			</label> <br /> <label for="pass" style="margin-top: 7.4vh;"> <i
+				class="pass"></i> <span>密 &nbsp;&nbsp; 码：</span> <input
+				type="password" name="" id=password value="" />
+			</label> <br />
+			<div class="check overflow">
+				<label for="remember" class="lt" style="margin-right:4.0625vw;">
+					<input type="checkbox" name="" id="remember" value="" /> <u></u> <span>记住用户名和密码</span>
+				</label> <label for="automatism" class="lt"> <input type="checkbox"
+					name="" id="automatism" value="" /> <u></u> <span>自动登录</span>
+				</label>
+			</div>
+
+			<button onclick="login();">登录</button>
+
+			<div class="QRCode overflow">
+				<u class="QR lt"> <i></i>
+				</u>
+				<p class="lt">
+					手机扫一扫<br /> 下载APP
+				</p>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+<script>
+	$(function() {
+		//回车登录
+		$("#password").on('keydown', function(e) {
+			if (e.which == 13) {
+				login();
+			}
+		})
+
+	})
+
+	function login() {
+		$.ajax({
+			type : "post",
+			url : "../../login",
+			data : {
+				userName : $("#userName").val(),
+				password : $("#password").val()
+			//	username : "admin",
+			//	password :  "admin"
+			},
+			success : function(data) {
+				alert(data);
+				var flag = String($.trim(data));
+				if (flag == "false") {
+					alert("登录失败");
+					location.href = "/ReceptionMS/views/login/login.html";
+				} else {
+					alert("登录成功");
+					location.href = "/ReceptionMS/views/index3.html";
+				}
+			},
+			error : function(xhr, statue, error) {
+				alert("登录失败")
+				//console.log(error);
+				//location.href = "/ReceptionMS/views/login/login.html";
+			},
+			cache : false
+		});
+	}
+</script>
+</html>
