@@ -29,12 +29,13 @@ function showModule() {
 			}
 			var accordion = new Accordion($('#accordion'), false); // 导航 
 			$(".submenu>li").on("click", function(e) { // 点击展示区
+				var html = '';
 				$(this).addClass("active").siblings("li").removeClass("active");
 				//console.log($(this))
 				e.preventDefault();
 				//		li += "<li class='TabStyle' onclick='fn(this)'><span>"+$(this).text()+"</span> <b onclick='shut(this)'>X</b></li>";
 				html = "<iframe src='" + $(this).children('a').attr('href') + "'></iframe>";
-				$("#right>#iframeBox").html(html);
+				$("#iframeBox").html(html);
 			});
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
