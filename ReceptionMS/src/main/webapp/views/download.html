@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>接待管理系统</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script type="text/javascript" src="assets/js/jquery-1.10.2.min.js"></script>
+		<link rel="stylesheet" href="assets/css/swiper.min.css" />
+		<style type="text/css">
+			@media screen and(min-width: 320px)and(max-width: 359px) {
+				html {
+					font-size: 12.8px;
+				}
+			}
+			
+			@media screen and(min-width: 360px)and(max-width: 374px) {
+				html {
+					font-size: 14.4px;
+				}
+			}
+			
+			@media screen and(min-width: 375px)and(max-width: 385px) {
+				html {
+					font-size: 15px;
+				}
+			}
+			
+			@media screen and(min-width: 386px)and(max-width: 392px) {
+				html {
+					font-size: 15.44px;
+				}
+			}
+			
+			@media screen and(min-width: 393px)and(max-width: 400px) {
+				html {
+					font-size: 16px;
+				}
+			}
+			
+			@media screen and(min-width: 401px)and(max-width: 414px) {
+				html {
+					font-size: 16.48px;
+				}
+			}
+			
+			@media screen and(min-width: 750px)and(max-width: 799px) {
+				html {
+					font-size: 30.72px;
+				}
+			}
+			
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+				box-sizing: border-box;
+			}
+			
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-weight: initial;
+			}
+			
+			.overflow {
+				overflow: hidden;
+			}
+			
+			.lt {
+				float: left !important;
+			}
+			
+			.rt {
+				float: right !important;
+			}
+			
+			.m-0 {
+				margin: 0px !important;
+			}
+			
+			.p-0 {
+				padding: 0px !important;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			html,
+			body {
+				font-family: "微软雅黑", arial;
+			}
+			
+			header,
+			article {
+				width: 100%;
+				padding: 0px 1rem;
+			}
+			
+			header {
+				width: 100%;
+				height:2.3rem;
+				 line-height: 2.3rem;
+				text-align: center;
+			}
+			
+			article>.head {
+				width: auto;
+			}
+			
+			article>.head>.icon {
+				width: 5rem;
+				height: 5rem;
+			}
+			
+			article>.head>.icon>img {
+				margin-top: 0.8rem;
+				width: 5rem;
+				height: 5rem;
+			}
+			
+			article>.head>.introduce {
+				width: auto;
+				font-size: 0.8rem;
+				padding: 0px 1rem;
+			}
+			
+			article>.head>.introduce>p {
+				margin: 0.8rem 0px;
+			}
+			
+			article>.body>h2 {
+				text-align: center;
+				padding-bottom: 0.5rem;
+			}
+			
+			article>.body .chart {
+				overflow-x: scroll;
+			}
+			
+			article>.body ul {
+				overflow: hidden;
+			}
+			
+			article>.body li {
+				width: 16.2rem;
+				padding: 0px 0.6rem;
+				float: left;
+			}
+			
+			article>.body li:nth-child {
+				padding: 0px;
+			}
+			
+			article>.body img {
+				width: 15rem;
+				height: 30rem;
+			}
+			
+			article>.body .version {
+				color: #a0a0a0;
+			}
+			
+			article>.footer {
+				width: 100%;
+				border-top: 1px solid #4D4D4D;
+				margin: 1rem 0px;
+				padding-top: 0.8rem;
+				font-size: 1.4rem;
+			}
+			
+			article>.footer>.news {
+				color: #dedede;
+				padding: 0.5rem 2rem;
+			}
+			
+			article>.footer>.news>p {
+				margin: 0.8rem 0px;
+			}
+			
+			article>.footer>.news span {
+				color: #000;
+				margin-left: 1rem;
+			}
+			
+			article>.footer>button {
+				display: block;
+				width: 80%;
+				height: 3rem;
+				margin: auto;
+				font-size: 1.2rem;
+				background-color: #198ce9;
+				border: none;
+				border-radius: 1.5rem;
+				color: #fff;
+			}
+			/* 弹出框 */
+			  .swiper-container {
+			      width: 100%;
+			      height: 100%;
+			    }
+			.swiper-slide img {
+				width: 100%;				
+			}
+			
+			.swiper-slide {
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				font-size: 18px;
+				/* Center slide text vertically */
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header>
+			<h1>标题</h1>
+		</header>
+		<article>
+			<div class="head overflow">
+				<div class="icon lt">
+					<img src="assets/img/user-photo.png" alt="....." />
+				</div>
+				<div class="introduce lt">
+					<p>酒店系统管理平台</p>
+					<p>
+						<span>大小: <b id="measure">75.32M</b>	</span>
+						<span>语言: <b>中文</b>	</span>
+					</p>
+					<p>
+						<span>类别: <b>效率工具</b>	</span>
+						<span>系统: <b>Android</b>	</span>
+					</p>
+				</div>
+			</div>
+			<div class="body">
+				<h2>详情</h2>
+				<div class="message">
+					<div class="chart">
+						<ul>
+							<li>							
+								<img src="assets/img/download/Screenshot_2018-01-31-21-19-03.png" />
+							</li>
+							<li>
+								<img src="assets/img/download/Screenshot_2018-01-31-21-19-09.png" />
+							</li>
+							<li>
+								<img src="assets/img/download/Screenshot_2018-02-04-23-26-55.png" />
+							</li>
+							<li>
+								<img src="assets/img/download/Screenshot_2018-02-04-23-37-23.png" />
+							</li>
+						</ul>
+					</div>
+					<div class="version">
+						你呢富婆送到哦ii发你说的叛逆覅你发苏定方地方能批的就是发 度发第四皮肤扫地机覅但是覅单反但是覅但是覅屌丝发多少呢覅i的发表皮实的发的覅圣诞节范德萨
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="news">
+					<p>更新时间 <span>4月3日</span></p>
+					<p>当前版本 <span>1.0.0</span></p>
+				</div>
+				<button id="download">安 &nbsp;装</button>
+			</div>
+		</article>
+
+		<!--<div class="modal">-->
+		<div class="swiper-container" style="display: none;position: absolute;background-color: rgba(0,0,0,0.6);top: 0px;">
+			<ul class="swiper-wrapper">
+				<li class="swiper-slide">				
+					<img src="assets/img/download/Screenshot_2018-01-31-21-19-03.png" />
+				</li>
+				<li class="swiper-slide">
+					<img src="assets/img/download/Screenshot_2018-01-31-21-19-09.png" />
+				</li>
+				<li class="swiper-slide">
+					<img src="assets/img/download/Screenshot_2018-02-04-23-26-55.png" />
+				</li>
+				<li class="swiper-slide">
+					<img src="assets/img/download/Screenshot_2018-02-04-23-37-23.png" />
+				</li>
+			</ul>
+			<div class="swiper-pagination" style="position: fixed;"></div>
+		</div>
+		<!--</div>-->
+	</body>
+	<script src="assets/js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			var wid = $(".chart li").outerWidth() * 4;
+			$(".message>.chart ul").width(wid + 1);
+			
+			$(".message>.chart img").on("click", function() {
+//				alert("aaa");				 
+				$(".swiper-container").show();
+				$("html").css("overflow-y","hidden");
+				$(".body").hide();
+				var swiper = new Swiper('.swiper-container', {
+					pagination: {
+						el: '.swiper-pagination',
+					},
+				});
+			
+			})
+			$(".swiper-container").on('click',function(){
+//				alert("bbb");
+				$(".swiper-container").hide();
+				$(".body").show();
+				$("html").css("overflow-y","scroll");
+			})
+			
+			
+		})
+	</script>
+
+</html>

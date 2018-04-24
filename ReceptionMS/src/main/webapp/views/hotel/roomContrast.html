@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>房间信息管理</title>
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		<style type="text/css">
+			strong {
+				font-weight: bolder;
+				color: #fd0606;
+			}
+			
+			.modal>.contrast {
+				width: 800px;
+				top: 14vh;
+			}
+			
+			.contrast>div.lt,
+			.contrast>div.rt {
+				width: 49%;
+				padding: 10px;
+				background: rgba(0, 0, 0, 0.3);
+			}
+			
+			.contrast>div.lt>div.info,
+			.contrast>div.rt>div.info {
+				width: 50%;
+			}
+			
+			.contrast>div.lt>div.img,
+			.contrast>div.rt>div.img {
+				width: 50%;
+			}
+			
+			.contrast>div.lt>div.img>img,
+			.contrast>div.rt>div.img>img {
+				width: 100%;
+				height: 48vh;
+			}
+			
+			.modal>.contrast label.m-0 {
+				width: inherit;
+				display: inline-block;
+				background: #DEDEDE;
+				color: #000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="operationsArea">
+			<div class="buttons">
+				<button onclick="add()" class="active">
+						<u class="xz"></u>
+						新增
+					</button>
+				<button>
+						<u class="fzxz"></u>
+						复制新增
+					</button>
+				<button onclick="edit()">
+						<u class="bj"></u>
+						编辑
+					</button>
+				<button onclick="dele()">
+						<u class="sc"></u>
+						删除
+					</button>
+				<button>
+						<u class="dyyl"></u>
+						打印预览
+					</button>
+				<button>
+						<u class="dy"></u>
+						打印
+					</button>
+				<button>
+						<u class="dr"></u>
+						导入
+					</button>
+				<button>
+						<u class="dc"></u>
+						导出
+					</button>
+				<button>
+						<u class="sh"></u>
+						审核
+					</button>
+				<button>
+						<u class="cx"></u>
+						撤销
+					</button>
+				<button>
+						<u class="sx"></u>
+						刷新
+					</button>
+				<button onclick="shut()" class="m-0">
+						<u class="gb"></u>
+						关闭
+					</button>
+			</div>
+			<div class="inputs">
+				<select name="">
+						<option value=""></option>
+						<option value="">且</option>
+						<option value="">或</option>						 
+					</select>
+				<select name="">
+					<option value="">用户名</option>
+					<option value="">昵称</option>
+					<option value="">角色</option>
+					<option value="">在线</option>
+					<option value="">备注</option>
+				</select>
+				<select name="">
+					<option value="">等于</option>
+					<option value="">不等于</option>
+					<option value="">包含</option>
+					<option value="">不包含</option>
+					<option value="">开头是</option>
+					<option value="">开头不是</option>
+					<option value="">结尾是</option>
+					<option value="">结尾不是</option>
+					<option value="">为空</option>
+					<option value="">不为空</option>
+				</select>
+				<input type="text" />
+				<button>查询</button>
+				<button>清空</button>
+			</div>
+
+			<div class="tab">
+				<h6 class="title overflow">
+				<span class="lt">酒店会议室使用情况</span>
+				<p class="lt idleIcon" >
+					<i class="idle"></i> 空闲
+				</p>
+				<p class="lt inUseIcon">
+					<i class="inUse"></i> 试用中
+				</p>
+			</h6>
+				<!--酒店 -->
+				<div class="seat">
+					<div class="xBox overflow">
+						<p class="storey lt">一楼</p>
+						<ol class="overflow rt">
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">101</span>
+							</li> 
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">102</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">103</span>
+							</li>
+							<li>							 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">104</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">105</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="idle"></u>
+								</p>
+								<span class="null">106</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">107</span>
+							</li>
+							<li>														 
+								<p class="icon">
+									<u class="idle"></u>
+								</p>
+								<span class="null">108</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="idle"></u>
+								</p>
+								<span class="null">109</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">110</span>
+							</li>
+							<li>						 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">111</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">112</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="idle"></u>
+								</p>
+								<span class="null">113</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">114</span>
+							</li>
+							<li>														 
+								<p class="icon">
+									<u class="idle"></u>
+								</p>
+								<span class="null">115</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="idle"></u>
+								</p>
+								<span class="null">116</span>
+							</li>
+							<li>								 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">117</span>
+							</li>
+							<li class="active">						 
+								<p class="icon">
+									<u class="useI"></u>
+								</p>
+								<span class="useIng">118</span>
+							</li>
+						</ol>
+					</div>
+					<p class="hr"></p>
+				</div>
+			</div>
+		</div>
+		<!-- 模态框 -->
+		<div class="modal none">
+			<div class="box overflow contrast">
+				<h4 class="overflow">
+					<p class="lt">
+						<strong>东方国际大酒店</strong> 与
+						<strong>宏信大酒店</strong> 对比
+					</p>
+					<p class="rt" id="close" onclick="$(this).parents('.modal').hide()">X</p>
+				</h4>
+				<div class="lt">
+					<p class="title">东方国际大酒店</p>
+					<div class="info lt">
+						<label for="ren">
+							<span>联系人</span><br />
+							<input type="text" name="user" id="ren" value="" />
+						</label>
+						<label for="phone">
+							<span>联系电话</span><br />
+							<input type="text" name="user" id="user" value="" />
+						</label>
+						<label for="zuoJi">
+							<span>酒店座机</span><br />
+							<input type="text" name="user" id="zuoJi" value="" />
+						</label>
+						<label for="qu">
+							<span>所属行政区</span><br />
+							<input type="text" name="user" id="qu" value="" />
+						</label>
+						<label for="area">
+							<span>酒店地址</span><br />
+							<input type="text" name="user" id="area" value="" />
+						</label>
+						<label for="remarks">
+							<span>备注</span><br />
+							<textarea name="" rows="5" cols="23" id="remarks"></textarea> 
+						</label>
+					</div>
+					<div class="img lt">
+						<img src="" />
+						<div>
+							<button><--</button>
+							<span>1/3</span>
+							<button>--></button>
+						</div>
+						<div>
+							<label class="m-0" for="tianjia">添加</label>
+							<input type="file" name="" id="tianjia" value="添加" class="none" />
+							<label class="m-0" for="tihuan">替换</label>
+							<input type="file" name="" id="tihuan" value="替换" class="none" />
+							<button>删除</button>
+						</div>
+					</div>
+				</div>
+				<div class="rt">
+					<p class="title">宏信大酒店</p>
+					<div class="info lt">
+						<label for="ren">
+							<span>联系人</span><br />
+							<input type="text" name="user" id="ren" value="" />
+						</label>
+						<label for="phone">
+							<span>联系电话</span><br />
+							<input type="text" name="user" id="user" value="" />
+						</label>
+						<label for="zuoJi">
+							<span>酒店座机</span><br />
+							<input type="text" name="user" id="zuoJi" value="" />
+						</label>
+						<label for="qu">
+							<span>所属行政区</span><br />
+							<input type="text" name="user" id="qu" value="" />
+						</label>
+						<label for="area">
+							<span>酒店地址</span><br />
+							<input type="text" name="user" id="area" value="" />
+						</label>
+						<label for="remarks">
+							<span>备注</span><br />
+							<textarea name="" rows="5" cols="23" id="remarks"></textarea> 
+						</label>
+					</div>
+					<div class="img lt">
+						<img src="" />
+						<div>
+							<button><--</button>
+							<span>1/3</span>
+							<button>--></button>
+						</div>
+						<div>
+							<label class="m-0" for="tianjia">添加</label>
+							<input type="file" name="" id="tianjia" value="添加" class="none" />
+							<label class="m-0" for="tihuan">替换</label>
+							<input type="file" name="" id="tihuan" value="替换" class="none" />
+							<button disabled="disabled">删除</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+	<script>
+		if($("tbody input:checked").length >= 2) {
+			//console.log($("tbody input:checked").parents('tr').siblings().html())
+			$("#contrast").on('click', function() {
+				$(".contrast").parent(".modal").show();
+			})
+		}
+	</script>
+
+</html>

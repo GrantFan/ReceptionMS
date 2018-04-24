@@ -1,6 +1,6 @@
 *{
 	margin: 0px;
-	padding:0px;
+	padding: 0px;
 	list-style: none;
 	box-sizing: border-box;
 }
@@ -27,7 +27,7 @@ a{
 	text-decoration: none;
 }
 
-u,i,label,span{
+u,i,label,span,b{
 	display: inline-block;	
 }
 
@@ -36,6 +36,11 @@ u,i,label,span{
 .table label{
 	position: relative;
 	top:4px;
+}
+select{
+	appearance:none;
+  	-moz-appearance:none;
+  	-webkit-appearance:none;
 }
 input[type=checkbox]{
 	width: 16px;
@@ -62,12 +67,13 @@ input[type=checkbox]:checked+u{
 }
 
 html,body{
-	/*width: 100vw;
-	height: 100vh;*/
+	width: 100%;
+	height: 100vh;
 	font:normal 0.72916vw "微软雅黑",arial; 
 	color: #fff;
 	word-wrap:break-word; 
 	word-break:break-all; 
+	overflow: hidden;
 }
 /****  end  *****/
 
@@ -178,7 +184,7 @@ html,body{
 	background-color: rgba(4,53,151,0.6);
 	padding: 0px 1.875vw 0px 3.75vw;
 }
-.header>div.lt>span{
+.header>div.lt>a>span{
 	width: 10.9375vw;
 	height: 2.59vh;
 	background: url(../img/index3_06.png) no-repeat 0px 0px;
@@ -293,39 +299,52 @@ article#right>section>#Tab>span{
 	margin-left: 0.9375vw;
 }
 article#right>section>#iframeBox{
-	width: 81.25vw;
+	width: 81.335vw;
 	height: 90.522vh;
 }
-
-.buttons{
-	padding: 0px 1.0416vw;
+iframe{
+	width: 100%;
+	height: 90.522vh;
+	border: none; 		
+	overflow: hidden; 
 }
-.buttons>button{
-	width: 6.58vw;
+.operationsArea{
+	padding: 1.28205%;
+}
+.operationsArea>.buttons{
+	padding: 0px 1.316%;
+}
+.operationsArea>.buttons>button{
+	width: 6.757%;
 	height: 4.1vh;
 	border: none;
 	background:url(../img/index3_11.png) no-repeat 0px 0px;
 	background-size: 100% 100%;
 	color: #fff;
 	outline:none;
-	margin-right: 1.302vw;
+	/*margin-right: 1.48%;*/
+	margin-right:1.382%;
 	font-size: 0.625vw;
 	cursor: pointer;
 }
-.buttons>button.active{
+.operationsArea>.buttons>button>u{
+	position: relative;
+    top: 2px;
+}
+.operationsArea>.buttons>button.active{
 	background:url(../img/index3_12.png) no-repeat 0px 0px;
 	background-size: 100% 100%;
 	color: #f3ff34;
 }
 
-.inputs{
+.operationsArea>.inputs{
 	margin-top: 1.852vh;
-	padding-left:13.97vw;
+	padding-left:13.947%;
 }
 
-.inputs>select,.inputs>input{
-	width: 13.19vw;
-	height: 30px;	
+.operationsArea>.inputs>select,.inputs>input{
+	width: 13.514%;
+	height: 2.778vh;
 	color: #000;
 	margin-right:  1.33vw;
 	text-shadow: 0px 1px 1px #000;
@@ -333,17 +352,16 @@ article#right>section>#iframeBox{
 	cursor: pointer;
 	border: none;
 	padding: 0px 0.922vw;
-	appearance:none;
-  	-moz-appearance:none;
-  	-webkit-appearance:none;
- 	 background: url(../img/index3_22.png) no-repeat scroll right center transparent;
+ 	background: url(../img/index3_22.png) no-repeat scroll right center transparent;
+ 	background-size: 100% 100%;
+ 	font-size: 1.12vh;
 }
-.inputs>input{
+.operationsArea>.inputs>input{
 	background:linear-gradient(to bottom,#fffef3,#c2fbfe); 
 }
-.inputs>button{
+.operationsArea>.inputs>button{
 	width: 6.58vw;
-	height: 34px;
+	height: 3.6vh;
 	background: url(../img/index3_18.png) no-repeat 0px 0px;
 	background-size: 100% 100%;
 	border:none;
@@ -352,33 +370,164 @@ article#right>section>#iframeBox{
 	cursor: pointer;
 	padding-bottom: 4px;
 	margin-right: 1.302vw;
+	font-size: 1.12vh;
 }
-.tab{
+
+.operationsArea>.tab{
 	width: 100%;
-	height: 76.759vh;
-	background: rgba(31,51,76,0.2);	
-}
-table{
-	width: 100%;
-	text-align: center;
+	height: 83vh;
+	background: rgba(31,51,76,0.4);	
 	margin-top: 1.67vh;
 }
-table>thead{
+/*表格*/
+.operationsArea>.tab>table{
+	width: 100%;
+	text-align: center;
+}
+.operationsArea>.tab>table>thead>tr{
+	width: 100%;
 	background: url(../img/index3_26.png) no-repeat 0px 0px;
 	background-size: 100% 100%;
 }
-table tr{
+.operationsArea>.tab>table tr{
 	height: 46px;
 	line-height: 46px;
 	color: #fff;
 }
-table>tbody{
+.operationsArea>.tab>table>tbody{
 	font-style: oblique;
 }
 
-table>tbody tr:hover{
+.operationsArea>.tab>table>tbody tr:hover{
 	background-color: rgba(206,206,206,0.25);
 	color: #f9ff4b;
+}
+/*排列*/
+.operationsArea>.tab>.title{
+	width: 100%;
+	height: 46px;
+	line-height: 46px;
+	padding: 0px 20px;
+	background: url(../img/index3_26.png) no-repeat 0px 0px;
+	background-size: 100% 100%;
+}
+.operationsArea>.tab>.title>span,.operationsArea>.tab>.seat .til{
+	font-size: 1.025vw;
+}
+.operationsArea>.tab>.title>.idleIcon{
+	margin: 0px 10px;
+	color: #61fa5d;
+	margin-left:2.884vw;
+	font-size: 0.769vw;
+}
+.operationsArea>.tab>.title>.inUseIcon{
+	margin: 0px 10px;
+	color: #ff9626;
+	font-size: 0.769vw;
+}
+.operationsArea>.tab>.title .idle{
+	width: 10px;
+	height: 8px;
+	background-color: #61fa5d;
+}
+.operationsArea>.tab>.title .inUse{
+	width: 10px;
+	height: 8px;
+	background-color: #ff9626;
+}
+
+
+.operationsArea>.tab>.seat{
+	padding: 0px 60px;
+}
+.operationsArea>.tab>.seat .til{
+	width: 100%;
+	height: 47px;
+	line-height: 47px;
+}
+.operationsArea>.tab>.seat ul>li{
+	float: left;
+	width: 7.692vw;
+	height: 50px;
+	background-color: #263640;
+	border-radius: 4px;
+	margin-right: 0.48vw;
+	margin-bottom:6px;
+	overflow: hidden;	
+	position: relative;
+}
+.operationsArea>.tab>.seat ul>li>p.icon{
+	position: absolute;
+	top: 14px;
+	right:0.769vw;
+}
+.operationsArea>.tab>.seat ul>li>p.icon>u{
+	margin: 0px;
+}
+
+.operationsArea>.tab>.seat ul>li .room{
+	color: #b5b5b5;
+	-webkit-transform : scale(0.86);
+	-webkit-transform:translate(-3px,-3px);
+	font-size: 0.7vw;
+	position: absolute;
+	top: 6px;
+	left: 9px;
+}
+.operationsArea>.tab>.seat li .useIng{
+	color: #f59128;
+	-webkit-transform : scale(0.6);
+	-webkit-transform:translate(-4px,0px);
+	font-size: 0.64vw;
+	position: absolute;
+	bottom:6px;
+	left: 9px;
+}
+.operationsArea>.tab>.seat li .null{
+	color: #5ef05b;
+	-webkit-transform : scale(0.6);
+	-webkit-transform:translate(-4px,0px);
+	font-size:  0.64vw;
+	position: absolute;
+	bottom:6px;
+	left: 9px;
+}
+.operationsArea>.tab>.seat>.hr{
+	width: 100%;
+	height: 9px;
+	border-color: rgba(94,121,184,0.4);
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-style: solid;
+}
+.operationsArea>.tab>.seat>.xBox{
+	margin-top: 26px;
+}
+.operationsArea>.tab>.seat>.xBox>.storey{
+	width: 6.41vw;
+	padding-left: 1.153vw;
+}
+.operationsArea>.tab>.seat>.xBox>.storey+ol.overflow{
+	width: calc(100% - 6.41vw);
+}
+.operationsArea>.tab>.seat>.xBox>.storey+ol.overflow li{
+	float: left;
+	width: 3.846vw;
+	height: 6.634vh;
+	background-color: transparent;
+	margin: 0px 0.384vw 18px 0.384vw;
+	text-align: center;
+	border-radius: 100%;
+	padding-top: 0.613vh;
+}
+/*.operationsArea>.tab>.seat>.xBox>.storey+ol.overflow li.active{
+	background-color: rgba(38,54,64,0.6);
+}*/
+.operationsArea>.tab>.seat>.xBox>.storey+ol.overflow li>span{
+	position: inherit;
+	padding-left:0.5vw ;
 }
 /****************** 模弹框 *****************/
 .modal{
@@ -390,16 +539,16 @@ table>tbody tr:hover{
 	z-index: 1;
 }
 .modal>.box{
-	width: 36.875vw;	
+	width: 45.384vw;	
 	margin: auto;	
-	padding: 1.667vh 1.5625vw;
-	font-size: 0.9vw;
+	padding: 2.05vh 1.92vw;
+	font-size: 1.025vw;
 	border-width: 3px;
 	border-style: solid;
 	border-color: rgba(204,234,129,0.9); 
 	background-color: rgba(246,246,246,0.9);
 	position: relative;
-	top:15vh;
+	top: 8vh;
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
@@ -413,16 +562,14 @@ table>tbody tr:hover{
 .modal>.box>h4>#close{
 	cursor: pointer;	
 }
-.modal>.box>h4>#close:hover{
-	color: red;
-}
 .modal>.box>.mbody{
-	padding:0px  1.78vw;
+	padding-left:2.05vw;
+	padding-right:3.2vw;
 }
 .modal>.box label{
 	width: 100%;
 	display: block;
-	line-height: 30px;
+	line-height: 3.067vh;
 	margin: 2vh 0px;
 	overflow: hidden;
 }
@@ -432,29 +579,58 @@ table>tbody tr:hover{
 .modal>.box label.disabled input{
 	color: #727272;
 }
-.modal>.box>.mbody>label>strong,.modal>.box>.mbody>label>span{
+.modal>.box>.mbody label>strong,.modal>.box>.mbod label>span{
 	float: left;
-	width: 26.7%;
+	width: 9.3vw;
 	text-align: left;
 }
-.modal>.box>.mbody>label>strong{
-	color: red;
-}
-.modal>.box>.mbody>label>input,.modal>.box>.mbody>label>textarea,.modal>.box>.mbody>label>select{
-	float: left;
-	width: 73.2%;
+.modal>.box>.mbody label>input,.modal>.box>.mbody label>textarea,.modal>.box>.mbody label>select{
+	float: right;
+	width: 26.4vw;
 	text-align: left;	
+	font-size: 0.769vw;
 	border: 1px solid #515151;
 	padding: 0px 9px;
+	resize:none;
 }
-.modal>.box>.mbody>label>input,.modal>.box>.mbody>label>select{
-	height: 30px;
+.modal>.box>.mbody label>input,.modal>.box>.mbody label>select{
+	height: 3.067vh;
+}
+.modal>.box>.mbody label>ul.detail{
+	width: 26.4vw;
+	text-align: left;	
+	font-size: 0.769vw;
+	border: 1px solid #515151;
+	overflow-y: scroll;
+} 
+.modal>.box>.mbody label>ul.detail>li{
+	padding: 0px 9px;
+}
+.modal>.box>.mbody label>ul.detail>li>b{
+ 	width: 10px;
+    height: 10px;
+    margin-right: 6px;
+}
+.modal>.box>.mbody label>ul.detail>li>b.past{
+ 	background-color: #515151;
+}
+.modal>.box>.mbody label>ul.detail>li>b.now{
+ 	background-color: #c61414;
+}
+.modal>.box>.mbody label>ul.detail>li>b.future{
+ 	background-color: #0ff53b;
+}
+.modal>.box>.mbody label>select{
+	background-image: url(../img/会议室使用记录_03.png);
+	background-repeat: no-repeat; 
+	background-position: 0px 0px;
+	background-size: 100% 100%;
 }
 .modal>.box>.mbody>.timeBox>label{
-	width: 29.6%;
+	width: 10.641vw;
 	overflow: hidden;
-	line-height: 30px;
-	margin-right: 5.6%;
+	line-height:  3.067vh;
+	margin-right: 1.92vw;
 }
 .modal>.box>.mbody>.timeBox>label:nth-last-child(1){
 	margin-right: 0px;
@@ -463,21 +639,64 @@ table>tbody tr:hover{
 	float: left;
 }
 .modal>.box>.mbody>.timeBox input{
-	width: 44.8%;
+	width: 4.615vw;
 	float: right;
-	height: 30px;
-	line-height: 30px;
+	height: 3.067vh;
+	line-height: 3.067vh;
+	border: 1px solid #515151;
+	text-align: center;
+}
+
+/* img */
+
+.imgModal>.box>.mbody>div.overflow>.lt{
+	width: calc(100% - 15.384vw);
+}
+.imgModal>.box>.mbody>div.overflow>.lt input,.imgModal>.box>.mbody>div.overflow>.lt select{
+	width: calc(26.4vw - 15.384vw);
+}
+.imgModal>.box>.mbody>div.overflow>.rt{
+	width: 15.384vw;
+	text-align: center;
+}
+.imgModal>.box>.mbody>div.overflow>.rt>.img{
+	width: 15.384vw;
+	height: 180px;
 	border: 1px solid #515151;
 }
+.imgModal>.box>.mbody>div.overflow>.rt>.btns>p{
+	width: 33%;
+	 height: 3.27vh;
+	position: relative;
+}
+.imgModal>.box>.mbody>div.overflow>.rt>.btns>p>button{
+	width: 100%;
+	height: 3.27vh;
+}
+.imgModal>.box>.mbody>div.overflow>.rt>.btns>button{
+	width: 33%;
+    height: 3.27vh;
+}
+.imgModal>.box>.mbody>div.overflow>.rt>.btns>p input[type = file]{
+	width:  33%;
+    height: 3.27vh;
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+/*** end ***/
 .modal>.box>.mfoot>button{
-	width: 90px;
-	height: 32px;
+	width: 5.769vw;
+	height: 3.27vh;
 	background:url(../img/index3_21.png) no-repeat 0px 0px;
 	background-size: 100% 100%;
 	color: #fff;
 	border: none;
 	outline: none; 
 	overflow: hidden;
-	padding:0px 20px;
+	padding-left:1vw;
 	cursor: pointer;
+	font-size: 0.897vw;
 }

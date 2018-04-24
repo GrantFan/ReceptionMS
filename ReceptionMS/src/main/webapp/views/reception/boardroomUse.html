@@ -3,8 +3,416 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
+		
+		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 	</head>
 	<body>
-		会议室使用登记
+		 <div class="operationsArea">
+			<div class="buttons">
+					<button onclick="add()" class="active">
+						<u class="xz"></u>
+						新增
+					</button>
+					<button>
+						<u class="fzxz"></u>
+						复制新增
+					</button>
+					<button onclick="edit()">
+						<u class="bj"></u>
+						编辑
+					</button>
+					<button onclick="dele()">
+						<u class="sc"></u>
+						删除
+					</button>
+					<button>
+						<u class="dyyl"></u>
+						打印预览
+					</button>
+					<button>
+						<u class="dy"></u>
+						打印
+					</button>
+					<button>
+						<u class="dr"></u>
+						导入
+					</button>
+					<button>
+						<u class="dc"></u>
+						导出
+					</button>
+					<button>
+						<u class="sh"></u>
+						审核
+					</button>
+					<button>
+						<u class="cx"></u>
+						撤销
+					</button>
+					<button>
+						<u class="sx"></u>
+						刷新
+					</button>	 
+					<button onclick="shut()" class="m-0">
+						<u class="gb"></u>
+						关闭
+					</button>				 
+			</div>
+			<div class="inputs">
+					<select name="">
+						<option value=""></option>
+						<option value="">且</option>
+						<option value="">或</option>						 
+					</select>
+					<select name="">
+						<option value="">接待编号</option>
+						<option value="">接待日期</option>
+						<option value="">接待人</option>
+						<option value="">宾客姓名</option>
+						<option value="">用餐</option>
+						<option value="">用餐时间</option>
+						<option value="">宾客喜好</option>
+						<option value="">备注</option>
+					</select>
+					<select name="">
+						<option value="">等于</option>
+						<option value="">不等于</option>
+						<option value="">包含</option>
+						<option value="">不包含</option>
+						<option value="">开头是</option>
+						<option value="">开头不是</option>
+						<option value="">结尾是</option>
+						<option value="">结尾不是</option>
+						<option value="">为空</option>
+						<option value="">不为空</option>
+					</select>
+					<input type="text" />
+					<button>查询</button>
+					<button class="m-0">清空</button>
+			</div>
+	
+		<div class="tab">
+			<h6 class="title overflow">
+				<span class="lt">酒店会议室使用情况</span>
+				<p class="lt idleIcon" >
+					<i class="idle"></i> 空闲
+				</p>
+				<p class="lt inUseIcon">
+					<i class="inUse"></i> 试用中
+				</p>
+			</h6>
+			<!--酒店 A-->
+			<div class="seat">
+				<div class="sBox">
+					<p class="til">敦煌丝路怡苑大酒店</p>
+					<ul class="overflow">
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p> 
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="null">空闲</span>
+							</p>
+							<p class="icon">
+								<u class="nul"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="null">空闲</span>
+							</p>
+							<p class="icon">
+								<u class="nul"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="null">空闲</span>
+							</p>
+							<p class="icon">
+								<u class="nul"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li class="m-0">
+							<p class="name">
+								<span class="room">东二楼多功能厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>						
+					</ul>
+				</div>
+			</div>
+			<!-- 酒店 B -->			
+			<div class="seat">
+				<div class="sBox">
+					<p class="til">东方国际大酒店</p>
+					<!--功能厅 A-->
+					<ul class="overflow">
+						<li>
+							<p class="name">
+								<span class="room">侯见厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">侯见厅</span>
+								<span class="useIng">使用中</span>
+							</p> 
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">侯见厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">侯见厅</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>				
+					</ul>
+					<!--功能厅 B-->
+					<ul class="overflow">
+						<li>
+							<p class="name">
+								<span class="room">孟兰亭</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">孟兰亭</span>
+								<span class="useIng">使用中</span>
+							</p> 
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">孟兰亭</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">孟兰亭</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>	
+						<li>
+							<p class="name">
+								<span class="room">孟兰亭</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>
+						<li>
+							<p class="name">
+								<span class="room">孟兰亭</span>
+								<span class="useIng">使用中</span>
+							</p>
+							<p class="icon">
+								<u class="use"></u>
+							</p>
+						</li>	
+					</ul>
+				</div>
+			</div>
+		</div>
+		</div>	
+		<!--模态框-->
+		<div class="modal block">
+			<div class="box">
+				<h4 class="overflow">
+					<p class="lt">
+						<span>会议室记录明细</span>
+					</p>
+					<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
+						<u></u>
+					</p>
+				</h4>
+				<div class="mbody">
+					<label for="ID" class="disabled">
+						<span>*会议室使用编号：</span>
+						<input type="text" name="user" id="ID" value="H20180210005"/>
+					</label>
+					<label for="nickName">
+						<span>会议室名称：</span>
+						<input type="text" name="nickName" id="nickName" value="东二楼多功能厅" />
+					</label>
+					<label for="receiver">
+						<span>酒店名称：</span>
+						<input type="text" name="" id="receiver" />
+					</label>
+					<label for="role">
+						<span>使用日期：</span>
+						<input type="datetime-local" name="role" id="role" value="" />
+					</label>
+					<div class="timeBox overflow">
+						<label for="startTime" class="lt">
+							<span>开始时间：</span>
+							<input type="time" name="" id="startTime" value="" />
+						</label>
+						<label for="footTime" class="lt">
+							<span>结束时间：</span>
+							<input type="time" name="" id="footTime" value="" />
+						</label>
+						<label for="mens" class="lt">
+							<span>来宾人数：</span>
+							<input type="number" name="" id="mens" value="" />
+						</label>
+					</div>
+					<label for="user">
+							<span>用途说明：</span>
+							<input type="text" name="" id="user" value="" />
+					</label>
+					<label for="reserve">
+							<span>预定时间明细：</span>
+							<ul class="detail rt">
+								<li>
+									<b class="past"></b><span>2018年4月23日14：00 ~ 16:00</span>
+								</li>
+								<li>
+									<b class="now"></b><span>2018年4月24日14：00 ~ 16:00</span>
+								</li>
+								<li>
+									<b class="future"></b><span>2018年4月25日14：00 ~ 16:00</span>
+								</li>
+								<li>
+									<b class="future"></b><span>2018年4月26日14：00 ~ 16:00</span>
+								</li>
+							</ul>
+					</label>
+					<!--<label for="hotel">
+						<span>入住酒店</span>
+						<input type="text" name="" id="hotel" value="" />
+					</label>
+					<label for="room">
+						<span>入住房间号</span>
+						<input type="text" name="" id="room" value="" />
+					</label>
+					<label for="OccupancyTime">
+						<span>入住时间</span>
+						<input type="datetime-local" name="" id="OccupancyTime" value="" />
+					</label>
+					<label for="out">
+						<span	>退房时间</span>						
+						<input type="datetime-local" name="" id="out" value="" />
+					</label>
+					<label for="like">
+						<span>宾客喜好</span>
+						<input type="text" name="" id="like" value="" />
+					</label>						-->
+					<label for="remarks">
+						<span>备注</span>
+						<textarea name="" rows="5" cols="30" id="remarks"></textarea>
+					</label>
+				</div>
+				<div class="mfoot" align="center">
+					<button>
+						<u class="confirm lt"></u>
+						<span class="lt">确定</span>
+					</button>
+					<button onclick="$(this).parents('.modal').hide(800)">
+						<u class="cancel lt"></u>
+						<span class="lt">取消</span>
+					</button>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

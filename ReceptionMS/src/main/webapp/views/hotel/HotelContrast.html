@@ -3,9 +3,12 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>酒店管理</title>
-		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css"/>
+		
+		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 		<style type="text/css">
-			strong{
+			/*strong{
 				font-weight: bolder;
 				color: #fd0606;
 			}
@@ -33,31 +36,67 @@
 				display: inline-block;
 				background: #DEDEDE;
 				color: #000;
-			}
+			}*/
 		</style>
 	</head>
 	<body>
 		<div class="operationsArea">
 			<div class="buttons">
-				<button onclick="add()">新增</button>
-				<button>复制新增</button>
-				<button onclick="edit()">编辑</button>
-				<button onclick="dele()">删除</button>
-				<button>打印预览</button>
-				<button>导入</button>
-				<button>导出</button>
-				<button>审核</button>
-				<button>撤销审核</button>
-				<button id="contrast">对比</button>
-				<button>刷新</button>
-				<!--<button onclick="resetting()">重置密码</button>-->
-				<button onclick="shut()">关闭</button>
-				<p>
-					<b>已选择条件展示 【SQL】</b>
-					<span>查询条件</span>
-				</p>
+				<button onclick="add()" class="active">
+						<u class="xz"></u>
+						新增
+					</button>
+				<button>
+						<u class="fzxz"></u>
+						复制新增
+					</button>
+				<button onclick="edit()">
+						<u class="bj"></u>
+						编辑
+					</button>
+				<button onclick="dele()">
+						<u class="sc"></u>
+						删除
+					</button>
+				<button>
+						<u class="dyyl"></u>
+						打印预览
+					</button>
+				<button>
+						<u class="dy"></u>
+						打印
+					</button>
+				<button>
+						<u class="dr"></u>
+						导入
+					</button>
+				<button>
+						<u class="dc"></u>
+						导出
+					</button>
+				<button>
+						<u class="sh"></u>
+						审核
+					</button>
+				<button>
+						<u class="cx"></u>
+						撤销
+					</button>
+				<button>
+						<u class="sx"></u>
+						刷新
+					</button>
+				<button onclick="shut()" class="m-0">
+						<u class="gb"></u>
+						关闭
+					</button>
 			</div>
 			<div class="inputs">
+				<select name="">
+						<option value=""></option>
+						<option value="">且</option>
+						<option value="">或</option>						 
+					</select>
 				<select name="">
 					<option value="">用户名</option>
 					<option value="">昵称</option>
@@ -81,61 +120,61 @@
 				<button>查询</button>
 				<button>清空</button>
 			</div>
+		<div class="tab">			
+			<table class="table" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th>
+							<label>
+								<input type="checkbox" id="checkbokAll">
+								<span></span>
+							</label>
+						</th>
+						<th>酒店名称</th>
+						<th>联系人</th>
+						<th>联系电话</th>
+						<th>联系座机</th>
+						<th>所属行政区</th>
+						<th>酒店地址</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" checked="checked">
+								<span></span>
+							</label>
+						</td>
+						<td>东方国际大酒店</td>
+						<td>马艳玲</td>
+						<td>18193748166</td>
+						<td>0937-2699999</td>
+						<td>肃州区</td>
+						<td>酒泉市肃州区仓门街6号</td>	
+						<td></td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								<input type="checkbox" checked="checked">
+								<span></span>
+							</label>
+						</td>
+						<td>宏信大酒店</td>
+						<td>陈浩</td>
+						<td>18919427777</td>
+						<td>0937-2802222</td>
+						<td>肃州区</td>
+						<td>甘肃省酒泉市肃州区盘旋西路7号</td>	
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		<table class="table" cellspacing="0" border="1">
-			<thead>
-				<tr>
-					<th>
-						<label>
-							<input type="checkbox" id="checkbokAll">
-							<span></span>
-						</label>
-					</th>
-					<th>酒店名称</th>
-					<th>联系人</th>
-					<th>联系电话</th>
-					<th>联系座机</th>
-					<th>所属行政区</th>
-					<th>酒店地址</th>
-					<th>备注</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<label>
-							<input type="checkbox" checked="checked">
-							<span></span>
-						</label>
-					</td>
-					<td>东方国际大酒店</td>
-					<td>马艳玲</td>
-					<td>18193748166</td>
-					<td>0937-2699999</td>
-					<td>肃州区</td>
-					<td>酒泉市肃州区仓门街6号</td>	
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<label>
-							<input type="checkbox" checked="checked">
-							<span></span>
-						</label>
-					</td>
-					<td>宏信大酒店</td>
-					<td>陈浩</td>
-					<td>18919427777</td>
-					<td>0937-2802222</td>
-					<td>肃州区</td>
-					<td>甘肃省酒泉市肃州区盘旋西路7号</td>	
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-		
 		<!-- 模态框 -->
-		<div class="modal none">
+		<div class="modal block">
 			<div class="box overflow contrast">
 				<h4 class="overflow">
 					<p class="lt">
@@ -235,7 +274,6 @@
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript" src="../js/jquery-1.10.2.min.js" ></script>
 	<script>
 		
 		if($("tbody input:checked").length >= 2){

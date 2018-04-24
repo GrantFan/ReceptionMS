@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>用户设置</title>
 		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
 		
@@ -103,16 +103,13 @@
 								<span></span>
 							</label>
 						</th>-->
-						<th>接待编号</th>
-						<th>接待日期</th>
-						<th>接待人</th>
-						<th>宾客姓名</th>
-						<th>用餐</th>
-						<th>用餐时间</th>
-						<th>入住房间号</th>
-						<th>入住日期</th>
-						<th>退房日期</th>
-						<th>宾客喜好</th>
+						<th>在线</th>
+						<th>启用</th>
+						<th>用户名</th>
+						<th>昵称</th>
+						<th>角色</th>
+						<th>最后登录计算机</th>
+						<th>最后登陆时间</th>
 						<th>备注</th>
 					</tr>
 				</thead>
@@ -125,17 +122,16 @@
 								<span></span>
 							</label>
 						</td>-->
-						<td>接待编号</td>
-						<td>接待日期</td>
-						<td>接待人</td>
-						<td>宾客姓名</td>
-						<td>用餐</td>
-						<td>用餐时间</td>
-						<td>入住房间号</td>
-						<td>入住日期</td>
-						<td>退房日期</td>
-						<td>宾客喜好</td>
-						<td>备注</td>
+						<td>&nbsp;</td>
+						<td>
+							&nbsp;
+						</td>
+						<td>use1</td>
+						<td>用户名1</td>
+						<td>接待员</td>
+						<td>666164896sadopm</td>
+						<td>2018/4/13 16:18:06</td>
+						<td></td>
 					</tr>
 					<tr ondblclick="view()">
 						<!--<td>
@@ -144,36 +140,16 @@
 								<span></span>
 							</label>
 						</td>-->
-						<td>接待编号</td>
-						<td>接待日期</td>
-						<td>接待人</td>
-						<td>宾客姓名</td>
-						<td>用餐</td>
-						<td>用餐时间</td>
-						<td>入住房间号</td>
-						<td>入住日期</td>
-						<td>退房日期</td>
-						<td>宾客喜好</td>
-						<td>备注</td>
-					</tr>
-					<tr ondblclick="view()">
-						<!--<td>
-							<label>
-								<input type="checkbox">
-								<span></span>
-							</label>
-						</td>-->
-						<td>接待编号</td>
-						<td>接待日期</td>
-						<td>接待人</td>
-						<td>宾客姓名</td>
-						<td>用餐</td>
-						<td>用餐时间</td>
-						<td>入住房间号</td>
-						<td>入住日期</td>
-						<td>退房日期</td>
-						<td>宾客喜好</td>
-						<td>备注</td>
+						<td>&nbsp;</td>
+						<td>
+							&nbsp;
+						</td>
+						<td>use1</td>
+						<td>用户名1</td>
+						<td>接待员</td>
+						<td>666164896sadopm</td>
+						<td>2018/4/13 16:18:06</td>
+						<td></td>					 
 					</tr>
 				</tbody>
 			</table>
@@ -251,105 +227,6 @@
 						<span>备注</span>
 						<textarea name="" rows="5" cols="30" id="remarks"></textarea>
 					</label>
-				</div>
-				<div class="mfoot" align="center">
-					<button>
-						<u class="confirm lt"></u>
-						<span class="lt">确定</span>
-					</button>
-					<button onclick="$(this).parents('.modal').hide(800)">
-						<u class="cancel lt"></u>
-						<span class="lt">取消</span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<!--上传 图片 -->
-		<div class="modal block imgModal">
-			<div class="box">
-				<h4 class="overflow">
-					<p class="lt">
-						<span>会议室记录明细</span>
-					</p>
-					<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
-						<u></u>
-					</p>
-				</h4>
-				<div class="mbody">
-					<div class="overflow">
-						<div class="lt">
-							<label for="ID" class="disabled">
-								<span>*会议室使用编号：</span>
-								<input type="text" name="user" id="ID" value="H20180210005"/>
-							</label>
-							<label for="nickName">
-								<span>会议室名称：</span>
-								<select type="text" name="nickName" id="nickName" value="东二楼多功能厅" />
-									<option value="">东二楼多功能厅</option>
-								</select>
-							</label>
-							<label for="receiver">
-								<span>酒店名称：</span>
-								<input type="text" name="" id="receiver" />
-							</label>
-							<label for="role">
-								<span>使用日期：</span>
-								<input type="datetime-local" name="role" id="role" value="" />
-							</label>
-						</div>
-						<div class="rt">
-							<p class="img">
-								<img src=""/>
-							</p>
-							<button> &lArr;</button>
-							<span>（新）</span>
-							<button> &rArr; </button> 
-							<div class="btns overflow">
-								<p class="lt">
-									<button>添加
-										<input type="file" name="" id="" value="" />
-									</button>
-								</p>
-								<p class="lt">
-									<button class="lt">替换
-										<input type="file" name="" id="" value="" />
-									</button>
-								</p>
-								
-								<button class="lt" disabled="disabled">删除</button>
-							</div>
-						</div>
-					</div>
-					<div class="">
-							<label for="user">
-								<span>用途说明：</span>
-								<input type="text" name="" id="user" value="" />
-							</label>
-							<!--<label for="hotel">
-								<span>入住酒店</span>
-								<input type="text" name="" id="hotel" value="" />
-							</label>
-							<label for="room">
-								<span>入住房间号</span>
-								<input type="text" name="" id="room" value="" />
-							</label>
-							<label for="OccupancyTime">
-								<span>入住时间</span>
-								<input type="datetime-local" name="" id="OccupancyTime" value="" />
-							</label>
-							<label for="out">
-								<span>退房时间</span>						
-								<input type="datetime-local" name="" id="out" value="" />
-							</label>
-							<label for="like">
-								<span>宾客喜好</span>
-								<input type="text" name="" id="like" value="" />
-							</label>						-->
-							<label for="remarks">
-								<span>备注</span>
-								<textarea name="" rows="5" cols="30" id="remarks"></textarea>
-							</label>
-					</div>					
 				</div>
 				<div class="mfoot" align="center">
 					<button>

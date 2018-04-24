@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-19 14:16:31
+Date: 2018-04-24 18:08:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -610,23 +610,23 @@ CREATE TABLE `sys_module` (
 -- Records of sys_module
 -- ----------------------------
 INSERT INTO `sys_module` VALUES ('1', '系统管理', '1', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('2', '用户设置', '2', '1', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('3', '角色设置', '3', '1', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('4', '模块设置', '4', '1', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('2', '用户设置', '2', '1', '../system/userSheZhi.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('4', '模块设置', '4', '1', '../system/module.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', '../system/log.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', './reception/register.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', './reception/receptionNews.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', '../reception/register.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/receptionNews.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', './reception/HotelContrast.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelContrast.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomContrast.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', './reception/boardroomUse.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '', null, null, null, '');
-INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', './reception/guestInformation.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../reception/guestInformation.html', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for sys_operation_log

@@ -7,179 +7,179 @@ u{
 
 
 .jdgl{
-	width:0.729vw;
-	height:0.625vw;
+	width:14px;
+	height:12px;
 	background-position:0px 0px;
 }
 /*.jdgl:hover{
-	width:0.729vw;
-	height:0.625vw;
+	width:14px;
+	height:12px;
 	background-position:0px -36px;
 }*/
 .jddj{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position:-17px 0px;
 }
 .submenu li.hover .jddj,.submenu li.active .jddj{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position:-17px -36px;
 }
 .jdxxgl{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -34px 0px;
 }
 .submenu li.hover .jdxxgl,.submenu li.active .jdxxgl{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -34px -36px;
 }
 .hyssyjl{
-	width: 0.625vw;
-	height: 0.729vw;
+	width: 12px;
+	height: 14px;
 	background-position: -50px 0px;
 }
 .submenu li.hover .hyssyjl,.submenu li.active .hyssyjl{
-	width: 0.625vw;
-	height: 0.729vw;
+	width: 12px;
+	height: 14px;
 	background-position: -50px -36px;
 }
 .bkxxgl{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position: 0px -20px;
 }
 .submenu li.hover .bkxxgl,.submenu li.active .bkxxgl{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position: 0px -54px;
 }
 
 .Jdgl{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position: -17px -20px;
 }
 .Jdxxgl{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position:-34px -20px;
 }
 .submenu li.hover .Jdxxgl,.submenu li.active .Jdxxgl{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position:-34px -54px;
 }
 .Jddb{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -50px -20px;
 }
 .submenu li.hover .Jddb,.submenu li.active .Jddb{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -50px -54px;
 }
 .fjxxgl{
-	width: 0.729vw;
-	height: 0.625vw;
+	width: 14px;
+	height: 12px;
 	background-position: -66px -20px;
 }
 .submenu li.hover .fjxxgl,.submenu li.active .fjxxgl{
-	width: 0.729vw;
-	height: 0.625vw;
+	width: 14px;
+	height: 12px;
 	background-position: -66px -54px;
 }
 .hysxxgl{
-	width: 0.833vw;
-	height: 0.729vw;
+	width: 16px;
+	height: 14px;
 	background-position: -82px -20px;
 }
 .submenu li.hover .hysxxgl,.submenu li.active .hysxxgl{
-	width: 0.833vw;
-	height: 0.729vw;
+	width: 16px;
+	height: 14px;
 	background-position: -82px -54px;
 }
 .tccpxxgl{
-	width: 0.9375vw;
-	height: 0.729vw;
+	width: 18px;
+	height: 14px;
 	background-position: -100px -20px;
 }
 .submenu li.hover .tccpxxgl,.submenu li.active .tccpxxgl{
-	width: 0.9375vw;
-	height: 0.729vw;
+	width: 18px;
+	height: 14px;
 	background-position: -100px -54px;
 }
 .xtgl{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -120px -20px;
 }
 .submenu li.hover .xtgl,.submenu li.active .xtgl{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -120px -54px;
 }
 .yhsz{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -136px -20px;
 }
 .submenu li.hover .yhsz,.submenu li.active .yhsz{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -136px -54px;
 }
 .jssz{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -152px -20px;
 }
 .submenu li.hover .jssz,.submenu li.active .jssz{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -152px -54px;
 }
 .mksz{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position: -168px -20px;
 }
 .submenu li.hover .mksz,.submenu li.active .mksz{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position: -168px -54px;
 }
 .czrz{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position: -185px -20px;
 }
 .submenu li.hover .czrz,.submenu li.active .czrz{
-	width: 0.729vw;
-	height: 0.677vw;
+	width: 14px;
+	height: 13px;
 	background-position: -185px -54px;
 }
 .sjkpz{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -202px -20px;
 }
 .submenu li.hover .sjkpz,.submenu li.active .sjkpz{
-	width: 0.729vw;
-	height: 0.729vw;
+	width: 14px;
+	height: 14px;
 	background-position: -202px -54px;
 }
 .sjzdwh{
-	width: 0.729vw;
-	height: 0.52vw;
+	width: 14px;
+	height: 10px;
 	background-position: -219px -20px;
 }
 .submenu li.hover .sjzdwh,.submenu li.active .sjzdwh{
-	width: 0.729vw;
-	height: 0.52vw;
+	width: 14px;
+	height: 10px;
 	background-position: -219px -54px;
 }
 
@@ -217,13 +217,13 @@ u{
 }
 
 .sc{
-	width: 0.52vw;
-	height: 0.677vw;
+	width: 12px;
+	height: 14px;
 	background-position: -116px 0px;
 }
 .buttons>button.active>.sc{
-	width: 0.52vw;
-	height: 0.677vw;
+	width: 12px;
+	height: 14px;
 	background-position: -116px -36px;
 }
 
@@ -250,22 +250,22 @@ u{
 }
 .dr{
 	width: 12px;
-	height: 0.52vw;
+	height: 12px;
 	background-position: -165px 0px;
 }
 .buttons>button.active>.dr{
 	width: 12px;
-	height: 0.52vw;
+	height: 12px;
 	background-position: -165px -36px;
 }
 .dc{
 	width: 12px;
-	height: 0.52vw;
+	height: 12px;
 	background-position: -183px 0px;
 }
 .buttons>button.active>.dc{
 	width: 12px;
-	height: 0.52vw;
+	height:12px;
 	background-position: -183px -36px;
 }
 .sh{
@@ -324,4 +324,29 @@ u{
 	width: 16px;
 	height: 16px;
 	background-position:-42px -70px;
+}
+
+/*会议室*/
+.use{
+	width: 21px;
+	height: 21px;
+	background-position: -61px -70px;
+}
+.nul{
+	width: 21px;
+	height: 21px;
+	background-position: -84px -70px;
+}
+/* 房间信息 */
+.useI{
+	width: 30px;
+	height: 30px;
+	background-position: -106px -70px;
+	margin: 0px;
+}
+.idle{
+	width: 30px;
+	height: 30px;
+	background-position: -137px -70px;
+	margin: 0px;
 }
