@@ -40,4 +40,10 @@ public class HotelServiceImpl implements HotelService {
 		return hotelMapper.selectList();
 	}
 
+	@Override
+	public List<HotelInfoEntity> selectListByName(HotelInfoEntity hotel) {
+		// TODO Auto-generated method stub
+		return hotelMapper.selectListByName(hotel);
+	}
+
 }

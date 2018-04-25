@@ -57,4 +57,13 @@ public class HotelAction {
 		System.out.println(json);
 		return json;
 	};
+	
+	@RequestMapping(value="/listByName",produces="application/text; charset=utf-8")
+	public String selectListByName(HotelInfoEntity hotel) {
+		List<HotelInfoEntity> list = hotelServiceImpl.selectListByName(hotel);
+		JSONHelper jsonHelper = new JSONHelper();
+		String json = jsonHelper.toJSON(list);
+		System.out.println(json);
+		return json;
+	};
 }
