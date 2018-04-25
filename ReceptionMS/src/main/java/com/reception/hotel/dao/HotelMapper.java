@@ -22,6 +22,6 @@ public interface HotelMapper {
 	@Delete("delete from hotel_info where id = #{id}")
 	public int deleteHotelInfo(HotelInfoEntity hotel);
 	
-	@Select("select id,hotel_name,linkman,telphone,phone,area,address,plane_graph,remark from  hotel_info order by hotel_name")
+	@Select("select id,hotel_name hotelName,linkman,telphone,phone,area,address,plane_graph planeGraph,remark from  hotel_info order by hotel_name")
 	public List<HotelInfoEntity> selectList();
 }
