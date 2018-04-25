@@ -53,9 +53,9 @@ public interface HotelMapper {
 	@Select({"<script>",
 			"select id,hotel_name hotelName,linkman,telphone,phone,area,address,plane_graph planeGraph,remark from  hotel_info where 1=1 ",
 			"<if test=\" '' != hotelName  and null != hotelName\">",
-			"like concat(#{hotelName},'%') ",
+			"and hotel_name like concat(#{hotelName},'%') ",
 			"</if>",
 			"order by hotel_name",
-			"<script>"})
+			"</script>"})
 	public List<HotelInfoEntity> selectListByName(HotelInfoEntity hotel);
 }
