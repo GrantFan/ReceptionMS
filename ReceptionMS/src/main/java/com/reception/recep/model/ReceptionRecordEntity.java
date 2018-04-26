@@ -10,11 +10,16 @@ public class ReceptionRecordEntity {
 	private String receptionTitle;//接待名称
 	private String receptionDate;//接待日期
 	private String receptionPerson;//接待人
+	private String receptionPrinter;//接待资料打印人员
 	private String description;//描述
 	private String recordTime;//登记时间
 	private String remark;//备注
 	
-	private String guest;//宾客
+	private String guestName;//宾客姓名
+	private String entourage;//陪同人员
+	private Integer guestNum;//来宾人数
+	private Integer receptionNum;//接待人次
+	private String receptionDays;//接待天数
 	private String hotel;//酒店
 	
 	
@@ -66,16 +71,47 @@ public class ReceptionRecordEntity {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public String getGuest() {
-		return guest;
-	}
-	public void setGuest(String guest) {
-		this.guest = guest;
-	}
 	public String getHotel() {
 		return hotel;
 	}
 	public void setHotel(String hotel) {
 		this.hotel = hotel;
 	}
+	public String getReceptionPrinter() {
+		return receptionPrinter;
+	}
+	public void setReceptionPrinter(String receptionPrinter) {
+		this.receptionPrinter = receptionPrinter;
+	}
+	public String getGuestName() {
+		return guestName;
+	}
+	public void setGuestName(String guestName) {
+		this.guestName = guestName;
+	}
+	public String getEntourage() {
+		return entourage;
+	}
+	public void setEntourage(String entourage) {
+		this.entourage = entourage;
+	}
+	public Integer getGuestNum() {
+		return guestNum;
+	}
+	public void setGuestNum(Integer guestNum) {
+		this.guestNum = guestNum;
+	}
+	public Integer getReceptionNum() {
+		return receptionNum;
+	}
+	public void setReceptionNum(Integer receptionNum) {
+		this.receptionNum = receptionNum;
+	}
+	public String getReceptionDays() {
+		return receptionDays;
+	}
+	public void setReceptionDays(String receptionDays) {
+		this.receptionDays = receptionDays;
+	}
+	
 }

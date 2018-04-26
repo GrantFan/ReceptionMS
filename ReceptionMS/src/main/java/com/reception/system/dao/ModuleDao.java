@@ -85,6 +85,7 @@ public interface ModuleDao {
 		" ,sys_role_module role where 1=1 and m.module_id = role.module_id",
 		" and role.role_id = #{role_id} ",
 		"</if>",
+		" order by m.sort",
 		"</script>"})
 	List<Module> selectModuleByRole(@Param("role_id")String role_id) ;
 	

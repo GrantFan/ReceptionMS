@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-24 18:08:10
+Date: 2018-04-26 14:18:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,6 +46,7 @@ CREATE TABLE `conference_info` (
   `hotel` varchar(255) DEFAULT NULL COMMENT '所属酒店',
   `type` varchar(128) DEFAULT NULL COMMENT '会议室类型',
   `position` varchar(128) DEFAULT NULL COMMENT '位置',
+  `floor` varchar(255) DEFAULT NULL COMMENT '楼层',
   `capacity_num` varchar(128) DEFAULT NULL COMMENT '容纳人数',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
@@ -54,17 +55,17 @@ CREATE TABLE `conference_info` (
 -- ----------------------------
 -- Records of conference_info
 -- ----------------------------
-INSERT INTO `conference_info` VALUES ('2', '1111', '敦煌国际大酒店', '会议室', '', '1', null);
-INSERT INTO `conference_info` VALUES ('3', '2222', '敦煌国际大酒店', '讲座室', '', '2', null);
-INSERT INTO `conference_info` VALUES ('4', '东二楼多功能厅', '敦煌丝路怡苑大酒店', '会议室', '', '200-350', null);
-INSERT INTO `conference_info` VALUES ('5', '侯见厅', '东方国际大酒店', '会议室', '一号楼', '30', null);
-INSERT INTO `conference_info` VALUES ('6', '多功能厅', '敦煌宾馆', '会议室', '南楼', '200', null);
-INSERT INTO `conference_info` VALUES ('7', '孟兰厅', '东方国际大酒店', '会议室', '二号楼', '500-700', null);
-INSERT INTO `conference_info` VALUES ('8', '悬泉厅', '敦煌宾馆', '会议室', '南楼', '20-30', null);
-INSERT INTO `conference_info` VALUES ('9', '牡丹厅', '东方国际大酒店', '会议室', '一号楼', '200-400', null);
-INSERT INTO `conference_info` VALUES ('10', '西二楼多功能厅', '敦煌丝路怡苑大酒店', '会议室', '', '400-800', null);
-INSERT INTO `conference_info` VALUES ('11', '贵宾厅', '敦煌丝路怡苑大酒店', '会议室', '', '30-40', null);
-INSERT INTO `conference_info` VALUES ('12', '飞天厅', '敦煌宾馆', '会议室', '南楼', '80', null);
+INSERT INTO `conference_info` VALUES ('2', '1111', '敦煌国际大酒店', '会议室', '', null, '1', null);
+INSERT INTO `conference_info` VALUES ('3', '2222', '敦煌国际大酒店', '讲座室', '', null, '2', null);
+INSERT INTO `conference_info` VALUES ('4', '东二楼多功能厅', '敦煌丝路怡苑大酒店', '会议室', '', null, '200-350', null);
+INSERT INTO `conference_info` VALUES ('5', '侯见厅', '东方国际大酒店', '会议室', '一号楼', null, '30', null);
+INSERT INTO `conference_info` VALUES ('6', '多功能厅', '敦煌宾馆', '会议室', '南楼', null, '200', null);
+INSERT INTO `conference_info` VALUES ('7', '孟兰厅', '东方国际大酒店', '会议室', '二号楼', null, '500-700', null);
+INSERT INTO `conference_info` VALUES ('8', '悬泉厅', '敦煌宾馆', '会议室', '南楼', null, '20-30', null);
+INSERT INTO `conference_info` VALUES ('9', '牡丹厅', '东方国际大酒店', '会议室', '一号楼', null, '200-400', null);
+INSERT INTO `conference_info` VALUES ('10', '西二楼多功能厅', '敦煌丝路怡苑大酒店', '会议室', '', null, '400-800', null);
+INSERT INTO `conference_info` VALUES ('11', '贵宾厅', '敦煌丝路怡苑大酒店', '会议室', '', null, '30-40', null);
+INSERT INTO `conference_info` VALUES ('12', '飞天厅', '敦煌宾馆', '会议室', '南楼', null, '80', null);
 
 -- ----------------------------
 -- Table structure for conference_record
@@ -529,17 +530,45 @@ CREATE TABLE `reception_record` (
   `reception_number` varchar(128) DEFAULT NULL COMMENT '接待编号',
   `reception_title` varchar(255) DEFAULT NULL COMMENT '接待标题',
   `reception_date` date DEFAULT NULL COMMENT '接待日期',
-  `reception_person` varchar(255) DEFAULT NULL COMMENT '接待人',
+  `reception_person` varchar(255) DEFAULT NULL COMMENT '接待人员',
+  `reception_printer` varchar(255) DEFAULT NULL COMMENT '接待打印人员',
   `guest_name` varchar(255) DEFAULT NULL COMMENT '宾客姓名',
-  `hotel` varchar(255) DEFAULT NULL COMMENT '住宿酒店',
+  `entourage` varchar(255) DEFAULT NULL COMMENT '陪同人员',
+  `guest_num` int(11) DEFAULT NULL COMMENT '来宾人数',
+  `reception_num` int(11) DEFAULT NULL COMMENT '接待人次',
+  `reception_days` varchar(10) DEFAULT NULL COMMENT '接待天数',
+  `hotel` varchar(255) DEFAULT NULL COMMENT '接待酒店',
   `description` varchar(255) DEFAULT NULL COMMENT '接待描述',
   `record_time` datetime DEFAULT NULL COMMENT '录入时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接待记录';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待记录';
 
 -- ----------------------------
 -- Records of reception_record
+-- ----------------------------
+INSERT INTO `reception_record` VALUES ('1', '1', '市州嘉宾会见', '2017-09-19', '王琼', '李丹丹', '李明生', '都伟', '52', '54', '1', '敦煌万盛\r\n国际酒店', null, '2018-04-26 11:52:40', null);
+
+-- ----------------------------
+-- Table structure for restaurant_info
+-- ----------------------------
+DROP TABLE IF EXISTS `restaurant_info`;
+CREATE TABLE `restaurant_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `restaurant_number` int(11) DEFAULT NULL COMMENT '餐厅编号',
+  `restaurant_name` varchar(255) DEFAULT NULL COMMENT '餐厅名 包厢名',
+  `restaurant_type` varchar(255) DEFAULT NULL COMMENT '餐厅类型',
+  `hotel` varchar(255) DEFAULT NULL COMMENT '所属酒店',
+  `position` varchar(255) DEFAULT NULL COMMENT '位置 在哪座楼',
+  `floor` varchar(255) DEFAULT NULL COMMENT '楼层',
+  `capacity_num` varchar(255) DEFAULT NULL COMMENT '容纳人数',
+  `state` varchar(255) DEFAULT NULL COMMENT '状态',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='餐厅包厢信息';
+
+-- ----------------------------
+-- Records of restaurant_info
 -- ----------------------------
 
 -- ----------------------------
@@ -604,7 +633,7 @@ CREATE TABLE `sys_module` (
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_module
@@ -619,14 +648,16 @@ INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null
 INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', '../reception/register.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/receptionNews.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelContrast.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomContrast.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelContrast.html', '1', null, null, null);
+INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomContrast.html', '2', null, null, null);
+INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, '3', null, null, null);
 INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '', null, null, null, '');
+INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '', '4', null, null, '');
 INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../reception/guestInformation.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('20', '酒店对比', '20', '10', null, '6', null, null, null);
+INSERT INTO `sys_module` VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, null, null);
 
 -- ----------------------------
 -- Table structure for sys_operation_log
@@ -699,8 +730,9 @@ CREATE TABLE `sys_user` (
   `enabled` varchar(4) DEFAULT NULL COMMENT '是否启用',
   `role_id` int(64) DEFAULT NULL COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
+INSERT INTO `sys_user` VALUES ('1', 'admin', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', '2018-04-24 18:29:58', null, null, null, null);
