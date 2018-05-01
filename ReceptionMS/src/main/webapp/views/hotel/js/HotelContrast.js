@@ -69,3 +69,26 @@ function query(){
 		}
 	})
 }
+
+
+//增加
+function add() {
+	$(".modal").show();
+}
+
+//修改
+function edit() {
+	$(".modal").find('label').each(function() {
+		//console.log($(this).attr('for'));
+		if ($(this).attr('for') == 'user') {
+			$(this).css('color', '#ddd');
+			$(this).children('input').attr("disabled", true);
+			$(".modal").show();
+		}
+	})
+}
+
+//删除
+function dele() {
+	alert("删除")
+}

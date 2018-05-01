@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>酒店管理</title>
-		<link rel="stylesheet" type="text/css" href="../assets/css/style.css"/>
-		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css"/>
-		
-		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="js/HotelContrast.js"></script>
-		<style type="text/css">
-			/*strong{
+<head>
+<meta charset="UTF-8">
+<title>酒店管理</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+
+<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="js/HotelContrast.js"></script>
+<style type="text/css">
+/*strong{
 				font-weight: bolder;
 				color: #fd0606;
 			}
@@ -38,99 +38,81 @@
 				background: #DEDEDE;
 				color: #000;
 			}*/
-		</style>
-	</head>
-	<body>
-		<div class="operationsArea">
-			<div class="buttons">
-				<button onclick="add()" class="active">
-						<u class="xz"></u>
-						新增
-					</button>
-				<button>
-						<u class="fzxz"></u>
-						复制新增
-					</button>
-				<button onclick="edit()">
-						<u class="bj"></u>
-						编辑
-					</button>
-				<button onclick="dele()">
-						<u class="sc"></u>
-						删除
-					</button>
-				<button>
-						<u class="dyyl"></u>
-						打印预览
-					</button>
-				<button>
-						<u class="dy"></u>
-						打印
-					</button>
-				<button>
-						<u class="dr"></u>
-						导入
-					</button>
-				<button>
-						<u class="dc"></u>
-						导出
-					</button>
-				<button>
-						<u class="sh"></u>
-						审核
-					</button>
-				<button>
-						<u class="cx"></u>
-						撤销
-					</button>
-				<button>
-						<u class="sx"></u>
-						刷新
-					</button>
-				<button onclick="shut()" class="m-0">
-						<u class="gb"></u>
-						关闭
-					</button>
-			</div>
-			<div class="inputs">
-				<select name="">
-						<option value=""></option>
-						<option value="">且</option>
-						<option value="">或</option>						 
-					</select>
-				<select name="">
-					<option value="">用户名</option>
-					<option value="">昵称</option>
-					<option value="">角色</option>
-					<option value="">在线</option>
-					<option value="">备注</option>
-				</select>
-				<select name="">
-					<option value="">等于</option>
-					<option value="">不等于</option>
-					<option value="">包含</option>
-					<option value="">不包含</option>
-					<option value="">开头是</option>
-					<option value="">开头不是</option>
-					<option value="">结尾是</option>
-					<option value="">结尾不是</option>
-					<option value="">为空</option>
-					<option value="">不为空</option>
-				</select>
-				<input id="hotelName" type="text" value=""/>
-				<button onClick="query();">查询</button>
-				<button>清空</button>
-			</div>
-		<div class="tab">			
+</style>
+</head>
+<body>
+	<div class="operationsArea">
+		<div class="buttons">
+			<button onclick="add()" class="active">
+				<u class="xz"></u> 新增
+			</button>
+			<button>
+				<u class="fzxz"></u> 复制新增
+			</button>
+			<button onclick="edit()">
+				<u class="bj"></u> 编辑
+			</button>
+			<button onclick="dele()">
+				<u class="sc"></u> 删除
+			</button>
+			<button>
+				<u class="dyyl"></u> 打印预览
+			</button>
+			<button>
+				<u class="dy"></u> 打印
+			</button>
+			<button>
+				<u class="dr"></u> 导入
+			</button>
+			<button>
+				<u class="dc"></u> 导出
+			</button>
+			<button>
+				<u class="sh"></u> 审核
+			</button>
+			<button>
+				<u class="cx"></u> 撤销
+			</button>
+			<button>
+				<u class="sx"></u> 刷新
+			</button>
+			<button onclick="shut()" class="m-0">
+				<u class="gb"></u> 关闭
+			</button>
+		</div>
+		<div class="inputs">
+			<select name="">
+				<option value=""></option>
+				<option value="">且</option>
+				<option value="">或</option>
+			</select> <select name="">
+				<option value="">用户名</option>
+				<option value="">昵称</option>
+				<option value="">角色</option>
+				<option value="">在线</option>
+				<option value="">备注</option>
+			</select> <select name="">
+				<option value="">等于</option>
+				<option value="">不等于</option>
+				<option value="">包含</option>
+				<option value="">不包含</option>
+				<option value="">开头是</option>
+				<option value="">开头不是</option>
+				<option value="">结尾是</option>
+				<option value="">结尾不是</option>
+				<option value="">为空</option>
+				<option value="">不为空</option>
+			</select> <input id="hotelName" type="text" value="" />
+			<button onClick="query();">查询</button>
+			<button>清空</button>
+		</div>
+		<div class="tab">
 			<table class="table" cellspacing="0" border="0">
 				<thead>
 					<tr>
-						<th>
-							<label>
-								<input type="checkbox" id="checkbokAll">
+						<th><label> <input type="checkbox" id="checkbokAll">
 								<span></span>
-							</label>
-						</th>
+						</label></th>
 						<th>酒店名称</th>
 						<th>联系人</th>
 						<th>联系电话</th>
@@ -142,39 +124,141 @@
 				</thead>
 				<tbody id="tablebody">
 					<tr>
-						<td>
-							<label>
-								<input type="checkbox" checked="checked">
+						<td><label> <input type="checkbox" checked="checked">
 								<span></span>
-							</label>
-						</td>
+						</label></td>
 						<td>东方国际大酒店</td>
 						<td>马艳玲</td>
 						<td>18193748166</td>
 						<td>0937-2699999</td>
 						<td>肃州区</td>
-						<td>酒泉市肃州区仓门街6号</td>	
+						<td>酒泉市肃州区仓门街6号</td>
 						<td></td>
 					</tr>
 					<tr>
-						<td>
-							<label>
-								<input type="checkbox" checked="checked">
+						<td><label> <input type="checkbox" checked="checked">
 								<span></span>
-							</label>
-						</td>
+						</label></td>
 						<td>宏信大酒店</td>
 						<td>陈浩</td>
 						<td>18919427777</td>
 						<td>0937-2802222</td>
 						<td>肃州区</td>
-						<td>甘肃省酒泉市肃州区盘旋西路7号</td>	
+						<td>甘肃省酒泉市肃州区盘旋西路7号</td>
 						<td></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<!-- 模态框 -->
+
+	<!-- 
+		<div class="modal block fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="titleLabel">
+							<i class="strip"></i><span></span>
+						</h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-12 m-b-15">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<div class="col-sm-3">
+											<label for="role_id"> 角色ID * </label>
+										</div>
+										<div class="col-sm-9">
+											<input type="text" id="role_id" name="role_id"
+												placeholder="自动生成" class="form-control" />
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group">
+										<div class="col-sm-3">
+											<label for="role_mc"> 角色名称 </label>
+										</div>
+										<div class="col-sm-9">
+											<input type="text" id="role_mc" name="role_mc"
+												class="form-control" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 m-b-15">
+								<div class="col-sm-6">
+									<div class="from-group">
+										<div class="col-sm-3">
+											<label for="description"> 角色描述 </label>
+										</div>
+										<div class="col-sm-9">
+											<input type="text" id="description" name="description"
+												class="form-control" />
+											</td>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="from-group">
+										<div class="col-sm-3">
+											<label for="role_ztbz"> 角色状态 </label>
+										</div>
+										<div class="col-sm-9">
+											<select name="role_ztbz" id="role_ztbz" class="form-control">
+												<option value="-1">
+													-- 请选择 --
+												</option>
+												<option value="1">
+													启用
+												</option>
+												<option value="0">
+													停用
+												</option>
+											</select> <span class="arrow"><i></i></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12 m-b-15">
+								<div class="col-sm-6">
+									<div class="from-group">
+										<div class="col-sm-3">
+											<label for="role_level"> 角色等级 </label>
+										</div>
+										<div class="col-sm-9">
+											<select name="role_level" id="role_level"
+												class="form-control">
+												<option value="1">
+													超级管理员
+												</option>
+												<option value="2">
+													管理员
+												</option>
+												<option value="3">
+													用户
+												</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6"></div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer p-b-35">
+						<button type="button" class="btn" data-dismiss="modal">
+							关闭</button>
+						<button id="submit" type="button" class="btn btn-primary"
+							data-dismiss="modal">提交更改</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- 模态框-->
 		<div class="modal block">
 			<div class="box overflow contrast">
 				<h4 class="overflow">
@@ -217,71 +301,62 @@
 						<div>
 							<button><--</button>
 							<span>1/3</span>
-							<button>--></button>
-						</div>
-						<div>
-							<label class="m-0" for="tianjia">添加</label>
-							<input type="file" name="" id="tianjia" value="添加" class="none" />
-							<label class="m-0" for="tihuan">替换</label>
-							<input type="file" name="" id="tihuan" value="替换" class="none"/>
-							<button>删除</button>
-						</div>
-					</div>
-				</div>
-				<div class="rt">
-					<p class="title">宏信大酒店</p>
-					<div class="info lt">
-						<label for="ren">
-							<span>联系人</span><br />
-							<input type="text" name="user" id="ren" value="" />
-						</label>
-						<label for="phone">
-							<span>联系电话</span><br />
-							<input type="text" name="user" id="user" value="" />
-						</label>
-						<label for="zuoJi">
-							<span>酒店座机</span><br />
-							<input type="text" name="user" id="zuoJi" value="" />
-						</label>
-						<label for="qu">
-							<span>所属行政区</span><br />
-							<input type="text" name="user" id="qu" value="" />
-						</label>
-						<label for="area">
-							<span>酒店地址</span><br />
-							<input type="text" name="user" id="area" value="" />
-						</label>
-						<label for="remarks">
-							<span>备注</span><br />
-							<textarea name="" rows="5" cols="23" id="remarks"></textarea> 
-						</label>					 
-					</div>
-					<div class="img lt">
-						<img src="" />
-						<div>
-							<button><--</button>
-							<span>1/3</span>
-							<button>--></button>
-						</div>
-						<div>
-							<label class="m-0" for="tianjia">添加</label>
-							<input type="file" name="" id="tianjia" value="添加" class="none" />
-							<label class="m-0" for="tihuan">替换</label>
-							<input type="file" name="" id="tihuan" value="替换" class="none"/>
-							<button disabled="disabled">删除</button>
-						</div>
-					</div>
-				</div>
+							<button>-->
+		</button>
+	</div>
+	<div>
+		<label class="m-0" for="tianjia">添加</label> <input type="file" name=""
+			id="tianjia" value="添加" class="none" /> <label class="m-0"
+			for="tihuan">替换</label> <input type="file" name="" id="tihuan"
+			value="替换" class="none" />
+		<button>删除</button>
+	</div>
+	</div>
+	</div>
+	<div class="rt">
+		<p class="title">宏信大酒店</p>
+		<div class="info lt">
+			<label for="ren"> <span>联系人</span><br /> <input type="text"
+				name="user" id="ren" value="" />
+			</label> <label for="phone"> <span>联系电话</span><br /> <input
+				type="text" name="user" id="user" value="" />
+			</label> <label for="zuoJi"> <span>酒店座机</span><br /> <input
+				type="text" name="user" id="zuoJi" value="" />
+			</label> <label for="qu"> <span>所属行政区</span><br /> <input
+				type="text" name="user" id="qu" value="" />
+			</label> <label for="area"> <span>酒店地址</span><br /> <input
+				type="text" name="user" id="area" value="" />
+			</label> <label for="remarks"> <span>备注</span><br /> <textarea
+					name="" rows="5" cols="23" id="remarks"></textarea>
+			</label>
+		</div>
+		<div class="img lt">
+			<img src="" />
+			<div>
+				<button><--</button>
+				<span>1/3</span>
+				<button>--></button>
+			</div>
+			<div>
+				<label class="m-0" for="tianjia">添加</label> <input type="file"
+					name="" id="tianjia" value="添加" class="none" /> <label class="m-0"
+					for="tihuan">替换</label> <input type="file" name="" id="tihuan"
+					value="替换" class="none" />
+				<button disabled="disabled">删除</button>
 			</div>
 		</div>
-	</body>
-	<script>
-		
-		if($("tbody input:checked").length >= 2){
-			//console.log($("tbody input:checked").parents('tr').siblings().html())
-			$("#contrast").on('click',function(){
-				$(".contrast").parent(".modal").show();
-			})
-		}
-	</script>
+	</div>
+	</div>
+	</div>
+	
+</body>
+<script>
+
+	if ($("tbody input:checked").length >= 2) {
+		//console.log($("tbody input:checked").parents('tr').siblings().html())
+		$("#contrast").on('click', function() {
+			$(".contrast").parent(".modal").show();
+		})
+	}
+</script>
 </html>
