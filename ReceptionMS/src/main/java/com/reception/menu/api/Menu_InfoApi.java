@@ -33,15 +33,15 @@ public interface Menu_InfoApi {
 
     /**
      * 根据菜单编号查询套餐信息
-     * @param menu_number
+     * @param id
      * @return
      */
-    Menu_Info selectMenu_InfoByMenu_num(String menu_number);
+    Menu_Info selectMenu_InfoById(int id);
 
     /**
      * 删除彩品信息
-     * @param menu_number
+     * @param id
      * @return
      */
-    int deleteMenu_Info(String menu_number);
+    int deleteMenu_Info(int id);
 }

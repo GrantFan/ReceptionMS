@@ -3,8 +3,295 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
+		<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" /> 
+		
+		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../assets/js/pagination.min.js"></script>
+		<script type="text/javascript" src="./js/guestInformation.js"></script>
 	</head>
 	<body>
-		宾客信息管理
+		<div class="operationsArea">
+			<div class="buttons">
+					<button onclick="add_guest()" class="active">
+						<u class="xz"></u>
+						新增
+					</button>
+					<button>
+						<u class="fzxz"></u>
+						复制新增
+					</button>
+					<button onclick="edit()">
+						<u class="bj"></u>
+						编辑
+					</button>
+					<button onclick="dele()">
+						<u class="sc"></u>
+						删除
+					</button>
+					<button>
+						<u class="dyyl"></u>
+						打印预览
+					</button>
+					<button>
+						<u class="dy"></u>
+						打印
+					</button>
+					<button>
+						<u class="dr"></u>
+						导入
+					</button>
+					<button>
+						<u class="dc"></u>
+						导出
+					</button>
+					<button>
+						<u class="sh"></u>
+						审核
+					</button>
+					<button>
+						<u class="cx"></u>
+						撤销
+					</button>
+					<button>
+						<u class="sx"></u>
+						刷新
+					</button>	 
+					<button onclick="shut()" class="m-0">
+						<u class="gb"></u>
+						关闭
+					</button>				 
+			</div>
+			<!-- 
+			<div class="inputs">
+					<select name="">
+						<option value=""></option>
+						<option value="">且</option>
+						<option value="">或</option>						 
+					</select>
+					<select name="">
+						<option value="">接待编号</option>
+						<option value="">接待日期</option>
+						<option value="">接待人</option>
+						<option value="">宾客姓名</option>
+						<option value="">用餐</option>
+						<option value="">用餐时间</option>
+						<option value="">宾客喜好</option>
+						<option value="">备注</option>
+					</select>
+					<select name="">
+						<option value="">等于</option>
+						<option value="">不等于</option>
+						<option value="">包含</option>
+						<option value="">不包含</option>
+						<option value="">开头是</option>
+						<option value="">开头不是</option>
+						<option value="">结尾是</option>
+						<option value="">结尾不是</option>
+						<option value="">为空</option>
+						<option value="">不为空</option>
+					</select>
+					<input type="text" />
+					<button>查询</button>
+					<button class="m-0">清空</button>
+			</div>
+	     -->
+		<div class="tab">
+			<table class="table" cellspacing="0">
+				<thead>
+					<tr>
+						<th>宾客姓名</th>
+						<th>主职务</th>
+						<th>副职务</th>
+						<th>任职地区</th>
+						<th>性别</th>
+						<th>出生日期</th>
+						<th>民族</th>
+						<th>学历</th>
+						<th>籍贯</th>
+						<th>联系电话</th>
+						<th>家庭/办公电话</th>
+						<th>邮件地址</th>
+						<th>家庭地址</th>
+						<th>宾客类型</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				
+				<tbody id="guest_info">						 
+				  <!--添加内容-->
+					<!-- <tr>
+					<td  id= "id" style="display:none"></td>
+						<td id="guest_name" value="000">宾客姓名</td>
+						<td id="main_position">主职务</td>
+						<td id="deputy_position">副职务</td>
+						<td id="office_area">任职地区</td>
+						<td id="sex">性别</td>
+						<td id="birth_date">出生日期</td>
+						<td id="nation">民族</td>
+						<td id="education">学历</td>
+						<td id="origin_place">籍贯</td>
+						<td id="telphone">联系电话</td>
+						<td id="phone">家庭/办公电话</td>
+						<td id="email">邮件地址</td>
+						<td id="address">家庭地址</td>
+						<td id="guest_type">宾客类型</td>
+						<td id="remark">备注</td>
+					</tr> -->
+				</tbody>
+			</table>
+			<div id="pagination">
+			</div>
+		</div>
+		</div>	
+		<!--模态框-->
+		<div class="modal block" id="modal">
+			<div class="box">
+				<h4 class="overflow">
+					<p class="lt">
+						<span>宾客信息明细</span>
+					</p>
+					<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
+						<u></u>
+					</p>
+				</h4>
+				<div class="mbody">
+				<form action="#">
+					<div class="overflow">
+						<div class="lt">
+							<label>
+								<span>宾客姓名：</span>
+								<input type="text" name="add_guest_name" id="add_guest_name"/>
+							</label>
+							<label>
+								<span>主职务：</span>
+								<input type="text" name="add_main_position" id="add_main_position"/>
+							</label>
+							<label>
+								<span>副职务：</span>
+								<input type="text" name="add_deputy_position" id="add_deputy_position" />
+							</label>
+							<label>
+								<span>性别：</span>
+								<select id="add_sex" name="add_sex">
+										<option selected="true">请选择...</option>
+										<option  value="1" >男</option>
+										<option  value="0">女</option>
+								</select>
+							</label>
+							<label>
+								<span>出生日期：</span>
+								<input type="datetime-local" name="add_birth_date" id="add_birth_date" />
+							</label>
+							<label>
+								<span>民族：</span>
+								<select id="add_nation" name="add_nation">
+									<option selected="true">请选择...</option>
+									<option value="0">汉族</option>
+									<option value="1">蒙古族</option>
+									<option value="2">哈萨克族</option>
+									<option value="3">回族</option>
+									<option value="4">壮族</option>
+									<option value="5">藏族</option>
+									<option value="6">布依族</option>
+									<option value="7">白族</option>
+									<option value="8">苗族</option>
+									<option value="9">满族</option>
+									<option value="10">其他</option>
+								</select>
+							</label>
+							<label>
+								<span>学历：</span>
+								<select id="add_education" name="add_education">
+										<option   selected="true">请选择...</option>
+										<option value="0">博士</option>
+										<option value="1">硕士</option>
+										<option value="2">本科</option>
+										<option value="3">大专</option>
+										<option value="4">高中及以下</option>
+								</select>
+							</label>
+							
+							<label>
+								<span>联系电话：</span>
+								<input type="text" name="add_telphone" id="add_telphone" />
+							</label>
+							<label>
+								<span>家庭/办公电话：</span>
+								<input type="text" name="add_phone" id="add_phone" />
+							</label>
+							
+						</div>
+						 <div class="rt">
+							<p class="img">
+								<img src="file:///D|/00.png"/>
+							</p>
+							<button> &lArr;</button>
+							<span>（新）</span>
+							<button> &rArr; </button> 
+							<div class="btns overflow">
+								<p class="lt">
+									<button>添加
+										<input type="file" name="" id="" value="" />
+									</button>
+								</p>
+								<p class="lt">
+									<button class="lt">替换
+										<input type="file" name="" id="" value="" />
+									</button>
+								</p>
+								
+								<button class="lt" disabled="disabled">删除</button>
+							</div>
+						</div>
+					</div>
+					<div class="">
+							<label>
+									<span>任职地区：</span>
+									<input type="text" name="add_office_area" id="add_office_area" />
+							</label>
+							<label>
+									<span>籍贯：</span>
+									<input type="text" name="add_origin_place" id="add_origin_place" />
+							</label>
+							<label>
+								<span>邮件地址：</span>
+								<input type="text" name="add_email" id="add_email" />
+							</label>
+							<label>
+								<span>家庭住址：</span>
+								<input type="text" name="add_address" id="add_address" />
+							</label>
+							<label>
+								<span>宾客类别：</span>
+								<select id="add_guest_type" name="add_guest_type">
+										<option   selected="true">请选择...</option>
+										<option value="0">小客户</option>
+										<option value="1">普通客户</option>
+										<option value="2">次要客户</option>
+										<option value="3">重要客户</option>
+								</select>
+							</label>
+							<label>
+								<span>备注</span>
+								<textarea name="" rows="5" cols="30" id="add_remark"></textarea>
+							</label>
+					</div>					
+				 </form>
+				</div>
+				<div class="mfoot" align="center">
+					<button id="tijiao">
+						<u class="confirm lt"></u>
+						<span class="lt" >确定</span>
+					</button>
+					<button onclick="$(this).parents('.modal').hide(800)">
+						<u class="cancel lt"></u>
+						<span class="lt">返回</span>
+					</button>
+				</div>
+			</div>
+		</div>
 	</body>
+	
 </html>

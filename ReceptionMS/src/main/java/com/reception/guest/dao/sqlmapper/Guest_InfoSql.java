@@ -70,7 +70,7 @@ public class Guest_InfoSql {
                     SET("address = #{address}");
                     SET("guest_type = #{guest_type}");
                     SET("remark = #{remark}");
-                    WHERE("guest_name=#{guest_name}");
+                    WHERE("id=#{id}");
                 }
             }.toString();
             log.info("更新宾客信息："+sql);

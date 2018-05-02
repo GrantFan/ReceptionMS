@@ -31,6 +31,12 @@ spring:
   redis:
     host: localhost
     port: 6379
+  http: 
+    multipart: 
+      maxFileSize: 10MB  
+      maxRequestSize: 10MB 
+      location: D:\local\ #windows格式 
+      #location: /app/tmp  linux格式 
 # 分页配置
 pagehelper:
   helper-dialect: mysql  #指定分页插件使用方言

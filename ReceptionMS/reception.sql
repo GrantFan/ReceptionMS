@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-02 18:03:31
+Date: 2018-05-02 19:03:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -437,11 +437,12 @@ CREATE TABLE `guest_info` (
   `guest_type` varchar(255) DEFAULT NULL COMMENT '宾客类型',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='宾客信息';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='宾客信息';
 
 -- ----------------------------
 -- Records of guest_info
 -- ----------------------------
+INSERT INTO `guest_info` VALUES ('11', ' 王伟', 'w\'w', null, null, '1', null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for hotel_info
@@ -666,9 +667,9 @@ INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/re
 INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
 INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelContrast.html', '1', null, null, null);
 INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomContrast.html', '2', null, null, null);
-INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', null, '3', null, null, null);
+INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', null, null, null);
 INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '', '4', null, null, '');
+INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', null, null, '');
 INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, null, null);
 INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, null, null);

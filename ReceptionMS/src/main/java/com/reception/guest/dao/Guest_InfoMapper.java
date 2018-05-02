@@ -39,21 +39,20 @@ public interface Guest_InfoMapper {
      * @param guest_name
      * @return
      */
-    @Delete("delete from guest_info where guest_name = #{guest_name}")
-    int DeleteGuest_Info(String guest_name);
+    @Delete("delete from guest_info where id = #{id}")
+    int DeleteGuest_Info(int id);
 
     /**
      * 初始化宾客信息
      * @return
      */
-    @Select("select * from guest_info")
+    @Select("select * from guest_info order by id")
     List<Guest_Info> SelectGuest_Info();
 
     /**
      * 查询宾客信息
      * @return
      */
-    @Select("select * from guest_info where guest_name = #{guest_name}")
-    Guest_Info SelectGuest_InfoByName(String guest_name);
-
+    @Select("select * from guest_info where id = #{id}")
+    Guest_Info SelectGuest_InfoById(int id);
 }

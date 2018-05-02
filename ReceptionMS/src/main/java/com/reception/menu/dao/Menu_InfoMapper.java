@@ -45,16 +45,16 @@ public interface Menu_InfoMapper {
      * @param menu_number
      * @return
      */
-    @Select("select * from MENU_INFO m where m.menu_number=#{menu_number}")
-    Menu_Info selectMenu_InfoByMenu_num(String menu_number);
+    @Select("select * from MENU_INFO m where m.id=#{id}")
+    Menu_Info selectMenu_InfoById(int id);
 
     /**
      * 删除套餐信息
-     * @param menu_number
+     * @param id
      * @return
      */
-    @Delete("delete  from MENU_INFO where menu_number=#{menu_number}")
-    int deleteMenu_Info(String menu_number);
+    @Delete("delete  from MENU_INFO where id=#{id}")
+    int deleteMenu_Info(int id);
 
     /**
      * 添加菜品信息
@@ -66,11 +66,11 @@ public interface Menu_InfoMapper {
 
     /**
      * 删除菜品信息
-     * @param menu_number
+     * @param id
      * @return
      */
-    @Delete("delete  from FOOD_INFO where food_number=#{food_number}")
-    int deleteFood_Info(String menu_number);
+    @Delete("delete  from FOOD_INFO where id=#{id}")
+    int deleteFood_Info(int id);
 
     /**
      * 查询菜品信息

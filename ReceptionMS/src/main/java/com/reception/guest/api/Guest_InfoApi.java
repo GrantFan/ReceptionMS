@@ -38,7 +38,7 @@ public interface Guest_InfoApi {
      * @param guest_name
      * @return
      */
-    int DeleteGuest_Info(String guest_name);
+    int DeleteGuest_Info(int id);
 
     /**
      * 初始化宾客信息
@@ -50,6 +50,6 @@ public interface Guest_InfoApi {
      * 查询宾客信息
      * @return
      */
-    Guest_Info SelectGuest_InfoByName(String guest_name);
+    Guest_Info SelectGuest_InfoById(int id);
 
 }

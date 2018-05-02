@@ -3,6 +3,8 @@ package com.reception.guest.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 /**
  * @author zhangwei
  * @description  宾客信息
@@ -11,6 +13,10 @@ import java.util.Date;
  */
 public class Guest_Info implements Serializable{
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
      * 主键id
      */
     private Integer id;
@@ -33,7 +39,7 @@ public class Guest_Info implements Serializable{
     /**
      * 性别
      */
-    private String sex;
+    private int sex;
     /**
      * 年龄
      */
@@ -41,15 +47,16 @@ public class Guest_Info implements Serializable{
     /**
      * 出生日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth_date;
     /**
      * 民族
      */
-    private Integer nation;
+    private int nation;
     /**
      * 学历
      */
-    private Integer education;
+    private int education;
     /**
      * 籍贯
      */
@@ -119,13 +126,7 @@ public class Guest_Info implements Serializable{
         this.office_area = office_area;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+  
 
     public String getAge() {
         return age;
@@ -134,32 +135,46 @@ public class Guest_Info implements Serializable{
     public void setAge(String age) {
         this.age = age;
     }
+   
 
-    public Date getBirth_date() {
-        return birth_date;
-    }
+	public Date getBirth_date() {
+		return birth_date;
+	}
 
-    public void setBirth_date(Date birth_date) {
-        this.birth_date = birth_date;
-    }
+	public void setBirth_date(Date birth_date) {
+		this.birth_date = birth_date;
+	}
 
-    public Integer getNation() {
-        return nation;
-    }
 
-    public void setNation(Integer nation) {
-        this.nation = nation;
-    }
+	public int getSex() {
+		return sex;
+	}
 
-    public Integer getEducation() {
-        return education;
-    }
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
 
-    public void setEducation(Integer education) {
-        this.education = education;
-    }
+	public int getNation() {
+		return nation;
+	}
 
-    public String getOrigin_place() {
+	public void setNation(int nation) {
+		this.nation = nation;
+	}
+
+	public int getEducation() {
+		return education;
+	}
+
+	public void setEducation(int education) {
+		this.education = education;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getOrigin_place() {
         return origin_place;
     }
 

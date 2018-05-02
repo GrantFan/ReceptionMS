@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
+		<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" /> 
+		
+		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../assets/js/pagination.min.js"></script>
+		<script type="text/javascript" src="./js/menuInformation.js"></script>
+	</head>
+	<body>
+		<div class="operationsArea">
+			<div class="buttons">
+					<button onclick="add_menu()" class="active">
+						<u class="xz"></u>
+						新增
+					</button>
+					<button>
+						<u class="fzxz"></u>
+						复制新增
+					</button>
+					<button onclick="edit()">
+						<u class="bj"></u>
+						编辑
+					</button>
+					<button onclick="dele()">
+						<u class="sc"></u>
+						删除
+					</button>
+					<button>
+						<u class="dyyl"></u>
+						打印预览
+					</button>
+					<button>
+						<u class="dy"></u>
+						打印
+					</button>
+					<button>
+						<u class="dr"></u>
+						导入
+					</button>
+					<button>
+						<u class="dc"></u>
+						导出
+					</button>
+					<button>
+						<u class="sh"></u>
+						审核
+					</button>
+					<button>
+						<u class="cx"></u>
+						撤销
+					</button>
+					<button>
+						<u class="sx"></u>
+						刷新
+					</button>	 
+					<button onclick="shut()" class="m-0">
+						<u class="gb"></u>
+						关闭
+					</button>				 
+			</div>
+		<div class="tab">
+			<table class="table" cellspacing="0">
+				<thead>
+					<tr>
+						<th>套餐编号</th>
+						<th>套餐类型</th>
+						<th>酒店名称</th>
+						<th>用餐时间分类</th>
+						<th>用餐方式分类</th>
+						<th>标准分类</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody id="menu_info">						 
+				</tbody>
+			</table>
+			<div id="pagination">
+			</div>
+		</div>
+		</div>	
+		<!--模态框-->
+		<div class="modal block" id="modal">
+			<div class="box">
+				<h4 class="overflow">
+					<p class="lt">
+						<span>套餐信息明细</span>
+					</p>
+					<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
+						<u></u>
+					</p>
+				</h4>
+				<div class="mbody">
+				<form action="#">
+					<div class="overflow">
+						<div class="lt">
+						    <label>
+								<span>套餐编号：</span>
+								<input type="text" name="menu_number" id="menu_number" disabled="disabled"/>
+							</label>
+							<label>
+								<span>套餐类型：</span>
+								<select id="menu_type" name="menu_type">
+									<option selected="true">请选择...</option>
+									<option  value="一般套餐">一般套餐</option>
+									<option  value="贵宾套餐">贵宾套餐</option>
+								</select>
+							</label>
+							<label>
+								<span>酒店名称：</span>
+								<input type="text" name="hotel" id="hotel"/>
+							</label>
+							<label>
+								<span>用餐时间分类：</span>
+								<select id="meals_time" name="meals_time">
+									<option selected="true">请选择...</option>
+									<option  value="早餐">早餐</option>
+									<option  value="正餐">正餐</option>
+									<option  value="晚餐">晚餐</option>
+								</select>
+							</label>
+							<label>
+								<span>用餐方式分类：</span>
+								<select id="meals_type" name="meals_type">
+									<option selected="true">请选择...</option>
+									<option  value="桌餐">桌餐</option>
+									<option  value="自助餐">自助餐</option>
+									<option  value="工作餐">工作餐</option>
+								</select>
+							</label>
+							<label>
+								<span>标准分类：</span>
+								<select id="standard" name="standard">
+									<option selected="true">请选择...</option>
+									<option  value="30">30</option>
+									<option  value="50">50</option>
+									<option  value="100">100</option>
+								</select>
+							</label>
+							<label>
+								<span>备注</span>
+								<textarea name="" rows="5" cols="30" id="remark"></textarea>
+							</label>
+					 </div>					
+				   </div>					
+				 </form>
+				</div>
+				<div class="mfoot" align="center">
+					<button id="tijiao">
+						<u class="confirm lt"></u>
+						<span class="lt" >确定</span>
+					</button>
+					<button onclick="$(this).parents('.modal').hide(800)">
+						<u class="cancel lt"></u>
+						<span class="lt">返回</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	
+</html>

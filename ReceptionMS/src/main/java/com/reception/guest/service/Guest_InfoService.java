@@ -44,12 +44,12 @@ public class Guest_InfoService implements Guest_InfoApi{
 
     /**
      * 删除宾客信息
-     * @param guest_name
+     * @param id
      * @return
      */
     @Override
-    public int DeleteGuest_Info(String guest_name) {
-        return guest_InfoMapper.DeleteGuest_Info(guest_name);
+    public int DeleteGuest_Info(int id) {
+        return guest_InfoMapper.DeleteGuest_Info(id);
     }
 
     /**
@@ -67,7 +67,7 @@ public class Guest_InfoService implements Guest_InfoApi{
      * @return
      */
     @Override
-    public Guest_Info SelectGuest_InfoByName(String guest_name) {
-        return guest_InfoMapper.SelectGuest_InfoByName(guest_name);
+    public Guest_Info SelectGuest_InfoById(int id) {
+        return guest_InfoMapper.SelectGuest_InfoById(id);
     }
 }
