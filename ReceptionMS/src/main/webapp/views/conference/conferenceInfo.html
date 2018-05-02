@@ -233,8 +233,8 @@
 	function view() {
 		$('.modal').show(500);
 	}
-	function add(){ 
-		$.post("../ConferenceController", {
+	function add(){
+		$.post("../../ConferenceController", {
 			conference_name : $("#conference_name").val(),
 			hotel : $("#hotel").val(),
 			type : $("#type").val(),
@@ -260,7 +260,7 @@
 	function del(){ 
 	    var id = "1525189228436";
 		$.ajax({
-	    url: '../ConferenceController/'+id,
+	    url: '../../ConferenceController/'+id,
 	    type: 'Delete', 
 	    success: function(result) {
 	        alert(result);
@@ -270,7 +270,7 @@
 	function edit(){ 
 	   var id = "11";
 		$.get(
-			'../ConferenceController/'+id,
+			'../../ConferenceController/'+id,
 			function(result){ 
 				$("#modal_name").text("会议室修改");
 				$('#add').hide(); 
@@ -287,7 +287,7 @@
 	}
 	function update(){
 		$.ajax({
-	    url: '../ConferenceController/',
+	    url: '../../ConferenceController/',
 	    type: 'Put', 
 	    data: {
 	    	id : $("#id").val(),
