@@ -20,4 +20,11 @@ public class DictionaryTableEntity {
 	public void setValue(String value) {
 		this.value = value;
 	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+	
 }

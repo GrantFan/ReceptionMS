@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<script src="../assets/js/jqPaginator.js"></script>	<!-- Paginator -->
 <script type="text/javascript" src="js/HotelContrast.js"></script>
 <style type="text/css">
 /*strong{
@@ -64,7 +65,7 @@
 			<button>
 				<u class="dr"></u> 导入
 			</button>
-			<button>
+			<button onclick="exportExcel()">
 				<u class="dc"></u> 导出
 			</button>
 			<button>
@@ -149,6 +150,8 @@
 					</tr>
 				</tbody>
 			</table>
+			<!-- 分页插件  -->
+			<div class="text-center"   id="pagination"></div>
 		</div>
 
 	<!-- 

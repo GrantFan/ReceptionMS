@@ -4,13 +4,17 @@
 
 //init
 $(function() {
-	showHotelList();//加载酒店列表
+	showHotelList(1,5,1);//加载酒店列表
 });
 
 //酒店列表
-function showHotelList() {
+function showHotelList(pageNum,pageSize,a) {
 	$.ajax({
 		type : "post",
+		data :{
+			 	"pageNum" :pageNum,
+			 	"pageSize" : pageSize
+			  },
 		url : "../../hotel/list",
 		success : function(data) {
 			var obj = eval(data);
@@ -27,6 +31,10 @@ function showHotelList() {
 					+ "</tr>";
 			}
 			$("#tablebody").append(tbody);
+
+			if (a == 1) {
+				jqPaginator(5, 5, 1);
+			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			//alert(XMLHttpRequest.status);
@@ -91,4 +99,49 @@ function edit() {
 //删除
 function dele() {
 	alert("删除")
+}
+
+//exportExcel
+function exportExcel(){
+	$.ajax({
+		type : "post",
+//		data :{
+//			 	"pageNum" :pageNum,
+//			 	"pageSize" : pageSize
+//			  },
+		url : "../../hotel/export",
+		success : function(data) {
+			alert(data);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			//alert(XMLHttpRequest.status);
+			//alert(XMLHttpRequest.readyState);
+			//alert(textStatus);
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	})
+}
+
+//分页
+function jqPaginator(pageSize, pages, a) {
+	var pages = Number(pages);
+	if (pages == 0) {
+		pages = 1;
+	}
+	$.jqPaginator('#pagination', {
+		totalPages : pages,
+		//currentPage: 1,
+		wrapper : '<ul class="pagination"></ul>',
+		first : '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+		prev : '<li class="prev"><a href="javascript:void(0);">上一页</a></li>',
+		next : '<li class="next"><a href="javascript:void(0);">下一页</a></li>',
+		last : '<li class="last"><a href="javascript:void(0);">尾页</a></li>',
+		page : '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+		onPageChange : function(pageNumber) { // num为选择的页数
+			if (a != 1) {
+				showHotelList(pageNumber, pageSize);
+			}
+		}
+	});
+	a = a + 1;
 }

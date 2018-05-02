@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-04-26 14:18:37
+Date: 2018-05-02 18:03:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -476,6 +476,22 @@ INSERT INTO `hotel_info` VALUES ('10', '敦煌天润大酒店', '权玉霞', '18
 INSERT INTO `hotel_info` VALUES ('11', '敦煌太阳大酒店', '张春艳', '13893726729', '\"0937-8841858', null, null, null, null);
 
 -- ----------------------------
+-- Table structure for hotel_plane_graph
+-- ----------------------------
+DROP TABLE IF EXISTS `hotel_plane_graph`;
+CREATE TABLE `hotel_plane_graph` (
+  `id` int(11) DEFAULT NULL,
+  `graph_name` varchar(255) DEFAULT NULL COMMENT '平面图名称',
+  `graph_url` varchar(255) DEFAULT NULL COMMENT '图片路径',
+  `floor` varchar(255) DEFAULT NULL COMMENT '楼层',
+  `hotel` varchar(255) DEFAULT NULL COMMENT '所属酒店'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of hotel_plane_graph
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for meals_record
 -- ----------------------------
 DROP TABLE IF EXISTS `meals_record`;
@@ -735,4 +751,4 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', '2018-04-24 18:29:58', null, null, null, null);
+INSERT INTO `sys_user` VALUES ('1', 'admin', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', '2018-05-02 09:24:37', null, null, null, null);
