@@ -26,11 +26,18 @@ public interface RoomMapper {
 	@Select("select id,room_number,hotel,floor,room_type,special_type,orientation,support_facilities,special_serve,outside_phone,innerline_phone,responsible_person,rack_price,agreement_price,contain_food,state,remark from  room_info order by room_number")
 	public List<RoomInfoEntity> selectList();
 	
-	@Select({"<script>",	
-		"select id,room_number,hotel,floor,room_type,special_type,orientation,support_facilities,special_serve,outside_phone,innerline_phone,responsible_person,rack_price,agreement_price,contain_food,state,remark from  room_info where 1=1 ",
-		"<when test='hotel!=null'>",
+	@Select({"<script>",
+		"select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where 1=1 ",
 		"and hotel = #{hotel}",
-		"</when>",
 		"</script>"})
 	public List<RoomInfoEntity> selectListByHotel(RoomInfoEntity room);
+	
+	@Select({"<script>",
+		"SELECT floor from room_info where 1=1 ",
+		"<if test=\" '' != hotel  and null != hotel\">",
+		" and hotel = #{hotel}",
+		"</if>",
+		" group by floor ORDER BY floor",
+		"</script>"})
+	public List<RoomInfoEntity> selectFloorByHotel(RoomInfoEntity room);
 }

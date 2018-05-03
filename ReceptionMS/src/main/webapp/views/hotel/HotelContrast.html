@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>酒店管理</title>
-<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
-<link rel="stylesheet" type="text/css"
-	href="../assets/css/pagination.css" />
 
-<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
-<script src="../assets/js/pagination.min.js"></script>
-<!-- Paginator -->
-<script type="text/javascript" src="js/HotelContrast.js"></script>
-<style type="text/css">
-/*strong{
+	<head>
+		<meta charset="UTF-8">
+		<title>酒店管理</title>
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" />
+
+		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script src="../assets/js/pagination.min.js"></script>
+		<!-- Paginator -->
+		<script type="text/javascript" src="js/HotelContrast.js"></script>
+		<style type="text/css">
+			/*strong{
 				font-weight: bolder;
 				color: #fd0606;
 			}
@@ -42,124 +42,137 @@
 				background: #DEDEDE;
 				color: #000;
 			}*/
-</style>
-</head>
-<body>
-	<div class="operationsArea">
-		<div class="buttons">
-			<button onclick="add()" class="active">
+		</style>
+	</head>
+
+	<body>
+		<div class="operationsArea">
+			<div class="buttons">
+				<button onclick="add()" class="active">
 				<u class="xz"></u> 新增
 			</button>
-			<button>
+				<button>
 				<u class="fzxz"></u> 复制新增
 			</button>
-			<button onclick="edit()">
+				<button onclick="edit()">
 				<u class="bj"></u> 编辑
 			</button>
-			<button onclick="dele()">
+				<button onclick="dele()">
 				<u class="sc"></u> 删除
 			</button>
-			<button>
+				<button>
 				<u class="dyyl"></u> 打印预览
 			</button>
-			<button>
+				<button>
 				<u class="dy"></u> 打印
 			</button>
-			<button>
+				<button>
 				<u class="dr"></u> 导入
 			</button>
-			<button onclick="exportExcel()">
+				<button onclick="exportExcel()">
 				<u class="dc"></u> 导出
 			</button>
-			<button>
+				<button>
 				<u class="sh"></u> 审核
 			</button>
-			<button>
+				<button>
 				<u class="cx"></u> 撤销
 			</button>
-			<button>
+				<button>
 				<u class="sx"></u> 刷新
 			</button>
-			<button onclick="shut()" class="m-0">
+				<button onclick="shut()" class="m-0">
 				<u class="gb"></u> 关闭
 			</button>
+			</div>
+			<div class="inputs">
+				<select name="">
+					<option value=""></option>
+					<option value="">且</option>
+					<option value="">或</option>
+				</select>
+				<select name="">
+					<option value="">用户名</option>
+					<option value="">昵称</option>
+					<option value="">角色</option>
+					<option value="">在线</option>
+					<option value="">备注</option>
+				</select>
+				<select name="">
+					<option value="">等于</option>
+					<option value="">不等于</option>
+					<option value="">包含</option>
+					<option value="">不包含</option>
+					<option value="">开头是</option>
+					<option value="">开头不是</option>
+					<option value="">结尾是</option>
+					<option value="">结尾不是</option>
+					<option value="">为空</option>
+					<option value="">不为空</option>
+				</select> <input id="hotelName" type="text" value="" />
+				<button onClick="query();">查询</button>
+				<button>清空</button>
+			</div>
+			<div class="tab">
+				<table class="table" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th>
+								<label>
+									<input type="checkbox" id="checkbokAll">
+									<u></u>
+								</label>
+							</th>
+							<th>酒店名称</th>
+							<th>联系人</th>
+							<th>联系电话</th>
+							<th>联系座机</th>
+							<th>所属行政区</th>
+							<th>酒店地址</th>
+							<th>备注</th>
+						</tr>
+					</thead>
+					<tbody id="tablebody">
+						<tr ondblclick="view()">
+							<td>
+								<label> 
+									<input type="checkbox" checked="checked">
+									<u></u>
+								</label>
+							</td>
+							<td>东方国际大酒店</td>
+							<td>马艳玲</td>
+							<td>18193748166</td>
+							<td>0937-2699999</td>
+							<td>肃州区</td>
+							<td>酒泉市肃州区仓门街6号</td>
+							<td></td>	
+						</tr>
+						<tr ondblclick="view()">
+							<td>
+								<label>
+									<input type="checkbox" checked="checked">
+									<u></u>
+								</label>
+							</td>
+							<td>宏信大酒店</td>
+							<td>陈浩</td>
+							<td>18919427777</td>
+							<td>0937-2802222</td>
+							<td>肃州区</td>
+							<td>甘肃省酒泉市肃州区盘旋西路7号</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- 分页插件  -->
+				<div class="text-center" id="page"></div>
+			</div>
 		</div>
-		<div class="inputs">
-			<select name="">
-				<option value=""></option>
-				<option value="">且</option>
-				<option value="">或</option>
-			</select> <select name="">
-				<option value="">用户名</option>
-				<option value="">昵称</option>
-				<option value="">角色</option>
-				<option value="">在线</option>
-				<option value="">备注</option>
-			</select> <select name="">
-				<option value="">等于</option>
-				<option value="">不等于</option>
-				<option value="">包含</option>
-				<option value="">不包含</option>
-				<option value="">开头是</option>
-				<option value="">开头不是</option>
-				<option value="">结尾是</option>
-				<option value="">结尾不是</option>
-				<option value="">为空</option>
-				<option value="">不为空</option>
-			</select> <input id="hotelName" type="text" value="" />
-			<button onClick="query();">查询</button>
-			<button>清空</button>
-		</div>
-		<div class="tab">
-			<table class="table" cellspacing="0" border="0">
-				<thead>
-					<tr>
-						<th><label><u></u><input type="checkbox"
-								id="checkbokAll"></label></th>
-						<th>酒店名称</th>
-						<th>联系人</th>
-						<th>联系电话</th>
-						<th>联系座机</th>
-						<th>所属行政区</th>
-						<th>酒店地址</th>
-						<th>备注</th>
-					</tr>
-				</thead>
-				<tbody id="tablebody">
-					<tr>
-						<td><label> <input type="checkbox" checked="checked">
-								<span></span>
-						</label></td>
-						<td>东方国际大酒店</td>
-						<td>马艳玲</td>
-						<td>18193748166</td>
-						<td>0937-2699999</td>
-						<td>肃州区</td>
-						<td>酒泉市肃州区仓门街6号</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td><label> <input type="checkbox" checked="checked">
-								<span></span>
-						</label></td>
-						<td>宏信大酒店</td>
-						<td>陈浩</td>
-						<td>18919427777</td>
-						<td>0937-2802222</td>
-						<td>肃州区</td>
-						<td>甘肃省酒泉市肃州区盘旋西路7号</td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-			<!-- 分页插件  -->
-			<div class="text-center" id="page"></div>
-		</div>
-	</div>
-
-	<div class="modal block" style="display:none">
-		<div class="box">
-			<h4 class="overflow">
+		<!---->
+		<div class="modal none">
+			<div class="box">
+				<h4 class="overflow">
 				<p class="lt">
 					<span id="modal_name">酒店信息</span>
 				</p>
@@ -168,9 +181,9 @@
 					<u></u>
 				</p>
 			</h4>
-			<div class="mbody">
-				<input type="hidden" name="id" id="id" />
-				<label for="hotel_name"> <span>酒店名称：</span> <input
+				<div class="mbody">
+					<input type="hidden" name="id" id="id" />
+					<label for="hotel_name"> <span>酒店名称：</span> <input
 					type="text" name="hotel_name" id="hotel_name" value="" />
 				</label> <label for="linkman"> <span>酒店联系人：</span> <input
 					type="text" name="linkman" id="linkman" />
@@ -178,9 +191,9 @@
 					type="text" name="telphone" id="telphone" />
 				</label> <label for="phone"> <span>座机：</span> <input type="text"
 					name="phone" id="phone" />
-				</label> 
-				<label for=area> <span>所属行政区：</span> 
-					<select name="area" id="area" /></select>
+				</label>
+					<label for=area> <span>所属行政区：</span> 
+					<select name="area" id="area"></select>
 				</label> <label for="address"> <span>酒店地址：</span> <input type="text"
 					name="address" id="address" value="" />
 				</label> <label for="graph"> <span>酒店平面图：</span> <input type="text"
@@ -188,28 +201,142 @@
 				</label> <label for="remarks"> <span>备注</span> <textarea
 						name="remark" rows="5" cols="30" id="remark"></textarea>
 				</label>
-			</div>
-			<div class="mfoot" align="center">
-				<button id="add" onclick="addSubmit()">
+				</div>
+				<div class="mfoot" align="center">
+					<button id="add" onclick="addSubmit()">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
-				<button id="update" onclick="editSubmit()" style="display:none">
+					<button id="update" onclick="editSubmit()" style="display:none">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
-				<button onclick="$(this).parents('.modal').hide(800)">
+					<button onclick="$(this).parents('.modal').hide(800)">
 					<u class="cancel lt"></u> <span class="lt">取消</span>
 				</button>
+				</div>
 			</div>
 		</div>
-	</div>
-</body>
-<script>
+		
+		<!--酒店详细信息【含图片】  双击展示-->
+		<div class="modal none imgModal">
+			<div class="box">
+				<h4 class="overflow">
+					<p class="lt">
+						<span>酒店信息明细</span>
+					</p>
+					<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
+						<u></u>
+					</p>
+				</h4>
+				<div class="mbody">
+					<div class="overflow">
+						<div class="lt">
+							<label for="ID" class="disabled">
+								<span>酒店名称：</span>
+								<input type="text" name="user" id="ID" value="H20180210005">
+							</label>
+							<label for="nickName">
+								<span>酒店联系人：</span>
+								<input type="text" name="" id="nickNamealue" value="" />
+							</label>
+							<label for="receiver">
+								<span>联系电话：</span>
+								<input type="text" name="" id="receiver">
+							</label>
+							<label for="role">
+								<span>酒店座机：</span>
+								<input type="text" name="" id="role" value="">
+							</label>
+							<label for="role">
+								<span>酒店座机：</span>
+								<select name="">
+									<option value="">肃州区</option>
+									<option value="">敦煌</option>
+									<option value="">金塔县</option>
+									<option value="">玉门区</option>
+								</select>
+							</label>
+						</div>
+						<div class="rt" id="imgBox">
+							<div class="img" ondblclick="imgView(this)">
+								<b class="close none" onclick="$(this).parent('div.img').removeClass('active');$(this).hide();"> × </b>
+								<ul class="overflow">
+									<li class="block"><img src="image/宏兴大酒店_宏兴大酒店.png" width="100%" height="100%" /></li>
+									<li class="none"><img src="image/东方国际大酒店_东方国际大酒店6楼平面图.png"  width="100%" height="100%" /></li>
+								</ul>
+								<input id="imgName" value="宏兴大酒店_宏兴大酒店.png">
+							</div>
+							<button class="left"> ⇐</button>
+							<span>1/1</span>
+							<button class="right"> ⇒ </button> 
+							<div class="btns overflow">
+								<p class="lt">
+									<button>添加
+										<input type="file" name="" id="" value="">
+									</button>
+								</p>
+								<p class="lt">
+									<button class="lt">替换
+										<input type="file" name="" id="" value="">
+									</button>
+								</p>								
+								<button class="lt">删除</button>
+							</div>
+						</div>
+					</div>
+					<div class="">
+							<label for="user">
+								<span>用途说明：</span>
+								<input type="text" name="" id="user" value="">
+							</label>
+							<label for="remarks">
+								<span>备注</span>
+								<textarea name="" rows="5" cols="30" id="remarks"></textarea>
+							</label>
+					</div>					
+				</div>
+				<div class="mfoot" align="center">
+					<button>
+						<u class="confirm lt"></u>
+						<span class="lt">确定</span>
+					</button>
+					<button onclick="$(this).parents('.modal').hide(800)">
+						<u class="cancel lt"></u>
+						<span class="lt">取消</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		if($("tbody input:checked").length >= 2) {
+			//console.log($("tbody input:checked").parents('tr').siblings().html())
+			$("#contrast").on('click', function() {
+				$(".contrast").parent(".modal").show();
+			})
+		}
+		
+		function view(){
+			$('.imgModal').show()
+		}
+		
+		function imgView(a){
+			 $(a).addClass('active');
+			 $(a).children('img').height('100%');
+			 $(a).children('b.close').show();
+		}
+		
+		
+		{
+			$('.right').on('click',function(){
+				$('#imgBox li').next('li').show().prevAll('li').hide();
+			})
+			
+			$('.left').on('click',function(){
+				$('#imgBox li').nextAll('li').hide().prev('li').show();
+			})
+			
+		 
+		}
+	</script>
 
-	if ($("tbody input:checked").length >= 2) {
-		//console.log($("tbody input:checked").parents('tr').siblings().html())
-		$("#contrast").on('click', function() {
-			$(".contrast").parent(".modal").show();
-		})
-	}
-</script>
 </html>

@@ -39,5 +39,12 @@ public class RoomServiceImpl implements RoomService {
 		// TODO Auto-generated method stub
 		return roomMapper.selectList();
 	}
-
+	@Override
+	public List<RoomInfoEntity> selectListByHotel(RoomInfoEntity room){
+		return roomMapper.selectListByHotel(room);
+	}
+	
+	public List<RoomInfoEntity> selectFloorByHotel(RoomInfoEntity room){
+		return roomMapper.selectFloorByHotel(room);
+	}
 }

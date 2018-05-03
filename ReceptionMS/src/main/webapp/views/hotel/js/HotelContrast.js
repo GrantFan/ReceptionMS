@@ -248,9 +248,12 @@ function editSubmit() {
 		success : function(result) {
 			console.log(result);
 			if (result == "true") {
+				alert("修改成功");
 				$('.modal').hide();
 				$("#modal_name").text("酒店信息");
 				showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
+			}else{
+				alert("修改失败");
 			}
 		}
 	});
@@ -262,18 +265,28 @@ function dele() {
 		alert("请选择一个选项！");
 		return false;
 	}
-	alert("确定删除？");
-	var id;
-	$(":checkbox[name='check']:checked").each(function() { //遍历
-		id = $(this).val(); // 每一个被选中项的值
-	});
-	$.ajax({
-		url : '../../hotel/' + id,
-		type : 'Delete',
-		success : function(result) {
-			showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
-		}
-	})
+	var r = confirm("确定删除吗？");
+	if (r == true) {
+		var id;
+		$(":checkbox[name='check']:checked").each(function() { //遍历
+			id = $(this).val(); // 每一个被选中项的值
+		});
+		$.ajax({
+			url : '../../hotel/' + id,
+			type : 'Delete',
+			success : function(result) {
+				if(result=="true"){
+					alert("删除成功");
+					showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
+				}else{
+					alert("删除失败");
+				}
+				
+			}
+		})
+	} else {
+		return;
+	}
 }
 
 //exportExcel

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-02 19:03:50
+Date: 2018-05-03 19:50:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -459,13 +459,12 @@ CREATE TABLE `hotel_info` (
   `plane_graph` varchar(255) DEFAULT NULL COMMENT '酒店平面图',
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='酒店信息';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='酒店信息';
 
 -- ----------------------------
 -- Records of hotel_info
 -- ----------------------------
 INSERT INTO `hotel_info` VALUES ('1', '酒店名称', '联系人', '联系电话', '酒店座机', '所属行政区', '酒店地址', null, null);
-INSERT INTO `hotel_info` VALUES ('2', '世纪大酒店', '', '', '0937-2666186', '肃州区', '酒泉市世纪大道55号', null, null);
 INSERT INTO `hotel_info` VALUES ('3', '东方国际大酒店', '马艳玲', '18193748166', '0937-2699999', '肃州区', '酒泉市肃州区仓门街6号', null, null);
 INSERT INTO `hotel_info` VALUES ('4', '光明大酒店', '王海锋', '18919375595', '0937-2807777', '肃州区', '甘肃省酒泉市肃州区盘旋中路18号', null, null);
 INSERT INTO `hotel_info` VALUES ('5', '宏兴大酒店', '陈浩', '18919427777', '0937-2802222', '肃州区', '甘肃省酒泉市肃州区盘旋西路7号', null, null);
@@ -475,6 +474,7 @@ INSERT INTO `hotel_info` VALUES ('8', '敦煌华夏国际大酒店', '侯红林'
 INSERT INTO `hotel_info` VALUES ('9', '敦煌国际大酒店', '叶彦萍', '13993722999', '0397-8821821', '敦煌', '甘肃省酒泉市敦煌市鸣山北路827号', null, null);
 INSERT INTO `hotel_info` VALUES ('10', '敦煌天润大酒店', '权玉霞', '18993732897', '0937-8819501', '敦煌', '甘肃省酒泉市敦煌市鸣山路309号', null, null);
 INSERT INTO `hotel_info` VALUES ('11', '敦煌太阳大酒店', '张春艳', '13893726729', '\"0937-8841858', null, null, null, null);
+INSERT INTO `hotel_info` VALUES ('12', '新华', '123', '123', '213', '1', '312', null, '312');
 
 -- ----------------------------
 -- Table structure for hotel_plane_graph
@@ -611,11 +611,14 @@ CREATE TABLE `room_info` (
   `state` varchar(10) DEFAULT NULL COMMENT '房间状态',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='房间信息';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='房间信息';
 
 -- ----------------------------
 -- Records of room_info
 -- ----------------------------
+INSERT INTO `room_info` VALUES ('1', '1', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
+INSERT INTO `room_info` VALUES ('2', '2', '3', '2', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
+INSERT INTO `room_info` VALUES ('3', '3', '4', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
 
 -- ----------------------------
 -- Table structure for room_type
@@ -673,7 +676,7 @@ INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '../men
 INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, null, null);
 INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('20', '酒店对比', '20', '10', null, '6', null, null, null);
+INSERT INTO `sys_module` VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', null, null, null);
 INSERT INTO `sys_module` VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, null, null);
 
 -- ----------------------------

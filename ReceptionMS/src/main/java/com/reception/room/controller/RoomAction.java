@@ -57,4 +57,22 @@ public class RoomAction {
 		System.out.println(json);
 		return json;
 	};
+	
+	@RequestMapping(value="/listByHotel",produces="application/text; charset=utf-8")
+	public String selectListByHotel(RoomInfoEntity room) {
+		List<RoomInfoEntity> list = roomServiceImpl.selectListByHotel(room);
+		JSONHelper jsonHelper = new JSONHelper();
+		String json = jsonHelper.toJSON(list);
+		System.out.println(json);
+		return json;
+	};
+	
+	@RequestMapping(value="/floor",produces="application/text; charset=utf-8")
+	public String selectFloorByHotel(RoomInfoEntity room) {
+		List<RoomInfoEntity> list = roomServiceImpl.selectFloorByHotel(room);
+		JSONHelper jsonHelper = new JSONHelper();
+		String json = jsonHelper.toJSON(list);
+		System.out.println(json);
+		return json;
+	};
 }

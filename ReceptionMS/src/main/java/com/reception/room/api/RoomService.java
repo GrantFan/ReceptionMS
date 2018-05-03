@@ -15,4 +15,6 @@ public interface RoomService {
 	public int deleteRoomInfo(RoomInfoEntity room);
 	
 	public List<RoomInfoEntity> selectList();
+	
+	public List<RoomInfoEntity> selectListByHotel(RoomInfoEntity room);
 }
