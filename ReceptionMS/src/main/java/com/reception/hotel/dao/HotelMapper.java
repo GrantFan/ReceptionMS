@@ -18,7 +18,7 @@ public interface HotelMapper {
 	 * @param hotel
 	 * return int
 	 * */
-	@Insert("insert into hotel_info(hotel_name,linkman,telphone,phone,area,address,plane_graph,remark) values(#{hotelName},#{linkman},#{telphone},#{phone},#{area},#{address},#{planeGraph},#{remark} ")
+	@Insert("insert into hotel_info(hotel_name,linkman,telphone,phone,area,address,plane_graph,remark) values(#{hotelName},#{linkman},#{telphone},#{phone},#{area},#{address},#{planeGraph},#{remark} )")
 	public int addHotelInfo(HotelInfoEntity hotel);
 	
 	/*
@@ -58,4 +58,14 @@ public interface HotelMapper {
 			"order by hotel_name",
 			"</script>"})
 	public List<HotelInfoEntity> selectListByName(HotelInfoEntity hotel);
+
+	/*
+	 * Describe 通过酒店名称查询酒店列表
+	 * @param hotelName
+	 * return list
+	 * */
+	@Select({"<script>",
+			"select id,hotel_name hotelName,linkman,telphone,phone,area,address,plane_graph planeGraph,remark from  hotel_info where id = #{id} ",
+			"</script>" })
+	public HotelInfoEntity selectById(String id);
 }

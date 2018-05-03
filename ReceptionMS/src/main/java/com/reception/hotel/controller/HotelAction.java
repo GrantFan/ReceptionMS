@@ -13,14 +13,20 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.reception.conference.model.ConferenceEntity;
 import com.reception.dictionary.model.DictionaryTableEntity;
 import com.reception.dictionary.service.DictionaryTableServiceImpl;
+import com.reception.exceptionfilter.EntityNotFoundException;
 import com.reception.hotel.model.HotelInfoEntity;
 import com.reception.hotel.service.HotelServiceImpl;
 import com.reception.util.JSONHelper;
@@ -56,8 +62,8 @@ public class HotelAction {
 		return flag;
 	};
 
-	@RequestMapping(value="/delete",produces="application/text; charset=utf-8")
-	public String deleteHotelInfo(HotelInfoEntity hotel) {
+	@RequestMapping(value = "{id}",method = RequestMethod.DELETE)
+	public String deleteHotelInfo(@ModelAttribute("hotelInfoEntity")HotelInfoEntity hotel) {
 		String flag = "false";
 		int i = hotelServiceImpl.deleteHotelInfo(hotel);
 		if (i > 0) {
@@ -68,17 +74,26 @@ public class HotelAction {
 
 	@RequestMapping(value="/list",produces="application/text; charset=utf-8")
 	public String selectList(String pageNum,String pageSize) {
-		long total = PageHelper.count(() -> {hotelServiceImpl.selectList();});
-		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
-		Page page = PageHelper.getLocalPage();
+		//long total = PageHelper.count(() -> {hotelServiceImpl.selectList();});
+		//Page page = PageHelper.getLocalPage();
     	//总页数
-    	long totalPage = total / page.getPageSize() + ((total % page.getPageSize() == 0) ? 0 : 1);
+    	//long totalPage = total / page.getPageSize() + ((total % page.getPageSize() == 0) ? 0 : 1);
+		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
 		List<HotelInfoEntity> list = hotelServiceImpl.selectList();
-		JSONHelper jsonHelper = new JSONHelper();
-		String json = jsonHelper.toJSON(list);
+		PageInfo<HotelInfoEntity> pageInfo = new PageInfo<HotelInfoEntity>(list);  
+		String json = JSONHelper.toJSON(pageInfo);
 		System.out.println(json);
 		return json;
 	};
+	
+	@RequestMapping(value = "{id}",method = RequestMethod.GET)
+	public String queryConferenectById(@PathVariable("id")String id){
+		HotelInfoEntity hotel =  this.hotelServiceImpl.selectById(id);  
+		if(hotel == null){
+			new EntityNotFoundException("不存在"); 
+		}
+		return JSONHelper.toJSON(hotel);
+	}
 	
 	@RequestMapping(value="/listByName",produces="application/text; charset=utf-8")
 	public String selectListByName(HotelInfoEntity hotel) {

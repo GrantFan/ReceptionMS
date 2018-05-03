@@ -17,13 +17,16 @@ function showHotelList(pageNum, pageSize) {
 		},
 		url : "../../hotel/list",
 		success : function(data) {
-			var obj = eval(data);
+			//console.log(data);
+			var json = JSON.parse(data);
+			var obj = json.list;
+			//console.log(obj);
 			$("#tablebody").empty();
 			var tbody = "";
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr>"
-					+ "<td><label><input type=\"Checkbox\" name=\"" + obj[i].id + "\" ><u></u></label></td>"
+					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
 					+ "<td>" + obj[i].hotelName + "</td><td>" + obj[i].linkman + "</td>"
 					+ "<td>" + obj[i].telphone + "</td><td>" + obj[i].phone + "</td>"
 					+ "<td>" + obj[i].area + "</td><td>" + obj[i].address + "</td>	"
@@ -56,7 +59,7 @@ function showHotelList(pageNum, pageSize) {
 				//可选，css设置，可设置值：css-1，css-2，css-3，css-4，css-5，默认css-1，可自定义样式
 				css : 'css-1',
 				//可选，总页数
-				totalPage : 5,
+				totalPage : json.pages,
 				//可选，展示页码数量，默认5个页码数量
 				showPageNum : 5,
 				//可选，首页按钮展示文本，默认显示文本为首页
@@ -121,7 +124,7 @@ function query() {
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr>"
-					+ "<td><label><input type='checkbox' checked='checked'><span></span></label></td>"
+					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
 					+ "<td>" + obj[i].hotelName + "</td><td>" + obj[i].linkman + "</td>"
 					+ "<td>" + obj[i].telphone + "</td><td>" + obj[i].phone + "</td>"
 					+ "<td>" + obj[i].area + "</td><td>" + obj[i].address + "</td>	"
@@ -139,20 +142,50 @@ function query() {
 	})
 }
 
-
-//增加
-function add() {
-	$(".modal").show(500);
+//加载所属行政区
+function loadArea() {
+	$.get('../../dic',
+		{
+			tableName : "dm_district"
+		},
+		function(result) {
+			//console.log(result);
+			$("#area").empty();
+			for (var i = 0, len = result.length; i < len; i++) {
+				$("#area").append(
+					"<option value='" + result[i].value + "'>" + result[i].name + "</option>"
+				);
+			}
+		}
+	);
 }
+//新增
+function add() {
+	//重置表单
+	$(".modal").show(500);
+	$('#add').show();
+	$('#update').hide(500);
+	
+	$("#hotel_name").val("");
+	$("#linkman").val("");
+	$("#telphone").val("");
+	$("#phone").val("");
+	$("#area").val("");
+	$("#address").val("");
+	$("#graph").val("");
+	$("#remark").val("");
+	loadArea();
+}
+//新增提交
 function addSubmit() {
-	$.post("../../hotel/add", {
+	$.post("../../hotel/add",{
 		hotelName : $("#hotel_name").val(),
 		linkman : $("#linkman").val(),
 		telphone : $("#telphone").val(),
 		phone : $("#phone").val(),
 		area : $("#area").val(),
 		address : $("#address").val(),
-		graph : $("#graph").val(),
+		planeGraph : $("#graph").val(),
 		remark : $("#remark").val()
 	}, function(result) {
 		$('.modal').hide();
@@ -165,39 +198,59 @@ function addSubmit() {
 
 //修改
 function edit() {
+	if ($(":checkbox[name='check']:checked").length != 1) {
+		alert("请选择一个选项！");
+		return false;
+	}
+	var id;
+	$(":checkbox[name='check']:checked").each(function() { //遍历
+		id = $(this).val(); // 每一个被选中项的值
+	});
+	$("#modal_name").text("酒店信息修改");
 	$(".modal").show(500);
 	$('#add').hide();
 	$('#update').show(500);
-
-	var id = "11";
+	
 	$.get(
-		'../../hotel/select/' + id,
+		'../../hotel/' + id,
 		function(result) {
-			$("#modal_name").text("酒店信息修改");
-			$("#id").val(result.id);
+			var json = JSON.parse(result);
+			//console.log(json);
+			$("#id").val(json.id);
+			$("#hotel_name").val(json.hotelName);
+			$("#linkman").val(json.linkman);
+			$("#telphone").val(json.telphone);
+			$("#phone").val(json.phone);
+			//$("#area").val(json.area);
+			loadArea();
+			$("#address").val(json.address);
+			$("#graph").val(json.planeGraph);
+			$("#remark").val(json.remark);
 		}
 	);
 }
+//修改提交
 function editSubmit() {
 	$.ajax({
 		url : '../../hotel/update',
-		type : 'Put',
+		type : 'post',
 		data : {
 			id : $("#id").val(),
-			conference_name : $("#conference_name").val(),
-			hotel : $("#hotel").val(),
-			type : $("#type").val(),
-			position : $("#position").val(),
-			capacity_num : $("#capacity_num").val(),
+			hotelName : $("#hotel_name").val(),
+			linkman : $("#linkman").val(),
+			telphone : $("#telphone").val(),
+			phone : $("#phone").val(),
+			area : $("#area").val(),
+			address : $("#address").val(),
+			planeGraph : $("#graph").val(),
 			remark : $("#remark").val()
 		},
 		success : function(result) {
-			if (result == true) {
-				$('.modal').hide(500);
-				$('#add').show();
-				$('#update').hide(500);
-				$("#modal_name").text("会议室新增");
-				load_conferenceInfo(sessionStorage.currPage, sessionStorage.pageSize);
+			console.log(result);
+			if (result == "true") {
+				$('.modal').hide();
+				$("#modal_name").text("酒店信息");
+				showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
 			}
 		}
 	});
@@ -205,13 +258,20 @@ function editSubmit() {
 
 //删除
 function dele() {
+	if ($(":checkbox[name='check']:checked").length != 1) {
+		alert("请选择一个选项！");
+		return false;
+	}
 	alert("确定删除？");
-	var id = "1525189228436";
+	var id;
+	$(":checkbox[name='check']:checked").each(function() { //遍历
+		id = $(this).val(); // 每一个被选中项的值
+	});
 	$.ajax({
-		url : '../../hotel/delete/' + id,
+		url : '../../hotel/' + id,
 		type : 'Delete',
 		success : function(result) {
-			alert(result);
+			showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
 		}
 	})
 }

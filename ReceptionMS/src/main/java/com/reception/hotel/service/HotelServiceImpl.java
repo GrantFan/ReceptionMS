@@ -46,4 +46,9 @@ public class HotelServiceImpl implements HotelService {
 		return hotelMapper.selectListByName(hotel);
 	}
 
+	public HotelInfoEntity selectById(String id) {
+		// TODO Auto-generated method stub
+		return hotelMapper.selectById(id);
+	}
+
 }
