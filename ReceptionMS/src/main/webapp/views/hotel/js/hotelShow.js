@@ -31,13 +31,13 @@ function hotelShow(input){
  * 楼层下拉加载
  */
 function floorShow(hotel){
-	var arr =[];
 	$.ajax({
 		type : "post",
+		aync:false,
 		data : {
 			"hotel" : hotel
 		},
-		url : "../../room/floor",
+		url : "../../room/floorList",
 		success : function(data) {
 			var obj = eval(data);
 			//console.log(obj);

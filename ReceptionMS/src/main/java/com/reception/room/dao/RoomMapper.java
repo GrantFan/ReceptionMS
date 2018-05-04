@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.reception.room.model.RoomFloorEntity;
 import com.reception.room.model.RoomInfoEntity;
 
 @Mapper
@@ -28,16 +29,23 @@ public interface RoomMapper {
 	
 	@Select({"<script>",
 		"select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where 1=1 ",
-		"and hotel = #{hotel}",
+		"<if test=\" '' != hotel  and null != hotel\">",
+		" and hotel = #{hotel}",
+		"</if>",
+		"<if test=\" '' != floor  and null != floor\">",
+		" and floor = #{floor}",
+		"</if>",
+		"ORDER BY floor,room_number",
 		"</script>"})
 	public List<RoomInfoEntity> selectListByHotel(RoomInfoEntity room);
 	
 	@Select({"<script>",
-		"SELECT floor from room_info where 1=1 ",
+		"SELECT floor,hotel from room_info where 1=1 ",
 		"<if test=\" '' != hotel  and null != hotel\">",
 		" and hotel = #{hotel}",
 		"</if>",
 		" group by floor ORDER BY floor",
 		"</script>"})
 	public List<RoomInfoEntity> selectFloorByHotel(RoomInfoEntity room);
+	
 }

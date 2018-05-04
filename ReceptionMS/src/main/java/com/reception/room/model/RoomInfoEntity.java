@@ -1,6 +1,6 @@
 package com.reception.room.model;
 
-import com.reception.hotel.model.HotelInfoEntity;
+import java.util.List;
 
 public class RoomInfoEntity {
 
@@ -21,8 +21,9 @@ public class RoomInfoEntity {
 	private String state;//房间状态
 	private String remark;
 	private String hotel;//所属酒店
-
 	
+	private List<RoomInfoEntity> list;
+
 	
 	public Integer getId() {
 		return id;
@@ -158,6 +159,14 @@ public class RoomInfoEntity {
 
 	public void setHotel(String hotel) {
 		this.hotel = hotel;
+	}
+
+	public List<RoomInfoEntity> getList() {
+		return list;
+	}
+
+	public void setList(List<RoomInfoEntity> list) {
+		this.list = list;
 	}
 
 	

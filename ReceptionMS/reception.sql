@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-03 19:50:42
+Date: 2018-05-04 18:43:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -611,14 +611,15 @@ CREATE TABLE `room_info` (
   `state` varchar(10) DEFAULT NULL COMMENT '房间状态',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='房间信息';
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='房间信息';
 
 -- ----------------------------
 -- Records of room_info
 -- ----------------------------
-INSERT INTO `room_info` VALUES ('1', '1', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
-INSERT INTO `room_info` VALUES ('2', '2', '3', '2', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
-INSERT INTO `room_info` VALUES ('3', '3', '4', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
+INSERT INTO `room_info` VALUES ('1', '101', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
+INSERT INTO `room_info` VALUES ('2', '201', '3', '2', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '2', '没有');
+INSERT INTO `room_info` VALUES ('3', '102', '4', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
+INSERT INTO `room_info` VALUES ('33', '103', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
 
 -- ----------------------------
 -- Table structure for room_type
