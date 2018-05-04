@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.reception.room.api.RoomService;
 import com.reception.room.dao.RoomMapper;
-import com.reception.room.model.RoomFloorEntity;
 import com.reception.room.model.RoomInfoEntity;
 
 @Service
