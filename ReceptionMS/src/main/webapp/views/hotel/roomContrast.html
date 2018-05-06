@@ -248,82 +248,95 @@ strong {
 	</div>
 	</div>
 	<!-- 模态框 -->
-	<div class="modal none">
-		<div class="box overflow contrast">
-			<h4 class="overflow">
+		<div class="modal none">
+			<div class="box">
+				<h4 class="overflow">
 				<p class="lt">
-					<strong>东方国际大酒店</strong> 与 <strong>宏信大酒店</strong> 对比
+					<span id="modal_name">酒店信息</span>
 				</p>
-				<p class="rt" id="close" onclick="$(this).parents('.modal').hide()">X</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
 			</h4>
-			<div class="lt">
-				<p class="title">东方国际大酒店</p>
-				<div class="info lt">
-					<label for="ren"> <span>联系人</span><br /> <input
-						type="text" name="user" id="ren" value="" />
-					</label> <label for="phone"> <span>联系电话</span><br /> <input
-						type="text" name="user" id="user" value="" />
-					</label> <label for="zuoJi"> <span>酒店座机</span><br /> <input
-						type="text" name="user" id="zuoJi" value="" />
-					</label> <label for="qu"> <span>所属行政区</span><br /> <input
-						type="text" name="user" id="qu" value="" />
-					</label> <label for="area"> <span>酒店地址</span><br /> <input
-						type="text" name="user" id="area" value="" />
-					</label> <label for="remarks"> <span>备注</span><br /> <textarea
-							name="" rows="5" cols="23" id="remarks"></textarea>
-					</label>
+				<div class="mbody">
+					<input type="hidden" name="id" id="id" />
+					<label for="hotel"> <span>所属酒店：</span> 
+					<input type="text" name="input_hotel" id="input_hotel" value="" onchange="roomHotelLoad(this.value)" placeholder="查询酒店" />
+					<select id="roomHotel" name="roomHotel" >
+					<option value="">-------------</option>
+					<option value="">东方国际大酒店</option>
+					<option value="">光明大酒店</option>
+					<option value="">宏兴大酒店</option>
+					</select>
+				</label> 
+					<label for="roomNumber"> <span>房间号：</span> <input
+					type="text" name="roomNumber" id="roomNumber" value="" />
+				</label> <label for="roomFloor"> <span>房间楼层：</span> <input
+					type="text" name="roomFloor" id="roomFloor" />
+				</label> <label for="orientation"> <span>房间朝向：</span> <input
+					type="text" name="orientation" id="orientation" />
+				</label> <label for="supportFacilities"> <span>配套设施：</span> <input type="text"
+					name="supportFacilities" id="supportFacilities" />
+				</label>
+					<label for=roomType> <span>房间类型：</span> 
+					<select id="roomType" name="roomType">
+					<option value="">-------------</option>
+					<option value="">标准间</option>
+					<option value="">商务房</option>
+					</select>
+				</label> 
+					<label for=specialType> <span>特殊类型：</span> 
+					<input type="text"
+					name="specialType" id="specialType" />
+				</label> 
+				<label for="specialServe"> <span>特色服务：</span> <input type="text"
+					name="specialServe" id="specialServe" />
+				</label><label for="outsidePhone"> <span>外线电话：</span> <input type="text"
+					name="outsidePhone" id="outsidePhone" />
+				</label>
+				<label for="innerlinePhone"> <span>内线电话：</span> <input type="text"
+					name="innerlinePhone" id="innerlinePhone" />
+				</label>
+				<label for="responsiblePerson"> <span>房间负责人：</span> <input type="text"
+					name="responsiblePerson" id="responsiblePerson" />
+				</label>
+					<label for="rackPrice"> <span>门市价：</span> <input type="text"
+					name="rackPrice" id="rackPrice" />
+				</label>
+					<label for="agreementPrice"> <span>协议价：</span> <input type="text"
+					name="agreementPrice" id="agreementPrice" />
+				</label>
+					<label for="containFood"> <span>是否含餐：</span> 
+					<select name="containFood" id="containFood">
+					<option value="Y">是</option>
+					<option value="N">否</option>
+					</select>
+				</label>
+					<label for="state"> <span>房间状态：</span> 
+					<select name="state" id="state">
+					<option value="1">空闲</option>
+					<option value="2">预定</option>
+					<option value="3">入住</option>
+					</select>
+				</label>
+				 <label for="remark"> <span>备注</span> <textarea
+						name="remark" rows="2" cols="30" id="remark"></textarea>
+				</label>
 				</div>
-				<div class="img lt">
-					<img src="" />
-					<div>
-						<button><--</button>
-						<span>1/3</span>
-						<button>--></button>
-					</div>
-					<div>
-						<label class="m-0" for="tianjia">添加</label> <input type="file"
-							name="" id="tianjia" value="添加" class="none" /> <label
-							class="m-0" for="tihuan">替换</label> <input type="file" name=""
-							id="tihuan" value="替换" class="none" />
-						<button>删除</button>
-					</div>
-				</div>
-			</div>
-			<div class="rt">
-				<p class="title">宏信大酒店</p>
-				<div class="info lt">
-					<label for="ren"> <span>联系人</span><br /> <input
-						type="text" name="user" id="ren" value="" />
-					</label> <label for="phone"> <span>联系电话</span><br /> <input
-						type="text" name="user" id="user" value="" />
-					</label> <label for="zuoJi"> <span>酒店座机</span><br /> <input
-						type="text" name="user" id="zuoJi" value="" />
-					</label> <label for="qu"> <span>所属行政区</span><br /> <input
-						type="text" name="user" id="qu" value="" />
-					</label> <label for="area"> <span>酒店地址</span><br /> <input
-						type="text" name="user" id="area" value="" />
-					</label> <label for="remarks"> <span>备注</span><br /> <textarea
-							name="" rows="5" cols="23" id="remarks"></textarea>
-					</label>
-				</div>
-				<div class="img lt">
-					<img src="" />
-					<div>
-						<button><--</button>
-						<span>1/3</span>
-						<button>--></button>
-					</div>
-					<div>
-						<label class="m-0" for="tianjia">添加</label> <input type="file"
-							name="" id="tianjia" value="添加" class="none" /> <label
-							class="m-0" for="tihuan">替换</label> <input type="file" name=""
-							id="tihuan" value="替换" class="none" />
-						<button disabled="disabled">删除</button>
-					</div>
+				<div class="mfoot" align="center">
+					<button id="add" onclick="addSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+					<button id="update" onclick="editSubmit()" style="display:none">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+					<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 
 </html>

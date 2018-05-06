@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>酒店管理</title>
+		<title>酒店信息对比</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
@@ -64,30 +64,31 @@
 					</button>
 			</div>
 			<div class="inputs">
-				<select name="">
-					<option value=""></option>
-					<option value="">且</option>
-					<option value="">或</option>
+				<!-- <input type="text"  name="hotel_input"
+				onchange="hotelShow(this)" placeholder="查询酒店" value="" /> -->
+				<select id="hotel" name="hotel" onchange="showRoomList()">
+				<option value="">-------------</option>
+				<option value="">东方国际大酒店</option>
+				<option value="">光明大酒店</option>
+				<option value="">宏兴大酒店</option>
 				</select>
-				<select name="">
-					<option value="">类型编号</option>
-					<option value="">酒店名称</option>
-					<option value="">楼层</option>
+				<select name="type">
 					<option value="">房间类型</option>
+					<option value="">套餐类型</option>
+					<option value="">楼层</option>
 				</select>
-				<select name="">
-					<option value="">等于</option>
-					<option value="">不等于</option>
-					<option value="">包含</option>
-					<option value="">不包含</option>
-					<option value="">开头是</option>
-					<option value="">开头不是</option>
-					<option value="">结尾是</option>
-					<option value="">结尾不是</option>
-					<option value="">为空</option>
-					<option value="">不为空</option>
+					<select name="type">
+					<option value="">标间</option>
+					<option value="">套房</option>
 				</select>
-				<input type="search" />
+				<!-- <input type="text"  name="hotel_input"
+				onchange="hotelShow(this)" placeholder="查询酒店" value="" /> -->
+				<select id="hotel1" name="hotel" onchange="showRoomList()">
+				<option value="">-------------</option>
+				<option value="">东方国际大酒店</option>
+				<option value="">光明大酒店</option>
+				<option value="">宏兴大酒店</option>
+				</select>
 				<button>查询</button>
 				<button>清空</button>
 				<button>对比</button>

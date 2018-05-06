@@ -14,7 +14,7 @@ import com.reception.room.model.RoomInfoEntity;
 public interface RoomMapper {
 
 	@Insert("insert into room_info(room_number,hotel,floor,room_type,special_type,orientation,support_facilities,special_serve,outside_phone,innerline_phone,responsible_person,rack_price,agreement_price,contain_food,state,remark) "
-			+ "values(#{roomNumber},#{hotel},#{floor},#{roomType},#{specialType},#{orientation},#{supportFacilities},,#{specialServe},#{outsidePhone},#{innerlinePhone},#{responsiblePerson},#{rackPrice},#{agreementPrice},#{containFood},#{state},#{remark} ")
+			+ "values(#{roomNumber},#{hotel},#{floor},#{roomType},#{specialType},#{orientation},#{supportFacilities},#{specialServe},#{outsidePhone},#{innerlinePhone},#{responsiblePerson},#{rackPrice},#{agreementPrice},#{containFood},#{state},#{remark} )")
 	public int addRoomInfo(RoomInfoEntity room);
 	
 	@Update("update room_info set hotel_name=#{hotelName},linkman=#{linkman},telphone=#{telphone},phone=#{phone},area=#{area},address=#{address} ,plane_graph=#{planeGraph},remark=#{remark} where id=#{id}")
