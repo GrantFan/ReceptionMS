@@ -23,7 +23,7 @@ public interface RoomMapper {
 	@Delete("delete from room_info where id = #{id}")
 	public int deleteRoomInfo(RoomInfoEntity room);
 	
-	@Select("select id,room_number,hotel,floor,room_type,special_type,orientation,support_facilities,special_serve,outside_phone,innerline_phone,responsible_person,rack_price,agreement_price,contain_food,state,remark from  room_info order by room_number")
+	@Select("select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info order by room_number")
 	public List<RoomInfoEntity> selectList();
 	
 	@Select({"<script>",
@@ -47,4 +47,6 @@ public interface RoomMapper {
 		"</script>"})
 	public List<RoomInfoEntity> selectFloorByHotel(RoomInfoEntity room);
 	
+	@Select("select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where hotel=#{hotel} and room_type=#{roomType} order by room_number")
+	public List<RoomInfoEntity> selectByRoomType(RoomInfoEntity room);
 }

@@ -1,6 +1,8 @@
 package com.reception.room.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -81,6 +83,26 @@ public class RoomAction {
 		List<RoomInfoEntity> list = roomServiceImpl.selectFlooRoomrByHotel(room);
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
+		System.out.println(json);
+		return json;
+	};
+	
+	@RequestMapping(value="/roomType",produces="application/text; charset=utf-8")
+	public String selectByRoomType(String hotel_l,String hotel_r,String  roomType) {
+		RoomInfoEntity room1 = new RoomInfoEntity();
+		room1.setHotel(hotel_l);
+		room1.setRoomType(roomType);
+		List<RoomInfoEntity> list1 = roomServiceImpl.selectByRoomType(room1);
+		
+		RoomInfoEntity room2 = new RoomInfoEntity();
+		room2.setHotel(hotel_r);
+		room2.setRoomType(roomType);
+		List<RoomInfoEntity> list2 = roomServiceImpl.selectByRoomType(room2);
+		
+		Map map = new HashMap<String, List>();
+		map.put("hotel_l", list1);
+		map.put("hotel_r", list2);
+		String json = JSONHelper.toJSON(map);
 		System.out.println(json);
 		return json;
 	};

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
 
 		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/HotelContrasts.js"></script>
 	</head>
 
 	<body>
@@ -66,24 +67,23 @@
 			<div class="inputs">
 				<!-- <input type="text"  name="hotel_input"
 				onchange="hotelShow(this)" placeholder="查询酒店" value="" /> -->
-				<select id="hotel" name="hotel" onchange="showRoomList()">
+				<select id="hotel_l" class="hotel" name="hotel">
 				<option value="">-------------</option>
 				<option value="">东方国际大酒店</option>
 				<option value="">光明大酒店</option>
 				<option value="">宏兴大酒店</option>
 				</select>
-				<select name="type">
-					<option value="">房间类型</option>
-					<option value="">套餐类型</option>
-					<option value="">楼层</option>
+				<select id="type" onchange="loadContrastType(this.value)">
+					<option value="dm_room_type">房间类型</option>
+					<option value="dm_menu_type">套餐类型</option>
 				</select>
-					<select name="type">
-					<option value="">标间</option>
-					<option value="">套房</option>
+				<select id="contrast_type" >
+					<option value="1">标间</option>
+					<option value="2">套房</option>
 				</select>
 				<!-- <input type="text"  name="hotel_input"
 				onchange="hotelShow(this)" placeholder="查询酒店" value="" /> -->
-				<select id="hotel1" name="hotel" onchange="showRoomList()">
+				<select id="hotel_r" class="hotel" name="hotel">
 				<option value="">-------------</option>
 				<option value="">东方国际大酒店</option>
 				<option value="">光明大酒店</option>
@@ -91,7 +91,7 @@
 				</select>
 				<button>查询</button>
 				<button>清空</button>
-				<button>对比</button>
+				<button onclick="contrastHotel()">对比</button>
 			</div>
 			<div class="tab">
 				<table class="table none" cellspacing="0" border="0">
@@ -156,7 +156,7 @@
 						</span>
 					</h6>
 					<div class="seat overflow">
-						<ul class="lt" style="width: 50%;margin-top: 26px">
+						<ul id="ul_l" class="lt" style="width: 50%;margin-top: 26px">
 							<li>
 								<u class="rooms"></u>
 								<strong id="roomID"><span>房间号：</span>101</strong>
@@ -198,7 +198,7 @@
 								<p class="WX"><span>外线：</span><b>直接要拨打的号码</b></p>
 							</li> 	
 						</ul>
-						<ol class="rt" style="width: 50%;margin-top: 26px">
+						<ol id="ol_r" class="rt" style="width: 50%;margin-top: 26px">
 							<li>
 								<u class="rooms"></u>
 								<strong id="roomID"><span>房间号：</span>101</strong>	

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-04 18:43:19
+Date: 2018-05-06 16:39:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -611,7 +611,7 @@ CREATE TABLE `room_info` (
   `state` varchar(10) DEFAULT NULL COMMENT '房间状态',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='房间信息';
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='房间信息';
 
 -- ----------------------------
 -- Records of room_info
@@ -620,6 +620,7 @@ INSERT INTO `room_info` VALUES ('1', '101', '3', '1', '1', '没有', '南', '没
 INSERT INTO `room_info` VALUES ('2', '201', '3', '2', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '2', '没有');
 INSERT INTO `room_info` VALUES ('3', '102', '4', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
 INSERT INTO `room_info` VALUES ('33', '103', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
+INSERT INTO `room_info` VALUES ('35', '102', '4', '3', '2', '有噪音', '南', '电脑', '没有', '123456323', null, '我', null, null, 'Y', '1', null);
 
 -- ----------------------------
 -- Table structure for room_type
@@ -669,8 +670,8 @@ INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null
 INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', '../reception/register.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/receptionNews.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelContrast.html', '1', null, null, null);
-INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomContrast.html', '2', null, null, null);
+INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', null, null, null);
+INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', null, null, null);
 INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', null, null, null);
 INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', null, null, '');
@@ -756,4 +757,4 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', '2018-05-02 09:24:37', null, null, null, null);
+INSERT INTO `sys_user` VALUES ('1', 'admin', '管理员', 'admin', 'LAPTOP-DGQRDS9J:192.168.1.108', '2018-05-06 12:22:31', null, null, null, null);
