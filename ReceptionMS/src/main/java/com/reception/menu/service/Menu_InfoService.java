@@ -34,12 +34,16 @@ public class Menu_InfoService implements Menu_InfoApi {
     @Transactional
     @Override
     public int InsertMenu_Info(Menu_Info menu_info) {
+    	int max_id = menu_InfoMapper.selectMaxId();
+    	menu_info.setId(max_id);
+    	menu_info.setMenu_number("T"+max_id);
         int num = menu_InfoMapper.InsertMenu_Info(menu_info);
-       /* if(num > 0) {
+        if(num > 0) {
             for (Food_Info food_info : menu_info.getFood_infos()) {
+            	food_info.setFood_number("T"+max_id);
                 num = menu_InfoMapper.InsertFood_Info(food_info);
             }
-        }*/
+        }
         return num;
     }
 
@@ -54,11 +58,12 @@ public class Menu_InfoService implements Menu_InfoApi {
         int num = menu_InfoMapper.UpdateMenu_Info(menu_info);
         if(num > 0){
             //2.执行删除菜品信息
-           menu_InfoMapper.deleteFood_Info(menu_info.getId());
+           menu_InfoMapper.deleteFood_Info(menu_info.getMenu_number());
            if(menu_info.getFood_infos() != null){
 	           for(Food_Info food_info : menu_info.getFood_infos()) {
-	               //插入菜品信息
-	               menu_InfoMapper.InsertFood_Info(food_info);
+	        	   food_info.setFood_number(menu_info.getMenu_number());
+	        	   //插入菜品信息
+	        	   num = menu_InfoMapper.InsertFood_Info(food_info);
 	           }
            }
           }
@@ -86,8 +91,8 @@ public class Menu_InfoService implements Menu_InfoApi {
      * @return
      */
     @Override
-    public Menu_Info selectMenu_InfoById(int id) {
-        Menu_Info  menu_info = menu_InfoMapper.selectMenu_InfoById(id);
+    public Menu_Info selectMenu_InfoById(String menu_number) {
+        Menu_Info  menu_info = menu_InfoMapper.selectMenu_InfoById(menu_number);
         List<Food_Info> food_infos = menu_InfoMapper.SelectFood_Info(menu_info.getMenu_number());
         menu_info.setFood_infos(food_infos);
         return menu_info;
@@ -99,13 +104,21 @@ public class Menu_InfoService implements Menu_InfoApi {
      * @return
      */
     @Override
-    public int deleteMenu_Info(int id) {
-        int num = menu_InfoMapper.deleteMenu_Info(id);
+    public int deleteMenu_Info(String menu_number) {
+        int num = menu_InfoMapper.deleteMenu_Info(menu_number);
         if(num > 0){
-            num =  menu_InfoMapper.deleteFood_Info(id);
+            num =  menu_InfoMapper.deleteFood_Info(menu_number);
         }
         return num;
     }
-
+    
+    /**
+     * 查询菜品信息
+     * @return
+     */
+    @Override
+    public List<Food_Info> SelectFood_InfoList(){
+    	return menu_InfoMapper.SelectFood_InfoList();
+    }
 
 }

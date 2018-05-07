@@ -10,6 +10,14 @@
 		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="../assets/js/pagination.min.js"></script>
 		<script type="text/javascript" src="./js/menuInformation.js"></script>
+		<style type="text/css">
+			.tabTbody button{
+					width: 100%;
+					height: 100%;
+					color: red;
+					font-weight:bold;	
+				}
+		</style>
 	</head>
 	<body>
 		<div class="operationsArea">
@@ -18,21 +26,17 @@
 						<u class="xz"></u>
 						新增
 					</button>
-					<button>
-						<u class="fzxz"></u>
-						复制新增
-					</button>
-					<button onclick="edit()">
+					<button onclick="edit_menu()">
 						<u class="bj"></u>
 						编辑
 					</button>
-					<button onclick="dele()">
+					<button onclick="delete_menu()">
 						<u class="sc"></u>
 						删除
 					</button>
-					<button>
+					<button onclick="select_detail()">
 						<u class="dyyl"></u>
-						打印预览
+						查看详情
 					</button>
 					<button>
 						<u class="dy"></u>
@@ -42,31 +46,20 @@
 						<u class="dr"></u>
 						导入
 					</button>
-					<button>
+					<button onclick="export_menu()">
 						<u class="dc"></u>
-						导出
+						导出套餐
 					</button>
-					<button>
-						<u class="sh"></u>
-						审核
+					<button onclick="export_food()">
+						<u class="dc"></u>
+						导出菜品
 					</button>
-					<button>
-						<u class="cx"></u>
-						撤销
-					</button>
-					<button>
-						<u class="sx"></u>
-						刷新
-					</button>	 
-					<button onclick="shut()" class="m-0">
-						<u class="gb"></u>
-						关闭
-					</button>				 
 			</div>
 		<div class="tab">
 			<table class="table" cellspacing="0">
 				<thead>
 					<tr>
+						<th>选择</th>
 						<th>套餐编号</th>
 						<th>套餐类型</th>
 						<th>酒店名称</th>
@@ -84,7 +77,7 @@
 		</div>
 		</div>	
 		<!--模态框-->
-		<div class="modal block" id="modal">
+		<div class="Tmodal modal block" id="modal">
 			<div class="box">
 				<h4 class="overflow">
 					<p class="lt">
@@ -95,59 +88,85 @@
 					</p>
 				</h4>
 				<div class="mbody">
-				<form action="#">
-					<div class="overflow">
+					<div class="inputs overflow">
 						<div class="lt">
-						    <label>
+							<label for="ID">
 								<span>套餐编号：</span>
 								<input type="text" name="menu_number" id="menu_number" disabled="disabled"/>
 							</label>
-							<label>
-								<span>套餐类型：</span>
-								<select id="menu_type" name="menu_type">
-									<option selected="true">请选择...</option>
-									<option  value="一般套餐">一般套餐</option>
-									<option  value="贵宾套餐">贵宾套餐</option>
-								</select>
-							</label>
-							<label>
+							<label for="HotelName">
 								<span>酒店名称：</span>
-								<input type="text" name="hotel" id="hotel"/>
-							</label>
-							<label>
-								<span>用餐时间分类：</span>
-								<select id="meals_time" name="meals_time">
-									<option selected="true">请选择...</option>
-									<option  value="早餐">早餐</option>
-									<option  value="正餐">正餐</option>
-									<option  value="晚餐">晚餐</option>
+								<select name="hotel" id="hotel">
+									<!-- 
+									<option value="东方国际大酒店">东方国际大酒店</option>
+									<option value="世纪大酒店">世纪大酒店</option>
+									<option value="光明大酒店">光明大酒店</option>
+									 -->
 								</select>
 							</label>
-							<label>
+							<label for="mealClass">
 								<span>用餐方式分类：</span>
-								<select id="meals_type" name="meals_type">
-									<option selected="true">请选择...</option>
-									<option  value="桌餐">桌餐</option>
-									<option  value="自助餐">自助餐</option>
-									<option  value="工作餐">工作餐</option>
+								<select name="meals_type" id="meals_type">
+									<option value="自助餐">自助餐</option>
+									<option value="桌餐">桌餐</option>
+									<option value="工作餐">工作餐</option>
 								</select>
 							</label>
-							<label>
+						</div>
+						<div class="rt">
+							<label for="info">
+								<span>套餐信息：</span>
+								<select name="menu_type" id="menu_type">
+									<option value="一般套餐">一般套餐</option>
+									<option value="贵宾套餐">贵宾套餐</option>
+								</select>
+							</label>
+							<label for="timeClass">
+								<span>用餐时间分类：</span>
+								<select name="meals_time" id="meals_time">
+									<option value="早餐">早餐</option>
+									<option value="正餐">正餐</option>
+									<option value="晚餐">晚餐</option>
+								</select>
+							</label>
+							<label for="">
 								<span>标准分类：</span>
-								<select id="standard" name="standard">
-									<option selected="true">请选择...</option>
-									<option  value="30">30</option>
-									<option  value="50">50</option>
-									<option  value="100">100</option>
+								<select name="standard" id="standard">
+									<option value="30">30</option>
+									<option value="40">40</option>
+									<option value="50">50</option>
+									<option value="58">58</option>
+									<option value="60">60</option>
+									<option value="70">70</option>									
+									<option value="80">80</option>
+									<option value="100">100</option>
+									<option value="120">120</option>
+									<option value="150">150</option>
 								</select>
 							</label>
-							<label>
-								<span>备注</span>
-								<textarea name="" rows="5" cols="30" id="remark"></textarea>
+						</div>
+						<div style="clear: left;font-size: 0.825vw;padding: 0px 0.4vw;">
+							<label for="remarks">
+								<span>备注：</span>
+								<textarea name="remarks" rows="" cols="" id="remarks"></textarea>
 							</label>
-					 </div>					
-				   </div>					
-				 </form>
+						</div>
+					</div>
+					<div class="tab">
+						<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
+							 <thead>
+							 	<tr>
+							 		<th>菜品名称</th>
+							 		<th>菜品单价</th>
+							 		<th>菜品类型</th>
+							 		<th>备注</th>
+							 		<th>操作</th>
+							 	</tr>
+							 </thead>
+						</table>
+						<table border="1" cellspacing="0" cellpadding="0" class="tabTbody" id="food_infos" >
+						</table>
+					</div>
 				</div>
 				<div class="mfoot" align="center">
 					<button id="tijiao">
@@ -160,6 +179,7 @@
 					</button>
 				</div>
 			</div>
+			
 		</div>
 	</body>
 	

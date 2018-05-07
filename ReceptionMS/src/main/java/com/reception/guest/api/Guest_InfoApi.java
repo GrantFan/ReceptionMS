@@ -52,4 +52,9 @@ public interface Guest_InfoApi {
      */
     Guest_Info SelectGuest_InfoById(int id);
 
-}
+    /**
+     * 查询全部图片路径
+     * @return
+     */
+    List<String> selectUrl();
+ }

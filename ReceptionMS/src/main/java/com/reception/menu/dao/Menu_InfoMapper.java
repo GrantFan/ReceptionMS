@@ -45,16 +45,16 @@ public interface Menu_InfoMapper {
      * @param menu_number
      * @return
      */
-    @Select("select * from MENU_INFO m where m.id=#{id}")
-    Menu_Info selectMenu_InfoById(int id);
+    @Select("select * from MENU_INFO m where m.menu_number=#{menu_number}")
+    Menu_Info selectMenu_InfoById(String menu_number);
 
     /**
      * 删除套餐信息
      * @param id
      * @return
      */
-    @Delete("delete  from MENU_INFO where id=#{id}")
-    int deleteMenu_Info(int id);
+    @Delete("delete  from MENU_INFO where menu_number=#{menu_number}")
+    int deleteMenu_Info(String menu_number);
 
     /**
      * 添加菜品信息
@@ -69,14 +69,29 @@ public interface Menu_InfoMapper {
      * @param id
      * @return
      */
-    @Delete("delete  from FOOD_INFO where id=#{id}")
-    int deleteFood_Info(int id);
+    @Delete("delete  from FOOD_INFO where food_number=#{food_number}")
+    int deleteFood_Info(String food_number);
 
     /**
      * 查询菜品信息
      * @param food_number
      * @return
      */
-    @Select("select * from food_info where food_number=#{food_number}")
+    @Select("select * from food_info where food_number=#{food_number} order by id")
     List<Food_Info> SelectFood_Info(String food_number);
+    
+    /**
+     * 查询最大id
+     * @return
+     */
+    @Select("select max(id)+1 from MENU_INFO ")
+    int selectMaxId();
+    
+    /**
+     * 查询菜品信息
+     * @param food_number
+     * @return
+     */
+    @Select("select * from food_info  order by food_number")
+    List<Food_Info> SelectFood_InfoList();
 }

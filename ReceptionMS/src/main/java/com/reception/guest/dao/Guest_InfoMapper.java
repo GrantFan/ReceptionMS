@@ -46,7 +46,10 @@ public interface Guest_InfoMapper {
      * 初始化宾客信息
      * @return
      */
-    @Select("select * from guest_info order by id")
+    @Select("SELECT a.id,a.guest_name,a.main_position,a.deputy_position,a.office_area,b.name AS xb,DATE_FORMAT(a.birth_date,'%Y-%m-%d') as birthDate,"+
+  "d.name as nation_name,c.name as education_name,a.origin_place,a.telphone,a.phone,"+
+  "a.email,a.address,a.guest_type,a.remark FROM guest_info a,dm_sex b,dm_education c,dm_nation d"+
+  " WHERE (a.sex = b.value and a.nation = d.value and a.education = c.value) order by a.id")
     List<Guest_Info> SelectGuest_Info();
 
     /**
@@ -55,4 +58,11 @@ public interface Guest_InfoMapper {
      */
     @Select("select * from guest_info where id = #{id}")
     Guest_Info SelectGuest_InfoById(int id);
+    
+    /**
+     * 查询全部图片的名字
+     * @return
+     */
+    @Select("select url from guest_info where url is not null")
+    List<String> selectUrl();
 }

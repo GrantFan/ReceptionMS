@@ -70,4 +70,14 @@ public class Guest_InfoService implements Guest_InfoApi{
     public Guest_Info SelectGuest_InfoById(int id) {
         return guest_InfoMapper.SelectGuest_InfoById(id);
     }
+
+    /**
+     * 查询全部图片路径
+     */
+	@Override
+	public List<String> selectUrl() {
+		return guest_InfoMapper.selectUrl();
+	}
+    
+    
 }

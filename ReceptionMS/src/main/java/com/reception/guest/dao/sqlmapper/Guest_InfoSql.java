@@ -40,6 +40,7 @@ public class Guest_InfoSql {
                 VALUES("address", "#{address}");
                 VALUES("guest_type", "#{guest_type}");
                 VALUES("remark", "#{remark}");
+                VALUES("url", "#{url}");
             }
         }.toString();
         log.info("添加宾客信息：" + sql);
@@ -70,6 +71,7 @@ public class Guest_InfoSql {
                     SET("address = #{address}");
                     SET("guest_type = #{guest_type}");
                     SET("remark = #{remark}");
+                    SET("url = #{url}");
                     WHERE("id=#{id}");
                 }
             }.toString();

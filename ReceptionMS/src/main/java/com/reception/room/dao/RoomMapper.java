@@ -17,7 +17,26 @@ public interface RoomMapper {
 			+ "values(#{roomNumber},#{hotel},#{floor},#{roomType},#{specialType},#{orientation},#{supportFacilities},#{specialServe},#{outsidePhone},#{innerlinePhone},#{responsiblePerson},#{rackPrice},#{agreementPrice},#{containFood},#{state},#{remark} )")
 	public int addRoomInfo(RoomInfoEntity room);
 	
-	@Update("update room_info set hotel_name=#{hotelName},linkman=#{linkman},telphone=#{telphone},phone=#{phone},area=#{area},address=#{address} ,plane_graph=#{planeGraph},remark=#{remark} where id=#{id}")
+	@Update({"<script>",
+			 "update room_info set",
+			 " hotel = #{hotel},",
+			 " room_number = #{roomNumber},",
+			 " floor = #{floor},",
+			 " room_type = #{roomType},",
+			 " special_type = #{specialType},",
+			 " orientation = #{orientation},",
+			 " support_facilities = #{supportFacilities},",
+			 " special_serve = #{specialServe},",
+			 " outside_phone = #{outsidePhone},",
+			 " innerline_phone = #{innerlinePhone},",
+			 " responsible_person = #{responsiblePerson},",
+			 " rack_price = #{rackPrice},",
+			 " agreement_price = #{agreementPrice},",
+			 " contain_food = #{containFood},",
+			 " state = #{state},",
+			 " remark = #{remark}",
+			 " where id = #{id}",
+	"</script>"})
 	public int updateRoomInfo(RoomInfoEntity room);
 	
 	@Delete("delete from room_info where id = #{id}")
@@ -49,4 +68,7 @@ public interface RoomMapper {
 	
 	@Select("select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where hotel=#{hotel} and room_type=#{roomType} order by room_number")
 	public List<RoomInfoEntity> selectByRoomType(RoomInfoEntity room);
+
+	@Select("select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where id=#{id} ")
+	public RoomInfoEntity selectById(String id);
 }

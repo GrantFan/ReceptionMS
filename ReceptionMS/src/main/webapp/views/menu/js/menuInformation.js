@@ -2,6 +2,7 @@ $(function(){
     document.getElementById("modal").style.visibility="hidden";//隱藏
     //初始化賓客信息
     select_menu(1,5);
+    select_hotel();
     //page();
 })
 
@@ -10,6 +11,8 @@ function add_menu(){
     document.getElementById("modal").style.visibility="visible";//显示
     $('.modal').show(500);
     $("#tijiao").show();
+    $('.Tmodal table.tabTbody').empty();
+    trAdd();
     $("#tijiao").attr("onclick","save_menu()");
     $("#modal input").val("");
 	$("#modal select").val("请选择...");
@@ -35,10 +38,11 @@ function select_menu(pageNum,pageSize){
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
             		var list = result.list[i];
-            		info.append("<tr><td  id= 'id' style='display:none' >"+list.id+
-            				"</td><td onclick='select_detail("+list.id+")'>"+list.menu_number+
-            				"</td><td onclick='delete_menu("+list.id+")'>"+list.menu_type+
-            				"</td><td onclick='edit_menu("+list.id+")'>"+list.hotel+
+            		info.append("<tr><td><label><input type='radio' name='mean_info' value="+list.menu_number+"><u></u></label></td>"+
+            				"<td  id= 'id' style='display:none' >"+list.id+
+            				"</td><td>"+list.menu_number+
+            				"</td><td>"+list.menu_type+
+            				"</td><td>"+list.hotel+
             				"</td><td>"+list.meals_time+
             				"</td><td>"+list.meals_type+
             				"</td><td>"+list.standard+
@@ -103,21 +107,43 @@ function page(result){
 }
 
 /**
+ * 将套餐信息，拼接成字符串，提交
+ */
+ function getList(){
+	 
+	  var table = document.getElementById("food_infos");
+	  var tr = table.getElementsByTagName("tr");
+	  var str='{"menu_number" :"'+ $('#menu_number').val()+
+			  '","menu_type" : "'+ $('#menu_type').val()+
+		   	  '","hotel" : "'+$('#hotel').val() +
+		   	   '","meals_time" :"'+ $('#meals_time').val()+
+		   	   '","meals_type" :"'+ $('#meals_type').val()+
+		       '","standard" :"'+ $('#standard').val()+
+		  	   '","remark" : "'+ $('#remarks').val()+
+  	           '","food_infos" : ['; 
+	  for(i=0;i< tr.length -1;i++){
+		  if($('input[name="food_name"]')[i].value != ""){
+		str += '{"food_name"'+':"'+ $('input[name="food_name"]')[i].value+
+		 '","price"'+':"'+ $('input[name="price"]')[i].value+
+		 '","type"'+':"'+ $('input[name="type"]')[i].value+
+		 '","remark"'+':"'+ $('input[name="remark"]')[i].value+'"},';
+	    }
+      }
+	  str = str.substring(0,str.length-1)+']}';
+	  //alert(str);
+	  return str;
+  }
+
+/**
  * 提交添加的数据
  */
 function save_menu(){
 	  $.ajax({
           url:'/ReceptionMS/menu_info/insert',
-          type:'POST',
-          data:{
-        	  "menu_number" : $('#menu_number').val(),
-			  "menu_type" : $('#menu_type').val(),
-		   	  "hotel" : $('#hotel').val(),
-		   	   "meals_time" : $('#meals_time').val(),
-		   	   "meals_type" : $('#meals_type').val(),
-		       "standard" : $('#standard').val(),
-		  	   "remark" : $('#remark').val()
-         },
+          type:'PUT',
+          dataType: 'JSON',
+          data: getList(),
+          contentType:"application/json",//*****和application-servlet.xml配置相同 
           success:function(data){
         	  alert("添加成功！");
         	  $("#modal input").val("");
@@ -135,22 +161,32 @@ function save_menu(){
 /**
  * 查看详情
  */
-function select_detail(id){
-	 document.getElementById("modal").style.visibility="visible";//显示
-	  $('.modal').show(500);
-	  $("#tijiao").hide();
-	  selectById(id);
+function select_detail(){
+	  var obj = document.getElementsByName("mean_info");
+	  var menu_number = "";
+	  for(k in obj){
+	        if(obj[k].checked)
+	        	menu_number = obj[k].value;
+	   }
+	  if(menu_number != ""){
+		 document.getElementById("modal").style.visibility="visible";//显示
+		  $('.modal').show(500);
+		  $("#tijiao").hide();
+		  selectById(menu_number);
+	  }else{
+		  alert("请选择一条记录...");
+	  }
 }
 
 /**
  * 根据id，查询详细的信息
  */
-function selectById(id){
+function selectById(menu_number){
 	  $.ajax({
           url:'/ReceptionMS/menu_info/selectById',
           type:'GET',
           data:{
-      	    "id" : id
+      	    "menu_number" : menu_number
          },
           success:function(data){
         	  var result =  eval('(' + data + ')');
@@ -162,6 +198,18 @@ function selectById(id){
             	   $('#meals_type').val(result.meals_type),
                    $('#standard').val(result.standard),
            	       $('#remark').val(result.remark)
+        		  $('.Tmodal table.tabTbody').empty();
+              	//渲染数据
+              	for(var i =0;i< result.food_infos.length;i++){
+              		var list = result.food_infos[i];
+              		$('.Tmodal table.tabTbody').append('<tr><td><input type="text" name="food_name"  value="'+list.food_name+'"/></td>'
+            		+'<td><input type="number" name="price" value="'+(list.price==null? "": list.price)+'"/></td>'
+            		+'<td><input type="text" name="type" value="'+(list.type==null? "": list.type)+'"/></td>'	
+            		+'<td><input type="text" name="remark" value="'+(list.remark==null? "": list.remark)+'"/></td>'	
+            		+'<td><button onclick="trDel(this)">×</button></td>'
+            		+'</tr>');
+              	}
+              	trAdd();
         	  }
         	    
           },
@@ -172,63 +220,135 @@ function selectById(id){
 }
 
 /**
- * 删除客户信息
+ * 删除菜单信息
  */
-function delete_menu(id){
-	if (confirm("确认删除吗?")==true){
-		$.ajax({
-	         url:"/ReceptionMS/menu_info/delete?id="+id,
-	         type:"delete",
-	         success:function(data){
-	        	 alert("删除成功");
-	        	 window.location.reload();
-	        	 //select_menu(1,5);
-	            },
-	         error:function(){
-	            	alert("请求发生异常！");
-	          }
-	         });
+function delete_menu(){
+	var obj = document.getElementsByName("mean_info");
+	   var menu_number = "";
+	   for(k in obj){
+	        if(obj[k].checked)
+	        	menu_number = obj[k].value;
+	    }
+	  if(menu_number != ""){
+		if (confirm("确认删除吗?")==true){
+			$.ajax({
+		         url:"/ReceptionMS/menu_info/delete?menu_number="+menu_number,
+		         type:"delete",
+		         success:function(data){
+		        	 alert("删除成功");
+		        	 window.location.reload();
+		        	 //select_menu(1,5);
+		            },
+		         error:function(){
+		            	alert("请求发生异常！");
+		          }
+		         });
+		  }
+	  }else{
+		  alert("请选择一条记录...");
 	  }
 }
 
 /**
  * 编辑菜单栏
  */
-function edit_menu(id){
-	 document.getElementById("modal").style.visibility="visible";//显示
+function edit_menu(){
+	 var obj = document.getElementsByName("mean_info");
+	   var menu_number = -1;
+	   for(k in obj){
+	        if(obj[k].checked)
+	        	menu_number = obj[k].value;
+	    }
+	  if(menu_number != -1){
+	    document.getElementById("modal").style.visibility="visible";//显示
 	    $('.modal').show(500);
 	    $("#tijiao").show();
-	    $("#tijiao").attr("onclick","update_menu("+id+")");
-	    selectById(id);
+	    //trAdd();
+	    $("#tijiao").attr("onclick","update_menu()");
+	    selectById(menu_number);
+	  }else{
+			 alert("请选择一条记录...");
+	}
 }
 
 /**
  *提交编辑后的内容
  */
-function update_menu(id){
+function update_menu(){
 	$.ajax({
         url:'/ReceptionMS/menu_info/update',
-        type:'POST',
-        data:{
-        	"id" : id,
-        	"menu_number" : $('#menu_number').val(),
-			"menu_type" : $('#menu_type').val(),
-		   	"hotel" : $('#hotel').val(),
-		   	"meals_time" : $('#meals_time').val(),
-		    "meals_type" : $('#meals_type').val(),
-		    "standard" : $('#standard').val(),
-	        "remark" : $('#remark').val()
-       },
+        type:'PUT',
+        dataType: 'JSON',
+        data: getList(),
+        contentType:"application/json",//*****和application-servlet.xml配置相同 
         success:function(data){
       	  alert("修改成功！");
       	  $("#modal input").val("");
       	  $("#modal select").val("请选择...");
       	  document.getElementById("modal").style.visibility="hidden";//隱藏
-      	 // select_guest();
-      	 window.location.reload();
+      	  //select_menu();
+      	  window.location.reload();
         },
         error:function(){
       	  alert("修改信息发生异常！");
         }
     });
+}
+
+
+/**
+ * 输入食物信息
+ */
+function trAdd(){
+	var tr ='<tr><td><input type="text" name="food_name" onchange="trAdd()"/></td>'
+		+'<td><input type="number" name="price"></td>'
+		+'<td><input type="text" name="type"/></td>'	
+		+'<td><input type="text" name="remark"/></td>'	
+		+'</tr>';
+    $('.Tmodal table.tabTbody').append(tr)
+}
+
+$(".tabTbody input").on('focus',function(){
+	console.log($(this).parent('td').siblings('td').children('input'))
+	console.log($(this).parent('td').siblings('td').children('input').attr('onchange',''));
+})
+
+/**
+ * 查询酒店信息
+ */
+function select_hotel(){
+	$.ajax({
+        url:'/ReceptionMS/hotel/list',
+        type:'GET',
+        data: {},
+        success:function(data){
+      	  var list = eval('(' + data + ')');
+      	  $("#hotel").empty();
+      	  for(var i =0 ; i< list.length;i++){
+      		$("#hotel").append("<option value="+list[i].hotelName+">"+list[i].hotelName+"</option>");
+      	  }
+        },
+        error:function(){
+      	  alert("修改信息发生异常！");
+        }
+    });
+}
+
+/**
+ * 删除tr
+ */
+function trDel(tr){
+	$(tr).parent('td').parent('tr').remove();
+}
+
+
+/**
+ * 导出菜单信息
+ */
+function export_menu(){
+	location.href='http://localhost:8088/ReceptionMS/menu_info/menu.xls';
+}
+
+function export_food(){
+	location.href='http://localhost:8088/ReceptionMS/menu_info/food.xls';
 }

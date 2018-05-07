@@ -57,7 +57,7 @@ public class Menu_InfoSql {
                 SET(" MEALS_TYPE=#{meals_type}");
                 SET(" STANDARD=#{standard}");
                 SET(" REMARK=#{remark}");
-                WHERE("ID=#{id}");
+                WHERE("MENU_NUMBER=#{menu_number}");
             }
         }.toString();
         log.info("更新套餐信息："+sql.toString());

@@ -12,6 +12,7 @@ function add_guest(){
     $("#tijiao").show();
     $("#tijiao").attr("onclick","save_guest()");
     $("#modal input").val("");
+  	$("#thumburlShow").attr("src","");
 	$("#modal select").val("请选择...");
 }  
 
@@ -32,15 +33,17 @@ function select_guest(pageNum,pageSize){
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
             		var list = result.list[i];
-            		info.append("<tr><td  id= 'id' style='display:none' >"+list.id+
-            				"</td><td onclick='select_detail("+list.id+")'>"+list.guest_name+
-            				"</td><td onclick='delete_guest("+list.id+")'>"+list.main_position+
+            		info.append("<tr><td><label><input type='radio' name='gueat_info' value="+list.id+
+            				"><u></u></label></td>"+
+            				"<td  id= 'id' style='display:none' >"+list.id+
+            				"</td><td>"+list.guest_name+
+            				"</td><td>"+list.main_position+
             				"</td><td>"+list.deputy_position+
             				"</td><td>"+list.office_area+
-            				"</td><td>"+list.sex+
-            				"</td><td onclick='edit_guest("+list.id+")'>"+list.birth_date+
-            				"</td><td>"+list.nation+
-            				"</td><td>"+list.education+
+            				/*"</td><td>"+list.sex+*/
+            				"</td><td>"+list.birth_date+
+            				/*"</td><td>"+list.nation+
+            				"</td><td>"+list.education+*/
             				"</td><td>"+list.origin_place+
             				"</td><td>"+list.telphone+
             				"</td><td>"+list.phone+
@@ -129,12 +132,14 @@ function save_guest(){
       	    "email" : $('#add_email').val(),
       	    "address" : $('#add_address').val(),
       	    "guest_type" : $('#add_guest_type').val(),
-      	    "remark" : $('#add_remark').val()
+      	    "remark" : $('#add_remark').val(),
+      	    "url" : $("#thumburlShow").attr("src")
          },
           success:function(data){
         	  alert("添加成功！");
         	  $("#modal input").val("");
         	  $("#modal select").val("请选择...");
+            	$("#thumburlShow").attr("src","");
         	  document.getElementById("modal").style.visibility="hidden";//隱藏
         	  //select_guest();
         	  window.location.reload();
@@ -148,11 +153,21 @@ function save_guest(){
 /**
  * 查看详情
  */
-function select_detail(id){
-	 document.getElementById("modal").style.visibility="visible";//显示
-	  $('.modal').show(500);
-	  $("#tijiao").hide();
-	  selectById(id);
+function select_detail(){
+	  var obj = document.getElementsByName("gueat_info");
+	  var id = -1;
+	  for(k in obj){
+	        if(obj[k].checked)
+	           id = obj[k].value;
+	   }
+	  if(id != -1){
+		  document.getElementById("modal").style.visibility="visible";//显示
+		  $('.modal').show(500);
+		  $("#tijiao").hide();
+		  selectById(id);
+	  }else{
+		  alert("请选择一条记录...");
+	  }
 }
 
 /**
@@ -168,6 +183,7 @@ function selectById(id){
           success:function(data){
         	  var result =  eval('(' + data + ')');
         	  if(result != null){
+        		   $('#id').val(id),
         		   $('#add_guest_name').val(result.guest_name),
             	   $('#add_main_position').val(result.main_position),
             	   $('#add_deputy_position').val(result.deputy_position),
@@ -182,7 +198,8 @@ function selectById(id){
            	       $('#add_email').val(result.email),
            	       $('#add_address').val(result.address),
            	       $('#add_guest_type').val(result.guest_type),
-           	       $('#add_remark').val(result.remark)
+           	       $('#add_remark').val(result.remark),
+           	    $("#thumburlShow").attr("src",result.url);//显示图片        
         	  }
         	    
           },
@@ -195,30 +212,50 @@ function selectById(id){
 /**
  * 删除客户信息
  */
-function delete_guest(id){
-	if (confirm("确认删除吗?")==true){
-		$.ajax({
-	         url:"/ReceptionMS/guest/delete?id="+id,
-	         type:"delete",
-	         success:function(data){
-	        	 alert("删除成功");
-	        	 //select_guest(1,5);
-	        	 window.location.reload();
-	            },
-	         error:function(){
-	            	alert("请求发生异常！");
-	          }
-	         });
+function delete_guest(){
+	var obj = document.getElementsByName("gueat_info");
+	   var id = -1;
+	   for(k in obj){
+	        if(obj[k].checked)
+	           id = obj[k].value;
+	    }
+	  if(id != -1){
+		if (confirm("确认删除吗?")==true){
+			$.ajax({
+		         url:"/ReceptionMS/guest/delete?id="+id,
+		         type:"delete",
+		         success:function(data){
+		        	 alert("删除成功");
+		        	 //select_guest(1,5);
+		        	 window.location.reload();
+		            },
+		         error:function(){
+		            	alert("请求发生异常！");
+		          }
+		         });
+			}
+	  }else{
+		  alert("请选择一条记录...");
 	  }
 }
 
-function edit_guest(id){
-	 document.getElementById("modal").style.visibility="visible";//显示
-	    $('.modal').show(500);
-	    $("#tijiao").show();
-	    $("#tijiao").attr("onclick","update_guest("+id+")");
-	    selectById(id);
-}
+function edit_guest(){
+	 var obj = document.getElementsByName("gueat_info");
+	   var id = -1;
+	   for(k in obj){
+	        if(obj[k].checked)
+	           id = obj[k].value;
+	    }
+	  if(id != -1){
+		 document.getElementById("modal").style.visibility="visible";//显示
+		    $('.modal').show(500);
+		    $("#tijiao").show();
+		    $("#tijiao").attr("onclick","update_guest("+id+")");
+		    selectById(id);
+	 }else{
+		 alert("请选择一条记录...");
+	}
+	 }
 
 function update_guest(id){
 	$.ajax({
@@ -240,12 +277,14 @@ function update_guest(id){
     	    "email" : $('#add_email').val(),
     	    "address" : $('#add_address').val(),
     	    "guest_type" : $('#add_guest_type').val(),
-    	    "remark" : $('#add_remark').val()
+    	    "remark" : $('#add_remark').val(),
+    	    "url": $("#thumburlShow").attr("src")
        },
         success:function(data){
       	  alert("修改成功！");
       	  $("#modal input").val("");
       	  $("#modal select").val("请选择...");
+      	 $("#thumburlShow").attr("src","");
       	  document.getElementById("modal").style.visibility="hidden";//隱藏
       	 // select_guest();
       	 window.location.reload();
@@ -254,4 +293,75 @@ function update_guest(id){
       	  alert("修改信息发生异常！");
         }
     });
+}
+
+/**
+ * 上传图片
+ */
+function setImg(obj){//用于进行图片上传，返回地址
+   //获取当前用户id
+	var id = $("#id").val();
+	var f=$(obj).val();
+    if(f == null || f ==undefined || f == ''){
+        return false;
+    }
+    if(!/\.(?:png|jpg|bmp|gif|PNG|JPG|BMP|GIF)$/.test(f))
+    {
+        alert("类型必须是图片(.png|jpg|bmp|gif|PNG|JPG|BMP|GIF)");
+        $(obj).val('');
+        return false;
+    }
+    var data = new FormData();
+    $.each($(obj)[0].files,function(i,file){
+        data.append('file', file);
+    })
+    $.ajax({
+        type: "POST",
+        url: "/ReceptionMS/guest/uploadImg?id="+id,
+        data: data,
+        cache: false,
+        contentType: false,    //不可缺
+        processData: false,    //不可缺
+        dataType:"json",
+        success: function(suc) {
+            if(suc.code==0){
+                   // $("#thumbUrl").val(suc.message);//将地址存储好
+                    $("#thumburlShow").attr("src",suc.message);//显示图片        
+                   // alert(suc.message);
+                }else{
+                alertLayel("上传失败");
+                $("#url").val("");
+                $(obj).val(''); 
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("上传失败，请检查网络后重试");
+            $("#url").val("");
+            $(obj).val('');
+        }
+    });
+}
+
+function delete_img(){
+	 $.ajax({
+	        type: "POST",
+	        url: "/ReceptionMS/guest/deleteImg",
+	        data: {
+	        },
+	        success: function(data) {
+                alert("删除成功！");
+                $("#thumburlShow").attr("src","");//显示图片
+	        },
+	        error: function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert($("#thumburlShow").attr("src"));
+	        }
+	    });
+}
+
+
+/**
+ * 导出酒店信息信息
+ */
+function export_guest(){
+	location.href='http://localhost:8088/ReceptionMS/guest/guest.xls';
 }

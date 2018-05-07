@@ -12,6 +12,9 @@ function hotelShow(input){
 			var obj = eval(data);
 			//console.log(obj);
 			$("#hotel").empty();
+			$("#hotel").append(
+				"<option value=''>-----请选择酒店-----</option>"
+			);
 			for (var i = 0, len = obj.length; i < len; i++) {
 				$("#hotel").append(
 					"<option value='" + obj[i].id + "'>" + obj[i].hotelName + "</option>"
@@ -42,6 +45,9 @@ function floorShow(hotel){
 			var obj = eval(data);
 			//console.log(obj);
 			$("#floor").empty();
+			$("#floor").append(
+				"<option value=''>-----请选择楼层-----</option>"
+			);
 			for (var i = 0, len = obj.length; i < len; i++) {
 				$("#floor").append(
 					"<option value='" + obj[i].floor + "'>" + obj[i].floor + "楼</option>"

@@ -1,8 +1,11 @@
 package com.reception.menu.api;
 
+import com.reception.menu.entity.Food_Info;
 import com.reception.menu.entity.Menu_Info;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @author zhangwei
@@ -33,15 +36,22 @@ public interface Menu_InfoApi {
 
     /**
      * 根据菜单编号查询套餐信息
-     * @param id
+     * @param menu_number
      * @return
      */
-    Menu_Info selectMenu_InfoById(int id);
+    Menu_Info selectMenu_InfoById(String menu_number);
 
     /**
      * 删除彩品信息
-     * @param id
+     * @param menu_number
      * @return
      */
-    int deleteMenu_Info(int id);
+    int deleteMenu_Info(String menu_number);
+    
+    
+    /**
+     * 查询菜品信息
+     * @return
+     */
+    List<Food_Info> SelectFood_InfoList();
 }

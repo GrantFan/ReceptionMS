@@ -18,21 +18,17 @@
 						<u class="xz"></u>
 						新增
 					</button>
-					<button>
-						<u class="fzxz"></u>
-						复制新增
-					</button>
-					<button onclick="edit()">
+					<button onclick="edit_guest()">
 						<u class="bj"></u>
 						编辑
 					</button>
-					<button onclick="dele()">
+					<button onclick="delete_guest()">
 						<u class="sc"></u>
 						删除
 					</button>
-					<button>
+					<button onclick="select_detail()">
 						<u class="dyyl"></u>
-						打印预览
+						    查看详情
 					</button>
 					<button>
 						<u class="dy"></u>
@@ -42,73 +38,24 @@
 						<u class="dr"></u>
 						导入
 					</button>
-					<button>
+					<button  onclick="export_guest()">
 						<u class="dc"></u>
 						导出
 					</button>
-					<button>
-						<u class="sh"></u>
-						审核
-					</button>
-					<button>
-						<u class="cx"></u>
-						撤销
-					</button>
-					<button>
-						<u class="sx"></u>
-						刷新
-					</button>	 
-					<button onclick="shut()" class="m-0">
-						<u class="gb"></u>
-						关闭
-					</button>				 
 			</div>
-			<!-- 
-			<div class="inputs">
-					<select name="">
-						<option value=""></option>
-						<option value="">且</option>
-						<option value="">或</option>						 
-					</select>
-					<select name="">
-						<option value="">接待编号</option>
-						<option value="">接待日期</option>
-						<option value="">接待人</option>
-						<option value="">宾客姓名</option>
-						<option value="">用餐</option>
-						<option value="">用餐时间</option>
-						<option value="">宾客喜好</option>
-						<option value="">备注</option>
-					</select>
-					<select name="">
-						<option value="">等于</option>
-						<option value="">不等于</option>
-						<option value="">包含</option>
-						<option value="">不包含</option>
-						<option value="">开头是</option>
-						<option value="">开头不是</option>
-						<option value="">结尾是</option>
-						<option value="">结尾不是</option>
-						<option value="">为空</option>
-						<option value="">不为空</option>
-					</select>
-					<input type="text" />
-					<button>查询</button>
-					<button class="m-0">清空</button>
-			</div>
-	     -->
 		<div class="tab">
 			<table class="table" cellspacing="0">
 				<thead>
 					<tr>
+						<th>选择</th>
 						<th>宾客姓名</th>
 						<th>主职务</th>
 						<th>副职务</th>
 						<th>任职地区</th>
-						<th>性别</th>
+						<!-- <th>性别</th> -->
 						<th>出生日期</th>
-						<th>民族</th>
-						<th>学历</th>
+						<!-- <th>民族</th> 
+						<!-- <th>学历</th> -->
 						<th>籍贯</th>
 						<th>联系电话</th>
 						<th>家庭/办公电话</th>
@@ -146,8 +93,8 @@
 		</div>
 		</div>	
 		<!--模态框-->
-		<div class="modal block" id="modal">
-			<div class="box">
+		<div class="modal block imgModal" id="modal">
+			<div class="box" style="top:0px;">
 				<h4 class="overflow">
 					<p class="lt">
 						<span>宾客信息明细</span>
@@ -157,9 +104,9 @@
 					</p>
 				</h4>
 				<div class="mbody">
-				<form action="#">
 					<div class="overflow">
 						<div class="lt">
+								<input type="hidden" name="id" id="id" disabled="disabled"/>
 							<label>
 								<span>宾客姓名：</span>
 								<input type="text" name="add_guest_name" id="add_guest_name"/>
@@ -175,9 +122,9 @@
 							<label>
 								<span>性别：</span>
 								<select id="add_sex" name="add_sex">
-										<option selected="true">请选择...</option>
+										<option selected="true" value='0'>请选择...</option>
 										<option  value="1" >男</option>
-										<option  value="0">女</option>
+										<option  value="2">女</option>
 								</select>
 							</label>
 							<label>
@@ -198,6 +145,7 @@
 									<option value="7">白族</option>
 									<option value="8">苗族</option>
 									<option value="9">满族</option>
+									<option value="10">维吾尔族</option>
 									<option value="10">其他</option>
 								</select>
 							</label>
@@ -221,30 +169,15 @@
 								<span>家庭/办公电话：</span>
 								<input type="text" name="add_phone" id="add_phone" />
 							</label>
-							
-						</div>
-						 <div class="rt">
-							<p class="img">
-								<img src="file:///D|/00.png"/>
-							</p>
-							<button> &lArr;</button>
-							<span>（新）</span>
-							<button> &rArr; </button> 
-							<div class="btns overflow">
-								<p class="lt">
-									<button>添加
-										<input type="file" name="" id="" value="" />
-									</button>
-								</p>
-								<p class="lt">
-									<button class="lt">替换
-										<input type="file" name="" id="" value="" />
-									</button>
-								</p>
-								
-								<button class="lt" disabled="disabled">删除</button>
-							</div>
-						</div>
+					</div>
+					<div class="btns overflow">
+						 <span class="personattr">照片:</span>
+						  <span>
+					        <img id="thumburlShow" src="file:///F|/img/00.jpeg" width="120" height="120"/>
+					      </span>
+					     <input type="hidden" name="img"  id="thumbUrl"/>
+					     <input type="file" name="logoFile" id="logoFile" onchange="setImg(this);">
+					     <span onclick="delete_img()">删除</span>
 					</div>
 					<div class="">
 							<label>
@@ -267,10 +200,10 @@
 								<span>宾客类别：</span>
 								<select id="add_guest_type" name="add_guest_type">
 										<option   selected="true">请选择...</option>
-										<option value="0">小客户</option>
-										<option value="1">普通客户</option>
-										<option value="2">次要客户</option>
-										<option value="3">重要客户</option>
+										<option value="小客户">小客户</option>
+										<option value="普通客户">普通客户</option>
+										<option value="次要客户">次要客户</option>
+										<option value="重要客户">重要客户</option>
 								</select>
 							</label>
 							<label>
@@ -278,7 +211,6 @@
 								<textarea name="" rows="5" cols="30" id="add_remark"></textarea>
 							</label>
 					</div>					
-				 </form>
 				</div>
 				<div class="mfoot" align="center">
 					<button id="tijiao">
@@ -293,5 +225,4 @@
 			</div>
 		</div>
 	</body>
-	
 </html>

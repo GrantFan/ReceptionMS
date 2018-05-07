@@ -2,12 +2,16 @@ package com.reception.menu.entity;
 
 import java.io.Serializable;
 
+import com.reception.util.poi.ModelProp;
+import com.reception.util.poi.ModelTitle;
+
 /**
  * @author zhangwei
  * @description 菜品信息管理
  * @date created in 18:59 2018/4/12
  * @throws Exception
  */
+@ModelTitle(name="菜单信息")
 public class Food_Info implements Serializable{
 
     /**
@@ -17,26 +21,32 @@ public class Food_Info implements Serializable{
     /**
      * 套餐编号
      */
+   @ModelProp(name="套餐编号",colIndex=1)
    private String food_number;
     /**
      * 菜品名称
      */
+   @ModelProp(name="菜品名称",colIndex=2)
    private String food_name;
     /**
      * 菜品单价
      */
-   private Double price;
+   @ModelProp(name="菜品单价",colIndex=3)
+   private String price;
     /**
      * 菜品口味
      */
+   @ModelProp(name="菜品口味",colIndex=4)
    private String flavor;
     /**
      * 菜品类型（热菜/凉菜/主食/土产/饮品
      */
+   @ModelProp(name="菜品类型",colIndex=5)
    private String type;
     /**
      * 备注
      */
+   @ModelProp(name="备注",colIndex=6)
    private String remark;
 
     public Integer getId() {
@@ -63,11 +73,11 @@ public class Food_Info implements Serializable{
         this.food_name = food_name;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

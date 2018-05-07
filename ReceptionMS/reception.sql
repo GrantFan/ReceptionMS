@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-06 16:39:37
+Date: 2018-05-07 19:36:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -279,6 +279,22 @@ INSERT INTO `dm_room_type` VALUES ('商务单间', '3');
 INSERT INTO `dm_room_type` VALUES ('豪华套间', '4');
 
 -- ----------------------------
+-- Table structure for dm_sex
+-- ----------------------------
+DROP TABLE IF EXISTS `dm_sex`;
+CREATE TABLE `dm_sex` (
+  `name` varchar(8) DEFAULT NULL,
+  `value` int(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dm_sex
+-- ----------------------------
+INSERT INTO `dm_sex` VALUES ('男', '1');
+INSERT INTO `dm_sex` VALUES ('女', '2');
+INSERT INTO `dm_sex` VALUES ('其他', '0');
+
+-- ----------------------------
 -- Table structure for food_info
 -- ----------------------------
 DROP TABLE IF EXISTS `food_info`;
@@ -437,12 +453,13 @@ CREATE TABLE `guest_info` (
   `guest_type` varchar(255) DEFAULT NULL COMMENT '宾客类型',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='宾客信息';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='宾客信息';
 
 -- ----------------------------
 -- Records of guest_info
 -- ----------------------------
-INSERT INTO `guest_info` VALUES ('11', ' 王伟', 'w\'w', null, null, '1', null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `guest_info` VALUES ('11', ' 王伟', 'w\'w', null, null, '1', '2', null, null, '1', null, null, null, null, null, null, null);
+INSERT INTO `guest_info` VALUES ('12', ' 王伟', 'w\'w', '', '', '2', '2', '2018-05-07', null, '2', '', '', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for hotel_info
@@ -605,8 +622,8 @@ CREATE TABLE `room_info` (
   `outside_phone` varchar(15) DEFAULT NULL COMMENT '外线电话',
   `innerline_phone` varchar(15) DEFAULT NULL COMMENT '内线电话',
   `responsible_person` varchar(128) DEFAULT NULL COMMENT '房间负责人',
-  `rack_price` decimal(12,0) DEFAULT NULL COMMENT '门市价',
-  `agreement_price` decimal(12,0) DEFAULT NULL COMMENT '协议价',
+  `rack_price` varchar(12) DEFAULT NULL COMMENT '门市价',
+  `agreement_price` varchar(12) DEFAULT NULL COMMENT '协议价',
   `contain_food` varchar(10) DEFAULT NULL COMMENT '是否含餐',
   `state` varchar(10) DEFAULT NULL COMMENT '房间状态',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
@@ -616,11 +633,11 @@ CREATE TABLE `room_info` (
 -- ----------------------------
 -- Records of room_info
 -- ----------------------------
-INSERT INTO `room_info` VALUES ('1', '101', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
-INSERT INTO `room_info` VALUES ('2', '201', '3', '2', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '2', '没有');
-INSERT INTO `room_info` VALUES ('3', '102', '4', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
-INSERT INTO `room_info` VALUES ('33', '103', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '没有', '1', '没有');
-INSERT INTO `room_info` VALUES ('35', '102', '4', '3', '2', '有噪音', '南', '电脑', '没有', '123456323', null, '我', null, null, 'Y', '1', null);
+INSERT INTO `room_info` VALUES ('1', '101', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', 'Y', '1', '没有');
+INSERT INTO `room_info` VALUES ('2', '201', '3', '2', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', 'Y', '2', '没有');
+INSERT INTO `room_info` VALUES ('3', '102', '4', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', 'Y', '1', '没有');
+INSERT INTO `room_info` VALUES ('33', '103', '3', '1', '1', '没有', '南', '没有', '没有', '没有', '没有', '没有', null, '111', 'Y', '2', '没有');
+INSERT INTO `room_info` VALUES ('35', '202', '4', '2', '2', '有噪音', '南', '电脑', '没有', '123456323', '', '我', null, '', 'N', '2', '');
 
 -- ----------------------------
 -- Table structure for room_type

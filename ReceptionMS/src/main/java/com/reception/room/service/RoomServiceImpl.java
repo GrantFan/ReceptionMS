@@ -63,4 +63,9 @@ public class RoomServiceImpl implements RoomService {
 	public List<RoomInfoEntity> selectByRoomType(RoomInfoEntity room){
 		return roomMapper.selectByRoomType(room);
 	}
+
+	public RoomInfoEntity selectById(String id) {
+		// TODO Auto-generated method stub
+		return roomMapper.selectById(id);
+	}
 }

@@ -1,389 +1,119 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>数据字典维护</title>
-		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
-		<style>
-			.preview>ul.lt {
-				width: 24%;
-			}
-			
-			.preview>ol.lt {
-				width: 76%;
-			}
-			
-			.preview>ul,
-			.preview>ol {
-				border: 1px solid #000;
-			}
-			
-			.preview>ul>li>span:first-child,
-			.preview>ol p>span:first-child {
-				margin-right: 20px;
-			}
-			
-			.preview>ul>li:hover,
-			.preview>ol p:hover,
-			.preview>ul>li.active,
-			.preview>ol p.active {
-				background: #000000;
-				color: #fff;
-			}
-		</style>
-	</head>
+<head>
+<meta charset="UTF-8">
+<title>数据字典维护</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<style>
+.preview>ul.lt {
+	width: 24%;
+}
 
-	<body>
-		<div class="preview overflow">
-			<ul class="lt">
-				<li class="active">
-					<span>1</span> 学历
-				</li>
-				<li>
-					<span>2</span> 地区
-				</li>
-				<li>
-					<span>3</span>客户分别
-				</li>
-				<li>
-					<span>4</span>行政区
-				</li>
-				<li>
-					<span>5</span>套餐类型
-				</li>
-				<li>
-					<span>6</span>用餐时间分类
-				</li>
-				<li>
-					<span>7</span>用餐方式分类
-				</li>
-				<li>
-					<span>8</span>标准分类
-				</li>
-				<li>
-					<span>9</span>民族
-				</li>
-				<li>
-					<span>10</span>籍贯
-				</li>
-				<li>
-					<span>11</span>楼层
-				</li>
-				<li>
-					<span>12</span>房间类型
-				</li>
-				<li>
-					<span>13</span>房间特殊类型
-				</li>
-				<li>
-					<span>14</span>会议室类型
-				</li>
-			</ul>
-			<ol class="lt">
-				<li>
-					<div class="box">
-						<p>
-							<span>1</span>
-							<span>高中及以下</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>大专</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>本科</span>
-						</p>
-						<p>
-							<span>4</span>
-							<span>学士</span>
-						</p>
-						<p>
-							<span>5</span>
-							<span>硕士</span>
-						</p>
-						<p>
-							<span>6</span>
-							<span>博士</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box">
-						<p>
-							<span>1</span>
-							<span>华东</span>
-							<span>上海,江苏，浙江，安徽，江西</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>华南</span>
-							<span>广东，福建，广西，海南</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>华北</span>
-							<span>北京，天津，河北，山东，河南，山西，内蒙古</span>
-						</p>
-						<p>
-							<span>4</span>
-							<span>华中</span>
-							<span>湖南，湖北</span>
-						</p>
-						<p>
-							<span>5</span>
-							<span>西南</span>
-							<span>四川，重庆，贵州，云南，西藏</span>
-						</p>
-						<p>
-							<span>6</span>
-							<span>东北</span>
-							<span>辽宁，吉林，黑龙江</span>
-						</p>
-						<p>
-							<span>7</span>
-							<span>西北</span>
-							<span>陕西，甘肃，宁夏，青海，新疆</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box">
-						<p>
-							<span>1</span>
-							<span>普通用户</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>小客户</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>次要客户</span>
-						</p>
-						<p>
-							<span>4</span>
-							<span>重要客户</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>敦煌</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>肃州区</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>金塔县</span>
-						</p>
-						<p>
-							<span>4</span>
-							<span>玉门市</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>一般套餐</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>贵宾套餐</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>早餐</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>正餐</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>晚餐</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>桌餐</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>自助餐</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>工作餐</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>30</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>40</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>50</span>
-						</p>
-						<p>
-							<span>4</span>
-							<span>58</span>
-						</p>
-						<p>
-							<span>5</span>
-							<span>60</span>
-						</p>
-						<p>
-							<span>6</span>
-							<span>70</span>
-						</p>
-						<p>
-							<span>7</span>
-							<span>80</span>
-						</p>
-						<p>
-							<span>8</span>
-							<span>100</span>
-						</p>
-						<p>
-							<span>9</span>
-							<span>120</span>
-						</p>
-						<p>
-							<span>10</span>
-							<span>150</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>汉</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
+.preview>ol.lt {
+	width: 76%;
+}
 
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>一楼</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>二楼</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>三楼</span>
-						</p>
-						<p>
-							<span>4</span>
-							<span>四楼</span>
-						</p>
-						<p>
-							<span>5</span>
-							<span>五楼</span>
-						</p>
-						<p>
-							<span>6</span>
-							<span>六楼</span>
-						</p>
-						<p>
-							<span>7</span>
-							<span>七楼</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>普通标间</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>商务标间</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>商务单间</span>
-						</p>
-						<p>
-							<span>4</span>
-							<span>豪华套间</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>有柱子</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>噪音较大</span>
-						</p>
-					</div>
-				</li>
-				<li class="none">
-					<div class="box ">
-						<p>
-							<span>1</span>
-							<span>会议室</span>
-						</p>
-						<p>
-							<span>2</span>
-							<span>讲座室</span>
-						</p>
-						<p>
-							<span>3</span>
-							<span>演播室</span>
-						</p>
-					</div>
-				</li>
-			</ol>
-		</div>
-	</body>
+.preview>ul, .preview>ol {
+	border: 1px solid #000;
+}
 
-	<script type="text/javascript">
-		$(".preview>ul").on("click","li",function(){
-			$(this).addClass('active').siblings('li').removeClass('active');
-			var num = $(this).index();
-			$(".preview>ol>li").each(function(i){
-				if(i == num){
-					var el = $(".preview>ol>li")[i];
-					$(el).show().siblings('li').hide()
-				} 
-			})
-		})
-	</script>
+.preview>ul>li>span:first-child, .preview>ol p>span:first-child {
+	margin-right: 20px;
+}
+
+.preview>ul>li:hover, .preview>ol p:hover, .preview>ul>li.active,
+	.preview>ol p.active {
+	background: #000000;
+	color: #fff;
+}
+
+.preview>ol>li .box{
+	padding-right:2vw;
+	padding-left:1vw;
+}
+
+input{
+	background: transparent;
+    border: none;
+    color:#fff;
+}
+
+input:hover{
+	background: #fff;
+    border: none;
+    color:#000;
+}
+</style>
+</head>
+
+<body>
+	<div class="preview overflow">
+		<ul class="lt">
+			<li class="active"><b class="none">dm_education</b> <span>1</span>学历</li>
+			<li><b class="none">dm_area</b> <span>2</span> 地区</li>
+			<li><b class="none"></b> <span>3</span>宾客类别</li>
+			<li><b class="none">dm_district</b> <span>4</span>行政区</li>
+			<li><b class="none">dm_menu_type</b> <span>5</span>套餐类型</li>
+			<li><b class="none">dm_meals_time</b> <span>6</span>用餐时间分类</li>
+			<li><b class="none">dm_meals_type</b> <span>7</span>用餐方式分类</li>
+			<li><b class="none">dm_meals_standard</b> <span>8</span>用餐标准分类</li>
+			<li><b class="none">dm_nation</b> <span>9</span>民族</li>
+			<li><b class="none"></b><span>10</span>籍贯</li>
+			<li><b class="none"></b><span>11</span>楼层</li>
+			<li><b class="none">dm_room_type</b> <span>12</span>房间类型</li>
+			<li><b class="none">dm_room_special_type</b> <span>13</span>房间特殊类型</li>
+			<li><b class="none">dm_conference_type</b> <span>14</span>会议室类型</li>
+		</ul>
+		<ol class="lt">
+			<li>
+				<div id="box" class="box overflow"></div>
+			</li>
+		</ol>
+		<button onclick="addCloum()">新增</button>
+	</div>
+</body>
+
+<script type="text/javascript">
+	$(".preview>ul").on("click", "li", function() {
+		$(this).addClass('active').siblings('li').removeClass('active');
+		var dic_name = $(this).find("b").text();
+		//console.log(dic_name);
+		if (dic_name != '') {
+			$.get('../../dic',
+				{
+					tableName : dic_name
+				},
+				function(result) {
+					//console.log(result);
+					$("#box").empty();
+					for (var i = 0, len = result.length; i < len; i++) {
+						$("#box").append("<p class='overflow'><span class='lt'>" + result[i].value + "</span><input type=\"text\" value='"+result[i].name+"' class='lt'><button class=\"rt\">删除</button><button onclick='submit(this)' class=\"rt\">保存</button></p>");
+					}
+				}
+			);
+		} else {
+			$("#box").empty();
+		}
+	/*	var num = $(this).index();
+		$(".preview>ol>li").each(function(i){
+			if(i == num){
+				var el = $(".preview>ol>li")[i];
+				$(el).show().siblings('li').hide()
+			} 
+		}) */
+	})
+	
+	function addCloum(){
+		$("#box").append("<p class='overflow'><span class='lt'><input type=\"text\" value='' class='lt' /></span><input type=\"text\" value='' class='lt' /><button class=\"rt\">删除</button><button class=\"rt\">保存</button></p>");
+	}
+	
+	function submit(buttom){
+		console.log($(buttom).parent('p').find('span').text() + $(buttom).parent('p').find('input').val());;
+		var li = $(".preview>ul>li.active");
+		var tableName = li.find("b").text();
+		console.log(tableName);
+	}
+</script>
 </html>

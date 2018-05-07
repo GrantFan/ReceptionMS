@@ -6,10 +6,14 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.reception.exceptionfilter.EntityNotFoundException;
+import com.reception.hotel.model.HotelInfoEntity;
 import com.reception.room.model.RoomInfoEntity;
 import com.reception.room.service.RoomServiceImpl;
 import com.reception.util.JSONHelper;
@@ -106,4 +110,13 @@ public class RoomAction {
 		System.out.println(json);
 		return json;
 	};
+	
+	@RequestMapping(value = "{id}",method = RequestMethod.GET)
+	public String queryRoomById(@PathVariable("id")String id){
+		RoomInfoEntity room =  this.roomServiceImpl.selectById(id);  
+		if(room == null){
+			new EntityNotFoundException("不存在"); 
+		}
+		return JSONHelper.toJSON(room);
+	}
 }
