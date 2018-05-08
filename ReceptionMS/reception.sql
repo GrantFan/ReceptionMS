@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-07 19:36:36
+Date: 2018-05-08 11:23:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,7 +112,6 @@ INSERT INTO `dm_area` VALUES ('华南', '2', '广东、福建、广西、海南'
 INSERT INTO `dm_area` VALUES ('华北', '3', '北京、天津、河北、山东、河南、山西、内蒙古');
 INSERT INTO `dm_area` VALUES ('华中', '4', '湖北、湖南');
 INSERT INTO `dm_area` VALUES ('西南', '5', '四川、重庆、贵州、云南、西藏');
-INSERT INTO `dm_area` VALUES ('东北', '6', '辽宁、吉林、黑龙江');
 INSERT INTO `dm_area` VALUES ('西北', '7', '陕西、甘肃、宁夏、青海、新疆');
 
 -- ----------------------------
@@ -685,7 +684,7 @@ INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', '../system/log.h
 INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null, null, null);
 INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', '../reception/register.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/receptionNews.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', null, null, null, null);
 INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
 INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', null, null, null);
 INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', null, null, null);

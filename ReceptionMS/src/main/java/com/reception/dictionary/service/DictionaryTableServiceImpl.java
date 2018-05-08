@@ -31,13 +31,23 @@ public class DictionaryTableServiceImpl implements DictionaryTableService {
 	@Override
 	public int delete(DictionaryTableEntity dic) {
 		// TODO Auto-generated method stub
-		return dictionaryTableDao.add(dic);
+		return dictionaryTableDao.delete(dic);
 	}
 
 	@Override
 	public List<DictionaryTableEntity> list(DictionaryTableEntity dic) {
 		// TODO Auto-generated method stub
 		return dictionaryTableDao.list(dic);
+	}
+
+	@Override
+	public int isExist(DictionaryTableEntity dic) {
+		// TODO Auto-generated method stub
+		List<DictionaryTableEntity> list = dictionaryTableDao.selectByValue(dic);
+		if(list.size()>0){
+			return 1;
+		}
+		return 0;
 	}
 
 }

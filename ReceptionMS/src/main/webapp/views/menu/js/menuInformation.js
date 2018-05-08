@@ -318,8 +318,8 @@ $(".tabTbody input").on('focus',function(){
  */
 function select_hotel(){
 	$.ajax({
-        url:'/ReceptionMS/hotel/list',
-        type:'GET',
+        url:'/ReceptionMS/hotel/listByName',
+        type:'post',
         data: {},
         success:function(data){
       	  var list = eval('(' + data + ')');

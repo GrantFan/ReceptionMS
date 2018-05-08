@@ -19,9 +19,12 @@ public interface DictionaryTableDao {
 	@Update("update ${tableName} set name=#{name} where value=#{value}")
 	int update(DictionaryTableEntity dic);
 	
-	@Delete("delete ${tableName} where value=#{value}")
+	@Delete("delete from ${tableName} where value=#{value}")
 	int delete(DictionaryTableEntity dic);
 	
 	@Select("select name,value from ${tableName}")
 	List<DictionaryTableEntity> list(DictionaryTableEntity dic);
+	
+	@Select("select name,value from ${tableName} where value=#{value}")
+	List<DictionaryTableEntity> selectByValue(DictionaryTableEntity dic);
 }

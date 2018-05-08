@@ -12,7 +12,7 @@ public class MealsRecordEntity {
 	private String mealsTime;//用餐时间
 	private String hobby;//客人用餐喜好
 	private String recordTime;//登记时间
-	private String ramark;//备用字段
+	private String remark;//备用字段
 	
 	
 	public Integer getId() {
@@ -45,11 +45,11 @@ public class MealsRecordEntity {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	public String getRamark() {
-		return ramark;
+	public String getRemark() {
+		return remark;
 	}
-	public void setRamark(String ramark) {
-		this.ramark = ramark;
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	public String getHotel() {
 		return hotel;

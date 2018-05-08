@@ -13,4 +13,6 @@ public interface DictionaryTableService {
 	int delete(DictionaryTableEntity dic);
 	
 	List<DictionaryTableEntity> list(DictionaryTableEntity dic);
+	
+	int isExist(DictionaryTableEntity dic);
 }

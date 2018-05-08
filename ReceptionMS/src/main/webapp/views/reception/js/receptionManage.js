@@ -18,13 +18,13 @@ function showReceptionList() {
 		url : "../../recep/list",
 		success : function(data) {
 			var obj = eval(data);
-			console.log(data);
+			//console.log(data);
 			$("#tablebody").empty();
 			var tbody = "";
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr ondblclick=\"view()\">"
-					+ "<td><label><input type='checkbox' checked='checked'><span></span></label></td>"
+					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
 					+ "<td>" + obj[i].receptionNumber + "</td><td>" + obj[i].receptionTitle + "</td>"
 					+ "<td>" + obj[i].receptionDate + "</td><td>" + obj[i].receptionPerson + "</td>"
 					+ "<td>" + obj[i].receptionPrinter + "</td><td>" + obj[i].guestName + "</td>	"
@@ -79,12 +79,12 @@ function query(){
 
 
 //增加
-function add() {
+function edit() {
 	$(".modal").show();
 }
 
 //修改
-function edit() {
+function editSubmit() {
 	$(".modal").find('label').each(function() {
 		//console.log($(this).attr('for'));
 		if ($(this).attr('for') == 'user') {

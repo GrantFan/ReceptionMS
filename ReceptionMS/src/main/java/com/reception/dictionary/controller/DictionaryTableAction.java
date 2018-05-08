@@ -31,11 +31,19 @@ public class DictionaryTableAction {
 	@Resource
 	DictionaryTableServiceImpl dictionaryTableServiceImpl;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public void add(@ModelAttribute("dic")DictionaryTableEntity dic){
-		this.dictionaryTableServiceImpl.add(dic); 
+	@RequestMapping(method = RequestMethod.POST,produces = "application/text;charset=UTF-8")
+	public String add(@ModelAttribute("dic")DictionaryTableEntity dic){
+		int i = dictionaryTableServiceImpl.isExist(dic);
+		if(i==0){
+			int r = this.dictionaryTableServiceImpl.add(dic);
+			if(r>0){
+				return "true";
+			}
+			return "false";
+		}
+		return "exist";
 	}
-	@RequestMapping(method = RequestMethod.DELETE)
+	@RequestMapping(value="/delete")
 	public String delete(@ModelAttribute("dic")DictionaryTableEntity dic){
 		int r =  this.dictionaryTableServiceImpl.delete(dic);
 		if(r>0){
