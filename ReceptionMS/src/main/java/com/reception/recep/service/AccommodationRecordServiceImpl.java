@@ -2,18 +2,19 @@ package com.reception.recep.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.reception.recep.api.AccommodationRecordService;
-import com.reception.recep.api.MealsRecordService;
-import com.reception.recep.api.ReceptionRecordService;
+import com.reception.recep.dao.AccommodationRecordMapper;
 import com.reception.recep.model.AccommodationRecordEntity;
-import com.reception.recep.model.MealsRecordEntity;
-import com.reception.recep.model.ReceptionRecordEntity;
 
 @Service
 public class AccommodationRecordServiceImpl implements AccommodationRecordService {
-
+	@Resource
+	AccommodationRecordMapper accommodationRecordMapper;
+	
 	@Override
 	public int add(AccommodationRecordEntity accommodation) {
 		// TODO Auto-generated method stub
@@ -36,6 +37,12 @@ public class AccommodationRecordServiceImpl implements AccommodationRecordServic
 	public List<AccommodationRecordEntity> selectList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<AccommodationRecordEntity> selectByReceptionNumber(String receptionNumber) {
+		// TODO Auto-generated method stub
+		return accommodationRecordMapper.selectByReceptionNumber(receptionNumber);
 	}
 
 

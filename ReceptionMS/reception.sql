@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-08 11:23:42
+Date: 2018-05-08 16:52:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,11 +30,12 @@ CREATE TABLE `accommodation_record` (
   `record_time` datetime DEFAULT NULL COMMENT '录入时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接待住房记录';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待住房记录';
 
 -- ----------------------------
 -- Records of accommodation_record
 -- ----------------------------
+INSERT INTO `accommodation_record` VALUES ('1', '1', '3', '201', '2018-05-08', '2018-05-09', 'w', '2018-05-08 14:48:36', 'w');
 
 -- ----------------------------
 -- Table structure for conference_info
@@ -441,6 +442,7 @@ CREATE TABLE `guest_info` (
   `office_area` varchar(255) DEFAULT NULL COMMENT '任职地区',
   `sex` int(1) DEFAULT '1' COMMENT '性别',
   `age` int(3) DEFAULT NULL COMMENT '年龄',
+  `url` varchar(128) DEFAULT NULL,
   `birth_date` date DEFAULT NULL COMMENT '出生日期',
   `nation` int(2) DEFAULT NULL COMMENT '民族',
   `education` int(2) DEFAULT NULL COMMENT '学历',
@@ -457,8 +459,8 @@ CREATE TABLE `guest_info` (
 -- ----------------------------
 -- Records of guest_info
 -- ----------------------------
-INSERT INTO `guest_info` VALUES ('11', ' 王伟', 'w\'w', null, null, '1', '2', null, null, '1', null, null, null, null, null, null, null);
-INSERT INTO `guest_info` VALUES ('12', ' 王伟', 'w\'w', '', '', '2', '2', '2018-05-07', null, '2', '', '', '', '', '', '', '');
+INSERT INTO `guest_info` VALUES ('11', ' 王伟', 'w\'w', null, null, '1', '2', null, null, null, '1', null, null, null, null, null, null, null);
+INSERT INTO `guest_info` VALUES ('12', ' 王伟', 'w\'w', '', '', '2', '2', null, '2018-05-07', null, '2', '', '', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for hotel_info
@@ -520,13 +522,14 @@ CREATE TABLE `meals_record` (
   `meals_time` varchar(64) DEFAULT NULL COMMENT '用餐时间',
   `hobby` varchar(255) DEFAULT NULL COMMENT '宾客喜好',
   `record_time` datetime DEFAULT NULL COMMENT '登记时间',
-  `ramark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
 
 -- ----------------------------
 -- Records of meals_record
 -- ----------------------------
+INSERT INTO `meals_record` VALUES ('1', '1', '1', '3', '2018-01-01', 'w', '2018-05-08 14:47:58', 'my');
 
 -- ----------------------------
 -- Table structure for menu_info

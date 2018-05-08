@@ -53,6 +53,9 @@ function select_guest(pageNum,pageSize){
             				"</td><td>"+list.remark+"</td></tr> ");
             	};
             	page(result);
+            },
+            error:function(data){
+            	alert(data);
             }
         });
        // return menu;

@@ -1,79 +1,73 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
-		
-		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="js/receptionManage.js"></script>
-	</head>
-	<body>
-		<div class="operationsArea">
-			<div class="buttons">
-					<button onclick="edit()">
-						<u class="bj"></u>
-						编辑
-					</button>
-					<button onclick="dele()">
-						<u class="sc"></u>
-						删除
-					</button>
-					<button>
-						<u class="dyyl"></u>
-						打印预览
-					</button>
-					<button>
-						<u class="dy"></u>
-						打印
-					</button>
-					<button>
-						<u class="dr"></u>
-						导入
-					</button>
-					<button>
-						<u class="dc"></u>
-						导出
-					</button>
-					<button>
-						<u class="sx"></u>
-						刷新
-					</button>	 
-			</div>
-			<div class="inputs">
-					<select name="">
-						<option value=""></option>
-						<option value="">且</option>
-						<option value="">或</option>						 
-					</select>
-					<select name="">
-						<option value="">接待编号</option>
-						<option value="">接待日期</option>
-						<option value="">接待人</option>
-						<option value="">宾客姓名</option>
-						<option value="">用餐</option>
-						<option value="">用餐时间</option>
-						<option value="">宾客喜好</option>
-						<option value="">备注</option>
-					</select>
-					<select name="">
-						<option value="">等于</option>
-						<option value="">不等于</option>
-						<option value="">包含</option>
-						<option value="">不包含</option>
-						<option value="">开头是</option>
-						<option value="">开头不是</option>
-						<option value="">结尾是</option>
-						<option value="">结尾不是</option>
-						<option value="">为空</option>
-						<option value="">不为空</option>
-					</select>
-					<input type="text" />
-					<button>查询</button>
-					<button class="m-0">清空</button>
-			</div>
-	
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/pagination.css" />
+
+<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<!-- Paginator -->
+<script src="../assets/js/pagination.min.js"></script>
+<script type="text/javascript" src="js/receptionManage.js"></script>
+</head>
+<body>
+	<div class="operationsArea">
+		<div class="buttons">
+			<button onclick="edit()">
+				<u class="bj"></u> 编辑
+			</button>
+			<button onclick="dele()">
+				<u class="sc"></u> 删除
+			</button>
+			<button>
+				<u class="dyyl"></u> 打印预览
+			</button>
+			<button>
+				<u class="dy"></u> 打印
+			</button>
+			<button>
+				<u class="dr"></u> 导入
+			</button>
+			<button>
+				<u class="dc"></u> 导出
+			</button>
+			<button>
+				<u class="sx"></u> 刷新
+			</button>
+		</div>
+		<div class="inputs">
+			<select name="">
+				<option value=""></option>
+				<option value="">且</option>
+				<option value="">或</option>
+			</select> <select name="">
+				<option value="">接待编号</option>
+				<option value="">接待日期</option>
+				<option value="">接待人</option>
+				<option value="">宾客姓名</option>
+				<option value="">用餐</option>
+				<option value="">用餐时间</option>
+				<option value="">宾客喜好</option>
+				<option value="">备注</option>
+			</select> <select name="">
+				<option value="">等于</option>
+				<option value="">不等于</option>
+				<option value="">包含</option>
+				<option value="">不包含</option>
+				<option value="">开头是</option>
+				<option value="">开头不是</option>
+				<option value="">结尾是</option>
+				<option value="">结尾不是</option>
+				<option value="">为空</option>
+				<option value="">不为空</option>
+			</select> <input type="text" />
+			<button>查询</button>
+			<button class="m-0">清空</button>
+		</div>
+
 		<div class="tab">
 			<table class="table" cellspacing="0">
 				<thead>
@@ -93,10 +87,11 @@
 						<th>描述</th>
 					</tr>
 				</thead>
-				
-				<tbody id="tablebody">						 
+
+				<tbody id="tablebody">
 					<tr ondblclick="view()">
-						<td><label><input type="Checkbox" name="check" value=""><u></u></label></td>
+						<td><label><input type="Checkbox" name="check"
+								value=""><u></u></label></td>
 						<td>接待编号</td>
 						<td>接待日期</td>
 						<td>接待人</td>
@@ -111,40 +106,107 @@
 					</tr>
 				</tbody>
 			</table>
+			<!-- 分页插件  -->
+			<div class="text-center" id="page"></div>
 		</div>
-		</div>	
-		<!--模态框-->
-		<div class="modal none">
-			<div class="box">
-				<h4 class="overflow">
-					<p class="lt">
-						<span>接待记录明细</span>
-					</p>
-					<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
-						<u></u>
-					</p>
-				</h4>
-				<div class="mbody">
-					<label for="remarks">
-						<span>备注</span>
-						<textarea name="" rows="5" cols="30" id="remarks"></textarea>
-					</label>
-				</div>
-				<div class="mfoot" align="center">
-					<button>
-						<u class="confirm lt"></u>
-						<span class="lt">确定</span>
-					</button>
-					<button>
-						<u class="dy"></u>
-						<span class="lt">打印</span>
-					</button>
-					<button onclick="$(this).parents('.modal').hide(800)">
-						<u class="cancel lt"></u>
-						<span class="lt">关闭</span>
-					</button>
+	</div>
+	<!--模态框-->
+	<div class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>接待记录明细</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<div class="inputs overflow">
+					<div class="lt">
+						<label for="receptionNumber"> <span>接待编号</span> <input
+							type="text" name="receptionNumber" id="receptionNumber" value="" />
+						</label> <label for="receptionTitle"> <span>接待名称</span> <input
+							name="receptionTitle" id="receptionTitle" value="" />
+						</label> <label for="receptionDate"> <span>接待日期</span> <input
+							name="receptionDate" id="receptionDate" value="" />
+						</label> <label for="receptionPerson"> <span>接待人：</span> <input
+							name="receptionPerson" id="receptionPerson" />
+						</label> <label for="receptionPrinter"> <span>接待资料打印人</span> <input
+							name="receptionPrinter" id="receptionPrinter" value="" />
+						</label> <label for="description"> <span>描述</span> <input
+							name="description" id="description" value="" />
+						</label> <label for="recordTime"> <span>登记时间</span> <input
+							name="recordTime" id="recordTime" value="" />
+						</label> <label for="remark"> <span>备注</span> <input name="remark"
+							id="remark" value="" />
+						</label>
+					</div>
+					<table class="table" cellspacing="0">
+						<thead>
+							<tr>
+								<th>接待编号</th>
+								<th>酒店</th>
+								<th>套餐编号</th>
+								<th>用餐时间</th>
+								<th>客人用餐喜好</th>
+								<th>登记时间</th>
+								<th>备注</th>
+							</tr>
+						</thead>
+						<tbody id="table1">
+							<tr>
+								<td>接待编号</td>
+								<td><select><option>东方酒店</option></select></td>
+								<td><select><option>套餐一</option></select></td>
+								<td>2018.3.5 10AM</td>
+								<td>喜清淡</td>
+								<td>2018-4-1</td>
+								<td>空</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table" cellspacing="0">
+						<thead>
+							<tr>
+								<th>接待编号</th>
+								<th>酒店</th>
+								<th>房间号</th>
+								<th>入住时间</th>
+								<th>退房时间</th>
+								<th>宾客喜好</th>
+								<th>登记时间</th>
+								<th>备注</th>
+							</tr>
+						</thead>
+						<tbody id="table2">
+							<tr>
+								<td>接待编号</td>
+								<td><select><option>东方酒店</option></select></td>
+								<td>101</td>
+								<td>2018-3-5</td>
+								<td>2018-3-6</td>
+								<td>喜阳光</td>
+								<td>2018-4-1</td>
+								<td>空</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
+			<div class="mfoot" align="center">
+				<button id="update">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button id="print" class="none">
+					<u class="dy"></u> <span class="lt">打印</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">关闭</span>
+				</button>
+			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>

@@ -7,7 +7,7 @@ public class MealsRecordEntity {
 	
 	private Integer id;
 	private String receptionNumber;//接待编号
-	private String hotel;//就带你
+	private String hotel;//酒店
 	private String menuNumber;//套餐编号
 	private String mealsTime;//用餐时间
 	private String hobby;//客人用餐喜好

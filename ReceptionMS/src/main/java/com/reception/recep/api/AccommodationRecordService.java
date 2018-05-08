@@ -14,4 +14,6 @@ public interface AccommodationRecordService {
 	int delete(AccommodationRecordEntity accommodation);
 	
 	List<AccommodationRecordEntity> selectList();
+	
+	List<AccommodationRecordEntity> selectByReceptionNumber(String receptionNumber);
 }

@@ -14,4 +14,6 @@ public interface MealsRecordService {
 	int delete(MealsRecordEntity meals);
 	
 	List<MealsRecordEntity> selectList();
+	
+	List<MealsRecordEntity> selectByReceptionNumber(String receptionNumber);
 }

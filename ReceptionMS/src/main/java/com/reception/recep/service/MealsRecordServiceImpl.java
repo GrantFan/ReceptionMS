@@ -2,16 +2,20 @@ package com.reception.recep.service;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.reception.recep.api.MealsRecordService;
-import com.reception.recep.api.ReceptionRecordService;
+import com.reception.recep.dao.MealsRecordMapper;
 import com.reception.recep.model.MealsRecordEntity;
-import com.reception.recep.model.ReceptionRecordEntity;
 
 @Service
 public class MealsRecordServiceImpl implements MealsRecordService {
 
+	@Resource
+	MealsRecordMapper mealsRecordMapper;
+	
 	@Override
 	public int add(MealsRecordEntity meals) {
 		// TODO Auto-generated method stub
@@ -34,6 +38,12 @@ public class MealsRecordServiceImpl implements MealsRecordService {
 	public List<MealsRecordEntity> selectList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<MealsRecordEntity> selectByReceptionNumber(String receptionNumber) {
+		// TODO Auto-generated method stub
+		return mealsRecordMapper.selectByReceptionNumber(receptionNumber);
 	}
 
 	

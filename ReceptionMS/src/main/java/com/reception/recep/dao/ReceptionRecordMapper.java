@@ -41,8 +41,8 @@ public interface ReceptionRecordMapper {
 	@Select("select id,reception_number receptionNumber,reception_title receptionTitle,reception_date receptionDate,reception_person receptionPerson,reception_printer receptionPrinter,guest_name guestName,entourage,guest_num guestNum,reception_num receptionNum,reception_days receptionDays,hotel,description,record_time recordTime,remark from reception_record")
 	List<ReceptionRecordEntity> selectList();
 	
-	@Select("select id,reception_number,reception_title,reception_date,reception_person,reception_printer,guest_name,entourage,guest_num,reception_num,reception_days,hotel,description,record_time,remark from reception_record where reception_number=#{receptionNumber}")
-	List<ReceptionRecordEntity> selectByNumber(ReceptionRecordEntity reception);
+	@Select("select id,reception_number receptionNumber,reception_title receptionTitle,reception_date receptionDate,reception_person receptionPerson,reception_printer receptionPrinter,guest_name guestName,entourage,guest_num guestNum,reception_num receptionNum,reception_days receptionDays,hotel,description,record_time recordTime,remark from reception_record where reception_number=#{receptionNumber}")
+	List<ReceptionRecordEntity> selectByNumber(String receptionNumber);
 
 	@Select({"<script>",
 			"select id,reception_number,reception_title,reception_date,reception_person,reception_printer,guest_name,entourage,guest_num,reception_num,reception_days,hotel,description,record_time,remark from reception_record ",
