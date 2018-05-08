@@ -291,21 +291,5 @@ function dele() {
 
 //exportExcel
 function exportExcel() {
-	$.ajax({
-		type : "post",
-		//		data :{
-		//			 	"pageNum" :pageNum,
-		//			 	"pageSize" : pageSize
-		//			  },
-		url : "../../hotel/export",
-		success : function(data) {
-			alert(data);
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			//alert(XMLHttpRequest.status);
-			//alert(XMLHttpRequest.readyState);
-			//alert(textStatus);
-			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
-		}
-	})
+	location.href='../../hotel/export';
 }

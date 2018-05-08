@@ -31,6 +31,7 @@ u,i,label,span,b{
 	display: inline-block;	
 }
 
+
 /* 复选框 默认样式修改 */
 
 .table label{
@@ -315,7 +316,7 @@ iframe{
 	padding: 0px 1.316%;
 }
 .operationsArea>.buttons>button{
-	width: 6.757%;
+	width: 6.75%;
 	height: 4.1vh;
 	border: none;
 	background:url(../img/index3_11.png) no-repeat 0px 0px;
@@ -330,6 +331,7 @@ iframe{
 .operationsArea>.buttons>button>u{
 	position: relative;
     top: 2px;
+    left: 6px;
 }
 .operationsArea>.buttons>button.active{
 	background:url(../img/index3_12.png) no-repeat 0px 0px;
@@ -347,14 +349,14 @@ iframe{
 	height: 2.778vh;
 	color: #000;
 	margin-right:  1.33vw;
-	text-shadow: 0px 1px 1px #000;
 	box-shadow: 0px 1px 2px #022553;
 	cursor: pointer;
 	border: none;
 	padding: 0px 0.922vw;
  	background: url(../img/index3_22.png) no-repeat scroll right center transparent;
  	background-size: 100% 100%;
- 	font-size: 1.12vh;
+ 	font-size: 1.12vw;
+ 	appearance:none;
 }
 .operationsArea>.inputs>input{
 	background:linear-gradient(to bottom,#fffef3,#c2fbfe); 
@@ -370,7 +372,7 @@ iframe{
 	cursor: pointer;
 	padding-bottom: 4px;
 	margin-right: 1.302vw;
-	font-size: 1.12vh;
+	font-size: 0.88vw;
 }
 
 .operationsArea>.tab{
@@ -386,8 +388,10 @@ iframe{
 }
 .operationsArea>.tab>table>thead>tr{
 	width: 100%;
-	background: url(../img/thead.png) no-repeat 0px 0px;
+	border: none;
+	background: url(../img/thead.png) 0px 0px;
 	background-size: 100% 100%;
+	display:table-row;
 }
 .operationsArea>.tab>table tr{
 	height: 46px;
@@ -438,7 +442,7 @@ iframe{
 
 
 .operationsArea>.tab .seat{
-	padding: 0px 60px;
+	padding: 0px  3.846vw;
 }
 .operationsArea>.tab>.seat .til{
 	width: 100%;
@@ -447,15 +451,16 @@ iframe{
 }
 .operationsArea>.tab>.seat ul>li{
 	float: left;
-	width: 7.692vw;
+	width: 8.48vw;
 	height: 50px;
 	background: rgba(38,54,64,0.5);
 	border-radius: 4px;
-	margin-right: 0.48vw;
+	margin:0px 0.24vw;
 	margin-bottom:6px;
 	overflow: hidden;	
 	position: relative;
 }
+
 .operationsArea>.tab>.seat ul>li>p.icon{
 	position: absolute;
 	top: 14px;
@@ -466,31 +471,26 @@ iframe{
 }
 
 .operationsArea>.tab>.seat ul>li .room{
+	width: 8vw;
 	color: #fff;
-	-webkit-transform : scale(0.86);
-	-webkit-transform:translate(-3px,-3px);
 	font-size: 0.7vw;
 	position: absolute;
 	top: 6px;
-	left: 9px;
+	left: 0.567vw;
 }
 .operationsArea>.tab>.seat li .useIng{
 	color: #f59128;
-	-webkit-transform : scale(0.6);
-	-webkit-transform:translate(-4px,0px);
 	font-size: 0.64vw;
 	position: absolute;
 	bottom:6px;
-	left: 9px;
+	left: 0.5769vw;
 }
 .operationsArea>.tab>.seat li .null{
 	color: #40e0d0;
-	-webkit-transform : scale(0.6);
-	-webkit-transform:translate(-4px,0px);
 	font-size:  0.64vw;
 	position: absolute;
 	bottom:6px;
-	left: 9px;
+	left: 0.5769vw;
 }
 .operationsArea>.tab>.seat>.hr{
 	width: 100%;
@@ -522,12 +522,15 @@ iframe{
 	border-radius: 100%;
 	padding-top: 0.613vh;
 }
+ /*
+  * 	选中背景变色
+  *  */
 /*.operationsArea>.tab>.seat>.xBox>.storey+ol.overflow li.active{
 	background-color: rgba(38,54,64,0.6);
 }*/
+
 .operationsArea>.tab>.seat>.xBox>.storey+ol.overflow li>span{
 	position: inherit;
-	padding-left:0.5vw ;
 }
 .operationsArea>.tab>.fruit li{
 	float: left;
@@ -554,38 +557,29 @@ iframe{
 }
 .operationsArea>.tab>.fruit li>#roomID{
 	position: absolute;
-	top: 1.41vh;
-	left: 3.4615vw;
+	top: 2.6vh;
+	left:  5vw;
 	color: #0FF53B;
 }
 .operationsArea>.tab>.fruit li>.JG{
 	position: absolute;
-	left: 8.461vw;
+	left: 11vw;
+	top: 2.6vh;
 }
 .operationsArea>.tab>.fruit li>.LC{
 	position: absolute;
-	left: 10.64vw;
-	top: 4vh;
+	left: 11vw;
+	top: 6vh;
 }
 .operationsArea>.tab>.fruit li>.CX{
 	position: absolute;
-	right: 1.282vw;
-	top: 4vh;
+	left: 11vw;
+	top:6vh;
 }
 .operationsArea>.tab>.fruit li>.CG{
 	position: absolute;
-	top: 4vh;
-	left: 5.769vw;
-}
-.operationsArea>.tab>.fruit li>.NX{
-	position: absolute;
-	top: 1.41vh;
-	right: 1.282vw;
-}
-.operationsArea>.tab>.fruit li>.WX{
-	position: absolute;
-	bottom: 1.41vh;
-	right: 1.282vw;
+	top: 6vh;
+	left: 5vw;
 }
 /****************** 模弹框 *****************/
 
@@ -689,7 +683,7 @@ iframe{
 	width: 10.641vw;
 	overflow: hidden;
 	line-height:  3.067vh;
-	margin-right: 1.92vw;
+	margin-right: 1.9vw;
 }
 .modal>.box>.mbody>.timeBox>label:nth-last-child(1){
 	margin-right: 0px;
@@ -810,4 +804,112 @@ iframe{
 	position: absolute;
     top: 4px;
     left: 2.5vw;
+}
+
+
+
+.Tmodal .inputs>div.lt,.Tmodal .inputs>div.rt{
+	width: 50%;
+	padding: 0px 0.4vw;
+	font-size: 0.825vw;
+}
+.Tmodal .inputs>div.lt input,
+.Tmodal .inputs>div.lt select,
+.Tmodal .inputs>div.rt input,
+.Tmodal .inputs>div.rt select{
+	width: 11.2vw;
+}
+.Tmodal .inputs>div>label>textarea#remarks{
+	width:29.2vw;
+}
+.Tmodal div.tab{
+	overflow-y: scroll;
+	min-height: 25vh;
+	position: relative;
+	border: 1px solid #000;
+}
+.Tmodal div.tab>table{
+	width: 100%;
+	font-size: 0.825vw;
+}
+.Tmodal div.tab>table.tabTitle{
+	position: sticky;
+	background-color: #557CBC;
+	top: 0px;
+	z-index: 99;
+}
+.Tmodal div.tab>table.tabTitle th{
+	height: 2vh;
+}
+.Tmodal div.tab>table.tabTbody{
+	position: absolute;
+	top: 2vh;
+}
+.Tmodal div.tab>table.tabTbody input,.Tmodal div.tab>table.tabTbody select{
+	width: 100%;
+	background-color: transparent;
+	border: none;
+}
+.Tmodal div.tab>table th,
+.Tmodal div.tab>table td{
+	width: 20%;
+}
+
+@media screen and (max-width: 1440px) {	
+	span.webkit,   
+	b.webkit{ 
+		font-size: 10px;
+		-webkit-transform: scale(0.76);					
+	}
+	.operationsArea > .tab > .seat li .useIng,
+	.operationsArea > .tab > .seat li .null{
+		font-size: 10px;
+		-webkit-transform: scale(0.8);
+		-moz-transform: scale(1) translate(2px,0px);		
+		-ms-transform: translate(2px,0px) scale(1);
+	}
+	
+	.operationsArea > .tab > .seat ul > li .room{
+		font-size: 11px;
+		-webkit-transform: translate(0px,0px) scale(0.9);
+		-moz-transform: translate(2px,0px) scale(1);
+		-ms-transform: translate(2px,0px) scale(1);
+	}
+
+	.operationsArea>.tab>.fruit li>.CG,
+	.operationsArea>.tab>.fruit li>#roomID,
+	.operationsArea>.tab>.fruit li>.JG,
+	.operationsArea>.tab>.fruit li>.CX{
+		-moz-transform: scale(1);
+	}
+	
+	.operationsArea>.tab>.seat ul>li{
+		width: 10.7vw;  
+	}
+	
+	.operationsArea > .inputs > select, 
+	.operationsArea > .inputs > input{
+		font-size: 10px;				
+	}
+	
+	.seat strong#roomID>.webkit:nth-child(1),
+	.seat p.JG>.webkit:nth-child(1),
+	.seat p.CX>.webkit:nth-child(1),
+	.seat p.CG>.webkit:nth-child(1){
+		font-size: 11px;		
+		-webkit-transform:scale(0.9);
+		-moz-transform: scale(1);
+		
+	}
+	
+	.seat strong#roomID>.webkit:nth-last-child(1),
+	.seat p.JG>.webkit:nth-last-child(1),
+	.seat p.CX>.webkit:nth-last-child(1),
+	.seat p.CG>.webkit:nth-last-child(1){
+		font-size: 11px;		
+		-webkit-transform: translate(-6px,0px) scale(0.9);
+		-moz-transform: translate(-3px,0px) scale(1);
+		-ms-transform: translate(-3px,0px) scale(1);
+	}
+		
 }

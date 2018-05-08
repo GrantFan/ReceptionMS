@@ -12,6 +12,12 @@
 <!-- Paginator -->
 <script src="../assets/js/pagination.min.js"></script>
 <script type="text/javascript" src="js/receptionManage.js"></script>
+
+<style type="text/css">
+.Tmodal div.tab>table th, .Tmodal div.tab>table td {
+	width: 6% !important;
+}
+</style>
 </head>
 <body>
 	<div class="operationsArea">
@@ -111,7 +117,7 @@
 		</div>
 	</div>
 	<!--模态框-->
-	<div class="modal none">
+	<div class="modal none Tmodal">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -123,51 +129,65 @@
 				</p>
 			</h4>
 			<div class="mbody">
-				<div class="inputs overflow">
+				<div class="inputs overflow ">
 					<div class="lt">
 						<label for="receptionNumber"> <span>接待编号</span> <input
 							type="text" name="receptionNumber" id="receptionNumber" value="" />
-						</label> <label for="receptionTitle"> <span>接待名称</span> <input
-							name="receptionTitle" id="receptionTitle" value="" />
 						</label> <label for="receptionDate"> <span>接待日期</span> <input
 							name="receptionDate" id="receptionDate" value="" />
-						</label> <label for="receptionPerson"> <span>接待人：</span> <input
-							name="receptionPerson" id="receptionPerson" />
 						</label> <label for="receptionPrinter"> <span>接待资料打印人</span> <input
 							name="receptionPrinter" id="receptionPrinter" value="" />
-						</label> <label for="description"> <span>描述</span> <input
-							name="description" id="description" value="" />
 						</label> <label for="recordTime"> <span>登记时间</span> <input
 							name="recordTime" id="recordTime" value="" />
+						</label>
+
+					</div>
+					<div class="rt">
+						<label for="receptionTitle"> <span>接待名称</span> <input
+							name="receptionTitle" id="receptionTitle" value="" />
+						</label> <label for="receptionPerson"> <span>接待人：</span> <input
+							name="receptionPerson" id="receptionPerson" />
+						</label> <label for="description"> <span>描述</span> <input
+							name="description" id="description" value="" />
 						</label> <label for="remark"> <span>备注</span> <input name="remark"
 							id="remark" value="" />
 						</label>
 					</div>
-					<table class="table" cellspacing="0">
+
+
+				</div>
+				<div class="tab">
+					<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
 						<thead>
 							<tr>
 								<th>接待编号</th>
 								<th>酒店</th>
 								<th>套餐编号</th>
 								<th>用餐时间</th>
-								<th>客人用餐喜好</th>
+								<th>用餐喜好</th>
 								<th>登记时间</th>
 								<th>备注</th>
 							</tr>
 						</thead>
+					</table>
+					<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
 						<tbody id="table1">
 							<tr>
-								<td>接待编号</td>
+								<td><input type="text" name="" id="" value="" /></td>
 								<td><select><option>东方酒店</option></select></td>
 								<td><select><option>套餐一</option></select></td>
-								<td>2018.3.5 10AM</td>
-								<td>喜清淡</td>
-								<td>2018-4-1</td>
-								<td>空</td>
+								<td><input type="text" name="" id="" value="" /></td>
+								<td><input type="text" name="" id="" value="喜清淡" /></td>
+								<td><input type="text" name="" id="" value="" /></td>
+								<td><input type="text" name="" id="" value="空" /></td>
 							</tr>
 						</tbody>
 					</table>
-					<table class="table" cellspacing="0">
+				</div>
+
+
+				<div class="tab">
+					<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
 						<thead>
 							<tr>
 								<th>接待编号</th>
@@ -180,20 +200,23 @@
 								<th>备注</th>
 							</tr>
 						</thead>
+					</table>
+					<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
 						<tbody id="table2">
 							<tr>
-								<td>接待编号</td>
+								<td><input type="text" name="" id="" value="" /></td>
 								<td><select><option>东方酒店</option></select></td>
-								<td>101</td>
-								<td>2018-3-5</td>
-								<td>2018-3-6</td>
-								<td>喜阳光</td>
-								<td>2018-4-1</td>
-								<td>空</td>
+								<td><input type="text" name="" id="" value="101" /></td>
+								<td><input type="text" name="" id="" value="" /></td>
+								<td><input type="text" name="" id="" value="" /></td>
+								<td><input type="text" name="" id="" value="喜阳光" /></td>
+								<td><input type="text" name="" id="" value="" /></td>
+								<td><input type="text" name="" id="" value="空" /></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
+
 			</div>
 			<div class="mfoot" align="center">
 				<button id="update">
@@ -208,5 +231,38 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		// 新增 tr
+		var tr = '<tr>'
+			+ '<td><input type="text" name="" id="" value=""  onchange="trAdd(this)"/></td>'
+			+ '<td><select><option>东方酒店</option></select></td>'
+			+ '<td><input type="text" value="101" /></td>'
+			+ '<td><input type="text" value="" /></td>'
+			+ '<td><input type="text" value="喜清淡" /></td>'
+			+ '<td><input type="text" value="" /></td>'
+			+ '<td><input type="text" value="" /></td>'
+			+ '</tr>';
+		var tr2 = '<tr>'
+			+ '<td><input type="text" name="" id="" value=""  onchange="trAdd(this)"/></td>'
+			+ '<td><select><option>东方酒店</option></select></td>'
+			+ '<td><input type="text" value="101" /></td>'
+			+ '<td><input type="text" value="" /></td>'
+			+ '<td><input type="text" value="" /></td>'
+			+ '<td><input type="text" value="喜清光" /></td>'
+			+ '<td><input type="text" value="" /></td>'
+			+ '<td><input type="text" value="" /></td>'
+			+ '</tr>';
+		function trDel(tr) {
+			$(tr).parent('td').parent('tr').remove();
+		}
+	
+		// 操作 
+		if ($(".Tmodal tbody input:checked").length >= 2) {
+			console.log($("tbody input:checked").parents('tr').siblings().html())
+			$("#contrast").on('click', function() {
+				$(".contrast").parent(".modal").show();
+			})
+		}
+	</script>
 </body>
 </html>

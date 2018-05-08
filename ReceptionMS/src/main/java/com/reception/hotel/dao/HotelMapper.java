@@ -46,6 +46,14 @@ public interface HotelMapper {
 	public List<HotelInfoEntity> selectList();
 	
 	/*
+	 * Describe 酒店信息导出列表
+	 * @param 
+	 * return list
+	 * */
+	@Select("SELECT h.id, h.hotel_name hotelName, h.linkman, h.telphone, h.phone, d.name, h.address, h.plane_graph planeGraph, h.remark FROM hotel_info h,dm_district d where h.area=d.`value` ORDER BY hotel_name")
+	public List<HotelInfoEntity> selectExportList();
+	
+	/*
 	 * Describe 通过酒店名称查询酒店列表
 	 * @param hotelName
 	 * return list
