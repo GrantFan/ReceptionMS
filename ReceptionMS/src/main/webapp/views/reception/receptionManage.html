@@ -45,12 +45,9 @@
 			</button>
 		</div>
 		<div class="inputs">
-			<select name="">
-				<option value=""></option>
-				<option value="">且</option>
-				<option value="">或</option>
-			</select> <select name="">
-				<option value="">接待编号</option>
+			接待酒店：
+			<select id="input_hotel">
+				<option value="">东方大酒店</option>
 				<option value="">接待日期</option>
 				<option value="">接待人</option>
 				<option value="">宾客姓名</option>
@@ -58,19 +55,10 @@
 				<option value="">用餐时间</option>
 				<option value="">宾客喜好</option>
 				<option value="">备注</option>
-			</select> <select name="">
-				<option value="">等于</option>
-				<option value="">不等于</option>
-				<option value="">包含</option>
-				<option value="">不包含</option>
-				<option value="">开头是</option>
-				<option value="">开头不是</option>
-				<option value="">结尾是</option>
-				<option value="">结尾不是</option>
-				<option value="">为空</option>
-				<option value="">不为空</option>
-			</select> <input type="text" />
-			<button>查询</button>
+			</select> 
+			接待名称：<input id="input_receptionTitle" type="text" value="" />
+			接待日期：<input id="input_receptionDate" type="text" value="" />
+			<button onclick="search()">查询</button>
 			<button class="m-0">清空</button>
 		</div>
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-09 16:39:29
+Date: 2018-05-09 18:14:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -697,7 +697,7 @@ INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', '../
 INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, 'hyssyjl', null);
 INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', null, 'tccpxxgl', '');
 INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, 'sjzdwh', null);
-INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, null, null);
+INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, 'bkxxgl', null);
 INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, 'bkxxgl', null);
 INSERT INTO `sys_module` VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', null, 'Jddb', null);
 INSERT INTO `sys_module` VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, null, null);

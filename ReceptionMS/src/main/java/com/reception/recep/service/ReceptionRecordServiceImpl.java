@@ -44,4 +44,8 @@ public class ReceptionRecordServiceImpl implements ReceptionRecordService {
 		// TODO Auto-generated method stub
 		return receptionRecordMapper.selectByNumber(receptionNumber);
 	}
+	
+	public List<ReceptionRecordEntity> selectLike(ReceptionRecordEntity reception){
+		return receptionRecordMapper.selectLike(reception);
+	}
 }

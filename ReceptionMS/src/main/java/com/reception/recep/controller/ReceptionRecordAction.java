@@ -35,9 +35,30 @@ public class ReceptionRecordAction {
 	MealsRecordService mealsRecordService;
 	
 	@RequestMapping(value="/list",produces="application/text; charset=utf-8")
-	public @ResponseBody String receptionRecordList(@RequestParam(value="pageSize")String pageSize,@RequestParam(value="pageNum")String pageNum){
+	public @ResponseBody String receptionRecordList(
+			@RequestParam(value="pageSize",required = false,defaultValue = "5")String pageSize,
+			@RequestParam(value="pageNum",required = false,defaultValue = "1")String pageNum){
 		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
 		List<ReceptionRecordEntity> list = receptionRecordServiceImpl.selectList();
+		PageInfo<ReceptionRecordEntity> pageInfo = new PageInfo<ReceptionRecordEntity>(list); 
+		String json = JSONHelper.toJSON(pageInfo);
+		System.out.println(json);
+		return json;
+	}
+	
+	@RequestMapping(value="/search",produces="application/json; charset=utf-8")
+	public @ResponseBody String receptionRecordSearch(
+			@RequestParam(value="hotel")String hotel,
+			@RequestParam(value="receptionTitle")String receptionTitle,
+			@RequestParam(value="receptionDate")String receptionDate,
+			@RequestParam(value="pageSize",required = false,defaultValue = "5")String pageSize,
+			@RequestParam(value="pageNum",required = false,defaultValue = "1")String pageNum){
+		ReceptionRecordEntity reception = new ReceptionRecordEntity();
+		reception.setReceptionTitle(receptionTitle);
+		reception.setReceptionDate(receptionDate);
+		reception.setHotel(hotel);
+		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
+		List<ReceptionRecordEntity> list = receptionRecordServiceImpl.selectLike(reception);
 		PageInfo<ReceptionRecordEntity> pageInfo = new PageInfo<ReceptionRecordEntity>(list); 
 		String json = JSONHelper.toJSON(pageInfo);
 		System.out.println(json);
