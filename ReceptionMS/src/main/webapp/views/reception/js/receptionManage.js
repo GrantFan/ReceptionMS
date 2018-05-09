@@ -25,7 +25,7 @@ function showReceptionList(pageNum, pageSize) {
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr ondblclick=\"view(this)\">"
-					+ "<td><label><input type=\"Checkbox\" name='check' value='" + obj[i].receptionNumber + "' ><u></u></label></td>"
+					+ "<td><label><input type=\"Checkbox\" name='check' value='" + obj[i].receptionNumber + "' /><u></u></label></td>"
 					+ "<td class='number'>" + obj[i].receptionNumber + "</td><td>" + obj[i].receptionTitle + "</td>"
 					+ "<td>" + obj[i].receptionDate + "</td><td>" + obj[i].receptionPerson + "</td>"
 					+ "<td>" + obj[i].receptionPrinter + "</td><td>" + obj[i].guestName + "</td>	"

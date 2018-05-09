@@ -24,7 +24,7 @@ function showRoomList(){
 			for (var i = 0, len = obj.length; i < len; i++) {
 				$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">"+obj[i].floor+"楼</p><ol id='floor_"+obj[i].floor+"' class=\"overflow rt\"></ol></div>");
 				var rooms = obj[i].list;
-				//console.log(rooms);
+				console.log(rooms);
 				for (var j = 0, leng = rooms.length; j < leng; j++) {
 					var room = ""
 					if (rooms[j].state == "1") {

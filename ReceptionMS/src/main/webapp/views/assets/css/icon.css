@@ -1,8 +1,7 @@
 u{
 	background-image: url(../img/icon/icon.png);
 	background-repeat: no-repeat;
-	/*background-size: 100% 100%;*/
-	margin-right: 0.4167vw;
+	margin-right: 0.8vw;
 }
 
 
@@ -326,7 +325,7 @@ u{
 	background-position:-42px -70px;
 }
 
-/*会议室*/
+/*浼氳瀹�*/
 .use{
 	width: 21px;
 	height: 21px;
@@ -337,7 +336,7 @@ u{
 	height: 21px;
 	background-position: -84px -70px;
 }
-/* 房间信息 */
+/* 鎴块棿淇℃伅 */
 .useI{
 	width: 30px;
 	height: 30px;
@@ -348,5 +347,11 @@ u{
 	width: 30px;
 	height: 30px;
 	background-position: -137px -70px;
+	margin: 0px;
+}
+.rooms{
+	width: 30px;
+	height: 30px;
+	background-position: -169px -70px;
 	margin: 0px;
 }

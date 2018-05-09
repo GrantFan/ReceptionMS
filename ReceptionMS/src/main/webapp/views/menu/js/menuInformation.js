@@ -38,7 +38,7 @@ function select_menu(pageNum,pageSize){
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
             		var list = result.list[i];
-            		info.append("<tr><td><label><input type='radio' name='mean_info' value="+list.menu_number+"><u></u></label></td>"+
+            		info.append("<tr><td><label><input type='checkbox' name='mean_info' value="+list.menu_number+"><u></u></label></td>"+
             				"<td  id= 'id' style='display:none' >"+list.id+
             				"</td><td>"+list.menu_number+
             				"</td><td>"+list.menu_type+

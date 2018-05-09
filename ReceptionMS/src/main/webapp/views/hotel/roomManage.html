@@ -9,7 +9,7 @@
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/hotelShow.js"></script>
 <script type="text/javascript" src="js/roomManage.js"></script>
-<script>
+<!-- <script>
 	if ($("tbody input:checked").length >= 2) {
 		//console.log($("tbody input:checked").parents('tr').siblings().html())
 		$("#contrast").on('click', function() {
@@ -17,7 +17,7 @@
 		})
 	}
 </script>
-<style type="text/css">
+ <style type="text/css">
 strong {
 	font-weight: bolder;
 	color: #fd0606;
@@ -53,54 +53,54 @@ strong {
 	background: #DEDEDE;
 	color: #000;
 }
-</style>
+</style>-->
 </head>
 
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
 			<button onclick="add()" class="active">
-				<u class="xz"></u> 新增
+				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
 			<button>
-				<u class="fzxz"></u> 复制新增
+				<u class="fzxz"></u><span class="webkit">复制新增</span>
 			</button>
 			<button onclick="edit()">
-				<u class="bj"></u> 编辑
+				<u class="bj"></u><span class="webkit">编辑</span>
 			</button>
 			<button onclick="dele()">
-				<u class="sc"></u> 删除
+				<u class="sc"></u><span class="webkit">删除</span>
 			</button>
 			<button>
-				<u class="dyyl"></u> 打印预览
+				<u class="dyyl"></u><span class="webkit">打印预览</span>
 			</button>
 			<button>
-				<u class="dy"></u> 打印
+				<u class="dy"></u><span class="webkit">打印</span>
 			</button>
 			<button>
-				<u class="dr"></u> 导入
+				<u class="dr"></u><span class="webkit">导入</span>
 			</button>
 			<button>
-				<u class="dc"></u> 导出
+				<u class="dc"></u><span class="webkit">导出</span>
 			</button>
 			<button>
-				<u class="sh"></u> 审核
+				<u class="sh"></u><span class="webkit">审核</span>
 			</button>
 			<button>
-				<u class="cx"></u> 撤销
+				<u class="cx"></u><span class="webkit">撤销</span>
 			</button>
 			<button>
-				<u class="sx"></u> 刷新
+				<u class="sx"></u><span class="webkit">刷新</span>
 			</button>
 			<button onclick="shut()" class="m-0">
-				<u class="gb"></u> 关闭
+				<u class="gb"></u><span class="webkit">关闭</span>
 			</button>
 		</div>
 		<div class="inputs">
 			<input type="text" id="hotel_input" name="hotel_input"
 				onchange="hotelShow(this)" placeholder="查询酒店" value="" />
 				<select id="hotel" name="hotel" onchange="showRoomList()">
-				<option value="">-------------</option>
+				<option value="">------------</option>
 				<option value="">东方国际大酒店</option>
 				<option value="">光明大酒店</option>
 				<option value="">宏兴大酒店</option>
@@ -108,18 +108,24 @@ strong {
 				<select id="floor" name="floor" onchange="showFloorRoomList()">
 				</select>
 			 <input type="text" />
-			<button>查询</button>
-			<button>清空</button>
+			<button>
+				<span class="webkit">查询</span>
+			</button>
+			<button>
+				<span class="webkit">清空</span>
+			</button>
 		</div>
 
 	<div class="tab">
 		<h6 class="title overflow">
 			<span class="lt">酒店房间信息</span>
 			<p class="lt idleIcon">
-				<i class="idle"></i> 空闲
+				<i class="idle"></i> 
+				<span class="webkit">空闲</span>
 			</p>
 			<p class="lt inUseIcon">
-				<i class="inUse"></i> 试用中
+				<i class="inUse"></i>
+				<span class="webkit">试用中</span>
 			</p>
 		</h6>
 		<!--酒店 -->

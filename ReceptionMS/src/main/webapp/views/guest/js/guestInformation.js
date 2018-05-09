@@ -87,7 +87,7 @@ function page(result){
 		    //可选，尾页按钮展示文本，默认显示文本为尾页
 		    lastPage: '尾页',
 		    //可选，跳至展示文本，默认显示文本为跳至
-		    skip: '跳至',
+		    //skip: '跳至',
 		    //可选，确认按钮展示文本，默认显示文本为确认
 		    confirm: '确认',
 		    //可选，刷新按钮展示文本，默认显示文本为刷新
@@ -97,7 +97,7 @@ function page(result){
 		    //可选，是否展示首页与尾页，默认true
 		    isShowFL: true,
 		    //可选，是否展示每页N条下拉框，默认true
-		    isShowPageSizeOpt: true,
+		    isShowPageSizeOpt: false,
 		    //可选，是否展示跳到指定页数，默认true
 		    isShowSkip: true,
 		    //可选，是否展示刷新，默认true

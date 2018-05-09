@@ -23,30 +23,29 @@
 	<div class="operationsArea">
 		<div class="buttons">
 			<button onclick="edit()">
-				<u class="bj"></u> 编辑
+				<u class="bj"></u> <span class="webkit">编辑</span>
 			</button>
 			<button onclick="dele()">
-				<u class="sc"></u> 删除
+				<u class="sc"></u> <span class="webkit">删除</span>
 			</button>
 			<button>
-				<u class="dyyl"></u> 打印预览
+				<u class="dyyl"></u> <span class="webkit">打印预览</span>
 			</button>
 			<button>
-				<u class="dy"></u> 打印
+				<u class="dy"></u> <span class="webkit">打印</span>
 			</button>
 			<button>
-				<u class="dr"></u> 导入
+				<u class="dr"></u> <span class="webkit">导入</span>
 			</button>
 			<button>
-				<u class="dc"></u> 导出
+				<u class="dc"></u> <span class="webkit">导出</span>
 			</button>
 			<button>
-				<u class="sx"></u> 刷新
+				<u class="sx"></u> <span class="webkit">刷新</span>
 			</button>
 		</div>
 		<div class="inputs">
-			接待酒店：
-			<select id="input_hotel">
+			接待酒店： <select id="input_hotel">
 				<option value="">东方大酒店</option>
 				<option value="">接待日期</option>
 				<option value="">接待人</option>
@@ -55,11 +54,14 @@
 				<option value="">用餐时间</option>
 				<option value="">宾客喜好</option>
 				<option value="">备注</option>
-			</select> 
-			接待名称：<input id="input_receptionTitle" type="text" value="" />
-			接待日期：<input id="input_receptionDate" type="text" value="" />
-			<button onclick="search()">查询</button>
-			<button class="m-0">清空</button>
+			</select> 接待名称：<input id="input_receptionTitle" type="text" value="" /> 接待日期：<input
+				id="input_receptionDate" type="text" value="" />
+			<button onclick="search()">
+				<span class="webkit">查询</span>
+			</button>
+			<button class="m-0">
+				<span class="webkit">清空</span>
+			</button>
 		</div>
 
 		<div class="tab">
@@ -106,7 +108,7 @@
 	</div>
 	<!--模态框-->
 	<div class="modal none Tmodal">
-		<div class="box">
+		<div class="box" style="top:0px;">
 			<h4 class="overflow">
 				<p class="lt">
 					<span>接待记录明细</span>
@@ -123,21 +125,18 @@
 							type="text" name="receptionNumber" id="receptionNumber" value="" />
 						</label> <label for="receptionDate"> <span>接待日期</span> <input
 							name="receptionDate" id="receptionDate" value="" />
-						</label> 
-						<label for="guestName"> <span>宾客姓名</span> <input
+						</label> <label for="guestName"> <span>宾客姓名</span> <input
 							name="guestName" id="guestName" value="" />
 						</label> <label for="guestNum"> <span>宾客人数</span> <input
 							name="guestNum" id="guestNum" value="" />
 						</label><label for="receptionPrinter"> <span>资料打印人</span> <input
 							name="receptionPrinter" id="receptionPrinter" value="" />
-						</label>
-						<label for="hotel"> <span>接待酒店</span> <input
-							name="hotel" id="hotel" value="" />
-						</label> 
-						<label for="recordTime"> <span>登记时间</span> <input
+						</label> <label for="hotel"> <span>接待酒店</span> <input name="hotel"
+							id="hotel" value="" />
+						</label> <label for="recordTime"> <span>登记时间</span> <input
 							name="recordTime" id="recordTime" value="" />
-						</label> 
-						
+						</label>
+
 					</div>
 					<div class="rt">
 						<label for="receptionTitle"> <span>接待名称</span> <input
@@ -150,11 +149,9 @@
 							name="receptionNum" id="receptionNum" value="" />
 						</label> <label for="description"> <span>描述</span> <input
 							name="description" id="description" value="" />
-						</label> 
-						<label for="receptionDays"> <span>接待天数</span> <input
+						</label> <label for="receptionDays"> <span>接待天数</span> <input
 							name="receptionDays" id="receptionDays" value="" />
-						</label>
-						<label for="remark"> <span>备注</span> <input name="remark"
+						</label> <label for="remark"> <span>备注</span> <input name="remark"
 							id="remark" value="" />
 						</label>
 
@@ -175,6 +172,7 @@
 							</tr>
 						</thead>
 					</table>
+					
 					<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
 						<tbody id="table1">
 							<tr>
@@ -224,11 +222,11 @@
 
 			</div>
 			<div class="mfoot" align="center">
-				<button id="update" onclick="editSubmit()">
+				<button id="update" onclick="editSubmit()" class="none">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
-				<button id="print" class="none">
-					<u class="dy"></u> <span class="lt">打印</span>
+				<button id="print">
+					<u class="dy lt"></u> <span class="lt">打印</span>
 				</button>
 				<button onclick="$(this).parents('.modal').hide(800)">
 					<u class="cancel lt"></u> <span class="lt">关闭</span>

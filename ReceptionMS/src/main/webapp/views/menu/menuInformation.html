@@ -10,49 +10,41 @@
 		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 		<script type="text/javascript" src="../assets/js/pagination.min.js"></script>
 		<script type="text/javascript" src="./js/menuInformation.js"></script>
-		<style type="text/css">
-			.tabTbody button{
-					width: 100%;
-					height: 100%;
-					color: red;
-					font-weight:bold;	
-				}
-		</style>
 	</head>
 	<body>
 		<div class="operationsArea">
 			<div class="buttons">
 					<button onclick="add_menu()" class="active">
 						<u class="xz"></u>
-						新增
+						<span class="webkit">新增</span>
 					</button>
 					<button onclick="edit_menu()">
 						<u class="bj"></u>
-						编辑
+						<span class="webkit">编辑</span>
 					</button>
 					<button onclick="delete_menu()">
 						<u class="sc"></u>
-						删除
+						<span class="webkit">删除</span>
 					</button>
 					<button onclick="select_detail()">
 						<u class="dyyl"></u>
-						查看详情
+						<span class="webkit">查看详情</span>
 					</button>
 					<button>
 						<u class="dy"></u>
-						打印
+						<span class="webkit">打印</span>
 					</button>
 					<button>
 						<u class="dr"></u>
-						导入
+						<span class="webkit">导入</span>
 					</button>
 					<button onclick="export_menu()">
 						<u class="dc"></u>
-						导出套餐
+						<span class="webkit">导出套餐</span>
 					</button>
 					<button onclick="export_food()">
 						<u class="dc"></u>
-						导出菜品
+						<span class="webkit">导出菜品</span>
 					</button>
 			</div>
 		<div class="tab">
@@ -72,7 +64,7 @@
 				<tbody id="menu_info">						 
 				</tbody>
 			</table>
-			<div id="pagination">
+			<div id="pagination" class="text-center">
 			</div>
 		</div>
 		</div>	

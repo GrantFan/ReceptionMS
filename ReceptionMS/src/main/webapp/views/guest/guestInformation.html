@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>宾客信息设置</title>
 		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
 		<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" /> 
@@ -16,31 +16,31 @@
 			<div class="buttons">
 					<button onclick="add_guest()" class="active">
 						<u class="xz"></u>
-						新增
+						<span class="webkit">新增</span>
 					</button>
 					<button onclick="edit_guest()">
 						<u class="bj"></u>
-						编辑
+						<span class="webkit">编辑</span>
 					</button>
 					<button onclick="delete_guest()">
 						<u class="sc"></u>
-						删除
+						<span class="webkit">删除</span>
 					</button>
 					<button onclick="select_detail()">
 						<u class="dyyl"></u>
-						    查看详情
+						<span class="webkit">查看详情</span>
 					</button>
 					<button>
 						<u class="dy"></u>
-						打印
+						<span class="webkit">打印</span>
 					</button>
 					<button>
 						<u class="dr"></u>
-						导入
+						<span class="webkit">导入</span>
 					</button>
 					<button  onclick="export_guest()">
 						<u class="dc"></u>
-						导出
+						<span class="webkit">导出</span>
 					</button>
 			</div>
 		<div class="tab">
@@ -211,17 +211,17 @@
 								<textarea name="" rows="5" cols="30" id="add_remark"></textarea>
 							</label>
 					</div>					
-				</div>
-				<div class="mfoot" align="center">
-					<button id="tijiao">
-						<u class="confirm lt"></u>
-						<span class="lt" >确定</span>
-					</button>
-					<button onclick="$(this).parents('.modal').hide(800)">
-						<u class="cancel lt"></u>
-						<span class="lt">返回</span>
-					</button>
-				</div>
+				</div>				
+			</div>
+			<div class="mfoot" align="center">
+				<button id="tijiao">
+					<u class="confirm lt"></u>
+					<span class="lt" >确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u>
+					<span class="lt">返回</span>
+				</button>
 			</div>
 		</div>
 	</body>

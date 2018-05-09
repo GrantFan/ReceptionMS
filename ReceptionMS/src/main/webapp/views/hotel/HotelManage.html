@@ -12,77 +12,46 @@
 <!-- Paginator -->
 <script src="../assets/js/pagination.min.js"></script>
 <script type="text/javascript" src="js/HotelManage.js"></script>
-<style type="text/css">
-/*strong{
-				font-weight: bolder;
-				color: #fd0606;
-			}
-			.modal>.contrast{
-				width: 800px;
-				top: 14vh;
-			}
-			.contrast>div.lt,.contrast>div.rt{
-				width: 49%;
-				padding: 10px;
-				background: rgba(0,0,0,0.3);				
-			}
-			.contrast>div.lt>div.info,.contrast>div.rt>div.info{
-				width: 50%;
-			}
-			.contrast>div.lt>div.img,.contrast>div.rt>div.img{
-				width: 50%;
-			}
-			.contrast>div.lt>div.img>img,.contrast>div.rt>div.img>img{
-				width: 100%;
-				height: 48vh;
-			}
-			.modal>.contrast label.m-0{
-				width: inherit;
-				display: inline-block;
-				background: #DEDEDE;
-				color: #000;
-			}*/
-</style>
 </head>
 
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
 			<button onclick="add()" class="active">
-				<u class="xz"></u> 新增
+				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
 			<button>
-				<u class="fzxz"></u> 复制新增
+				<u class="fzxz"></u><span class="webkit">复制新增</span>
 			</button>
 			<button onclick="edit()">
-				<u class="bj"></u> 编辑
+				<u class="bj"></u><span class="webkit">编辑</span>
 			</button>
 			<button onclick="dele()">
-				<u class="sc"></u> 删除
+				<u class="sc"></u><span class="webkit">删除</span>
 			</button>
 			<button>
-				<u class="dyyl"></u> 打印预览
+				<u class="dyyl"></u><span class="webkit">打印预览</span>
 			</button>
 			<button>
-				<u class="dy"></u> 打印
+				<u class="dy"></u><span class="webkit">打印</span>
 			</button>
 			<button>
-				<u class="dr"></u> 导入
+				<u class="dr"></u><span class="webkit"> 导入</span>
 			</button>
 			<button onclick="exportExcel()">
-				<u class="dc"></u> 导出
+				<u class="dc"></u><span class="webkit">导出 </span>
 			</button>
 			<button>
-				<u class="sh"></u> 审核
+				<u class="sh"></u><span class="webkit">审核</span>
 			</button>
 			<button>
-				<u class="cx"></u> 撤销
+				<u class="cx"></u><span class="webkit">撤销</span>
 			</button>
 			<button>
-				<u class="sx"></u> 刷新
+				<u class="sx"></u><span class="webkit">刷新</span>
 			</button>
 			<button onclick="shut()" class="m-0">
-				<u class="gb"></u> 关闭
+				<u class="gb"></u><span class="webkit">关闭</span>
 			</button>
 		</div>
 		<div class="inputs">
@@ -107,9 +76,14 @@
 				<option value="">结尾不是</option>
 				<option value="">为空</option>
 				<option value="">不为空</option>
-			</select> <input id="hotelName" type="text" value="" />
-			<button onClick="query();">查询</button>
-			<button>清空</button>
+			</select> 
+			<input id="hotelName" type="text" value="" />
+			<button onClick="query()">
+				<span class="webkit">查询</span>
+			</button>
+			<button>
+				<span class="webkit">清空</span>
+			</button>
 		</div>
 		<div class="tab">
 			<table class="table" cellspacing="0" border="0">
@@ -158,53 +132,6 @@
 			<div class="text-center" id="page"></div>
 		</div>
 	</div>
-	<!--
-		<div class="modal none">
-			<div class="box">
-				<h4 class="overflow">
-				<p class="lt">
-					<span id="modal_name">酒店信息</span>
-				</p>
-				<p class="rt" id="close"
-					onclick="$(this).parents('.modal').hide(800)">
-					<u></u>
-				</p>
-			</h4>
-				<div class="mbody">
-					<input type="hidden" name="id" id="id" />
-					<label for="hotel_name"> <span>酒店名称：</span> <input
-					type="text" name="hotel_name" id="hotel_name" value="" />
-				</label> <label for="linkman"> <span>酒店联系人：</span> <input
-					type="text" name="linkman" id="linkman" />
-				</label> <label for="telphone"> <span>联系电话：</span> <input
-					type="text" name="telphone" id="telphone" />
-				</label> <label for="phone"> <span>座机：</span> <input type="text"
-					name="phone" id="phone" />
-				</label>
-					<label for=area> <span>所属行政区：</span> 
-					<select name="area" id="area"></select>
-				</label> <label for="address"> <span>酒店地址：</span> <input type="text"
-					name="address" id="address" value="" />
-				</label> <label for="graph"> <span>酒店平面图：</span> <input type="text"
-					name="graph" id="graph" value="" />
-				</label> <label for="remarks"> <span>备注</span> <textarea
-						name="remark" rows="5" cols="30" id="remark"></textarea>
-				</label>
-				</div>
-				<div class="mfoot" align="center">
-					<button id="add" onclick="addSubmit()">
-					<u class="confirm lt"></u> <span class="lt">确定</span>
-				</button>
-					<button id="update" onclick="editSubmit()" style="display:none">
-					<u class="confirm lt"></u> <span class="lt">确定</span>
-				</button>
-					<button onclick="$(this).parents('.modal').hide(800)">
-					<u class="cancel lt"></u> <span class="lt">取消</span>
-				</button>
-				</div>
-			</div>
-		</div>-->
-
 	<!--酒店详细信息【含图片】  双击展示-->
 	<div class="modal none imgModal">
 		<div class="box">
@@ -290,8 +217,7 @@
 	</div>
 </body>
 <script>
-	if ($("tbody input:checked").length >= 2) {
-		//console.log($("tbody input:checked").parents('tr').siblings().html())
+	if ($("tbody input:checked").length >= 2) {	 
 		$("#contrast").on('click', function() {
 			$(".contrast").parent(".modal").show();
 		})

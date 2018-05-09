@@ -69,21 +69,19 @@ function contrastHotel(){
 				var json =  JSON.parse(data);
 				var hotel_l = eval(json.hotel_l);
 				var hotel_r = eval(json.hotel_r);
-				//console.log(hotel_l);
-				
+				$(".tab>.fruit .lt>strong").text($('#hotel_l option:selected').text());
+				$(".tab>.fruit .rt>strong").text($('#hotel_r option:selected').text());
 				$("#ul_l").empty();
 				for (var i = 0, len = hotel_l.length; i < len; i++) {
 					$("#ul_l").append(
 							"<li>"
 							+"<u class=\"rooms\"></u>"
 							+"<strong id=\"roomID\"><span>房间号：</span>"+hotel_l[i].roomNumber+"</strong>"
-							+"<p class=\"JG\"><span>门市价：</span><b>"+hotel_l[i].rackPrice+"</b></p>"
-							+"<p class=\"JG\"><span>协议价：</span><b>"+hotel_l[i].agreementPrice+"</b></p>"
-							+"<p class=\"LC\"><span>楼层：</span><b>"+hotel_l[i].floor+"</b></p>"
+							+"<p class=\"JG\"><span>门市价：</span><b>"+hotel_l[i].rackPrice+"/天</b></p>"
+							+"<p class=\"CG\"><span>协议价：</span><b>"+hotel_l[i].agreementPrice+"/天</b></p>"
+							 
 							+"<p class=\"CX\"><span>朝向：</span><b>"+hotel_l[i].orientation+"</b></p>"
-							+"<p class=\"CG\"><span>配套设施：</span><b>"+hotel_l[i].supportFacilities+"</b></p>"
-							+"<p class=\"NX\"><span>内线电话：</span><b>"+hotel_l[i].innerlinePhone+"</b></p>"
-							+"<p class=\"WX\"><span>外线电话：</span><b>"+hotel_l[i].outsidePhone+"</b></p>"
+							 
 							+"</li>"
 					);
 				}
@@ -94,13 +92,11 @@ function contrastHotel(){
 							"<li>"
 							+"<u class=\"rooms\"></u>"
 							+"<strong id=\"roomID\"><span>房间号：</span>"+hotel_r[i].roomNumber+"</strong>"
-							+"<p class=\"JG\"><span>门市价：</span><b>"+hotel_r[i].rackPrice+"</b></p>"
-							+"<p class=\"JG\"><span>协议价：</span><b>"+hotel_r[i].agreementPrice+"</b></p>"
-							+"<p class=\"LC\"><span>楼层：</span><b>"+hotel_r[i].floor+"</b></p>"
+							+"<p class=\"JG\"><span>门市价：</span><b>"+hotel_r[i].rackPrice+"/天</b></p>"
+							+"<p class=\"CG\"><span>协议价：</span><b>"+hotel_r[i].agreementPrice+"/天</b></p>"
+							 
 							+"<p class=\"CX\"><span>朝向：</span><b>"+hotel_r[i].orientation+"</b></p>"
-							+"<p class=\"CG\"><span>配套设施：</span><b>"+hotel_r[i].supportFacilities+"</b></p>"
-							+"<p class=\"NX\"><span>内线电话：</span><b>"+hotel_r[i].innerlinePhone+"</b></p>"
-							+"<p class=\"WX\"><span>外线电话：</span><b>"+hotel_r[i].outsidePhone+"</b></p>"
+							 
 							+"</li>"
 					);
 				}
