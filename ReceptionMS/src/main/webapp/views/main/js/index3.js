@@ -14,11 +14,11 @@ function showModule() {
 				for (var i = 0; i < data.length; i++) {
 					if (data[i].moduleParentId == '0') {
 						$("#accordion").append(
-							"<li name='" + data[i].moduleId + "'><div class=\"link\">" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>");
+							"<li name='" + data[i].moduleId + "'><div class=\"link\"><u class='"+data[i].icon+"'></u>" + data[i].moduleName + "<i class=\"fa fa-chevron-down\"></i></div></li>");
 						var ul = '<ul class=\"submenu\">';
 						for (var j = 0; j < data.length; j++) {
 							if (data[j].moduleParentId == data[i].moduleId) {
-								ul += "<li><a href='" + data[j].url + "'> " + data[j].moduleName + "</a></li>";
+								ul += "<li><a href='" + data[j].url + "'> <u class='"+data[j].icon+"'></u>" + data[j].moduleName + "</a></li>";
 							}
 						}
 						ul += "</ul>";

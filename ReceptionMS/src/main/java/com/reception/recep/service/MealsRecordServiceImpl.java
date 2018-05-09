@@ -25,13 +25,13 @@ public class MealsRecordServiceImpl implements MealsRecordService {
 	@Override
 	public int update(MealsRecordEntity meals) {
 		// TODO Auto-generated method stub
-		return 0;
+		return mealsRecordMapper.update(meals);
 	}
 
 	@Override
 	public int delete(MealsRecordEntity meals) {
 		// TODO Auto-generated method stub
-		return 0;
+		return mealsRecordMapper.delete(meals);
 	}
 
 	@Override

@@ -6,15 +6,15 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.reception.hotel.model.HotelInfoEntity;
 import com.reception.recep.api.AccommodationRecordService;
 import com.reception.recep.api.MealsRecordService;
 import com.reception.recep.model.AccommodationRecordEntity;
@@ -59,4 +59,24 @@ public class ReceptionRecordAction {
 		System.out.println(json);
 		return json;
 	}
+	
+	@RequestMapping(value = "/update", produces = "application/text; charset=utf-8")
+	public String updateReceptionRecordInfo(ReceptionRecordEntity reception) {
+		String flag = "false";
+		int i = receptionRecordServiceImpl.update(reception);
+		if (i > 0) {
+			flag = "true";
+		}
+		return flag;
+	};
+	
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	public String deleteHotelInfo(@ModelAttribute("receptionRecordEntity") ReceptionRecordEntity reception) {
+		String flag = "false";
+		int i = receptionRecordServiceImpl.delete(reception);
+		if (i > 0) {
+			flag = "true";
+		}
+		return flag;
+	};
 }

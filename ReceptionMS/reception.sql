@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-08 16:52:00
+Date: 2018-05-09 16:39:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,12 +30,13 @@ CREATE TABLE `accommodation_record` (
   `record_time` datetime DEFAULT NULL COMMENT '录入时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待住房记录';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='接待住房记录';
 
 -- ----------------------------
 -- Records of accommodation_record
 -- ----------------------------
-INSERT INTO `accommodation_record` VALUES ('1', '1', '3', '201', '2018-05-08', '2018-05-09', 'w', '2018-05-08 14:48:36', 'w');
+INSERT INTO `accommodation_record` VALUES ('2', 'R10001', '3', '202', '2018-05-08', '2018-05-09', 'w', '2018-05-08 14:48:36', 'w');
+INSERT INTO `accommodation_record` VALUES ('3', 'R10001', '3', '201', '2018-05-08', '2018-05-09', 'w', '2018-05-08 14:48:36', 'w');
 
 -- ----------------------------
 -- Table structure for conference_info
@@ -477,7 +478,7 @@ CREATE TABLE `hotel_info` (
   `plane_graph` varchar(255) DEFAULT NULL COMMENT '酒店平面图',
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='酒店信息';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='酒店信息';
 
 -- ----------------------------
 -- Records of hotel_info
@@ -493,6 +494,7 @@ INSERT INTO `hotel_info` VALUES ('9', '敦煌国际大酒店', '叶彦萍', '139
 INSERT INTO `hotel_info` VALUES ('10', '敦煌天润大酒店', '权玉霞', '18993732897', '0937-8819501', '敦煌', '甘肃省酒泉市敦煌市鸣山路309号', null, null);
 INSERT INTO `hotel_info` VALUES ('11', '敦煌太阳大酒店', '张春艳', '13893726729', '\"0937-8841858', null, null, null, null);
 INSERT INTO `hotel_info` VALUES ('12', '新华', '123', '123', '213', '1', '312', null, '312');
+INSERT INTO `hotel_info` VALUES ('13', '不知道酒店', '我', '123456', '1244', '4', '这里', '', null);
 
 -- ----------------------------
 -- Table structure for hotel_plane_graph
@@ -524,12 +526,12 @@ CREATE TABLE `meals_record` (
   `record_time` datetime DEFAULT NULL COMMENT '登记时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='接待用餐记录';
 
 -- ----------------------------
 -- Records of meals_record
 -- ----------------------------
-INSERT INTO `meals_record` VALUES ('1', '1', '1', '3', '2018-01-01', 'w', '2018-05-08 14:47:58', 'my');
+INSERT INTO `meals_record` VALUES ('1', 'R10001', '2', '3', '2018-01-01', '没有', '2018-05-08 14:47:58', '没有');
 
 -- ----------------------------
 -- Table structure for menu_info
@@ -583,7 +585,7 @@ CREATE TABLE `reception_record` (
 -- ----------------------------
 -- Records of reception_record
 -- ----------------------------
-INSERT INTO `reception_record` VALUES ('1', '1', '市州嘉宾会见', '2017-09-19', '王琼', '李丹丹', '李明生', '都伟', '52', '54', '1', '敦煌万盛\r\n国际酒店', null, '2018-04-26 11:52:40', null);
+INSERT INTO `reception_record` VALUES ('1', 'R10001', '市州嘉宾会见', '2017-09-19', '王琼', '李丹丹', '李明生', '都伟', '52', '54', '12', '敦煌万盛国际酒店', '', '2018-04-26 11:52:40', '');
 
 -- ----------------------------
 -- Table structure for restaurant_info
@@ -679,25 +681,25 @@ CREATE TABLE `sys_module` (
 -- ----------------------------
 -- Records of sys_module
 -- ----------------------------
-INSERT INTO `sys_module` VALUES ('1', '系统管理', '1', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('2', '用户设置', '2', '1', '../system/userSheZhi.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('4', '模块设置', '4', '1', '../system/module.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', '../system/log.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', '../reception/register.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', null, null, null);
-INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', null, null, null);
-INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', null, null, null);
-INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', null, null, '');
-INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, null, null);
+INSERT INTO `sys_module` VALUES ('1', '系统管理', '1', '0', null, null, null, 'xtgl', null);
+INSERT INTO `sys_module` VALUES ('2', '用户设置', '2', '1', '../system/userSheZhi.html', null, null, 'yhsz', null);
+INSERT INTO `sys_module` VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', null, null, 'jssz', null);
+INSERT INTO `sys_module` VALUES ('4', '模块设置', '4', '1', '../system/module.html', null, null, 'mksz', null);
+INSERT INTO `sys_module` VALUES ('5', '操作日志', '5', '1', '../system/log.html', null, null, 'czrz', null);
+INSERT INTO `sys_module` VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', null, null, 'sjkpz', null);
+INSERT INTO `sys_module` VALUES ('7', '接待管理', '7', '0', null, null, null, 'jdgl', null);
+INSERT INTO `sys_module` VALUES ('8', '接待登记', '8', '7', '../reception/register.html', null, null, 'jddj', null);
+INSERT INTO `sys_module` VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', null, null, 'jdxxgl', null);
+INSERT INTO `sys_module` VALUES ('10', '酒店管理', '10', '0', null, null, null, 'Jdgl', null);
+INSERT INTO `sys_module` VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', null, 'Jdxxgl', null);
+INSERT INTO `sys_module` VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', null, 'fjxxgl', null);
+INSERT INTO `sys_module` VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', null, 'hysxxgl', null);
+INSERT INTO `sys_module` VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, 'hyssyjl', null);
+INSERT INTO `sys_module` VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', null, 'tccpxxgl', '');
+INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, 'sjzdwh', null);
 INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, null, null);
-INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, null, null);
-INSERT INTO `sys_module` VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', null, null, null);
+INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, 'bkxxgl', null);
+INSERT INTO `sys_module` VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', null, 'Jddb', null);
 INSERT INTO `sys_module` VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, null, null);
 
 -- ----------------------------

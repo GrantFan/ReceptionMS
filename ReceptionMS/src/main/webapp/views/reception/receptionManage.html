@@ -135,45 +135,62 @@
 							type="text" name="receptionNumber" id="receptionNumber" value="" />
 						</label> <label for="receptionDate"> <span>接待日期</span> <input
 							name="receptionDate" id="receptionDate" value="" />
-						</label> <label for="receptionPrinter"> <span>接待资料打印人</span> <input
+						</label> 
+						<label for="guestName"> <span>宾客姓名</span> <input
+							name="guestName" id="guestName" value="" />
+						</label> <label for="guestNum"> <span>宾客人数</span> <input
+							name="guestNum" id="guestNum" value="" />
+						</label><label for="receptionPrinter"> <span>资料打印人</span> <input
 							name="receptionPrinter" id="receptionPrinter" value="" />
-						</label> <label for="recordTime"> <span>登记时间</span> <input
-							name="recordTime" id="recordTime" value="" />
 						</label>
-
+						<label for="hotel"> <span>接待酒店</span> <input
+							name="hotel" id="hotel" value="" />
+						</label> 
+						<label for="recordTime"> <span>登记时间</span> <input
+							name="recordTime" id="recordTime" value="" />
+						</label> 
+						
 					</div>
 					<div class="rt">
 						<label for="receptionTitle"> <span>接待名称</span> <input
 							name="receptionTitle" id="receptionTitle" value="" />
-						</label> <label for="receptionPerson"> <span>接待人：</span> <input
+						</label> <label for="receptionPerson"> <span>接待人员：</span> <input
 							name="receptionPerson" id="receptionPerson" />
+						</label> <label for="entourage"> <span>陪同人员</span> <input
+							name="entourage" id="entourage" value="" />
+						</label> <label for="receptionNum"> <span>接待人数</span> <input
+							name="receptionNum" id="receptionNum" value="" />
 						</label> <label for="description"> <span>描述</span> <input
 							name="description" id="description" value="" />
-						</label> <label for="remark"> <span>备注</span> <input name="remark"
+						</label> 
+						<label for="receptionDays"> <span>接待天数</span> <input
+							name="receptionDays" id="receptionDays" value="" />
+						</label>
+						<label for="remark"> <span>备注</span> <input name="remark"
 							id="remark" value="" />
 						</label>
+
 					</div>
-
-
 				</div>
+				<b>---------------------------用餐记录------------------------------------</b>
 				<div class="tab">
 					<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
 						<thead>
 							<tr>
-								<th>接待编号</th>
 								<th>酒店</th>
 								<th>套餐编号</th>
 								<th>用餐时间</th>
 								<th>用餐喜好</th>
 								<th>登记时间</th>
 								<th>备注</th>
+								<th></th>
 							</tr>
 						</thead>
 					</table>
 					<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
 						<tbody id="table1">
 							<tr>
-								<td><input type="text" name="" id="" value="" /></td>
+								<input type="text" name="" id="" value="" />
 								<td><select><option>东方酒店</option></select></td>
 								<td><select><option>套餐一</option></select></td>
 								<td><input type="text" name="" id="" value="" /></td>
@@ -185,12 +202,11 @@
 					</table>
 				</div>
 
-
+				<b>---------------------------住房记录------------------------------------</b>
 				<div class="tab">
 					<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
 						<thead>
 							<tr>
-								<th>接待编号</th>
 								<th>酒店</th>
 								<th>房间号</th>
 								<th>入住时间</th>
@@ -198,6 +214,7 @@
 								<th>宾客喜好</th>
 								<th>登记时间</th>
 								<th>备注</th>
+								<th></th>
 							</tr>
 						</thead>
 					</table>
@@ -219,7 +236,7 @@
 
 			</div>
 			<div class="mfoot" align="center">
-				<button id="update">
+				<button id="update" onclick="editSubmit()">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
 				<button id="print" class="none">

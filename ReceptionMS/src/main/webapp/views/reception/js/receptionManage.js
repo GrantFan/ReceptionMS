@@ -25,7 +25,7 @@ function showReceptionList(pageNum, pageSize) {
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr ondblclick=\"view(this)\">"
-					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
+					+ "<td><label><input type=\"Checkbox\" name='check' value='" + obj[i].receptionNumber + "' ><u></u></label></td>"
 					+ "<td class='number'>" + obj[i].receptionNumber + "</td><td>" + obj[i].receptionTitle + "</td>"
 					+ "<td>" + obj[i].receptionDate + "</td><td>" + obj[i].receptionPerson + "</td>"
 					+ "<td>" + obj[i].receptionPrinter + "</td><td>" + obj[i].guestName + "</td>	"
@@ -110,7 +110,7 @@ function showReceptionList(pageNum, pageSize) {
 
 
 function view(tr){
-	$(".modal").show();
+	$(".modal").show(500);
 	$("#update").hide();
 	$("#print").show();
 	
@@ -125,9 +125,52 @@ function view(tr){
 			var reception = eval(json.reception);
 			var meals = eval(json.meals);
 			var accommodation = eval(json.accommodation);
-			console.log(reception);
-			console.log(meals);
-			console.log(accommodation);
+//			console.log(reception);
+//			console.log(meals);
+//			console.log(accommodation);
+			
+			//接待信息
+			$("#receptionNumber").val(reception.receptionNumber);
+			$("#receptionTitle").val(reception.receptionTitle);
+			$("#receptionDate").val(reception.receptionDate);
+			$("#receptionPerson").val(reception.receptionPerson);
+			$("#receptionPrinter").val(reception.receptionPrinter);
+			$("#guestName").val(reception.guestName);
+			$("#entourage").val(reception.entourage);
+			$("#receptionNum").val(reception.receptionNum);
+			$("#receptionDays").val(reception.receptionDays);
+			$("#guestNum").val(reception.guestNum);
+			$("#hotel").val(reception.hotel);
+			$("#description").val(reception.description);
+			$("#recordTime").val(reception.recordTime);
+			$("#remark").val(reception.remark);
+			//用餐记录显示
+			$("#table1").empty();
+			for(var i=0,len=meals.length;i<len;i++){
+				$("#table1").append("<tr><input type=\"hidden\" value='"+meals[i].id+"' />"
+								+"<td>"+meals[i].hotel+"</td>"
+								+"<td>"+meals[i].menuNumber+"</td>"
+								+"<td>"+meals[i].mealsTime+"</td>"
+								+"<td>"+meals[i].hobby+"</td>"
+								+"<td>"+meals[i].recordTime+"</td>"
+								+"<td>"+meals[i].remark+"</td>"
+								+"<td></td>"
+								+"</tr>");
+			}
+			//住房记录显示
+			$("#table2").empty();
+			for(var i=0,len=accommodation.length;i<len;i++){
+				$("#table2").append("<tr><input type=\"hidden\" value='"+accommodation[i].id+"' />"
+								+"<td>"+accommodation[i].hotel+"</td>"
+								+"<td>"+accommodation[i].roomNumber+"</td>"
+								+"<td>"+accommodation[i].checkinTime+"</td>"
+								+"<td>"+accommodation[i].checkoutTime+"</td>"
+								+"<td>"+accommodation[i].hobby+"</td>"
+								+"<td>"+accommodation[i].recordTime+"</td>"
+								+"<td>"+accommodation[i].remark+"</td>"
+								+"<td></td>"
+								+"</tr>");
+			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
@@ -136,25 +179,260 @@ function view(tr){
 }
 
 function edit() {
-	$(".modal").show();
+	if ($(":checkbox[name='check']:checked").length != 1) {
+		alert("请选择一个选项！");
+		return false;
+	}
+	var number;
+	$(":checkbox[name='check']:checked").each(function() { //遍历
+		number = $(this).val(); // 每一个被选中项的值
+	});
+	$(".modal").show(500);
 	$("#update").show();
 	$("#print").hide();
 	
-}
-
-//修改
-function editSubmit() {
-	$(".modal").find('label').each(function() {
-		//console.log($(this).attr('for'));
-		if ($(this).attr('for') == 'user') {
-			$(this).css('color', '#ddd');
-			$(this).children('input').attr("disabled", true);
-			$(".modal").show();
+	$.ajax({
+		type : "post",
+		data :{"receptionNumber":number},
+		url : "../../recep/recordInfo",
+		success : function(data) {
+			var json = JSON.parse(data);
+			var reception = eval(json.reception);
+			var meals = eval(json.meals);
+			var accommodation = eval(json.accommodation);
+//			console.log(reception);
+//			console.log(meals);
+//			console.log(accommodation);
+			
+			//接待信息
+			$("#receptionNumber").val(reception.receptionNumber);
+			$("#receptionTitle").val(reception.receptionTitle);
+			$("#receptionDate").val(reception.receptionDate);
+			$("#receptionPerson").val(reception.receptionPerson);
+			$("#receptionPrinter").val(reception.receptionPrinter);
+			$("#guestName").val(reception.guestName);
+			$("#entourage").val(reception.entourage);
+			$("#receptionNum").val(reception.receptionNum);
+			$("#receptionDays").val(reception.receptionDays);
+			$("#guestNum").val(reception.guestNum);
+			$("#hotel").val(reception.hotel);
+			$("#description").val(reception.description);
+			$("#recordTime").val(reception.recordTime);
+			$("#remark").val(reception.remark);
+			//用餐记录
+			$("#table1").empty();
+			for(var i=0,len=meals.length;i<len;i++){
+				$("#table1").append("<tr><input type=\"hidden\" value='"+meals[i].id+"' />"
+								+"<td><input class='hotel' value='"+meals[i].hotel+"' /></td>"
+								+"<td><input class='menuNumber' value='"+meals[i].menuNumber+"' /></td>"
+								+"<td><input class='mealsTime' value='"+meals[i].mealsTime+"' /></td>"
+								+"<td><input class='hobby' value='"+meals[i].hobby+"' /></td>"
+								+"<td><input class='recordTime' value='"+meals[i].recordTime+"' /></td>"
+								+"<td><input class='remark' value='"+meals[i].remark+"' /></td>"
+								+"<td><button onclick='mealsUpdate(this)'>保存</button><button onclick='mealsDelete(this)'>删除</button></td>"
+								+"</tr>");
+			}
+			//住房记录
+			$("#table2").empty();
+			for(var i=0,len=accommodation.length;i<len;i++){
+				$("#table2").append("<tr><input type=\"hidden\" value='"+accommodation[i].id+"' />"
+								+"<td><input class='hotel' value='"+accommodation[i].hotel+"' /></td>"
+								+"<td><input class='roomNumber' value='"+accommodation[i].roomNumber+"' /></td>"
+								+"<td><input class='checkinTime' value='"+accommodation[i].checkinTime+"' /></td>"
+								+"<td><input class='checkoutTime' value='"+accommodation[i].checkoutTime+"' /></td>"
+								+"<td><input class='hobby' value='"+accommodation[i].hobby+"' /></td>"
+								+"<td><input class='recordTime' value='"+accommodation[i].recordTime+"' /></td>"
+								+"<td><input class='remark' value='"+accommodation[i].remark+"' /></td>"
+								+"<td><button onclick='accomUpdate(this)'>保存</button><button onclick='accomDelete(this)'>删除</button></td>"
+								+"</tr>");
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
 		}
 	})
 }
 
+//修改
+function editSubmit() {
+	$.ajax({
+		url : '../../recep/update',
+		type : 'post',
+		data : {
+			receptionNumber: $("#receptionNumber").val(),
+			receptionTitle: $("#receptionTitle").val(),
+			receptionDate : $("#receptionDate").val(),
+			receptionPerson : $("#receptionPerson").val(),
+			receptionPrinter : $("#receptionPrinter").val(),
+			guestName : $("#guestName").val(),
+			entourage : $("#entourage").val(),
+			guestNum : $("#guestNum").val(),
+			receptionNum : $("#receptionNum").val(),
+			receptionDays : $("#receptionDays").val(),
+			hotel : $("#hotel").val(),
+			description : $("#description").val(),
+			remark : $("#remark").val()
+		},
+		success : function(result) {
+			console.log(result);
+			if (result == "true") {
+				alert("修改成功");
+				$('.modal').hide();
+				showReceptionList(sessionStorage.currPage, sessionStorage.pageSize);
+			}else{
+				alert("修改失败");
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	});
+}
+
 //删除
 function dele() {
-	alert("删除")
+	if ($(":checkbox[name='check']:checked").length != 1) {
+		alert("请选择一个选项！");
+		return false;
+	}
+	var r = confirm("确定删除吗？");
+	if (r == true) {
+		var number;
+		$(":checkbox[name='check']:checked").each(function() { //遍历
+			number = $(this).val(); // 每一个被选中项的值
+		});
+		$.ajax({
+			url : '../../recep/' + number,
+			type : 'Delete',
+			success : function(result) {
+				if(result=="true"){
+					alert("删除成功");
+					showReceptionList(sessionStorage.currPage, sessionStorage.pageSize);
+				}else{
+					alert("删除失败");
+				}
+				
+			}
+		})
+	} else {
+		return;
+	}
+}
+
+function mealsUpdate(button){
+	var id = $(button).parent().siblings("input").val();
+	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
+	var menuNumber = $(button).parent().siblings("td").find("input.menuNumber").val();
+	var mealsTime =$(button).parent().siblings("td").find("input.mealsTime").val();
+	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
+	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val();
+	var remark =$(button).parent().siblings("td").find("input.remark").val();
+//	console.log(id,hotel,menuNumber,mealsTime,hobby,recordTime,remark)
+	
+	$.ajax({
+		url : '../../meals/update',
+		type : 'post',
+		data : {
+			id: id,
+			hotel: hotel,
+			menuNumber : menuNumber,
+			mealsTime : mealsTime,
+			hobby : hobby,
+			recordTime :recordTime,
+			remark : remark
+		},
+		success : function(result) {
+			console.log(result);
+			if (result == "true") {
+				alert("修改成功");
+				edit();
+			}else{
+				alert("修改失败");
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	});
+}
+function mealsDelete(button){
+	var id = $(button).parent().siblings("input").val();
+	var r = confirm("确定删除吗？");
+	if (r == true) {
+		$.ajax({
+			url : '../../meals/' + id,
+			type : 'Delete',
+			success : function(result) {
+				if(result=="true"){
+					alert("删除成功");
+					edit();
+				}else{
+					alert("删除失败");
+				}
+				
+			}
+		})
+	} else {
+		return;
+	}
+}
+
+function accomUpdate(button){
+	var id = $(button).parent().siblings("input").val();
+	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
+	var roomNumber = $(button).parent().siblings("td").find("input.roomNumber").val();
+	var checkinTime =$(button).parent().siblings("td").find("input.checkinTime").val();
+	var checkoutTime =$(button).parent().siblings("td").find("input.checkoutTime").val();
+	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
+	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val();
+	var remark =$(button).parent().siblings("td").find("input.remark").val();
+//	console.log(id,hotel,menuNumber,mealsTime,hobby,recordTime,remark)
+	
+	$.ajax({
+		url : '../../accom/update',
+		type : 'post',
+		data : {
+			id: id,
+			hotel: hotel,
+			roomNumber : roomNumber,
+			checkinTime : checkinTime,
+			checkoutTime : checkoutTime,
+			hobby : hobby,
+			recordTime :recordTime,
+			remark : remark
+		},
+		success : function(result) {
+			console.log(result);
+			if (result == "true") {
+				alert("修改成功");
+				edit();
+			}else{
+				alert("修改失败");
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	});
+}
+function accomDelete(button){
+	var id = $(button).parent().siblings("input").val();
+	var r = confirm("确定删除吗？");
+	if (r == true) {
+		$.ajax({
+			url : '../../accom/' + id,
+			type : 'Delete',
+			success : function(result) {
+				if(result=="true"){
+					alert("删除成功");
+					edit();
+				}else{
+					alert("删除失败");
+				}
+				
+			}
+		})
+	} else {
+		return;
+	}
 }

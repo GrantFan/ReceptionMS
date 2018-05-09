@@ -24,13 +24,13 @@ public class AccommodationRecordServiceImpl implements AccommodationRecordServic
 	@Override
 	public int update(AccommodationRecordEntity accommodation) {
 		// TODO Auto-generated method stub
-		return 0;
+		return accommodationRecordMapper.update(accommodation);
 	}
 
 	@Override
 	public int delete(AccommodationRecordEntity accommodation) {
 		// TODO Auto-generated method stub
-		return 0;
+		return accommodationRecordMapper.delete(accommodation);
 	}
 
 	@Override

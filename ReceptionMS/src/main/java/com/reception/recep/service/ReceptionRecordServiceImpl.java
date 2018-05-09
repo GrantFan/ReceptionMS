@@ -25,13 +25,13 @@ public class ReceptionRecordServiceImpl implements ReceptionRecordService {
 	@Override
 	public int update(ReceptionRecordEntity reception) {
 		// TODO Auto-generated method stub
-		return 0;
+		return receptionRecordMapper.update(reception);
 	}
 
 	@Override
 	public int delete(ReceptionRecordEntity reception) {
 		// TODO Auto-generated method stub
-		return 0;
+		return receptionRecordMapper.delete(reception);
 	}
 
 	@Override
