@@ -251,6 +251,8 @@ function view(tr){
 			$("#remark").val(reception.remark);
 			//用餐记录显示
 			$("#table1").empty();
+			var ths1 = $("#table1").parent('.tabTbody').prev('.tabTitle').find('th');
+			ths1[ths1.length - 1].remove();
 			for(var i=0,len=meals.length;i<len;i++){
 				$("#table1").append("<tr><input type=\"hidden\" value='"+meals[i].id+"' />"
 								+"<td>"+meals[i].hotel+"</td>"
@@ -259,11 +261,12 @@ function view(tr){
 								+"<td>"+meals[i].hobby+"</td>"
 								+"<td>"+meals[i].recordTime+"</td>"
 								+"<td>"+meals[i].remark+"</td>"
-								+"<td></td>"
 								+"</tr>");
 			}
 			//住房记录显示
 			$("#table2").empty();
+			var ths2 = $("#table2").parent('.tabTbody').prev('.tabTitle').find('th');
+			ths2[ths2.length - 1].remove();
 			for(var i=0,len=accommodation.length;i<len;i++){
 				$("#table2").append("<tr><input type=\"hidden\" value='"+accommodation[i].id+"' />"
 								+"<td>"+accommodation[i].hotel+"</td>"
@@ -273,7 +276,6 @@ function view(tr){
 								+"<td>"+accommodation[i].hobby+"</td>"
 								+"<td>"+accommodation[i].recordTime+"</td>"
 								+"<td>"+accommodation[i].remark+"</td>"
-								+"<td></td>"
 								+"</tr>");
 			}
 		},

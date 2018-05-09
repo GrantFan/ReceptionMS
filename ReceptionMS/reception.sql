@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2018-05-09 18:14:02
+Date: 2018-05-09 19:13:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -700,7 +700,7 @@ INSERT INTO `sys_module` VALUES ('17', '数据字典维护', '17', '1', '../syst
 INSERT INTO `sys_module` VALUES ('18', '宾客管理', '18', '0', null, null, null, 'bkxxgl', null);
 INSERT INTO `sys_module` VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, 'bkxxgl', null);
 INSERT INTO `sys_module` VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', null, 'Jddb', null);
-INSERT INTO `sys_module` VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, null, null);
+INSERT INTO `sys_module` VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, 'fjxxgl', null);
 
 -- ----------------------------
 -- Table structure for sys_operation_log
