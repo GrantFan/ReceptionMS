@@ -76,12 +76,10 @@ function contrastHotel(){
 					$("#ul_l").append(
 							"<li>"
 							+"<u class=\"rooms\"></u>"
-							+"<strong id=\"roomID\"><span>房间号：</span>"+hotel_l[i].roomNumber+"</strong>"
-							+"<p class=\"JG\"><span>门市价：</span><b>"+hotel_l[i].rackPrice+"/天</b></p>"
-							+"<p class=\"CG\"><span>协议价：</span><b>"+hotel_l[i].agreementPrice+"/天</b></p>"
-							 
-							+"<p class=\"CX\"><span>朝向：</span><b>"+hotel_l[i].orientation+"</b></p>"
-							 
+							+"<strong id=\"roomID\"><span class=\"webkit\">房间号：</span><b class=\"webkit\">"+hotel_l[i].roomNumber+"</b></strong>"
+							+"<p class=\"JG\"><span class=\"webkit\">门市价：</span><b class=\"webkit\">"+hotel_l[i].rackPrice+"/天</b></p>"
+							+"<p class=\"CX\"><span class=\"webkit\">协议价：</span><b class=\"webkit\">"+hotel_l[i].agreementPrice+"/天</b></p>"							 
+							+"<p class=\"CG\"><span class=\"webkit\">朝向：</span><b class=\"webkit\">"+hotel_l[i].orientation+"</b></p>"							 
 							+"</li>"
 					);
 				}
@@ -91,12 +89,10 @@ function contrastHotel(){
 					$("#ol_r").append(
 							"<li>"
 							+"<u class=\"rooms\"></u>"
-							+"<strong id=\"roomID\"><span>房间号：</span>"+hotel_r[i].roomNumber+"</strong>"
-							+"<p class=\"JG\"><span>门市价：</span><b>"+hotel_r[i].rackPrice+"/天</b></p>"
-							+"<p class=\"CG\"><span>协议价：</span><b>"+hotel_r[i].agreementPrice+"/天</b></p>"
-							 
-							+"<p class=\"CX\"><span>朝向：</span><b>"+hotel_r[i].orientation+"</b></p>"
-							 
+							+"<strong id=\"roomID\"><span class=\"webkit\">房间号：</span><b class=\"webkit\">"+hotel_r[i].roomNumber+"</b></strong>"
+							+"<p class=\"JG\"><span class=\"webkit\">门市价：</span><b class=\"webkit\">"+hotel_r[i].rackPrice+"/天</b></p>"
+							+"<p class=\"CX\"><span class=\"webkit\">协议价：</span><b class=\"webkit\">"+hotel_r[i].agreementPrice+"/天</b></p>"							 
+							+"<p class=\"CG\"><span class=\"webkit\">朝向：</span><b class=\"webkit\">"+hotel_r[i].orientation+"</b></p>"							 
 							+"</li>"
 					);
 				}

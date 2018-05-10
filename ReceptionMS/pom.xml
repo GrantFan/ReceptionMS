@@ -50,6 +50,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<!-- 添加oracle jdbc driver -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0</version>
+		</dependency>
 		<!-- 配置 ajax gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -71,6 +77,10 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<source>1.8</source>
@@ -83,6 +93,7 @@
 					<version>3.0</version>
 				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 </project>

@@ -4,7 +4,7 @@
 	list-style: none;
 	box-sizing: border-box;
 }
-/* 鍏叡鏍峰紡               start */   
+/* 公共样式               start */   
 .none{
 	display: none;
 }
@@ -37,7 +37,7 @@ u,i,label,span,b{
 }
 
 
-/* 澶嶉�夋 榛樿鏍峰紡淇敼 */
+/* 复选框 默认样式修改 */
 
 .table label{
 	position: relative;
@@ -75,7 +75,7 @@ input[type=checkbox]:checked+u{
 html,body{
 	width: 100%;
 	height: 100vh;
-	font:normal 0.72916vw "寰蒋闆呴粦",arial; 
+	font:normal 0.72916vw "微软雅黑",arial; 
 	color: #fff;
 	word-wrap:break-word; 
 	word-break:break-all; 
@@ -216,7 +216,7 @@ nav.content {
 article td,article th{
 	border: 1px solid #aaa;
 }
-/* 鑿滃崟 */
+/* 菜单 */
  .accordion {
  	width: 100%;
  	text-align: left;
@@ -285,14 +285,14 @@ article td,article th{
  	transition: all 0.25s ease;
  }
 
-/*******************  鏁翠綋 header  *******************/
+/*******************  整体 header  *******************/
 
 
 .header>.rt>span.name{
 	margin-right: 0.8334vw;
 }
 
-/*******************  鍐呭灞曠ず鍖�   ******************/
+/*******************  内容展示区   ******************/
 article#right>section{
 	width: 81.25vw;
 }
@@ -386,7 +386,7 @@ iframe{
 	background: rgba(0,128,128,0.7);	
 	margin-top: 1.67vh;
 }
-/*琛ㄦ牸*/
+/*表格*/
 .operationsArea>.tab>table{
 	width: 100%;
 	text-align: center;
@@ -411,7 +411,7 @@ iframe{
 	background-color: rgba(0,0,0,0.2);
 	color: #f9ff4b;
 }
-/*鎺掑垪*/
+/*排列*/
 .operationsArea>.tab .title{
 	width: 100%;
 	height: 5.2vh;
@@ -530,7 +530,7 @@ iframe{
 	padding-top: 0.613vh;
 }
  /*
-  * 	閫変腑鑳屾櫙鍙樿壊
+  * 	选中背景变色
   *  */
 /*.operationsArea>.tab>.seat>.xBox>.storey+ol.overflow li.active{
 	background-color: rgba(38,54,64,0.6);
@@ -573,11 +573,6 @@ iframe{
 	left: 11vw;
 	top: 2.6vh;
 }
-.operationsArea>.tab>.fruit li>.LC{
-	position: absolute;
-	left: 11vw;
-	top: 6vh;
-}
 .operationsArea>.tab>.fruit li>.CX{
 	position: absolute;
 	left: 11vw;
@@ -586,9 +581,9 @@ iframe{
 .operationsArea>.tab>.fruit li>.CG{
 	position: absolute;
 	top: 6vh;
-	left: 5vw;
+	left: 5.1vw;
 }
-/****************** 妯″脊妗� *****************/
+/****************** 模弹框 *****************/
 
 .modal{
 	width:100%;
@@ -681,7 +676,7 @@ iframe{
  	background-color: #0ff53b;
 }
 .modal>.box>.mbody label>select{
-	background-image: url(../img/浼氳瀹や娇鐢ㄨ褰昣03.png);
+	background-image: url(../img/会议室使用记录_03.png);
 	background-repeat: no-repeat; 
 	background-position: 0px 0px;
 	background-size: 100% 100%;
@@ -832,7 +827,7 @@ iframe{
 }
 .Tmodal div.tab{
 	overflow-y: scroll;
-	min-height: 22vh;
+	min-height: 25vh;
 	position: relative;
 	border: 1px solid #000;
 }
@@ -872,6 +867,7 @@ iframe{
 	}
 	.operationsArea>.buttons>button>u{
 		-moz-transform: translate(-3px,0px);
+		margin-right:0.456vw;
 	}
 	.operationsArea > .tab > .seat li .useIng,
 	.operationsArea > .tab > .seat li .null{

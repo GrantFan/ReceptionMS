@@ -339,6 +339,15 @@ function edit() {
 								+"<td><button onclick='mealsUpdate(this)'>保存</button><button onclick='mealsDelete(this)'>删除</button></td>"
 								+"</tr>");
 			}
+			$("#table1").append("<tr><input type=\"hidden\" value='' />"
+					+"<td><input class='hotel' value='' /></td>"
+					+"<td><input class='menuNumber' value='' /></td>"
+					+"<td><input class='mealsTime' value='' /></td>"
+					+"<td><input class='hobby' value='' /></td>"
+					+"<td><input class='recordTime' value='' /></td>"
+					+"<td><input class='remark' value='' /></td>"
+					+"<td><button onclick='mealsAdd(this)'>添加</button><button onclick='mealsRemove(this)'>清空</button></td>"
+					+"</tr>");
 			//住房记录
 			$("#table2").empty();
 			for(var i=0,len=accommodation.length;i<len;i++){
@@ -353,6 +362,16 @@ function edit() {
 								+"<td><button onclick='accomUpdate(this)'>保存</button><button onclick='accomDelete(this)'>删除</button></td>"
 								+"</tr>");
 			}
+			$("#table2").append("<tr><input type=\"hidden\" value='' />"
+					+"<td><input class='hotel' value='' /></td>"
+					+"<td><input class='roomNumber' value='' /></td>"
+					+"<td><input class='checkinTime' value='' /></td>"
+					+"<td><input class='checkoutTime' value='' /></td>"
+					+"<td><input class='hobby' value='' /></td>"
+					+"<td><input class='recordTime' value='' /></td>"
+					+"<td><input class='remark' value='' /></td>"
+					+"<td><button onclick='accomAdd(this)'>添加</button><button onclick='accomRemove(this)'>清空</button></td>"
+					+"</tr>");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
@@ -360,7 +379,7 @@ function edit() {
 	})
 }
 
-//修改
+//接待记录修改
 function editSubmit() {
 	$.ajax({
 		url : '../../recep/update',
@@ -396,7 +415,7 @@ function editSubmit() {
 	});
 }
 
-//删除
+//接待记录删除
 function dele() {
 	if ($(":checkbox[name='check']:checked").length != 1) {
 		alert("请选择一个选项！");
@@ -426,6 +445,14 @@ function dele() {
 	}
 }
 
+//用餐记录添加
+function mealsAdd(button){
+	
+}
+function mealsRemove(button){
+	
+}
+//用餐记录修改
 function mealsUpdate(button){
 	var id = $(button).parent().siblings("input").val();
 	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
@@ -462,6 +489,7 @@ function mealsUpdate(button){
 		}
 	});
 }
+//用餐记录删除
 function mealsDelete(button){
 	var id = $(button).parent().siblings("input").val();
 	var r = confirm("确定删除吗？");
@@ -484,6 +512,14 @@ function mealsDelete(button){
 	}
 }
 
+//住房记录添加
+function accomAdd(button){
+	
+}
+function accomRemove(button){
+	
+}
+//住房记录修改
 function accomUpdate(button){
 	var id = $(button).parent().siblings("input").val();
 	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
@@ -522,6 +558,7 @@ function accomUpdate(button){
 		}
 	});
 }
+//住房记录删除
 function accomDelete(button){
 	var id = $(button).parent().siblings("input").val();
 	var r = confirm("确定删除吗？");
