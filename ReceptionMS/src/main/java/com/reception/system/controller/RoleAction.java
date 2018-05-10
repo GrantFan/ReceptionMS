@@ -33,24 +33,31 @@ public class RoleAction {
 	@Resource
 	RoleServiceImpl roleService;
  
+	@RequestMapping(value = "/list", method = RequestMethod.POST, produces = "json/plain; charset=utf-8")
+	public @ResponseBody String selectList() {
+		List<Role> list = roleService.selectList();
+		String jsonlist=JSONHelper.toJSON(list);
+		System.out.println(jsonlist);
+		return jsonlist;
+	}
 	/**
 	 * 查询角色
 	 * @param role
 	 * @return string
 	 */
-	@RequestMapping(value = "/list", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
+	@RequestMapping(value = "/listByName", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
 	public @ResponseBody String selectRoleList(
 			@RequestParam(value="roleName",required=false)String roleName,
 			@RequestParam(value="pageSize",required=false,defaultValue = "2")String pageSize,
 			@RequestParam(value="pageNum",required=false,defaultValue = "1")String pageNum, 
 			HttpServletRequest req) {
 		//统计条数
-		long total=PageHelper.count(() -> {roleService.selectList(roleName);});
+		long total=PageHelper.count(() -> {roleService.selectListByName(roleName);});
 		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
 		Page page=PageHelper.getLocalPage();
 		//总页数
 		long totalPage=total/page.getPageSize()+((total % page.getPageSize()==0) ? 0:1);
-		List<Role> list = roleService.selectList(roleName);
+		List<Role> list = roleService.selectListByName(roleName);
 		String jsonlist=JSONHelper.toJSON(list);
 		System.out.println(jsonlist);
 		return jsonlist;

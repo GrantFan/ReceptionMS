@@ -26,6 +26,7 @@ public class User implements Serializable{
 	private String modifyTime;//修改时间
 	private String enable;//是否使用
 	private String roleId; //角色ID
+	private String roleName; //角色名
 	
 	
 	public String getId() {
@@ -87,6 +88,12 @@ public class User implements Serializable{
 	}
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 	
 }

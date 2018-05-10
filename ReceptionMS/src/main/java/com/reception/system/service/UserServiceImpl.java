@@ -55,4 +55,7 @@ public class UserServiceImpl implements UserService{
 		return userDao.isExistUser(user);
 	}
 
+	public User selectById(String user){
+		return userDao.selectById(user);
+	};
 }

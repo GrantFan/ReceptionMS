@@ -89,7 +89,7 @@ public class HotelAction {
 	};
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public String queryConferenectById(@PathVariable("id") String id) {
+	public String queryHotelById(@PathVariable("id") String id) {
 		HotelInfoEntity hotel = this.hotelServiceImpl.selectById(id);
 		if (hotel == null) {
 			new EntityNotFoundException("不存在");

@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110100
 File Encoding         : 65001
 
-Date: 2018-05-10 11:33:49
+Date: 2018-05-10 19:19:05
 */
 
 
@@ -671,7 +671,6 @@ INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('9', '敦煌国际大酒店', '叶彦
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('10', '敦煌天润大酒店', '权玉霞', '18993732897', '0937-8819501', '敦煌', '甘肃省酒泉市敦煌市鸣山路309号', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('11', '敦煌太阳大酒店', '张春艳', '13893726729', '"0937-8841858', null, null, null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('12', '新华', '123', '123', '213', '1', '312', null, '312');
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('13', '不知道酒店', '我', '123456', '1244', '4', '这里', null, null);
 
 -- ----------------------------
 -- Table structure for HOTEL_PLANE_GRAPH
@@ -776,7 +775,7 @@ INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('5', 'T00009', 'D单', '一般套餐',
 DROP TABLE "TEST_GS"."RECEPTION_RECORD";
 CREATE TABLE "TEST_GS"."RECEPTION_RECORD" (
 "ID" NUMBER(11) NOT NULL ,
-"RECEPTION_NUMBER" NVARCHAR2(128) NULL ,
+"RECEPTION_NUMBER" NVARCHAR2(128) NOT NULL ,
 "RECEPTION_TITLE" NVARCHAR2(255) NULL ,
 "RECEPTION_DATE" DATE NULL ,
 "RECEPTION_PERSON" NVARCHAR2(255) NULL ,
@@ -966,24 +965,24 @@ COMMENT ON COLUMN "TEST_GS"."SYS_MODULE"."ICON" IS '图标';
 -- ----------------------------
 -- Records of SYS_MODULE
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('1', '系统管理', '1', '0', null, null, null, 'xtgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('2', '用户设置', '2', '1', '../system/userSheZhi.html', null, null, 'yhsz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', null, null, 'jssz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('4', '模块设置', '4', '1', '../system/module.html', null, null, 'mksz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('5', '操作日志', '5', '1', '../system/log.html', null, null, 'czrz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', null, null, 'sjkpz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('7', '接待管理', '7', '0', null, null, null, 'jdgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('8', '接待登记', '8', '7', '../reception/register.html', null, null, 'jddj', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', null, null, 'jdxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('10', '酒店管理', '10', '0', null, null, null, 'Jdgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('1', '系统管理', '1', '0', null, '4', null, 'xtgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('2', '用户设置', '2', '1', '../system/userSheZhi.html', '1', null, 'yhsz', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', '2', null, 'jssz', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('4', '模块设置', '4', '1', '../system/module.html', '3', null, 'mksz', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('5', '操作日志', '5', '1', '../system/log.html', '4', null, 'czrz', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', '5', null, 'sjkpz', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('7', '接待管理', '7', '0', null, '1', null, 'jdgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('8', '接待登记', '8', '7', '../reception/register.html', '1', null, 'jddj', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', '2', null, 'jdxxgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('10', '酒店管理', '10', '0', null, '2', null, 'Jdgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', null, 'Jdxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', null, 'fjxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', null, 'hysxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', null, null, 'hyssyjl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', '3', null, 'hyssyjl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', null, 'tccpxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', null, null, 'sjzdwh', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('18', '宾客管理', '18', '0', null, null, null, 'bkxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', null, null, 'bkxxgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', '6', null, 'sjzdwh', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('18', '宾客管理', '18', '0', null, '3', null, 'bkxxgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', '1', null, 'bkxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', null, 'Jddb', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, 'fjxxgl', null);
 
@@ -1040,8 +1039,8 @@ COMMENT ON COLUMN "TEST_GS"."SYS_ROLE"."DESCRIPTION" IS '描述';
 -- Records of SYS_ROLE
 -- ----------------------------
 INSERT INTO "TEST_GS"."SYS_ROLE" VALUES ('1', '管理员', '普通管理员');
-INSERT INTO "TEST_GS"."SYS_ROLE" VALUES ('2', '用户', '普通用户');
-INSERT INTO "TEST_GS"."SYS_ROLE" VALUES ('3', '超级管理员', '超级管理员');
+INSERT INTO "TEST_GS"."SYS_ROLE" VALUES ('2', '普通用户', '普通用户');
+INSERT INTO "TEST_GS"."SYS_ROLE" VALUES ('0', '超级管理员', '超级管理员');
 
 -- ----------------------------
 -- Table structure for SYS_ROLE_MODULE
@@ -1098,7 +1097,9 @@ COMMENT ON COLUMN "TEST_GS"."SYS_USER"."ROLE_ID" IS '角色id';
 -- ----------------------------
 -- Records of SYS_USER
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '管理员', 'admin', 'LAPTOP-DGQRDS9J:192.168.1.108', TO_DATE('2018-05-06 12:22:31', 'YYYY-MM-DD HH24:MI:SS'), null, null, null, null);
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '管理员', 'admin', 'LAPTOP-DGQRDS9J:192.168.1.108', TO_DATE('2018-05-06 12:22:31', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', 'admin', 'LAPTOP-DGQRDS9J:192.168.1.108', TO_DATE('2018-05-06 12:22:31', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:48', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'wwww', 'ww1', '111111', null, null, TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:12:45', 'YYYY-MM-DD HH24:MI:SS'), null, '1');
 
 -- ----------------------------
 -- Indexes structure for table ACCOMMODATION_RECORD
@@ -1220,11 +1221,12 @@ ALTER TABLE "TEST_GS"."MENU_INFO" ADD PRIMARY KEY ("ID");
 -- Checks structure for table RECEPTION_RECORD
 -- ----------------------------
 ALTER TABLE "TEST_GS"."RECEPTION_RECORD" ADD CHECK ("ID" IS NOT NULL);
+ALTER TABLE "TEST_GS"."RECEPTION_RECORD" ADD CHECK ("RECEPTION_NUMBER" IS NOT NULL);
 
 -- ----------------------------
 -- Primary Key structure for table RECEPTION_RECORD
 -- ----------------------------
-ALTER TABLE "TEST_GS"."RECEPTION_RECORD" ADD PRIMARY KEY ("ID");
+ALTER TABLE "TEST_GS"."RECEPTION_RECORD" ADD PRIMARY KEY ("ID", "RECEPTION_NUMBER");
 
 -- ----------------------------
 -- Indexes structure for table RESTAURANT_INFO

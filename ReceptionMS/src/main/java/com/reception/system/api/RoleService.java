@@ -16,7 +16,5 @@ public interface RoleService {
 	
 	int deleteRole(RoleModule roleModual);
 	
-	List<Role> selectList(String roleName);
-	
 	int setRoleModule();//设置角色功能模块
 }

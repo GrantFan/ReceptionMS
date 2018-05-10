@@ -20,9 +20,6 @@
 			<button onclick="add()" class="active">
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
-			<button>
-				<u class="fzxz"></u><span class="webkit">复制新增</span>
-			</button>
 			<button onclick="edit()">
 				<u class="bj"></u><span class="webkit">编辑</span>
 			</button>
@@ -41,43 +38,9 @@
 			<button onclick="exportExcel()">
 				<u class="dc"></u><span class="webkit">导出 </span>
 			</button>
-			<button>
-				<u class="sh"></u><span class="webkit">审核</span>
-			</button>
-			<button>
-				<u class="cx"></u><span class="webkit">撤销</span>
-			</button>
-			<button>
-				<u class="sx"></u><span class="webkit">刷新</span>
-			</button>
-			<button onclick="shut()" class="m-0">
-				<u class="gb"></u><span class="webkit">关闭</span>
-			</button>
 		</div>
 		<div class="inputs">
-			<select name="">
-				<option value=""></option>
-				<option value="">且</option>
-				<option value="">或</option>
-			</select> <select name="">
-				<option value="">用户名</option>
-				<option value="">昵称</option>
-				<option value="">角色</option>
-				<option value="">在线</option>
-				<option value="">备注</option>
-			</select> <select name="">
-				<option value="">等于</option>
-				<option value="">不等于</option>
-				<option value="">包含</option>
-				<option value="">不包含</option>
-				<option value="">开头是</option>
-				<option value="">开头不是</option>
-				<option value="">结尾是</option>
-				<option value="">结尾不是</option>
-				<option value="">为空</option>
-				<option value="">不为空</option>
-			</select> 
-			<input id="hotelName" type="text" value="" />
+			<input id="hotelName" type="text" value="" placeholder="酒店名称" />
 			<button onClick="query()">
 				<span class="webkit">查询</span>
 			</button>
@@ -89,9 +52,7 @@
 			<table class="table" cellspacing="0" border="0">
 				<thead>
 					<tr>
-						<th><label> <input type="checkbox" id="checkbokAll">
-								<u></u>
-						</label></th>
+						<th>选择</th>
 						<th>酒店名称</th>
 						<th>联系人</th>
 						<th>联系电话</th>

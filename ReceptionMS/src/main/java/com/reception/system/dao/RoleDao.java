@@ -46,8 +46,12 @@ public interface RoleDao {
 	 */
 	@Select({ "<script>", "SELECT id,role_name,description", "FROM SYS_ROLE", "where 1=1 ",
 			"<if test=\" '' != roleName  and null != roleName\">", "and role_name=#{roleName}", "</if>", "</script>" })
-	List<Role> selectList(String roleName);
+	List<Role> selectListByName(String roleName);
 
+	@Select("SELECT id,role_name roleName,description FROM SYS_ROLE")
+	List<Role> selectList();
+	
+	
 	/**
 	 * 删除角色
 	 * @param role
@@ -80,4 +84,5 @@ public interface RoleDao {
 	 */
 	@Select("SELECT m.id,m.module_name,m.module_id,m.module_parent_id,m.url,m.sort,m.create_time,m.icon,m.remark FROM sys_module m left join sys_role_module rm on m.module_id=rm.module_id WHERE rm.role_id=#{role_id}")
 	List<RoleModule> selectRoleModule(String roleId);
+
 }

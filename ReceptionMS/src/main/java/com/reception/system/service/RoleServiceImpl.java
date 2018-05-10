@@ -43,10 +43,14 @@ public class RoleServiceImpl implements RoleService{
 		return 0;
 	}
 
-	@Override
-	public List<Role> selectList(String roleName) {
+	public List<Role> selectListByName(String roleName) {
 		// TODO Auto-generated method stub
-		return roleDao.selectList(roleName);
+		return roleDao.selectListByName(roleName);
+	}
+	
+	public List<Role> selectList() {
+		// TODO Auto-generated method stub
+		return roleDao.selectList();
 	}
 
 	//设置角色功能模块

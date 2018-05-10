@@ -24,15 +24,15 @@ function showRoomList(){
 			for (var i = 0, len = obj.length; i < len; i++) {
 				$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">"+obj[i].floor+"楼</p><ol id='floor_"+obj[i].floor+"' class=\"overflow rt\"></ol></div>");
 				var rooms = obj[i].list;
-				console.log(rooms);
+				//console.log(rooms);
 				for (var j = 0, leng = rooms.length; j < leng; j++) {
 					var room = ""
 					if (rooms[j].state == "1") {
 						room += "<li><p class=\"icon\" onclick=\"showRoom('"+rooms[j].id+"')\"><u class=\"idle\"></u>"
-							+ "</p> <span class=\"null\">" + rooms[j].roomNumber + "</span></li>";
+							+ "</p> <span class=\"idle\">" + rooms[j].roomNumber + "</span></li>";
 					} else {
 						room += "<li><p class=\"icon\" onclick=\"showRoom('"+rooms[j].id+"')\"><u class=\"useI\"></u>"
-							+ "</p> <span class=\"null\">" + rooms[j].roomNumber + "</span></li>";
+							+ "</p> <span class=\"useIng\">" + rooms[j].roomNumber + "</span></li>";
 					}
 					if (obj[i].floor == rooms[j].floor) {
 						$("#floor_" + +obj[i].floor).append(room);
@@ -67,7 +67,7 @@ function showFloorRoomList() {
 				var room = ""
 				if (obj[i].state == "1") {
 					room += "<li><p class=\"icon\" onclick=\"showRoom('"+obj[i].id+"')\"><u class=\"idle\"></u>"
-						+ "</p> <span class=\"null\">" + obj[i].roomNumber + "</span></li>";
+						+ "</p> <span class=\"idle\">" + obj[i].roomNumber + "</span></li>";
 				} else {
 					room += "<li><p class=\"icon\" onclick=\"showRoom('"+obj[i].id+"')\"><u class=\"useI\"></u>"
 						+ "</p> <span class=\"useIng\">" + obj[i].roomNumber + "</span></li>";

@@ -15,22 +15,6 @@
 	<body>
 		<div class="operationsArea">
 			<div class="buttons">
-				<button onclick="add()" class="active">
-						<u class="xz"></u>
-						<span class="webkit">新增</span>
-					</button>
-				<button>
-						<u class="fzxz"></u>
-						<span class="webkit">复制新增</span>
-					</button>
-				<button onclick="edit()">
-						<u class="bj"></u>
-						<span class="webkit">编辑</span>
-					</button>
-				<button onclick="dele()">
-						<u class="sc"></u>
-						<span class="webkit">删除</span>
-					</button>
 				<button>
 						<u class="dyyl"></u>
 						<span class="webkit">打印预览</span>
@@ -38,26 +22,6 @@
 				<button>
 						<u class="dy"></u>
 						<span class="webkit">打印</span>
-					</button>
-				<button>
-						<u class="dr"></u>
-						<span class="webkit">导入</span>
-					</button>
-				<button>
-						<u class="dc"></u>
-						<span class="webkit">导出</span>
-					</button>
-				<button>
-						<u class="sh"></u>
-						<span class="webkit">审核</span>
-					</button>
-				<button>
-						<u class="cx"></u>
-						<span class="webkit">撤销</span>
-					</button>
-				<button>
-						<u class="sx"></u>
-						<span class="webkit">刷新</span>
 					</button>
 				<button onclick="shut()" class="m-0">
 						<u class="gb"></u>
@@ -88,80 +52,24 @@
 				<option value="">光明大酒店</option>
 				<option value="">宏兴大酒店</option>
 				</select>
-				<button>查询</button>
-				<button>清空</button>
 				<button onclick="contrastHotel()">对比</button>
 			</div>
 			<div class="tab">			
 				<div class="overflow fruit">
 					<h6 class="title overflow">
 						<span class="lt">
-							<strong style="font-size: 1.025vw;">敦煌大酒店 </strong> 
+							<strong style="font-size: 1.025vw;"> </strong> 
 						</span>	
 						<span class="rt">
-							<strong style="font-size: 1.025vw;"> 宏信大酒店</strong>
+							<strong style="font-size: 1.025vw;"> </strong>
 						</span>
 					</h6>
 					<div class="seat overflow">
 						<ul id="ul_l" class="lt" style="width: 50%;margin-top: 26px">
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit">101</b></strong>
-								<p class="JG"><span class="webkit">门市价：</span><b class="webkit">120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">120/天</b></p>							 
-							</li>
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit">101</b></strong>
-								<p class="JG"><span class="webkit">门市价：</span><b class="webkit">120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">120/天</b></p>								 
-							</li> 	
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit">101</b></strong>
-								<p class="JG"><span class="webkit">门市价：</span><b class="webkit">120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">120/天</b></p>								 
-							</li> 	
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit">101</b></strong>		
-								<p class="JG"><span class="webkit">门市价：</span><b class="webkit">120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">120/天</b></p>								 
-							</li> 	
+							
 						</ul>
 						<ol id="ol_r" class="rt" style="width: 50%;margin-top: 26px">
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit">101</b></strong>	
-								<p class="JG"><span class="webkit">价格：</span><b class="webkit">120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">102/天</b></p>					
-							</li>
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit">101</b></strong>
-								<p class="JG"><span class="webkit">价格：</span><b><b class="webkit"></b>120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">120/天</b></p>			
-							</li> 	
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit"></b>101</strong>
-								<p class="JG"><span class="webkit">价格：</span><b class="webkit">120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">120/天</b></p>		
-							</li> 	
-							<li>
-								<u class="rooms"></u>
-								<strong id="roomID"><span class="webkit">房间号：</span><b class="webkit">101</b></strong>
-								<p class="JG"><span class="webkit">价格：</span><b class="webkit">120/天</b></p>
-								<p class="CG"><span class="webkit">朝向：</span><b class="webkit">阳面</b></p>
-								<p class="CX"><span class="webkit">协议价：</span><b class="webkit">120/天</b></p>
-							</li> 	
+							
 						</ol>
 					</div>									 
 				</div>

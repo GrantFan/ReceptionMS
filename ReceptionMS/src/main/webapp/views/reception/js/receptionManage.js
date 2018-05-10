@@ -86,7 +86,7 @@ function showReceptionList(pageNum, pageSize) {
 				//可选，是否展示跳到指定页数，默认true
 				isShowSkip : true,
 				//可选，是否展示刷新，默认true
-				isShowRefresh : true,
+				isShowRefresh : false,
 				//可选，是否展示共{}页，默认true
 				isShowTotalPage : true,
 				//可选，是否需要重新设置当前页码及总页数，默认false，如果设为true，那么在请求服务器返回数据时，需要调用setPage方法
@@ -188,11 +188,11 @@ function search(pageNum,pageSize){
 				//可选，是否展示首页与尾页，默认true
 				isShowFL : true,
 				//可选，是否展示每页N条下拉框，默认true
-				isShowPageSizeOpt : true,
+				isShowPageSizeOpt : flase,
 				//可选，是否展示跳到指定页数，默认true
 				isShowSkip : true,
 				//可选，是否展示刷新，默认true
-				isShowRefresh : true,
+				isShowRefresh : false,
 				//可选，是否展示共{}页，默认true
 				isShowTotalPage : true,
 				//可选，是否需要重新设置当前页码及总页数，默认false，如果设为true，那么在请求服务器返回数据时，需要调用setPage方法
@@ -326,8 +326,14 @@ function edit() {
 			$("#description").val(reception.description);
 			$("#recordTime").val(reception.recordTime);
 			$("#remark").val(reception.remark);
+			
 			//用餐记录
 			$("#table1").empty();
+			var ths1 = $("#table1").parent('.tabTbody').prev('.tabTitle').find('th');
+			if( ths1[ths1.length - 1].innerText != '操作'){
+				$("#table1").parent('.tabTbody').prev('.tabTitle').find('tr').append("<th>操作</th>");
+			}
+			
 			for(var i=0,len=meals.length;i<len;i++){
 				$("#table1").append("<tr><input type=\"hidden\" value='"+meals[i].id+"' />"
 								+"<td><input class='hotel' value='"+meals[i].hotel+"' /></td>"
@@ -336,20 +342,25 @@ function edit() {
 								+"<td><input class='hobby' value='"+meals[i].hobby+"' /></td>"
 								+"<td><input class='recordTime' value='"+meals[i].recordTime+"' /></td>"
 								+"<td><input class='remark' value='"+meals[i].remark+"' /></td>"
-								+"<td><button onclick='mealsUpdate(this)'>保存</button><button onclick='mealsDelete(this)'>删除</button></td>"
+								+"<td class='text-center'><button class='save' onclick='mealsUpdate(this)'> </button><button class='del' onclick='mealsDelete(this)'> </button></td>"
 								+"</tr>");
 			}
 			$("#table1").append("<tr><input type=\"hidden\" value='' />"
 					+"<td><input class='hotel' value='' /></td>"
-					+"<td><input class='menuNumber' value='' /></td>"
+					+"<td><input onchange='addColumnMeals()' class='menuNumber' value='' /></td>"
 					+"<td><input class='mealsTime' value='' /></td>"
 					+"<td><input class='hobby' value='' /></td>"
 					+"<td><input class='recordTime' value='' /></td>"
 					+"<td><input class='remark' value='' /></td>"
-					+"<td><button onclick='mealsAdd(this)'>添加</button><button onclick='mealsRemove(this)'>清空</button></td>"
+					+"<td class='text-center'><button class='save' onclick='mealsAdd(this)'> </button><button class='empty' onclick='mealsRemove(this)'></button></td>"
 					+"</tr>");
 			//住房记录
 			$("#table2").empty();
+			 
+			var ths2 = $("#table2").parent('.tabTbody').prev('.tabTitle').find('th');
+			if( ths2[ths2.length - 1].innerText != '操作'){
+				$("#table2").parent('.tabTbody').prev('.tabTitle').find('tr').append("<th>操作</th>");
+			}
 			for(var i=0,len=accommodation.length;i<len;i++){
 				$("#table2").append("<tr><input type=\"hidden\" value='"+accommodation[i].id+"' />"
 								+"<td><input class='hotel' value='"+accommodation[i].hotel+"' /></td>"
@@ -359,18 +370,18 @@ function edit() {
 								+"<td><input class='hobby' value='"+accommodation[i].hobby+"' /></td>"
 								+"<td><input class='recordTime' value='"+accommodation[i].recordTime+"' /></td>"
 								+"<td><input class='remark' value='"+accommodation[i].remark+"' /></td>"
-								+"<td><button onclick='accomUpdate(this)'>保存</button><button onclick='accomDelete(this)'>删除</button></td>"
+								+"<td class='text-center'><button class='save' onclick='accomUpdate(this)'> </button><button class='del' onclick='accomDelete(this)'> </button></td>"
 								+"</tr>");
 			}
 			$("#table2").append("<tr><input type=\"hidden\" value='' />"
 					+"<td><input class='hotel' value='' /></td>"
-					+"<td><input class='roomNumber' value='' /></td>"
+					+"<td><input onchange='addColumnAccom()' class='roomNumber' value='' /></td>"
 					+"<td><input class='checkinTime' value='' /></td>"
 					+"<td><input class='checkoutTime' value='' /></td>"
 					+"<td><input class='hobby' value='' /></td>"
 					+"<td><input class='recordTime' value='' /></td>"
 					+"<td><input class='remark' value='' /></td>"
-					+"<td><button onclick='accomAdd(this)'>添加</button><button onclick='accomRemove(this)'>清空</button></td>"
+					+"<td class='text-center'><button class='save' onclick='accomAdd(this)'> </button><button class='empty' onclick='accomRemove(this)'> </button></td>"
 					+"</tr>");
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -447,10 +458,36 @@ function dele() {
 
 //用餐记录添加
 function mealsAdd(button){
+	var id = $(button).parent().siblings("input").val();
+	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
+	var menuNumber = $(button).parent().siblings("td").find("input.menuNumber").val();
+	var mealsTime =$(button).parent().siblings("td").find("input.mealsTime").val();
+	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
+	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val();
+	var remark =$(button).parent().siblings("td").find("input.remark").val();
 	
+	//ajax
+	alert("还没做")
 }
 function mealsRemove(button){
-	
+	var id = $(button).parent().siblings("input").val("");
+	var hotel = $(button).parent().siblings("td").find("input.hotel").val("");
+	var menuNumber = $(button).parent().siblings("td").find("input.menuNumber").val("");
+	var mealsTime =$(button).parent().siblings("td").find("input.mealsTime").val("");
+	var hobby = $(button).parent().siblings("td").find("input.hobby").val("");
+	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val("");
+	var remark =$(button).parent().siblings("td").find("input.remark").val("");
+}
+function addColumnMeals(){
+	$("#table1").append("<tr><input type=\"hidden\" value='' />"
+			+"<td><input class='hotel' value='' /></td>"
+			+"<td><input onchange='addColumnMeals()' class='menuNumber' value='' /></td>"
+			+"<td><input class='mealsTime' value='' /></td>"
+			+"<td><input class='hobby' value='' /></td>"
+			+"<td><input class='recordTime' value='' /></td>"
+			+"<td><input class='remark' value='' /></td>"
+			+"<td class='text-center'><button class='save' onclick='mealsAdd(this)'></button><button class='empty' onclick='mealsRemove(this)'></button></td>"
+			+"</tr>");
 }
 //用餐记录修改
 function mealsUpdate(button){
@@ -514,10 +551,39 @@ function mealsDelete(button){
 
 //住房记录添加
 function accomAdd(button){
+	var id = $(button).parent().siblings("input").val();
+	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
+	var roomNumber = $(button).parent().siblings("td").find("input.roomNumber").val();
+	var checkinTime =$(button).parent().siblings("td").find("input.checkinTime").val();
+	var checkoutTime =$(button).parent().siblings("td").find("input.checkoutTime").val();
+	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
+	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val();
+	var remark =$(button).parent().siblings("td").find("input.remark").val();
 	
+	//ajax
+	alert("还没做")
 }
 function accomRemove(button){
-	
+	var id = $(button).parent().siblings("input").val("");
+	var hotel = $(button).parent().siblings("td").find("input.hotel").val("");
+	var roomNumber = $(button).parent().siblings("td").find("input.roomNumber").val("");
+	var checkinTime =$(button).parent().siblings("td").find("input.checkinTime").val("");
+	var checkoutTime =$(button).parent().siblings("td").find("input.checkoutTime").val("");
+	var hobby = $(button).parent().siblings("td").find("input.hobby").val("");
+	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val("");
+	var remark =$(button).parent().siblings("td").find("input.remark").val("");
+}
+function addColumnAccom(){
+	$("#table2").append("<tr><input type=\"hidden\" value='' />"
+			+"<td><input class='hotel' value='' /></td>"
+			+"<td><input onchange='addColumnAccom()' class='roomNumber' value='' /></td>"
+			+"<td><input class='checkinTime' value='' /></td>"
+			+"<td><input class='checkoutTime' value='' /></td>"
+			+"<td><input class='hobby' value='' /></td>"
+			+"<td><input class='recordTime' value='' /></td>"
+			+"<td><input class='remark' value='' /></td>"
+			+"<td class='text-center'><button class='save' onclick='accomAdd(this)'></button><button class='empty' onclick='accomRemove(this)'></button></td>"
+			+"</tr>");
 }
 //住房记录修改
 function accomUpdate(button){

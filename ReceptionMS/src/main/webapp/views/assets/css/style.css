@@ -701,7 +701,6 @@ iframe{
 	border: 1px solid #515151;
 	text-align: center;
 }
-
 /* img */
 
 .imgModal>.box>.mbody>div.overflow>.lt{
@@ -784,6 +783,9 @@ iframe{
 }
 
 /*** end ***/
+.modal>.box>.mfoot{
+	margin-top:2vh;
+}
 .modal>.box>.mfoot>button{
 	width: 5.769vw;
 	height: 30px;
@@ -848,6 +850,32 @@ iframe{
 	position: absolute;
 	top: 2vh;
 }
+.Tmodal div.tab>table.tabTbody .save{
+	width:14px;
+	height:14px;
+	border:none;
+	background:url(../img/save.png) no-repeat 0px 0px;
+	background-size:100% 100%;
+	margin:0px 0.2vw;
+}
+
+.Tmodal div.tab>table.tabTbody .del{
+	width:14px;
+	height:14px;
+	border:none;
+	background:url(../img/del.png) no-repeat 0px 0px;
+	background-size:100% 100%;
+	margin:0px 0.2vw;
+}
+.Tmodal div.tab>table.tabTbody .empty{
+	width:14px;
+	height:14px;
+	border:none;
+	background:url(../img/empty.png) no-repeat 0px 0px;
+	background-size:100% 100%;
+	margin:0px 0.2vw;
+}
+
 .Tmodal div.tab>table.tabTbody input,.Tmodal div.tab>table.tabTbody select{
 	width: 100%;
 	background-color: transparent;
@@ -857,6 +885,7 @@ iframe{
 .Tmodal div.tab>table td{
 	width: 20%;
 }
+
 
 @media (max-width: 1200px) {	
 	span.webkit,   
