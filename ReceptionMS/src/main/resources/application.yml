@@ -43,7 +43,8 @@ spring:
       #location: /app/tmp  linux格式 
 # 分页配置
 pagehelper:
-  helper-dialect: mysql  #指定分页插件使用方言
+#  helper-dialect: mysql  #指定分页插件使用方言
+  helper-dialect: oracle  #指定分页插件使用方言
   offsetAsPageNum: true #当该参数设置为 true 时，会将 RowBounds 中的 offset 参数当成 pageNum 使用，可以用页码和页面大小两个参数分页
   rowBoundsWithCount: true #当该参数设置为true时，使用 RowBounds 分页会进行 count 查询
   pageSizeZero: true #当该参数设置为 true 时，如果 pageSize=0 或者 RowBounds.limit = 0 就会查询出全部的结果
