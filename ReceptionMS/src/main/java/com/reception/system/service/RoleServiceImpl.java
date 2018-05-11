@@ -1,6 +1,5 @@
 package com.reception.system.service;
 
-
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,17 +13,17 @@ import com.reception.system.api.RoleService;
 import com.reception.system.dao.RoleDao;
 import com.reception.system.model.Role;
 import com.reception.system.model.RoleModule;
-
+import com.reception.system.model.User;
 
 /**
  * 角色管理service层
  */
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
 
 	@Resource
 	RoleDao roleDao;
-	
+
 	@Override
 	public int addRole(Role role) {
 		// TODO Auto-generated method stub
@@ -38,8 +37,14 @@ public class RoleServiceImpl implements RoleService{
 	}
 
 	@Override
-	public int deleteRole(RoleModule roleModule) {
+	@Transactional(rollbackFor = Exception.class)
+	public int deleteRole(String roleId) {
 		// TODO Auto-generated method stub
+		int i = roleDao.deleteRole(roleId);
+		int j = roleDao.deleteRoleModule(roleId);
+		if (i+j > 0) {
+			return 1;
+		}
 		return 0;
 	}
 
@@ -47,18 +52,22 @@ public class RoleServiceImpl implements RoleService{
 		// TODO Auto-generated method stub
 		return roleDao.selectListByName(roleName);
 	}
-	
+
 	public List<Role> selectList() {
 		// TODO Auto-generated method stub
 		return roleDao.selectList();
 	}
 
-	//设置角色功能模块
+	// 设置角色功能模块
 	@Override
 	public int setRoleModule() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	
+	public Role selectById(String id) {
+		// TODO Auto-generated method stub
+		return roleDao.selectById(id);
+	}
+
 }

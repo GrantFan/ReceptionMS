@@ -1,14 +1,13 @@
 /**
- * 用户设置
+ * 角色设置
  */
 
 //init
 $(function() {
-	showUserList(1, 5); 
+	showRoleList(1, 5); 
 });
 
-//用户列表
-function showUserList(pageNum, pageSize) {
+function showRoleList(pageNum, pageSize) {
 	var pageSize = pageSize;
 	$.ajax({
 		type : "post",
@@ -16,9 +15,9 @@ function showUserList(pageNum, pageSize) {
 			"pageNum" : pageNum,
 			"pageSize" : pageSize
 		},
-		url : "../../user/list",
+		url : "../../role/listByName",
 		success : function(data) {
-			//console.log(data);
+//			console.log(json);
 			var json = JSON.parse(data);
 			var obj = json.list;
 			//console.log(obj);
@@ -28,11 +27,7 @@ function showUserList(pageNum, pageSize) {
 				//console.log(obj[i]);
 				tbody += "<tr>"
 					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
-					+ "<td>" + obj[i].userName + "</td><td>" + obj[i].userNick + "</td>"
-					+ "<td><input type='hidden' value=\"" + obj[i].roleId + "\" >" + obj[i].roleName + "</td><td>" + obj[i].lastLoginComputer + "</td>"
-					+ "<td>" + obj[i].lastLoginTime + "</td>"
-					+ "<td>" + obj[i].createTime + "</td>"
-					+ "<td>" + obj[i].modifyTime + "</td>"
+					+ "<td>" + obj[i].roleName + "</td><td>" + obj[i].description + "</td>"
 					+ "</tr>";
 			}
 			$("#tablebody").append(tbody);
@@ -110,13 +105,13 @@ function showUserList(pageNum, pageSize) {
 }
 
 function query() {
-	var userName = $("#input_userName").val();
+	var roleName = $("#input_roleName").val();
 	$.ajax({
 		type : "post",
 		data : {
-			"userName" : userName
+			"roleName" : roleName
 		},
-		url : "../../user/list",
+		url : "../../role/listByName",
 		success : function(data) {
 			//console.log(data);
 			var json = JSON.parse(data);
@@ -128,11 +123,7 @@ function query() {
 				//console.log(obj[i]);
 				tbody += "<tr>"
 					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
-					+ "<td>" + obj[i].userName + "</td><td>" + obj[i].userNick + "</td>"
-					+ "<td><input type='hidden' value=\"" + obj[i].roleId + "\" >" + obj[i].roleName + "</td><td>" + obj[i].lastLoginComputer + "</td>"
-					+ "<td>" + obj[i].lastLoginTime + "</td>"
-					+ "<td>" + obj[i].createTime + "</td>"
-					+ "<td>" + obj[i].modifyTime + "</td>"
+					+ "<td>" + obj[i].roleName + "</td><td>" + obj[i].description + "</td>"
 					+ "</tr>";
 			}
 			$("#tablebody").append(tbody);
@@ -196,7 +187,7 @@ function query() {
 				callBack : function(currPage) {
 					sessionStorage.currPage = currPage;
 					sessionStorage.pageSize = pageSize;
-					showUserList(currPage, 5);
+					showRoleList(currPage, 5);
 				}
 			});
 		},
@@ -209,19 +200,21 @@ function query() {
 	})
 }
 
-//加载角色列表
-function loadRole(){
-	$.ajax({
-		url : '../../role/list',
-		type : 'post',
-		success : function(result) {
-//			console.log(result);
-			$("#role").empty();
-			for(var i=0,len=result.length;i<len;i++){
-				$("#role").append("<option value='"+result[i].id+"'>"+result[i].roleName+"</option>");
-			}
-		}
+
+function setRoleModule(){
+	if ($(":checkbox[name='check']:checked").length != 1) {
+		alert("请选择一个选项！");
+		return false;
+	}
+	var id;
+	$(":checkbox[name='check']:checked").each(function() { //遍历
+		id = $(this).val(); // 每一个被选中项的值
 	});
+	$("#module").show(800);
+}
+
+function setModuleSubmit(){
+	alert("wuwu`");
 }
 //新增
 function add() {
@@ -230,26 +223,20 @@ function add() {
 	$('#update').hide(500);
 	
 	//重置表单
+	$("#roleName").val("");
+	$("#description").val("");
 	$("#id").val("");
-	$("#userName").val("");
-	$("#userNick").val("");
-	$("#password").val("");
-	loadRole();
 }
 //新增提交
 function addSubmit() {
-	$.post("../../user/add",{
-		userName : $("#userName").val(),
-		userNick : $("#userNick").val(),
-		password : $("#password").val(),
-		roleId : $("#role").val()
+	$.post("../../role/add",{
+		roleName : $("#roleName").val(),
+		description : $("#description").val(),
 	}, function(result) {
 		$('.modal').hide();
 		if(result=="true"){
 			alert("添加成功");
-			showUserList(sessionStorage.currPage, 5);
-		}else if(result=="exist"){
-			alert("用户名已存在");
+			showRoleList(sessionStorage.currPage, 5);
 		}else{
 			alert("添加失败");
 		}
@@ -272,44 +259,34 @@ function edit() {
 	$(".modal").show(500);
 	$('#add').hide();
 	$('#update').show(500);
-	loadRole();
 	$.get(
-		'../../user/' + id,
+		'../../role/' + id,
 		function(result) {
 			var json = JSON.parse(result);
 //			console.log(json);
 			$("#id").val(json.id);
-			$("#userName").val(json.userName);
-			$("#userNick").val(json.userNick);
-			$("#password").val("");
-			$("#password").attr("placeholder","密码为空则不修改");
+			$("#description").val(json.description);
+			$("#roleName").val(json.roleName);
 			
-			for (var i = 0; i < $("#role option").length; i++) {
-				if ($("#role option")[i].value == json.roleId) {
-					$("#role option")[i].setAttribute("selected", true);
-				}
-			}
 		}
 	);
 }
 //修改提交
 function editSubmit() {
 	$.ajax({
-		url : '../../user/update',
+		url : '../../role/update',
 		type : 'post',
 		data : {
 			id : $("#id").val(),
-			userName : $("#userName").val(),
-			userNick : $("#userNick").val(),
-			password : $("#password").val(),
-			roleId : $("#role").val()
+			roleName : $("#roleName").val(),
+			description : $("#description").val()
 		},
 		success : function(result) {
 			//console.log(result);
 			if (result == "true") {
 				alert("修改成功");
 				$('.modal').hide();
-				showUserList(sessionStorage.currPage, 5);
+				showRoleList(sessionStorage.currPage, 5);
 			}else{
 				alert("修改失败");
 			}
@@ -330,13 +307,12 @@ function dele() {
 			id = $(this).val(); // 每一个被选中项的值
 		});
 		$.ajax({
-			url : '../../user/' + id,
+			url : '../../role/' + id,
 			type : 'Delete',
 			success : function(result) {
 				if(result=="true"){
 					alert("删除成功");
-					alert(sessionStorage.pageSize);
-					showUserList(sessionStorage.currPage, sessionStorage.pageSize);
+					showRoleList(sessionStorage.currPage, 5);
 				}else{
 					alert("删除失败");
 				}

@@ -71,7 +71,7 @@ input:hover {
 				<div id="box" class="box overflow"></div>
 			</li>
 		</ol>
-		<button onclick="addColumn()">新增</button>
+		<button class="save" onclick="addColumn()">新增</button>
 	</div>
 </body>
 
@@ -89,7 +89,9 @@ input:hover {
 					//console.log(result);
 					$("#box").empty();
 					for (var i = 0, len = result.length; i < len; i++) {
-						$("#box").append("<p class='overflow'><span class='lt'>" + result[i].value + "</span><input type=\"text\" value='" + result[i].name + "' class='lt'><button onclick='del(this)' class=\"rt\">删除</button><button onclick='submit(this)' class=\"rt\">保存</button></p>");
+						$("#box").append("<p class='overflow'><span class='lt'>" + result[i].value + "</span>"
+						+"<input type=\"text\" value='" + result[i].name + "' class='lt'>"
+						+"<button  class=\"del\"  onclick='del(this)' class=\"rt\">删除</button><button class=\"save\" onclick='submit(this)' class=\"rt\">保存</button></p>");
 					}
 				}
 			);
@@ -107,7 +109,7 @@ input:hover {
 
 	//新增
 	function addColumn() {
-		$("#box").append("<p class='overflow'><input type=\"text\" value='' class='lt value' /><input name='name' type=\"text\" value='' class='lt name' /><button onclick='removeColumn(this)' class=\"rt\">移除</button><button onclick='add(this)' class=\"rt\">保存</button></p>");
+		$("#box").append("<p class='overflow'><input type=\"text\" value='' class='lt value' /><input name='name' type=\"text\" value='' class='lt name' /><button class=\"empty\" onclick='removeColumn(this)' class=\"rt\">移除</button><button class=\"save\" onclick='add(this)' class=\"rt\">保存</button></p>");
 	}
 	function add(button) {
 		var li = $(".preview>ul>li.active");

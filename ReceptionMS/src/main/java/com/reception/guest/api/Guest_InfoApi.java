@@ -41,10 +41,16 @@ public interface Guest_InfoApi {
     int DeleteGuest_Info(int id);
 
     /**
-     * 初始化宾客信息
+     * 导出信息查询
      * @return
      */
     List<Guest_Info> SelectGuest_Info();
+    
+    /**
+     * 初始化宾客信息
+     * @return
+     */
+    public List<Guest_Info> SelectGuest_Infos();
 
     /**
      * 查询宾客信息

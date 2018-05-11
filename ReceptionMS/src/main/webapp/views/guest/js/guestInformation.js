@@ -41,7 +41,7 @@ function select_guest(pageNum,pageSize){
             				"</td><td>"+list.deputy_position+
             				"</td><td>"+list.office_area+
             				/*"</td><td>"+list.sex+*/
-            				"</td><td>"+list.birth_date+
+//            				"</td><td>"+list.birth_date.substr(0,10)+
             				/*"</td><td>"+list.nation+
             				"</td><td>"+list.education+*/
             				"</td><td>"+list.origin_place+
@@ -53,9 +53,6 @@ function select_guest(pageNum,pageSize){
             				"</td><td>"+list.remark+"</td></tr> ");
             	};
             	page(result);
-            },
-            error:function(data){
-            	alert(data);
             }
         });
        // return menu;
@@ -87,7 +84,7 @@ function page(result){
 		    //可选，尾页按钮展示文本，默认显示文本为尾页
 		    lastPage: '尾页',
 		    //可选，跳至展示文本，默认显示文本为跳至
-		    //skip: '跳至',
+		    skip: '跳至',
 		    //可选，确认按钮展示文本，默认显示文本为确认
 		    confirm: '确认',
 		    //可选，刷新按钮展示文本，默认显示文本为刷新
@@ -97,7 +94,7 @@ function page(result){
 		    //可选，是否展示首页与尾页，默认true
 		    isShowFL: true,
 		    //可选，是否展示每页N条下拉框，默认true
-		    isShowPageSizeOpt: false,
+		    isShowPageSizeOpt: true,
 		    //可选，是否展示跳到指定页数，默认true
 		    isShowSkip: true,
 		    //可选，是否展示刷新，默认true
@@ -117,6 +114,12 @@ function page(result){
  * 提交添加的数据
  */
 function save_guest(){
+	if($('#add_guest_name').val()=='' || $('#add_birth_date').val()==''||
+			$('#add_sex').val()=='' ||$('#add_nation').val()=='' ||  $('#add_education').val()==''||
+			$('#add_guest_type').val()==''){
+		alert("请检查必填项！");
+		return;
+	}
 	  $.ajax({
           url:'/ReceptionMS/guest/insert',
           type:'POST',
@@ -192,7 +195,7 @@ function selectById(id){
             	   $('#add_deputy_position').val(result.deputy_position),
             	   $('#add_office_area').val(result.office_area),
             	   $('#add_sex').val(result.sex),
-            	   $('#add_birth_date').val(result.birth_date),
+            	   $('#add_birth_date').val(result.birth_date.substr(0,10)),
             	   $('#add_nation').val(result.nation),
                    $('#add_education').val(result.education),
             	   $('#add_origin_place').val(result.origin_place),
@@ -261,6 +264,12 @@ function edit_guest(){
 	 }
 
 function update_guest(id){
+	if($('#add_guest_name').val()=='' || $('#add_birth_date').val()==''||
+			$('#add_sex').val()=='' ||$('#add_nation').val()=='' ||  $('#add_education').val()==''||
+			$('#add_guest_type').val()==''){
+		alert("请检查必填项！");
+		return;
+	}
 	$.ajax({
         url:'/ReceptionMS/guest/update',
         type:'POST',
@@ -303,7 +312,6 @@ function update_guest(id){
  */
 function setImg(obj){//用于进行图片上传，返回地址
    //获取当前用户id
-	var id = $("#id").val();
 	var f=$(obj).val();
     if(f == null || f ==undefined || f == ''){
         return false;
@@ -320,7 +328,7 @@ function setImg(obj){//用于进行图片上传，返回地址
     })
     $.ajax({
         type: "POST",
-        url: "/ReceptionMS/guest/uploadImg?id="+id,
+        url: "/ReceptionMS/guest/uploadImg",
         data: data,
         cache: false,
         contentType: false,    //不可缺

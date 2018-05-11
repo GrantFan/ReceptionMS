@@ -107,7 +107,7 @@ public class Guest_InfoAction {
     @RequestMapping(value = "/select", method =  RequestMethod.GET)
     public String SeleteGuest_Info(@RequestParam(value="pageNum")String pageNum,@RequestParam(value="pageSize")String pageSize){
         PageHelper.startPage(Integer.parseInt(pageNum), Integer.parseInt(pageSize));
-    	List<Guest_Info> guest_infos = guest_infoService.SelectGuest_Info();
+    	List<Guest_Info> guest_infos = guest_infoService.SelectGuest_Infos();
     	PageInfo<Guest_Info> pageInfo = new PageInfo<Guest_Info>(guest_infos);
         return JSONHelper.toJSON(pageInfo);
     }
@@ -123,8 +123,15 @@ public class Guest_InfoAction {
     	return JSONHelper.toJSON(guest_info);
     }
     
+    /**
+     * 上传图片
+     * @param id
+     * @param file
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/uploadImg" , method =  RequestMethod.POST)
-    public @ResponseBody String uploadPicture(@RequestParam("id")int id,@RequestParam(value="file",required=false)MultipartFile file,
+    public @ResponseBody String uploadPicture(@RequestParam(value="file",required=false)MultipartFile file,
     HttpServletRequest request){
 
         File targetFile=null;
@@ -160,6 +167,7 @@ public class Guest_InfoAction {
         }
         return JSONHelper.toJSON(ResponseResult.result(code, msg));
     }
+    
     
     
     @RequestMapping(value = "/deleteImg" , method =  RequestMethod.POST)

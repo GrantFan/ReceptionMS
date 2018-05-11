@@ -12,6 +12,6 @@ public interface LoginDao {
 	@Select("select user_nick from sys_user where user_name=#{userName} and password=#{password}")
 	String login(User user);
 	
-	@Update("update sys_user set last_login_computer=#{lastLoginComputer},last_login_time=sysdate() where user_name=#{userName}")
+	@Update("update sys_user set last_login_computer=#{lastLoginComputer},last_login_time=sysdate where user_name=#{userName}")
 	int loginLog(User user);
 }

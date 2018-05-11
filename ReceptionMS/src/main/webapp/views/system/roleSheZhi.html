@@ -1,9 +1,223 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>角色设置</title>
-	</head>
-	<body>
-	</body>
+<head>
+<meta charset="UTF-8">
+<title>角色设置</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/pagination.css" />
+
+<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<!-- Paginator -->
+<script src="../assets/js/pagination.min.js"></script>
+<script type="text/javascript" src="js/roleManage.js"></script>
+</head>
+<body>
+	<div class="operationsArea">
+		<div class="buttons">
+			<button onclick="add()" class="active">
+				<u class="xz"></u><span class="webkit">新增</span>
+			</button>
+			<button onclick="edit()">
+				<u class="bj"></u> <span class="webkit">编辑</span>
+			</button>
+			<button onclick="dele()">
+				<u class="sc"></u> <span class="webkit">删除</span>
+			</button>
+			<button onclick="setRoleModule()">
+				<u class="dyyl"></u> <span class="webkit">模块分配</span>
+			</button>
+			<button>
+				<u class="dy"></u> <span class="webkit">打印</span>
+			</button>
+			<button>
+				<u class="dr"></u> <span class="webkit">导入</span>
+			</button>
+			<button>
+				<u class="dc"></u> <span class="webkit">导出</span>
+			</button>
+		</div>
+		<div class="inputs">
+			<select name="">
+				<option value=""></option>
+				<option value="">且</option>
+				<option value="">或</option>
+			</select> <select name="">
+				<option value="">接待编号</option>
+				<option value="">接待日期</option>
+				<option value="">接待人</option>
+				<option value="">宾客姓名</option>
+				<option value="">用餐</option>
+				<option value="">用餐时间</option>
+				<option value="">宾客喜好</option>
+				<option value="">备注</option>
+			</select> <select name="">
+				<option value="">等于</option>
+				<option value="">不等于</option>
+				<option value="">包含</option>
+				<option value="">不包含</option>
+				<option value="">开头是</option>
+				<option value="">开头不是</option>
+				<option value="">结尾是</option>
+				<option value="">结尾不是</option>
+				<option value="">为空</option>
+				<option value="">不为空</option>
+			</select> <input id="input_roleName" type="text" />
+			<button onclick="query()">查询</button>
+			<button class="m-0">清空</button>
+		</div>
+
+		<div class="tab">
+			<table class="table" cellspacing="0">
+				<thead>
+					<tr>
+						<th>选择</th>
+						<th>角色名</th>
+						<th>角色描述</th>
+					</tr>
+				</thead>
+
+				<tbody id="tablebody">
+					<tr>
+						<td><label><input type="Checkbox" name='check'
+								value=“" ><u></u></label></td>
+						<td>use1</td>
+						<td>用户名1</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- 分页插件  -->
+			<div class="text-center" id="page"></div>
+		</div>
+	</div>
+	<!--模态框-->
+	<div class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>角色信息</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<input type="text" name="id" id="id" value="" /> <label
+					for="roleName"> <span>角色名：</span> <input type="text"
+					name="roleName" id="roleName" />
+				</label> <label for="description"> <span>描述：</span> <input
+					type="description" name="" id="description" />
+				</label>
+			</div>
+			<div class="mfoot" align="center">
+				<button id="add" onclick="addSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button id="update" onclick="editSubmit()" style="display:none">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<!--模块分配模态框-->
+	<div id="module" class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>角色模块分配</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<input type="hidden" id="roleId" value="" /> <label for="roleName">
+					<span>角色名：</span> <input type="text" name="roleName" id="roleName" />
+				</label> <label for="description"> <span>描述：</span> <input
+					type="description" name="" id="description" />
+				</label>
+				<label for="description"> <span>角色模块：</span>
+				<ul id="accordion" class="accordion">
+					<li name="7"><div class="link">
+							<u class="jdgl"></u>接待管理<i class="fa fa-chevron-down"></i>
+						</div>
+						<ul class="submenu" style="">
+							<li><a href="../reception/register.html"> <u
+									class="jddj"></u>接待登记
+							</a></li>
+							<li><a href="../reception/receptionManage.html"> <u
+									class="jdxxgl"></u>接待信息
+							</a></li>
+							<li><a href="../reception/boardroomUse.html"> <u
+									class="hyssyjl"></u>会议室使用登记
+							</a></li>
+						</ul></li>
+					<li name="10"><div class="link">
+							<u class="Jdgl"></u>酒店管理<i class="fa fa-chevron-down"></i>
+						</div>
+						<ul class="submenu" style="">
+							<li><a href="../hotel/HotelManage.html"> <u
+									class="Jdxxgl"></u>酒店信息设置
+							</a></li>
+							<li><a href="../hotel/roomManage.html"> <u
+									class="fjxxgl"></u>房间信息设置
+							</a></li>
+							<li><a href="../conference/conferenceInfo.html"> <u
+									class="hysxxgl"></u>会议室信息设置
+							</a></li>
+							<li><a href="../menu/menuInformation.html"> <u
+									class="tccpxxgl"></u>套餐菜品设置
+							</a></li>
+							<li><a href="null"> <u class="fjxxgl"></u>餐厅(包厢)信息设置
+							</a></li>
+							<li><a href="../hotel/HotelContrasts.html"> <u
+									class="Jddb"></u>酒店对比
+							</a></li>
+						</ul></li>
+					<li name="18" class="open"><div class="link">
+							<u class="bkxxgl"></u>宾客管理<i class="fa fa-chevron-down"></i>
+						</div>
+						<ul class="submenu" style="display: block;">
+							<li><a href="../guest/guestInformation.html"> <u
+									class="bkxxgl"></u>宾客信息设置
+							</a></li>
+						</ul></li>
+					<li name="1" class=""><div class="link">
+							<u class="xtgl"></u>系统管理<i class="fa fa-chevron-down"></i>
+						</div>
+						<ul class="submenu" style="display: none;">
+							<li><a href="../system/userSheZhi.html"> <u class="yhsz"></u>用户设置
+							</a></li>
+							<li class="active"><a href="../system/roleSheZhi.html">
+									<u class="jssz"></u>角色设置
+							</a></li>
+							<li><a href="../system/module.html"> <u class="mksz"></u>模块设置
+							</a></li>
+							<li><a href="../system/log.html"> <u class="czrz"></u>操作日志
+							</a></li>
+							<li><a href="../system/configure.html"> <u class="sjkpz"></u>数据库配置
+							</a></li>
+							<li><a href="../system/weiHu.html"> <u class="sjzdwh"></u>数据字典维护
+							</a></li>
+						</ul></li>
+				</ul>
+				</label>
+			</div>
+			<div class="mfoot" align="center">
+				<button id="add" onclick="setModuleSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</body>
 </html>

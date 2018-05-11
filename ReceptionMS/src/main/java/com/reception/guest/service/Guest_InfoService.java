@@ -53,12 +53,22 @@ public class Guest_InfoService implements Guest_InfoApi{
     }
 
     /**
-     * 初始化宾客信息
+     * 导出信息查询
      * @return
      */
     @Override
     public List<Guest_Info> SelectGuest_Info() {
         return guest_InfoMapper.SelectGuest_Info();
+    }
+
+    
+    /**
+     * 初始化宾客信息
+     * @return
+     */
+    @Override
+    public List<Guest_Info> SelectGuest_Infos() {
+        return guest_InfoMapper.SelectGuest_Infos();
     }
 
     /**

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public interface RoleDao {
 	 * @param role
 	 * @return int
 	 */
-	@Insert("insert into sys_role(role_name,description)values(#{roleName},#{description})")
+	@Insert("insert into sys_role(id,role_name,description)values((select max(id)+1 from sys_role),#{roleName},#{description})")
 	int addRole(Role role);
 
 	/**
@@ -34,9 +35,7 @@ public interface RoleDao {
 	 * @param role
 	 * @return int
 	 */
-	@Update({ "<script>", "UPDATE sys_role SET", "<if test=\"role_name != null and role_name != ''\">",
-			"role_name = #{roleName,jdbcType=VARCHAR},", "</if>", "<if test=\"description != null and description != ''\">",
-			"description = #{description,jdbcType=VARCHAR}", "</if> ", "where id = #{id}", "</script>" })
+	@Update("UPDATE sys_role SET role_name=#{roleName},description=#{description} where id = #{id}")
 	int updateRole(Role role);
 
 	/**
@@ -44,13 +43,15 @@ public interface RoleDao {
 	 * @param
 	 * @return list
 	 */
-	@Select({ "<script>", "SELECT id,role_name,description", "FROM SYS_ROLE", "where 1=1 ",
-			"<if test=\" '' != roleName  and null != roleName\">", "and role_name=#{roleName}", "</if>", "</script>" })
-	List<Role> selectListByName(String roleName);
+	@Select({ "<script>", "SELECT id,role_name roleName,description", "FROM SYS_ROLE", "where 1=1 ",
+			"<if test=\" '' != roleName  and null != roleName\">", "and role_name like concat(#{roleName},'%')", "</if>", "</script>" })
+	List<Role> selectListByName(@Param(value="roleName")String roleName);
 
 	@Select("SELECT id,role_name roleName,description FROM SYS_ROLE")
 	List<Role> selectList();
 	
+	@Select("SELECT id,role_name roleName,description FROM SYS_ROLE where id=#{id}")
+	Role selectById(String id);
 	
 	/**
 	 * 删除角色
@@ -84,5 +85,7 @@ public interface RoleDao {
 	 */
 	@Select("SELECT m.id,m.module_name,m.module_id,m.module_parent_id,m.url,m.sort,m.create_time,m.icon,m.remark FROM sys_module m left join sys_role_module rm on m.module_id=rm.module_id WHERE rm.role_id=#{role_id}")
 	List<RoleModule> selectRoleModule(String roleId);
+
+
 
 }

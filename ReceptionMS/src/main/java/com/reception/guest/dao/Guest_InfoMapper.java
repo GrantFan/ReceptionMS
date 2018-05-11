@@ -43,7 +43,7 @@ public interface Guest_InfoMapper {
     int DeleteGuest_Info(int id);
 
     /**
-     * 初始化宾客信息
+     * 导出信息查询
      * @return
      */
     @Select("SELECT a.id,a.guest_name,a.main_position,a.deputy_position,a.office_area,b.name AS xb,DATE_FORMAT(a.birth_date,'%Y-%m-%d') as birthDate,"+
@@ -51,6 +51,14 @@ public interface Guest_InfoMapper {
   "a.email,a.address,a.guest_type,a.remark FROM guest_info a,dm_sex b,dm_education c,dm_nation d"+
   " WHERE (a.sex = b.value and a.nation = d.value and a.education = c.value) order by a.id")
     List<Guest_Info> SelectGuest_Info();
+    
+    
+    /**
+     * 初始化宾客信息
+     * @return
+     */
+    @Select("SELECT a.* from guest_info a order by a.id")
+    List<Guest_Info> SelectGuest_Infos();
 
     /**
      * 查询宾客信息
