@@ -1,5 +1,7 @@
 package com.reception.recep.model;
 
+import java.util.List;
+
 /*
  * 接待记录实体
  */
@@ -21,6 +23,9 @@ public class ReceptionRecordEntity {
 	private Integer receptionNum;//接待人次
 	private String receptionDays;//接待天数
 	private String hotel;//酒店
+	
+	private List<MealsRecordEntity> meals;//用餐记录
+	private List<AccommodationRecordEntity> accom;//用餐记录
 	
 	
 	public Integer getId() {
@@ -112,6 +117,18 @@ public class ReceptionRecordEntity {
 	}
 	public void setReceptionDays(String receptionDays) {
 		this.receptionDays = receptionDays;
+	}
+	public List<MealsRecordEntity> getMeals() {
+		return meals;
+	}
+	public void setMeals(List<MealsRecordEntity> meals) {
+		this.meals = meals;
+	}
+	public List<AccommodationRecordEntity> getAccom() {
+		return accom;
+	}
+	public void setAccom(List<AccommodationRecordEntity> accom) {
+		this.accom = accom;
 	}
 	
 }

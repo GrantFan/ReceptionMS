@@ -16,6 +16,10 @@ public class ReceptionRecordServiceImpl implements ReceptionRecordService {
 	@Resource
 	ReceptionRecordMapper receptionRecordMapper;
 	
+	public String getReceptionNumber(){
+		return receptionRecordMapper.getReceptionNumber();
+	};
+	
 	@Override
 	public int add(ReceptionRecordEntity reception) {
 		// TODO Auto-generated method stub

@@ -8,194 +8,130 @@
 		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
 		
 		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/register.js"></script>
 	</head>
 
 	<body>
-		<div class="operationsArea">
-			<!--<div class="buttons">
-				<button onclick="add()">新增</button>
-				<button>复制新增</button>
-				<button onclick="edit()">编辑</button>
-				<button onclick="dele()">删除</button>
-				<button>打印预览</button>
-				<button>导入</button>
-				<button>导出</button>
-				<button>审核</button>
-				<button>撤销审核</button>
-				<button>刷新</button>
-				<button onclick="resetting()">重置密码</button>
-				<button onclick="shut()" class="m-0">关闭</button>
-				<!--<p>
-					<b>已选择条件展示 【SQL】</b>
-					<span>查询条件</span>
-				</p>-->
-			<!--</div>
-			<div class="inputs">
-				<select name="">
-					<option value="">用户名</option>
-					<option value="">昵称</option>
-					<option value="">角色</option>
-					<option value="">在线</option>
-					<option value="">备注</option>
-				</select>
-				<select name="">
-					<option value="">等于</option>
-					<option value="">不等于</option>
-					<option value="">包含</option>
-					<option value="">不包含</option>
-					<option value="">开头是</option>
-					<option value="">开头不是</option>
-					<option value="">结尾是</option>
-					<option value="">结尾不是</option>
-					<option value="">为空</option>
-					<option value="">不为空</option>
-				</select>
-				<input type="text" />
-				<button>查询</button>
-				<button>清空</button>
-			</div>-->
-			<div class="tab">
-				<table class="table" cellspacing="0" border="0">
-					<thead>
-						<tr>
-							<th>
-								<label>
-										<input type="checkbox" id="checkbokAll">
-										<span></span>
-									</label>
-							</th>
-							<th>接待编号</th>
-							<th>接待日期</th>
-							<th>接待人</th>
-							<th>宾客姓名</th>
-							<th>用餐</th>
-							<th>用餐时间</th>
-							<th>入住房间号</th>
-							<th>入住日期</th>
-							<th>退房日期</th>
-							<th>宾客喜好</th>
-							<th>备注</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ondblclick="view()">
-							<td>
-								<label>
-										<input type="checkbox">
-										<span></span>
-									</label>
-							</td>
-							<td>007</td>
-							<td>2018-02-03</td>
-							<td>呵呵</td>
-							<td>徐丽怡</td>
-							<td>午餐</td>
-							<td>13：00</td>
-							<td>8302</td>
-							<td>2018-02-03</td>
-							<td>2018-02-05</td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
+	<div class="box" style="width:88vw;">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>接待记录明细</span>
+				</p>
+				<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody overflow">
+				  <fieldset class="lt" style="width:49.2%;">
+				    <legend>接待信息</legend>
+				 		<div class="inputs overflow ">
+								<label for="receptionNumber"> <span>接待编号</span> <input
+									type="text" name="receptionNumber" id="receptionNumber" value="" />
+								</label> <label for="receptionDate"> <span>接待日期</span> <input
+									name="receptionDate" id="receptionDate" value="" />
+								</label> <label for="guestName"> <span>宾客姓名</span> <input
+									name="guestName" id="guestName" value="" />
+								</label> <label for="guestNum"> <span>宾客人数</span> <input
+									name="guestNum" id="guestNum" value="" />
+								</label><label for="receptionPrinter"> <span>资料打印人</span> <input
+									name="receptionPrinter" id="receptionPrinter" value="" />
+								</label> 
+								<label for="hotel"> <span>接待酒店</span> 
+								<select class="hotel" id="hotel"></select>
+								</label> <label for="recordTime"> <span>登记时间</span> <input
+									name="recordTime" id="recordTime" value="" />
+								</label>
+								<label for="receptionTitle"> <span>接待名称</span> <input
+									name="receptionTitle" id="receptionTitle" value="" />
+								</label> <label for="receptionPerson"> <span>接待人员：</span> <input
+									name="receptionPerson" id="receptionPerson" />
+								</label> <label for="entourage"> <span>陪同人员</span> <input
+									name="entourage" id="entourage" value="" />
+								</label> <label for="receptionNum"> <span>接待人数</span> <input
+									name="receptionNum" id="receptionNum" value="" />
+								</label> <label for="description"> <span>描述</span> <input
+									name="description" id="description" value="" />
+								</label> <label for="receptionDays"> <span>接待天数</span> <input
+									name="receptionDays" id="receptionDays" value="" />
+								</label> <label for="remark"> <span>备注</span> <input name="remark"
+									id="remark" value="" />
+								</label>
+						</div>				 
+				</fieldset>
+			<div class="rt" style="width:49.2%;">
+				<fieldset>
+			    	<legend>用餐记录</legend>
+			 			<div class="tab">
+							<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
+								<thead>
+									<tr>
+										<th>酒店</th>
+										<th>套餐编号</th>
+										<th>用餐时间</th>
+										<th>用餐喜好</th>
+										<th>登记时间</th>
+										<th>备注</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+							</table>						
+							<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
+								<tbody id="table1">
+									<tr>
+										<td><select id="mealsHotel" class="hotel" onchange="selectMenu()"><option>东方酒店</option></select></td>
+										<td><select id="menu"><option>套餐一</option></select></td>
+										<td><input type="text" name="" id="" value="" /></td>
+										<td><input type="text" name="" id="" value="喜清淡" /></td>
+										<td><input type="text" name="" id="" value="" /></td>
+										<td><input type="text" name="" id="" value="空" /></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>			 	
+			 	 </fieldset>
+				<fieldset>
+				    <legend>住房记录</legend>
+					    <div class="tab">
+		 					<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
+								<thead>
+									<tr>
+										<th>酒店</th>
+										<th>房间号</th>
+										<th>入住时间</th>
+										<th>退房时间</th>
+										<th>宾客喜好</th>
+										<th>登记时间</th>
+										<th>备注</th>
+										<th>操作</th>										
+									</tr>
+								</thead>
+							</table>
+							<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
+								<tbody id="table2">
+									<tr>
+										<td><input type="hidden" name="" id="" value="" /></td>
+										<td><select class="hotel"><option>东方酒店</option></select></td>
+										<td><input type="text" name="" id="" value="101" /></td>
+										<td><input type="text" name="" id="" value="" /></td>
+										<td><input type="text" name="" id="" value="" /></td>
+										<td><input type="text" name="" id="" value="喜阳光" /></td>
+										<td><input type="text" name="" id="" value="" /></td>
+										<td><input type="text" name="" id="" value="空" /></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+  				</fieldset>
 			</div>
-			<div class="buttonsBox">
-				<button onclick="add()">新增</button>
-				<button onclick="Delete()">删除</button>
 			</div>
-		</div>
-		<!--模态框-->
-		<div class="modal  none">
-			<div class="box">
-				<h4 class="overflow">
-					<p class="lt">
-						<span>接待登记信息录入</span>
-					</p>
-					<p class="rt" id="close" onclick="$(this).parents('.modal').hide(800)">
-						<u></u>
-					</p>
-				</h4>				 
-				<div class="mbody">
-					<label for="ID">
-								<span>接待编号</span>
-								<input type="text" name="user" id="ID" value="" />
-							</label>
-					<label for="nickName">
-								<span>接待日期</span>
-								<input type="datetime-local" name="nickName" id="nickName" value="" />
-							</label>
-					<label for="receiver">
-								<span>接待人：</span>
-								<input type="text" name="" id="receiver" />
-							</label>
-					<label for="role">
-								<strong>*角色</strong>
-								<input type="text" name="role" id="role" value="" />
-							</label>
-					<label for="footTime">
-								<span>用餐时间</span>
-								<input type="time" name="" id="footTime" value="" />
-							</label>
-					<label for="hotel">
-								<span>入住酒店</span>
-								<input type="text" name="" id="hotel" value="" />
-							</label>
-					<label for="room">
-								<span>入住房间号</span>
-								<input type="text" name="" id="room" value="" />
-							</label>
-					<label for="OccupancyTime">
-								<span>入住时间</span>
-								<input type="datetime-local" name="" id="OccupancyTime" value="" />
-							</label>
-					<label for="out">
-								<span>退房时间</span>						
-								<input type="datetime-local" name="" id="out" value="" />
-							</label>
-					<label for="like">
-								<span>宾客喜好</span>
-								<input type="text" name="" id="like" value="" />
-							</label>
-					<label for="remarks">
-								<span>备注</span>
-								<textarea name="" rows="5" cols="30" id="remarks"></textarea>
-							</label>
-				</div>
-				<div class="mfoot" align="center">
-					<button>
-						<u class="confirm lt"></u>
-						<span class="lt">确定</span>
-					</button>
-					<button onclick="$(this).parents('.modal').hide(800)">
-						<u class="cancel lt"></u>
-						<span class="lt">取消</span>
-					</button>
-				</div>
+			<div class="mfoot" align="center">
+				<button  onclick="addSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">关闭</span>
+				</button>
 			</div>
-		</div>
 	</body>
-	<script>
-		// 双击查看详情
-		function view() {
-			$(".modal").show(600)
-		}
-
-		// 增加 		
-		function add() {
-			$(".modal").show(600);
-		}
-
-		// 删除
-		function Delete() {
-			$("table input:checked").parents('tr').empty()
-		}
-		//		// 关闭
-		//		function shut(a){		
-		//			if(confirm("确定关闭当前页面") == true){
-		//				parent.$("#iframeBox").empty()
-		//			}
-		//		}
-	</script>
 
 </html>

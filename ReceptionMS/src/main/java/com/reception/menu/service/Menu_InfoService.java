@@ -121,4 +121,10 @@ public class Menu_InfoService implements Menu_InfoApi {
     	return menu_InfoMapper.SelectFood_InfoList();
     }
 
+	@Override
+	public List<Menu_Info> selectByHotel(String hotel) {
+		// TODO Auto-generated method stub
+		return menu_InfoMapper.selectByHotel(hotel) ;
+	}
+
 }

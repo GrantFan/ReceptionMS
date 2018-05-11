@@ -85,7 +85,7 @@ public class Guest_InfoAction {
      */
     @RequestMapping(value = "/update" , method =  RequestMethod.POST)
     public @ResponseBody int UpdateGuest_Info(Guest_Info guest_info,HttpServletRequest request){
-        return guest_infoService.UpdateGuest_Info(guest_info);
+    	return guest_infoService.UpdateGuest_Info(guest_info);
     }
 
     /**

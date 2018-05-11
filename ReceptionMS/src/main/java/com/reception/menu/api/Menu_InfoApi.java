@@ -54,4 +54,6 @@ public interface Menu_InfoApi {
      * @return
      */
     List<Food_Info> SelectFood_InfoList();
+
+	List<Menu_Info> selectByHotel(String hotel);
 }

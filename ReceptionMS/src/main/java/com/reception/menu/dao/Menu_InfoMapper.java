@@ -94,4 +94,7 @@ public interface Menu_InfoMapper {
      */
     @Select("select * from food_info  order by food_number")
     List<Food_Info> SelectFood_InfoList();
+
+    @Select("select * from MENU_INFO m where m.hotel=#{hotel}")
+	List<Menu_Info> selectByHotel(String hotel);
 }

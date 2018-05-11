@@ -100,4 +100,16 @@ public class ReceptionRecordAction {
 		}
 		return flag;
 	};
+	
+	@RequestMapping(value = "/add", produces = "application/text; charset=utf-8")
+	public String addReceptionRecordInfo(ReceptionRecordEntity reception) {
+		String receptionNumber =receptionRecordServiceImpl.getReceptionNumber();
+		reception.setReceptionNumber(receptionNumber);
+		String flag = "false";
+		int i = receptionRecordServiceImpl.add(reception);
+		if (i > 0) {
+			flag = "true";
+		}
+		return flag;
+	};
 }

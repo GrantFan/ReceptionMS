@@ -24,12 +24,12 @@ public class Guest_InfoSql {
         String sql = new SQL() {
             {
                 INSERT_INTO("GUEST_INFO");
+                VALUES("id", "(select nvl(MAX(id),0)+1 from GUEST_INFO)");
                 VALUES("guest_name", "#{guest_name}");
                 VALUES("main_position", "#{main_position}");
                 VALUES("deputy_position", "#{deputy_position}");
                 VALUES("office_area", "#{office_area}");
                 VALUES("sex", "#{sex}");
-                VALUES("age", "#{age}");
                 VALUES("birth_date", "#{birth_date}");
                 VALUES("nation", "#{nation}");
                 VALUES("education", "#{education}");

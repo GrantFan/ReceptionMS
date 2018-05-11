@@ -87,7 +87,16 @@ public class Menu_InfoAction {
 		String result = JSONHelper.toJSON(pageInfo);
 		return result;
 	}
-
+	
+	@RequestMapping(value = "/selectByHotel", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String selectByHotel(@RequestParam("hotel") String hotel) {
+		List<Menu_Info> list = menu_InfoApi.selectByHotel(hotel);
+		String result = JSONHelper.toJSON(list);
+		System.out.println(result);
+		return result;
+	}
+	
 	/**
 	 * 查询菜品信息
 	 * 
