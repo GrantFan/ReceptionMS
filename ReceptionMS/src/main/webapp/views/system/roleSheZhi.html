@@ -12,6 +12,62 @@
 <!-- Paginator -->
 <script src="../assets/js/pagination.min.js"></script>
 <script type="text/javascript" src="js/roleManage.js"></script>
+
+<style>
+	.modal>.box>.mbody .accordion{
+		overflow-y:scroll;
+		height:30vh;
+	}
+	.modal>.box>.mbody .accordion .link{
+		color:#fff;
+		background-color:#5cb2c8;
+	}
+	.modal>.box>.mbody .accordion .link u{
+		top:1vh;
+	}
+	.modal>.box>.mbody .accordion .submenu li{
+		position:relative;
+		background-color:#53838f;
+		border-bottom:1px solid #9dd2b8;
+		color:#b3e8f6;
+	}
+	.modal>.box>.mbody .accordion .submenu u{
+		top:0.6vh;
+	}
+	.modal>.box>.mbody .accordion label{
+		width:auto;
+		margin:0px;	
+	}
+	.modal>.box>.mbody .accordion input[type = checkbox]{
+		width:1.0256vw;
+	    height: 1.0256vw;
+	    opacity: 0;
+	    margin: 0px;
+	    position: absolute;
+	    top: 2px;
+	    right:0px;		
+	}
+	.modal>.box>.mbody .accordion input[type = checkbox]+u{
+		width:1.0256vw;
+	    height: 1.0256vw;
+		position: absolute;
+	   /* top: 2px;		*/
+	    right:0px;
+	}
+	.modal>.box>.mbody .accordion input[type = checkbox]:checked+u{
+		width:1.0256vw;
+	    height: 1.0256vw;
+	}
+	.modal>.box>.mbody .accordion ul.submenu span.lt{
+		padding-left:30px;
+	}
+	
+	.modal>.box>.mbody .accordion .submenu li.active, 
+	.modal>.box>.mbody .accordion .submenu li:hover{
+			box-shadow:none;
+			background: none;
+	}
+</style>
 </head>
 <body>
 	<div class="operationsArea">
@@ -92,7 +148,7 @@
 		</div>
 	</div>
 	<!--模态框-->
-	<div class="modal none">
+	<div id="modal" class="modal none">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -137,76 +193,102 @@
 				</p>
 			</h4>
 			<div class="mbody">
-				<input type="hidden" id="roleId" value="" /> <label for="roleName">
-					<span>角色名：</span> <input type="text" name="roleName" id="roleName" />
-				</label> <label for="description"> <span>描述：</span> <input
-					type="description" name="" id="description" />
-				</label>
-				<label for="description"> <span>角色模块：</span>
-				<ul id="accordion" class="accordion">
-					<li name="7"><div class="link">
-							<u class="jdgl"></u>接待管理<i class="fa fa-chevron-down"></i>
-						</div>
-						<ul class="submenu" style="">
-							<li><a href="../reception/register.html"> <u
-									class="jddj"></u>接待登记
-							</a></li>
-							<li><a href="../reception/receptionManage.html"> <u
-									class="jdxxgl"></u>接待信息
-							</a></li>
-							<li><a href="../reception/boardroomUse.html"> <u
-									class="hyssyjl"></u>会议室使用登记
-							</a></li>
-						</ul></li>
-					<li name="10"><div class="link">
-							<u class="Jdgl"></u>酒店管理<i class="fa fa-chevron-down"></i>
-						</div>
-						<ul class="submenu" style="">
-							<li><a href="../hotel/HotelManage.html"> <u
-									class="Jdxxgl"></u>酒店信息设置
-							</a></li>
-							<li><a href="../hotel/roomManage.html"> <u
-									class="fjxxgl"></u>房间信息设置
-							</a></li>
-							<li><a href="../conference/conferenceInfo.html"> <u
-									class="hysxxgl"></u>会议室信息设置
-							</a></li>
-							<li><a href="../menu/menuInformation.html"> <u
-									class="tccpxxgl"></u>套餐菜品设置
-							</a></li>
-							<li><a href="null"> <u class="fjxxgl"></u>餐厅(包厢)信息设置
-							</a></li>
-							<li><a href="../hotel/HotelContrasts.html"> <u
-									class="Jddb"></u>酒店对比
-							</a></li>
-						</ul></li>
-					<li name="18" class="open"><div class="link">
-							<u class="bkxxgl"></u>宾客管理<i class="fa fa-chevron-down"></i>
-						</div>
-						<ul class="submenu" style="display: block;">
-							<li><a href="../guest/guestInformation.html"> <u
-									class="bkxxgl"></u>宾客信息设置
-							</a></li>
-						</ul></li>
-					<li name="1" class=""><div class="link">
-							<u class="xtgl"></u>系统管理<i class="fa fa-chevron-down"></i>
-						</div>
-						<ul class="submenu" style="display: none;">
-							<li><a href="../system/userSheZhi.html"> <u class="yhsz"></u>用户设置
-							</a></li>
-							<li class="active"><a href="../system/roleSheZhi.html">
-									<u class="jssz"></u>角色设置
-							</a></li>
-							<li><a href="../system/module.html"> <u class="mksz"></u>模块设置
-							</a></li>
-							<li><a href="../system/log.html"> <u class="czrz"></u>操作日志
-							</a></li>
-							<li><a href="../system/configure.html"> <u class="sjkpz"></u>数据库配置
-							</a></li>
-							<li><a href="../system/weiHu.html"> <u class="sjzdwh"></u>数据字典维护
-							</a></li>
-						</ul></li>
-				</ul>
+				<input type="text" id="roleId" value="" /> 
+					<label for="roleName">
+					<span>角色名：</span> <input type="text" name="roleName" id="r_roleName" />
+					</label>
+				 	<label for="description"> <span>描述：</span> <input
+						type="description" name="" id="r_description" />
+					</label>
+					<label for="role"> <span>角色模块：</span>
+				    <ul id="accordion" class="accordion">
+						<li>
+							<div class="link">
+								<span class="lt">接待管理</span>
+								<label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div>
+							<ul class="submenu" style="display:block">
+								<li class="overflow">
+									<span class="lt">接待登记</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									 <span class="lt">接待信息</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									  <span class="lt">会议室使用登记</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="link">
+								<span class="lt">酒店管理</span><label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div> 
+							<ul class="submenu" style="display:block;">
+								<li class="overflow">
+									<span class="lt">酒店信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">房间信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">会议室信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">套餐菜品设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									 <span class="lt">餐厅(包厢)信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">酒店对比</span><label class="rt"><input type="checkbox" name="check"><u></u></label>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="link">
+								<span class="lt">宾客管理</span><label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div>
+							<ul class="submenu" style="display:block;">
+								<li class="overflow">
+									 <span class="lt">宾客信息设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="link">
+								<span class="lt">系统管理</span><label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div>
+							<ul class="submenu" style="display:block;">
+								<li class="overflow">									
+									<span class="lt">用户设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>
+									
+								</li>
+								<li class="overflow">									
+									<span class="lt">角色设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>								
+								</li>
+								<li class="overflow">
+									<span class="lt">模块设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>									
+								</li>
+								<li class="overflow">
+									<span class="lt">操作日志</span><label class="rt"><input type="checkbox" name="check"><u></u></label>									
+								</li>
+								<li class="overflow">
+									<span class="lt">数据库配置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>									
+								</li>
+								<li class="overflow">
+									<span class="lt">数据字典维护</span><label class="rt"><input type="checkbox" name="check"><u></u></label>						
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</label>
 			</div>
 			<div class="mfoot" align="center">

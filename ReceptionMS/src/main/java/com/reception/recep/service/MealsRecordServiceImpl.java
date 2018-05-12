@@ -19,7 +19,7 @@ public class MealsRecordServiceImpl implements MealsRecordService {
 	@Override
 	public int add(MealsRecordEntity meals) {
 		// TODO Auto-generated method stub
-		return 0;
+		return mealsRecordMapper.add(meals);
 	}
 
 	@Override

@@ -74,16 +74,16 @@ public interface RoleDao {
 	 * @param menus
 	 * @return int
 	 */
-	@Insert({ "<script>", "insert into sys_role_module", "(role_id,module_id)", "values",
-			"<foreach collection=\"menuIds\" item=\"menu\"   separator=\",\">", "(#{roleId},#{menu})", "</foreach>",
-			"</script>" })
+	@Insert({ "<script>", "INSERT ALL ", "<foreach collection=\"menuIds\" item=\"moduleId\"   separator=\"\">",
+			" into sys_role_module (role_id,module_id)", "values ", "(#{roleId},#{moduleId})", "</foreach>",
+			"select 1 from dual", "</script>" })
 	int addRoleModule(Map map);
 
 	/**
 	 * 查询角色权限信息
 	 * @param roleId
 	 */
-	@Select("SELECT m.id,m.module_name,m.module_id,m.module_parent_id,m.url,m.sort,m.create_time,m.icon,m.remark FROM sys_module m left join sys_role_module rm on m.module_id=rm.module_id WHERE rm.role_id=#{role_id}")
+	@Select("SELECT role_id,module_id from SYS_ROLE_MODULE where ROLE_ID=#{roleId}")
 	List<RoleModule> selectRoleModule(String roleId);
 
 

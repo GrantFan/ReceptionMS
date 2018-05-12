@@ -3,6 +3,7 @@ package com.reception.system.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.reception.system.model.Module;
+import com.reception.system.model.User;
 import com.reception.system.service.ModuleServiceImpl;
 import com.reception.util.JSONHelper;
 
@@ -107,9 +109,11 @@ public class ModuleAction {
 
 	// 用户登录后查询一级菜单目录
 	@RequestMapping(value = "/show", produces = "application/json; charset=utf-8")
-	public @ResponseBody String getmodulesRoot(HttpSession session) {
-		// Login login = (Login)session.getAttribute("login");
-		List<Module> list = moduleServiceImpl.selectModuleByRole("0"); // 超级管理员role_id为0
+	public @ResponseBody String getmodulesRoot(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		System.out.println(user.getRoleId());
+		List<Module> list = moduleServiceImpl.selectModuleByRole(user.getRoleId()); // 超级管理员role_id为0
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
 		System.out.println(json);

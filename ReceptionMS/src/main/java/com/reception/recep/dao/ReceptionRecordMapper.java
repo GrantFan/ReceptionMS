@@ -13,11 +13,11 @@ import com.reception.recep.model.ReceptionRecordEntity;
 @Mapper
 public interface ReceptionRecordMapper {
 	
-	@Select("select 'JD'||TO_CHAR(sysdate,'YYYYMMDDHHmmSS')||(trunc(dbms_random.value(0,100))) receptionNumber from dual")
-	String getReceptionNumber();
+	@Select("select 'JD'||TO_CHAR(sysdate,'YYYYMMDDHHmmSS') receptionNumber from dual")
+	ReceptionRecordEntity getReceptionNumber();
 	
 	@Insert("insert into reception_record( id, reception_number, reception_title, reception_date, reception_person, reception_printer, guest_name, entourage, guest_num, reception_num, reception_days, hotel, description, record_time, remark) "
-			+ "VALUES(#{id},#{receptionNumber},#{receptionTitle},#{receptionDate},#{receptionPerson},#{receptionPrinter},#{guestName},#{entourage},#{guestNum},#{receptionNum},#{receptionDays},#{hotel},#{description},#{recordTime},#{remark})")
+			+ "VALUES((select nvl(max(id),0)+1 from reception_record),#{receptionNumber},#{receptionTitle},#{receptionDate},#{receptionPerson},#{receptionPrinter},#{guestName},#{entourage},#{guestNum},#{receptionNum},#{receptionDays},#{hotel},#{description},sysdate,#{remark})")
 	int add(ReceptionRecordEntity reception);
 	
 	@Update({"<script>",

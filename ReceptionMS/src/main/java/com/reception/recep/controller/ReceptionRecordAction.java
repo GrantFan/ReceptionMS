@@ -102,13 +102,11 @@ public class ReceptionRecordAction {
 		return flag;
 	};
 	
-	@RequestMapping(value = "/add", method = RequestMethod.PUT)
+	@RequestMapping(value = "/add", produces = "application/text; charset=utf-8")
 	public String addReceptionRecordInfo(@RequestBody ReceptionRecordEntity reception) {
-//		String receptionNumber =receptionRecordServiceImpl.getReceptionNumber();
-//		reception.setReceptionNumber(receptionNumber);
+		ReceptionRecordEntity receptionNumber =receptionRecordServiceImpl.getReceptionNumber();
+		reception.setReceptionNumber(receptionNumber.getReceptionNumber());
 		System.out.println(reception.getReceptionNumber());
-		System.out.println(reception.getAccom().size());
-		System.out.println(reception.getMeals().size());
 		String flag = "false";
 		int i = receptionRecordServiceImpl.add(reception);
 		if (i > 0) {

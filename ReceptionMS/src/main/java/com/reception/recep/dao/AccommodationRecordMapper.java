@@ -3,6 +3,7 @@ package com.reception.recep.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -13,6 +14,8 @@ import com.reception.recep.model.MealsRecordEntity;
 @Mapper
 public interface AccommodationRecordMapper {
 	
+	@Insert("INSERT INTO ACCOMMODATION_RECORD ( ID, reception_number, ROOM_NUMBER, hotel, CHECKIN_TIME,CHECKOUT_TIME, hobby, record_time, remark ) "
+			+ "VALUES ( #{id},#{receptionNumber},#{roomNumber},#{hotel},#{checkinTime},#{checkoutTime},#{hobby},sysdate,#{remark} )")
 	int add(AccommodationRecordEntity accommodation);
 	
 	@Update("update accommodation_record set hotel=#{hotel},room_number=#{roomNumber},checkin_time=#{checkinTime},checkout_time=#{checkoutTime},hobby=#{hobby},record_time=#{recordTime},remark=#{remark} where id= #{id}")

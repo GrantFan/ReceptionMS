@@ -11,6 +11,12 @@
 		<script type="text/javascript" src="../assets/js/pagination.min.js"></script>
 		<script type="text/javascript" src="../assets/js/Calendar.js"></script>
 		<script type="text/javascript" src="./js/guestInformation.js"></script>
+		<style>
+			#files:checked{
+				
+			}
+			
+		</style>
 	</head>
 	<body>
 		<div class="operationsArea">
@@ -33,12 +39,15 @@
 					</button>
 					<button>
 						<u class="dy"></u>
+						
 						打印
 					</button>
-					<button>
+					<label for="file">
 						<u class="dr"></u>
+						<input type="file" name="file" id="file_excel"  onchange="import_Excel(this);">
 						导入
-					</button>
+					</label>
+					<!-- <button  onclick="import_Excel()" style="position:relative;" id='files'></button> -->
 					<button  onclick="export_guest()">
 						<u class="dc"></u>
 						导出

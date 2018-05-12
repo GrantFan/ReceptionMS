@@ -12,6 +12,7 @@ public class RoleModule implements Serializable {
 	private Integer id;
 	private String role_id;//角色标识
 	private String module_id;//模块标识
+	
 	public Integer getId() {
 		return id;
 	}

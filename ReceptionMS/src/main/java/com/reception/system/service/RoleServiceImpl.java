@@ -1,6 +1,8 @@
 package com.reception.system.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -59,10 +61,15 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	// 设置角色功能模块
-	@Override
-	public int setRoleModule() {
+	@Transactional(rollbackFor = Exception.class)
+	public int setRoleModule(String[] menuIds,String roleId) {
 		// TODO Auto-generated method stub
-		return 0;
+		Map map = new HashMap();
+		map.put("roleId", roleId); 
+		map.put("menuIds", menuIds);
+		roleDao.deleteRoleModule(roleId);
+		roleDao.addRoleModule(map);
+		return 1;
 	}
 
 	public Role selectById(String id) {
@@ -70,4 +77,13 @@ public class RoleServiceImpl implements RoleService {
 		return roleDao.selectById(id);
 	}
 
+	public List<RoleModule> selectRoleModule(String roleId){
+		return roleDao.selectRoleModule(roleId);
+	}
+
+	@Override
+	public int setRoleModule() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

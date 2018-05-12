@@ -4,6 +4,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +21,7 @@ public class LoginAction {
 	LoginServiceImpl loginService;
 
 	@RequestMapping(value = "/login")
-	public @ResponseBody String login(User user) {
+	public @ResponseBody String login(User user,HttpServletRequest request) {
 		InetAddress comp = null;
 		String ip = "";
 		String hostName = "";
@@ -28,6 +30,8 @@ public class LoginAction {
 			return "false";
 		} else {
 			try {
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
 				comp = InetAddress.getLocalHost();
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block

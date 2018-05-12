@@ -5,7 +5,7 @@ package com.reception.recep.model;
  */
 public class MealsRecordEntity {
 	
-	private Integer id;
+	private String id;
 	private String receptionNumber;//接待编号
 	private String hotel;//酒店
 	private String menuNumber;//套餐编号
@@ -15,10 +15,11 @@ public class MealsRecordEntity {
 	private String remark;//备用字段
 	
 	
-	public Integer getId() {
+
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getReceptionNumber() {

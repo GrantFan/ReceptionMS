@@ -47,7 +47,9 @@ function selectMenu(){
             }
         });
 }
-
+function resetFrom(){
+	
+}
 //接待记录保存
 function addSubmit() {
 	var data = '{'
@@ -78,15 +80,13 @@ function addSubmit() {
 	$.ajax({
 		url : '../../recep/add',
 		type:'PUT',
-        dataType: 'JSON',
 		data :data,
 		contentType:"application/json",
 		success : function(result) {
 			console.log(result);
 			if (result == "true") {
 				alert("登记成功");
-				$('.modal').hide();
-				showReceptionList(sessionStorage.currPage, sessionStorage.pageSize);
+				resetFrom();
 			}else{
 				alert("登记失败");
 			}

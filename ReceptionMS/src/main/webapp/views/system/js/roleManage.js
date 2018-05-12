@@ -4,7 +4,8 @@
 
 //init
 $(function() {
-	showRoleList(1, 5); 
+	showRoleList(1, 5);
+//	showModule();
 });
 
 function showRoleList(pageNum, pageSize) {
@@ -17,7 +18,7 @@ function showRoleList(pageNum, pageSize) {
 		},
 		url : "../../role/listByName",
 		success : function(data) {
-//			console.log(json);
+			//			console.log(json);
 			var json = JSON.parse(data);
 			var obj = json.list;
 			//console.log(obj);
@@ -200,28 +201,120 @@ function query() {
 	})
 }
 
+//显示功能模块结构
+function showModule() {
+	$.ajax({
+		type : "post",
+		url : "../../module/show",
+		success : function(data) {
+			//console.log(data);
+			$("#accordion").empty();
+			if (data.length > 0) {
+				for (var i = 0; i < data.length; i++) {
+					if (data[i].moduleParentId == '0') {
+						$("#accordion").append(
+							"<li name='" + data[i].moduleId + "'><div class=\"link\"><span class=\"lt\">" + data[i].moduleName + "</span><label class=\"rt\"><input type=\"checkbox\" class=\"module\" value='" + data[i].moduleId + "'><u class=\"top_1\"></u></label></div></li>");
+						var ul = '<ul class=\"submenu\" style=\"display:block;\">';
+						for (var j = 0; j < data.length; j++) {
+							if (data[j].moduleParentId == data[i].moduleId) {
+								ul += "<li class=\"overflow\"><span class=\"lt\">" + data[j].moduleName + "</span><label class=\"rt\"><input type=\"checkbox\" class=\"module\" value='" + data[j].moduleId + "'><u class=\"top_06\"></u></label></li>";
+							}
+						}
+						ul += "</ul>";
+						$("#accordion>li[name='" + data[i].moduleId + "']").append(ul);
+					}
 
-function setRoleModule(){
+				}
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	})
+}
+
+function setRoleModule() {
 	if ($(":checkbox[name='check']:checked").length != 1) {
 		alert("请选择一个选项！");
 		return false;
 	}
 	var id;
 	$(":checkbox[name='check']:checked").each(function() { //遍历
-		id = $(this).val(); // 每一个被选中项的值
+		id = $(this).val().trim(); // 每一个被选中项的值
 	});
+	//	alert(id);
+	
+	showModule();
+	$.get('../../role/' + id,
+		function(result) {
+			var json = JSON.parse(result);
+			//				console.log(json);
+			$("#roleId").val(json.id);
+			$("#r_roleName").val(json.description);
+			$("#r_description").val(json.roleName);
+
+		}
+	);
 	$("#module").show(800);
+	
+	$.ajax({
+		url : '../../role/selectRoleModule',
+		type : 'post',
+		data : {
+			roleId : id
+		},
+		success : function(result) {
+//			console.log(result);
+			var checkArr = $(".module");
+//			console.log(checkArr);
+			for (var i = 0; i <result.length; i++) {
+				for (var j = 0; j <checkArr.length; j++) {
+					if (checkArr[j].value == result[i].module_id) {
+						checkArr[j].checked="true";
+					}
+				}
+			}
+		}
+	});
 }
 
-function setModuleSubmit(){
-	alert("wuwu`");
+function setModuleSubmit() {
+	var moduleId="";
+	var checkArr = $(".module:checked");	
+	for (var j = 0; j <checkArr.length; j++) {
+		if(j==(checkArr.length-1)){
+			moduleId += checkArr[j].value;
+		}else{
+			moduleId += checkArr[j].value+',';
+		}
+	}
+//	console.log(moduleId);
+	$.ajax({
+		url : '../../role/setRoleModule',
+		type : 'post',
+		data : {
+			"menuIds":moduleId,
+			"roleId":$("#roleId").val()
+		},
+		success:function(data){
+			if(data=="true"){
+				alert("分配成功");
+				$('.modal').hide();
+			}else{
+				alert("分配失败");
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			//console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	})
 }
 //新增
 function add() {
-	$(".modal").show(500);
+	$("#modal").show(500);
 	$('#add').show();
 	$('#update').hide(500);
-	
+
 	//重置表单
 	$("#roleName").val("");
 	$("#description").val("");
@@ -229,15 +322,15 @@ function add() {
 }
 //新增提交
 function addSubmit() {
-	$.post("../../role/add",{
+	$.post("../../role/add", {
 		roleName : $("#roleName").val(),
 		description : $("#description").val(),
 	}, function(result) {
-		$('.modal').hide();
-		if(result=="true"){
+		if (result == "true") {
+			$('.modal').hide();
 			alert("添加成功");
 			showRoleList(sessionStorage.currPage, 5);
-		}else{
+		} else {
 			alert("添加失败");
 		}
 	}
@@ -256,18 +349,18 @@ function edit() {
 	$(":checkbox[name='check']:checked").each(function() { //遍历
 		id = $(this).val(); // 每一个被选中项的值
 	});
-	$(".modal").show(500);
+	$("#modal").show(500);
 	$('#add').hide();
 	$('#update').show(500);
 	$.get(
 		'../../role/' + id,
 		function(result) {
 			var json = JSON.parse(result);
-//			console.log(json);
+			//			console.log(json);
 			$("#id").val(json.id);
 			$("#description").val(json.description);
 			$("#roleName").val(json.roleName);
-			
+
 		}
 	);
 }
@@ -287,7 +380,7 @@ function editSubmit() {
 				alert("修改成功");
 				$('.modal').hide();
 				showRoleList(sessionStorage.currPage, 5);
-			}else{
+			} else {
 				alert("修改失败");
 			}
 		}
@@ -310,13 +403,13 @@ function dele() {
 			url : '../../role/' + id,
 			type : 'Delete',
 			success : function(result) {
-				if(result=="true"){
+				if (result == "true") {
 					alert("删除成功");
 					showRoleList(sessionStorage.currPage, 5);
-				}else{
+				} else {
 					alert("删除失败");
 				}
-				
+
 			}
 		})
 	} else {

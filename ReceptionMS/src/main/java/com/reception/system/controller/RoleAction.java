@@ -65,18 +65,12 @@ public class RoleAction {
 	}
 
 	// 通过roleid查询角色菜单
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/selectRoleModule")
+	@RequestMapping(value = "/selectRoleModule", produces = "json/plain; charset=utf-8")
 	public @ResponseBody String selectRoleModule(String roleId) {
-		// Map<String, Object> map = new HashMap<String, Object>();
-		// 查询当前角色拥有的菜单权限
-		// List<Menu> menu_ids = roleService
-		// .selectRoleMenuByRoleid(role_id);
-		// // 查询所有菜单
-		// String menu_tree = treeService.getMenusTree(menu_ids);
-		// map.put("menus", menu_tree);
-		// // String json=util.list2json(list);
-		return "";
+		List<RoleModule> list = roleService.selectRoleModule(roleId);
+		String json = JSONHelper.toJSON(list);
+		System.out.println(json);
+		return json;
 	}
 
 	/**
@@ -97,7 +91,6 @@ public class RoleAction {
 		}
 	}
 
-	
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public String queryUserById(@PathVariable("id") String id) {
 		Role role = this.roleService.selectById(id);
@@ -106,7 +99,7 @@ public class RoleAction {
 		}
 		return JSONHelper.toJSON(role);
 	}
-	
+
 	/**
 	 * 修改角色信息
 	 * 
@@ -133,7 +126,7 @@ public class RoleAction {
 	 * @return string
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public String deleteRole(@PathVariable("id")String roleId) {
+	public String deleteRole(@PathVariable("id") String roleId) {
 		String flag = "false";
 		int i = roleService.deleteRole(roleId);
 		if (i > 0) {
@@ -148,19 +141,16 @@ public class RoleAction {
 	 * @param role
 	 * @return
 	 */
-	@RequestMapping(value = "/setRoleModule")
-	public @ResponseBody String addRoleAndModule(@RequestParam(value = "menuIds") String[] menuIds,
-			@RequestParam(value = "roleId") String roleId, @RequestParam(value = "state") String state) {
-
-		if ("menu".equals(state)) {
-			// roleService.addRoleAndMenu(menuIds,roleId);
+	@RequestMapping(value="/setRoleModule", produces = "text/plain; charset=utf-8")
+	public @ResponseBody String addRoleAndModule(@RequestParam(value = "roleId") String roleId,
+												 @RequestParam(value = "menuIds") String menuIds) {
+		System.out.println(menuIds);
+		String[] arr = menuIds.split(",");
+		int i = roleService.setRoleModule(arr, roleId);
+		if (i>0) {
 			return "true";
-		} else if ("resource".equals(state)) {
-			// roleService.addRoleAndSysResource(menuIds,roleId);
-			return "true";
-		} else {
-			return "error";
 		}
+		return "false";
 
 	}
 

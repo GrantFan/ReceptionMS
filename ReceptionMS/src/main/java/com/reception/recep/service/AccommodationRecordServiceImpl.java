@@ -18,7 +18,7 @@ public class AccommodationRecordServiceImpl implements AccommodationRecordServic
 	@Override
 	public int add(AccommodationRecordEntity accommodation) {
 		// TODO Auto-generated method stub
-		return 0;
+		return accommodationRecordMapper.add(accommodation);
 	}
 
 	@Override

@@ -41,7 +41,7 @@ function select_guest(pageNum,pageSize){
             				"</td><td>"+list.deputy_position+
             				"</td><td>"+list.office_area+
             				/*"</td><td>"+list.sex+*/
-//            				"</td><td>"+list.birth_date.substr(0,10)+
+            				"</td><td>"+list.birth_date.substr(0,10)+
             				/*"</td><td>"+list.nation+
             				"</td><td>"+list.education+*/
             				"</td><td>"+list.origin_place+
@@ -307,47 +307,50 @@ function update_guest(id){
     });
 }
 
+/**
+ * 上传图片
+ */
 function setImg(obj){//用于进行图片上传，返回地址
-	   //获取当前用户id
-		var f=$(obj).val();
-	    if(f == null || f ==undefined || f == ''){
-	        return false;
-	    }
-	    if(!/\.(?:png|jpg|bmp|gif|PNG|JPG|BMP|GIF)$/.test(f))
-	    {
-	        alert("类型必须是图片(.png|jpg|bmp|gif|PNG|JPG|BMP|GIF)");
-	        $(obj).val('');
-	        return false;
-	    }
-	    var data = new FormData();
-	    $.each($(obj)[0].files,function(i,file){
-	        data.append('file', file);
-	    })
-	    $.ajax({
-	        type: "POST",
-	        url: "/ReceptionMS/guest/uploadImg",
-	        data: data,
-	        cache: false,
-	        contentType: false,    //不可缺
-	        processData: false,    //不可缺
-	        dataType:"json",
-	        success: function(suc) {
-	            if(suc.code==0){
-	                   // $("#thumbUrl").val(suc.message);//将地址存储好
-	                    $("#thumburlShow").attr("src",suc.message);//显示图片        
-	                   // alert(suc.message);
-	                }else{
-	                alertLayel("上传失败");
-	                $("#url").val("");
-	                $(obj).val(''); 
-	            }
-	        },
-	        error: function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert("上传失败，请检查网络后重试");
-	            $("#url").val("");
-	            $(obj).val('');
-	        }
-	    });
+   //获取当前用户id
+	var f=$(obj).val();
+    if(f == null || f ==undefined || f == ''){
+        return false;
+    }
+    if(!/\.(?:png|jpg|bmp|gif|PNG|JPG|BMP|GIF)$/.test(f))
+    {
+        alert("类型必须是图片(.png|jpg|bmp|gif|PNG|JPG|BMP|GIF)");
+        $(obj).val('');
+        return false;
+    }
+    var data = new FormData();
+    $.each($(obj)[0].files,function(i,file){
+        data.append('file', file);
+    })
+    $.ajax({
+        type: "POST",
+        url: "/ReceptionMS/guest/uploadImg",
+        data: data,
+        cache: false,
+        contentType: false,    //不可缺
+        processData: false,    //不可缺
+        dataType:"json",
+        success: function(suc) {
+            if(suc.code==0){
+                   // $("#thumbUrl").val(suc.message);//将地址存储好
+                    $("#thumburlShow").attr("src",suc.message);//显示图片        
+                   // alert(suc.message);
+                }else{
+                alertLayel("上传失败");
+                $("#url").val("");
+                $(obj).val(''); 
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("上传失败，请检查网络后重试");
+            $("#url").val("");
+            $(obj).val('');
+        }
+    });
 }
 
 function delete_img(){
@@ -372,4 +375,40 @@ function delete_img(){
  */
 function export_guest(){
 	location.href='http://localhost:8088/ReceptionMS/guest/guest.xls';
+}
+
+
+/**
+ * 导入
+ */
+function import_Excel(obj){
+	var f=$(obj).val();
+    if(f == null || f ==undefined || f == ''){
+        return false;
+    }
+    if(!/\.(?:xls|xlsx)$/.test(f))
+    {
+        alert("请上传Excel文件");
+        $(obj).val('');
+        return false;
+    }
+	var data = new FormData();
+	 $.each($("#file_excel")[0].files,function(i,file){
+	        data.append('file', file);
+	    })
+	 $.ajax({
+	        type: "POST",
+	        url: "/ReceptionMS/import/upLoadFile",
+	        data:data,
+	        cache: false,
+	        processData: false,
+	        contentType: false,
+	        dataType:"json",
+	        success: function(str) {
+             alert("删除成功！");
+	        },
+	        error: function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert("000");
+	        }
+	    });
 }
