@@ -50,27 +50,37 @@ function selectMenu(){
 
 //接待记录保存
 function addSubmit() {
-	var data = "{"
-			+"'receptionNumber': $(\"#receptionNumber\").val(),"
-			+"'receptionTitle': $(\"#receptionTitle\").val(),"
-			+"'receptionDate' : $(\"#receptionDate\").val(),"
-			+"'receptionPerson' : $(\"#receptionPerson\").val(),"
-			+"'receptionPrinter' : $(\"#receptionPrinter\").val(),"
-			+"'guestName' : $(\"#guestName\").val(),"
-			+"'entourage' : $(\"#entourage\").val(),"
-			+"'guestNum' : $(\"#guestNum\").val(),"
-			+"'receptionNum' : $(\"#receptionNum\").val(),"
-			+"'receptionDays' : $(\"#receptionDays\").val(),"
-			+"'hotel' : $(\"#hotel option:selected\").text(),"
-			+"'description' : $(\"#description\").val(),"
-			+"'remark' : $(\"#remark\").val(),"
-			+""
-		"}";
-	alert($("#hotel option:selected").text())
+	var data = '{'
+			+'"receptionNumber":"'+ $("#receptionNumber").val()+'",'
+			+'"receptionTitle":"'+$("#receptionTitle").val()+'",'
+			+'"receptionDate":"'+ $("#receptionDate").val()+'",'
+			+'"receptionPerson":"'+ $("#receptionPerson").val()+'",'
+			+'"receptionPrinter":"'+ $("#receptionPrinter").val()+'",'
+			+'"guestName":"'+$("#guestName").val()+'",'
+			+'"entourage":"'+$("#entourage").val()+'",'
+			+'"guestNum":"'+$("#guestNum").val()+'",'
+			+'"receptionNum":"'+$("#receptionNum").val()+'",'
+			+'"receptionDays":"'+$("#receptionDays").val()+'",'
+			+'"hotel":"'+$("#hotel option:selected").text()+'",'
+			+'"description":"'+$("#description").val()+'",'
+			+'"remark":"'+ $("#remark").val()+'",'
+			+'"meals":['
+			+'{"hotel":\"bzd\",\"menuNumber\":\"bzd\",\"mealsTime\":\"bzd\",\"hobby\":\"bzd\",\"remark\":\"bzd\"},'
+			+'{\"hotel\":\"bzd\",\"menuNumber\":\"bzd\",\"mealsTime\":\"bzd\",\"hobby\":\"bzd\",\"remark\":\"bzd\"}'
+			+'],'
+			+'"accom":['
+			+'{"hotel":\"bzd\",\"roomNumber\":\"roomNumber\",\"checkinTime\":\"checkinTime\",\"checkoutTime\":\"checkinTime\",\"hobby\":\"bzd\",\"remark\":\"bzd\"},'
+			+'{"hotel":\"bzd\",\"roomNumber\":\"roomNumber\",\"checkinTime\":\"checkinTime\",\"checkoutTime\":\"checkinTime\",\"hobby\":\"bzd\",\"remark\":\"bzd\"}'
+			+']'
+			+'}';
+	console.log(data);
+//	alert($("#hotel option:selected").text());
 	$.ajax({
 		url : '../../recep/add',
-		type : 'post',
+		type:'PUT',
+        dataType: 'JSON',
 		data :data,
+		contentType:"application/json",
 		success : function(result) {
 			console.log(result);
 			if (result == "true") {

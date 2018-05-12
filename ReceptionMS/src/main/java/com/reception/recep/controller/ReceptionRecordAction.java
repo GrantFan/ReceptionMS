@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -101,10 +102,13 @@ public class ReceptionRecordAction {
 		return flag;
 	};
 	
-	@RequestMapping(value = "/add", produces = "application/text; charset=utf-8")
-	public String addReceptionRecordInfo(ReceptionRecordEntity reception) {
-		String receptionNumber =receptionRecordServiceImpl.getReceptionNumber();
-		reception.setReceptionNumber(receptionNumber);
+	@RequestMapping(value = "/add", method = RequestMethod.PUT)
+	public String addReceptionRecordInfo(@RequestBody ReceptionRecordEntity reception) {
+//		String receptionNumber =receptionRecordServiceImpl.getReceptionNumber();
+//		reception.setReceptionNumber(receptionNumber);
+		System.out.println(reception.getReceptionNumber());
+		System.out.println(reception.getAccom().size());
+		System.out.println(reception.getMeals().size());
 		String flag = "false";
 		int i = receptionRecordServiceImpl.add(reception);
 		if (i > 0) {

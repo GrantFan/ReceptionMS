@@ -23,7 +23,7 @@ public class ReceptionRecordServiceImpl implements ReceptionRecordService {
 	@Override
 	public int add(ReceptionRecordEntity reception) {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
