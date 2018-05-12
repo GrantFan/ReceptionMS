@@ -15,13 +15,9 @@ public class LoginServiceImpl implements LoginService {
 	LoginDao loginDao;
 	
 	@Override
-	public String login(User user) {
+	public User login(User user) {
 		// TODO Auto-generated method stub
-		String userNick = loginDao.login(user);
-		if("".equals(userNick) || null == userNick){
-			return "false";
-		}
-		return userNick;
+		return loginDao.login(user);
 	}
 
 	@Override

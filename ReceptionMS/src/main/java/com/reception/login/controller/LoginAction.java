@@ -21,28 +21,28 @@ public class LoginAction {
 	LoginServiceImpl loginService;
 
 	@RequestMapping(value = "/login")
-	public @ResponseBody String login(User user,HttpServletRequest request) {
+	public @ResponseBody String login(User user, HttpSession session) {
 		InetAddress comp = null;
 		String ip = "";
 		String hostName = "";
-		String result = loginService.login(user);
-		if (result.equals("false")) {
-			return "false";
-		} else {
+		User login = loginService.login(user);
+		if (login != null) {
 			try {
-				HttpSession session = request.getSession();
-				session.setAttribute("user", user);
+				session.setAttribute("user", login);
 				comp = InetAddress.getLocalHost();
+				ip = comp.getHostAddress().toString(); // 获得机器IP
+				hostName = comp.getHostName().toString(); // 获得机器名称
+				user.setLastLoginComputer(hostName + ":" + ip);
+				// 记录登录时间及机器
+				loginService.loginLog(user);
+				return login.getUserNick();
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return "false";
 			}
-			ip = comp.getHostAddress().toString(); // 获得机器IP
-			hostName = comp.getHostName().toString(); // 获得机器名称
-			user.setLastLoginComputer(hostName + ":" + ip);
-			//记录登录时间及机器
-			loginService.loginLog(user);
-			return result;
+
 		}
+		return "false";
 	}
 }

@@ -24,10 +24,11 @@ import com.reception.util.JSONHelper;
 @RequestMapping(value = "/module")
 public class ModuleAction {
 	// log日志
-	//private static final Logger logger = Logger.getLogger(ModuleAction.class);
+	// private static final Logger logger =
+	// Logger.getLogger(ModuleAction.class);
 	// 注入service
 	@Resource
-	 ModuleServiceImpl moduleServiceImpl;
+	ModuleServiceImpl moduleServiceImpl;
 
 	/**
 	 * 添加菜单
@@ -109,15 +110,22 @@ public class ModuleAction {
 
 	// 用户登录后查询一级菜单目录
 	@RequestMapping(value = "/show", produces = "application/json; charset=utf-8")
-	public @ResponseBody String getmodulesRoot(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		System.out.println(user.getRoleId());
-		List<Module> list = moduleServiceImpl.selectModuleByRole(user.getRoleId()); // 超级管理员role_id为0
-		JSONHelper jsonHelper = new JSONHelper();
-		String json = jsonHelper.toJSON(list);
-		System.out.println(json);
-		return json;
+	public @ResponseBody String getmodulesRoot(HttpSession session) {
+		try {
+			User user = (User) session.getAttribute("user");
+			// System.out.println("角色："+user.getRoleId());
+			if (null != user.getRoleId()) {
+				List<Module> list = moduleServiceImpl.selectModuleByRole(user.getRoleId()); // 超级管理员role_id为0
+				JSONHelper jsonHelper = new JSONHelper();
+				String json = jsonHelper.toJSON(list);
+				System.out.println(json);
+				return json;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "{\"result\":\"请重新登录~\"}";
+		}
+		return "{\"result\":\"请重新登录~\"}";
 	}
 
 }
