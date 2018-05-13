@@ -26,6 +26,7 @@ public class Menu_InfoSql {
         String sql = new SQL(){
             {
                 INSERT_INTO("MENU_INFO");
+                VALUES(" ID", "(select nvl(MAX(id),0)+1 from MENU_INFO)");
                 VALUES(" MENU_NUMBER", "#{menu_number}");
                 VALUES(" SHORT_NAME","#{short_name}");
                 VALUES(" MENU_TYPE","#{menu_type}");
@@ -73,6 +74,7 @@ public class Menu_InfoSql {
         String sql = new SQL(){
             {
                 INSERT_INTO("FOOD_INFO");
+                VALUES(" id", "(select nvl(MAX(id),0)+1 from FOOD_INFO)");
                 VALUES(" food_number", "#{food_number}");
                 VALUES(" food_name","#{food_name}");
                 VALUES(" price","#{price}");

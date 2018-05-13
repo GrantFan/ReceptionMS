@@ -118,7 +118,7 @@ function query() {
 		url : "../../hotel/listByName",
 		success : function(data) {
 			var obj = eval(data);
-//			console.log(obj);
+			//			console.log(obj);
 			$("#tablebody").empty();
 			var tbody = "";
 			for (i = 0, len = obj.length; i < len; i++) {
@@ -162,10 +162,10 @@ function loadArea() {
 //新增
 function add() {
 	//重置表单
-	$(".modal").show(500);
+	$("#modal").show(500);
 	$('#add').show();
 	$('#update').hide(500);
-	
+
 	$("#hotel_name").val("");
 	$("#linkman").val("");
 	$("#telphone").val("");
@@ -178,7 +178,7 @@ function add() {
 }
 //新增提交
 function addSubmit() {
-	$.post("../../hotel/add",{
+	$.post("../../hotel/add", {
 		hotelName : $("#hotel_name").val(),
 		linkman : $("#linkman").val(),
 		telphone : $("#telphone").val(),
@@ -189,7 +189,7 @@ function addSubmit() {
 		remark : $("#remark").val()
 	}, function(result) {
 		alert(result);
-		$('.modal').hide();
+		$('#modal').hide();
 		showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
 	}
 	).error(function(a) {
@@ -208,10 +208,10 @@ function edit() {
 		id = $(this).val(); // 每一个被选中项的值
 	});
 	$("#modal_name").text("酒店信息修改");
-	$(".modal").show(500);
+	$("#modal").show(500);
 	$('#add').hide();
 	$('#update').show(500);
-	
+
 	$.get(
 		'../../hotel/' + id,
 		function(result) {
@@ -227,6 +227,7 @@ function edit() {
 			$("#address").val(json.address);
 			$("#graph").val(json.planeGraph);
 			$("#remark").val(json.remark);
+			getImage(id);
 		}
 	);
 }
@@ -250,10 +251,10 @@ function editSubmit() {
 			console.log(result);
 			if (result == "true") {
 				alert("修改成功");
-				$('.modal').hide();
+				$('#modal').hide();
 				$("#modal_name").text("酒店信息");
 				showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
-			}else{
+			} else {
 				alert("修改失败");
 			}
 		}
@@ -276,13 +277,13 @@ function dele() {
 			url : '../../hotel/' + id,
 			type : 'Delete',
 			success : function(result) {
-				if(result=="true"){
+				if (result == "true") {
 					alert("删除成功");
 					showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
-				}else{
+				} else {
 					alert("删除失败");
 				}
-				
+
 			}
 		})
 	} else {
@@ -292,5 +293,117 @@ function dele() {
 
 //exportExcel
 function exportExcel() {
-	location.href='../../hotel/export';
+	location.href = '../../hotel/export';
+}
+
+function planeGraph() {
+	if ($(":checkbox[name='check']:checked").length != 1) {
+		alert("请选择一个选项！");
+		return false;
+	}
+	var id;
+	$(":checkbox[name='check']:checked").each(function() { //遍历
+		id = $(this).val(); // 每一个被选中项的值
+	});
+	$("#graphModal").show(800);
+	$("#hotelId").val(id);
+	getImage(id);
+}
+/**
+ * 获取图片
+ */
+function getImage(hotel) {
+	$.ajax({
+		url : '../../hotel_graph/selectImpByHotel',
+		type : 'get',
+		data : {
+			"hotel" : hotel
+		},
+		success : function(result) {
+			var list = eval("(" + result + ")")
+//			console.log(list)
+			var info = $("#imageOver").empty();
+			for (var i = 0; i < list.length; i++) {
+				if (i == 0) {
+					info.append('<li name=\"' + list[i].id + '\" class="block"><img src="' + list[i].graph_url + '" width="100%" height="100%" /><input value=\"'+list[i].graph_name+'\"></li>');
+				} else {
+					info.append('<li name=\"' + list[i].id + '\" class="none"><img src="' + list[i].graph_url + '" width="100%" height="100%" /><input value=\"'+list[i].graph_name+'\"></li>');
+				}
+			}
+		},
+		error : function() {
+			alert("获取图片失败！");
+		}
+	})
+}
+
+
+/**
+ * 上传图片
+ */
+function setImg(obj) { //用于进行图片上传，返回地址
+	//获取当前用户id
+	var f = $(obj).val();
+	if (f == null || f == undefined || f == '') {
+		return false;
+	}
+	if (!/\.(?:png|jpg|bmp|gif|PNG|JPG|BMP|GIF)$/.test(f)) {
+		alert("类型必须是图片(.png|jpg|bmp|gif|PNG|JPG|BMP|GIF)");
+		$(obj).val('');
+		return false;
+	}
+	var data = new FormData();
+	$.each($(obj)[0].files, function(i, file) {
+		data.append('file', file);
+	}),
+	//截取图片名称
+	data.append("graph_name", f.substring(f.lastIndexOf("\\") + 1, f.lastIndexOf(".")));
+	//关联酒店id
+	data.append("hotel", $("#hotelId").val());
+	$.ajax({
+		type : "POST",
+		url : "/ReceptionMS/hotel_graph/uploadImg",
+		data : data,
+		cache : false,
+		contentType : false, //不可缺
+		processData : false, //不可缺
+		dataType : "json",
+		success : function(suc) {
+			if (suc.code == 0) {
+				// $("#thumbUrl").val(suc.message);//将地址存储好
+				// $("#thumburlShow").attr("src",suc.message);//显示图片        
+				alert("上传成功");
+			} else {
+				alertLayel("上传失败");
+				$("#url").val("");
+				$(obj).val('');
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("上传失败，请检查网络后重试");
+			$("#url").val("");
+			$(obj).val('');
+		}
+	});
+}
+
+function delImg() {
+	var graphId = $("#imageOver li.block").attr("name");
+	console.log(graphId);
+	$.ajax({
+		type : "GET",
+		url : "/ReceptionMS/hotel_graph/deleetImpById",
+		data : {
+			"id" : graphId
+		},
+		dataType : "json",
+		success : function(suc) {
+//			alert(suc)
+			if (suc) {
+				alert("删除成功");
+			//$("#thumburlShow").attr("src","");//显示图片        
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {}
+	});
 }

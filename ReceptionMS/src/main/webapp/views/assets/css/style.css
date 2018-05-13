@@ -886,6 +886,10 @@ iframe{
 	width: 20%;
 }
 
+/* 分页样式  */
+#page,#pagination{
+	margin-top:1.6vw;
+}
 
 @media (max-width: 1200px) {	
 	span.webkit,   

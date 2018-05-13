@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110100
 File Encoding         : 65001
 
-Date: 2018-05-13 15:04:05
+Date: 2018-05-13 19:01:25
 */
 
 
@@ -437,7 +437,7 @@ CREATE TABLE "TEST_GS"."FOOD_INFO" (
 "FOOD_NUMBER" NVARCHAR2(20) NULL ,
 "FOOD_NAME" NVARCHAR2(255) NULL ,
 "MENU_NUMBER" NVARCHAR2(128) NULL ,
-"PRICE" NUMBER NULL ,
+"PRICE" NUMBER(6) NULL ,
 "FLAVOR" NVARCHAR2(255) NULL ,
 "TYPE" NVARCHAR2(255) NULL ,
 "REMARK" NVARCHAR2(255) NULL 
@@ -460,22 +460,6 @@ COMMENT ON COLUMN "TEST_GS"."FOOD_INFO"."REMARK" IS '备注';
 -- Records of FOOD_INFO
 -- ----------------------------
 INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('1', '菜品编号', '菜品名称', null, null, null, '类型', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('2', 'T00005', '炝炒菜心', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('3', 'T00005', '木耳炒肉', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('4', 'T00005', '虎皮辣子', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('5', 'T00005', '肉末水蒸蛋', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('6', 'T00005', '酸辣海带结', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('7', 'T00005', '蒜泥肘花', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('8', 'T00005', '凉拌苜蓿', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('9', 'T00005', '牛肉面（现做）', null, null, null, '热菜', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('10', 'T00005', '蒸鸡蛋', null, null, null, '主食', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('11', 'T00005', '特色包子', null, null, null, '主食', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('12', 'T00005', '糊锅', null, null, null, '主食', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('13', 'T00005', '油条', null, null, null, '主食', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('14', 'T00005', '烤肠', null, null, null, '主食', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('15', 'T00005', '烤番茄', null, null, null, '主食', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('16', 'T00005', '牛奶', null, null, null, '主食', null);
-INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('17', 'T00005', '豆浆', null, null, null, '主食', null);
 INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('18', 'T00006', '干煸四季豆', null, null, null, '主食', null);
 INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('19', 'T00006', '小葱木耳', null, null, null, '热菜', null);
 INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('20', 'T00006', '烤番茄', null, null, null, '热菜', null);
@@ -575,6 +559,9 @@ INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('113', 'T00009', '哈雷杯', null, nu
 INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('114', 'T00009', '咖啡', null, null, null, '主 食', null);
 INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('115', 'T00009', '橙汁', null, null, null, '饮 品', null);
 INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('116', 'T00009', '茶水柠檬水', null, null, null, '饮 品', null);
+INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('118', 'T6', 'asdfsa', null, '20', null, 'asdf', null);
+INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('117', 'T00005', 'sacads', null, '20', null, null, null);
+INSERT INTO "TEST_GS"."FOOD_INFO" VALUES ('119', 'T6', 'asdf', null, '20', null, 'gffergws', null);
 
 -- ----------------------------
 -- Table structure for GUEST_INFO
@@ -626,10 +613,14 @@ COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of GUEST_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('3', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', '博士', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('1', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', '博士', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('2', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', '硕士', null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('4', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', '硕士', null, null, null, null, null, null, '小客户', '很快就好');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('1', 'adsf', 'asdf', 'sadf', null, '男', null, 'http://localhost:8088/ReceptionMS/views/upload/imgs/photo/1526206262827_285.png', '2018-05-16', null, null, null, null, null, null, null, '小客户', null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('2', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', '本科', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('3', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', '硕士', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('4', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', '本科', null, null, null, null, null, null, '小客户', '很快就好');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('5', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('6', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('7', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('8', 'sdaf', 'adf', 'asdf', 'sadf', '女', null, null, '2018-05-08', '本科', null, 'sadf', 'sadf', 'sdaf', 'sadf', 'sadf', '普通客户', null);
 
 -- ----------------------------
 -- Table structure for HOTEL_INFO
@@ -663,6 +654,7 @@ COMMENT ON COLUMN "TEST_GS"."HOTEL_INFO"."PLANE_GRAPH" IS '酒店平面图';
 -- ----------------------------
 -- Records of HOTEL_INFO
 -- ----------------------------
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('13', null, null, null, null, null, null, null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('1', '酒店名称', '联系人', '联系电话', '酒店座机', '所属行政区', '酒店地址', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('3', '东方国际大酒店', '马艳玲', '18193748166', '0937-2699999', '敦煌', '酒泉市肃州区仓门街6号', null, '11111');
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('4', '光明大酒店', '王海锋', '18919375595', '0937-2807777', '肃州区', '甘肃省酒泉市肃州区盘旋中路18号', null, null);
@@ -699,6 +691,9 @@ COMMENT ON COLUMN "TEST_GS"."HOTEL_PLANE_GRAPH"."HOTEL" IS '所属酒店';
 -- ----------------------------
 -- Records of HOTEL_PLANE_GRAPH
 -- ----------------------------
+INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('3', '{3B07188B-5C96-4120-81DE-AC5631EA9DDB}_光明大酒店', 'http://localhost:8088/ReceptionMS/views/upload/imgs/hotelphoto/1526207977306_232.png', null, '3');
+INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('2', 'QQ截图20180330094419', 'http://localhost:8088/ReceptionMS/views/upload/imgs/hotelphoto/1526207519330_779.png', null, '3');
+INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('4', '{4F8E9606-F8AA-4EAE-9B76-7E378385E1B7}_贵宾楼平面图', 'http://localhost:8088/ReceptionMS/views/upload/imgs/hotelphoto/1526208003797_377.jpg', null, '3');
 
 -- ----------------------------
 -- Table structure for MEALS_RECORD
@@ -768,8 +763,8 @@ COMMENT ON COLUMN "TEST_GS"."MENU_INFO"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of MENU_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('1', '套餐编号', '备注', '套餐类型', '酒店名称', '用餐时间分类', '用餐方式分类', '标准分类', null);
-INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('2', 'T00005', 'A单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
+INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('6', 'T6', null, '贵宾套餐', '宏兴大酒店', '正餐', '桌餐', '50', null);
+INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('2', 'T00005', null, '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
 INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('3', 'T00006', 'B单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
 INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('4', 'T00007', 'C单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
 INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('5', 'T00009', 'D单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
@@ -985,7 +980,7 @@ INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('10', '酒店管理', '10', '0', null
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', null, 'Jdxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', null, 'fjxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', null, 'hysxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomUse.html', '3', null, 'hyssyjl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomManage.html', '3', null, 'hyssyjl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', null, 'tccpxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', '6', null, 'sjzdwh', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('18', '宾客管理', '18', '0', null, '3', null, 'bkxxgl', null);
@@ -1108,7 +1103,7 @@ COMMENT ON COLUMN "TEST_GS"."SYS_USER"."ROLE_ID" IS '角色id';
 -- ----------------------------
 -- Records of SYS_USER
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-13 14:39:26', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-13 19:00:07', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
 INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-12 19:26:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:48', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
 INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'wwww', 'ww1', '111111', null, null, TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:12:45', 'YYYY-MM-DD HH24:MI:SS'), null, '1');
 

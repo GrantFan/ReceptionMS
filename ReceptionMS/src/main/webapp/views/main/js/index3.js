@@ -34,9 +34,11 @@ function showModule() {
 				//console.log($(this))
 				e.preventDefault();
 				//		li += "<li class='TabStyle' onclick='fn(this)'><span>"+$(this).text()+"</span> <b onclick='shut(this)'>X</b></li>";
+				$('#Tab').html('<span>当前位置：</span><i>'+$(this).parent('ul').prev('.link').text()+'</i><i>&nbsp;/&nbsp;</i> <i>'+$(this).text()+'</i>')
 				html = "<iframe src='" + $(this).children('a').attr('href') + "'></iframe>";
 				$("#iframeBox").html(html);
 			});
+			
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(XMLHttpRequest.status);

@@ -6,7 +6,8 @@
 <title>酒店管理</title>
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 <link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
-<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" />
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/pagination.css" />
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 <!-- Paginator -->
@@ -39,6 +40,9 @@
 			-->
 			<button onclick="exportExcel()">
 				<u class="dc"></u><span class="webkit">导出 </span>
+			</button>
+			<button onclick="planeGraph()">
+				<u class="dc"></u><span class="webkit">平面图 </span>
 			</button>
 		</div>
 		<div class="inputs">
@@ -96,7 +100,8 @@
 		</div>
 	</div>
 	<!--酒店详细信息【含图片】  双击展示-->
-	<div class="modal none imgModal">
+
+	<div id="modal" class="modal none imgModal">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -126,18 +131,17 @@
 						</label> <label for="graph"> <span>酒店平面图：</span> <input
 							type="text" name="graph" id="graph" value="" />
 					</div>
-					<div class="rt" id="imgBox">
+					<!-- 			<div class="rt" id="imgBox">
 						<div class="img" ondblclick="imgView(this)">
 							<b class="close none"
 								onclick="$(this).parent('div.img').removeClass('active');$(this).hide();">
 								× </b>
 							<ul class="overflow">
-								<li class="block"><img src="image/宏兴大酒店_宏兴大酒店.png"
+								<!-- <li class="block"><img src="image/宏兴大酒店_宏兴大酒店.png"
 									width="100%" height="100%" /></li>
 								<li class="none"><img src="image/东方国际大酒店_东方国际大酒店6楼平面图.png"
-									width="100%" height="100%" /></li>
+									width="100%" height="100%" /></li> 
 							</ul>
-							<input id="imgName" value="宏兴大酒店_宏兴大酒店.png">
 						</div>
 						<button class="left">⇐</button>
 						<span>1/1</span>
@@ -155,7 +159,7 @@
 							</p>
 							<button class="lt">删除</button>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="">
 					<label for="user"> <span>用途说明：</span> <input type="text"
@@ -178,9 +182,62 @@
 			</div>
 		</div>
 	</div>
+
+
+
+	<div id="graphModal" class="modal none imgModal">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>酒店平面图</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<input id="hotelId" type="hidden" value="">
+				<div id="imgBox">
+					<div class="img" ondblclick="imgView(this)">
+						<b class="close none"
+							onclick="$(this).parent('div.img').removeClass('active');$(this).hide();">
+							× </b>
+						<ul class="overflow" id="imageOver">
+							<li class="block"><img src="image/宏兴大酒店_宏兴大酒店.png"
+								width="100%" height="100%" /></li>
+							<li class="none"><img src="image/东方国际大酒店_东方国际大酒店6楼平面图.png"
+								width="100%" height="100%" /></li>
+						</ul>
+					</div>
+					<button class="left">切换图片</button>
+					<span>1/1</span>
+					
+					<div class="btns overflow">
+						<p class="lt">
+							<button>
+								添加 <input onchange="setImg(this)" type="file" name="" value="">
+							</button>
+						</p>
+						<button onclick="delImg()" class="lt">删除</button>
+					</div>
+				</div>
+			</div>
+			<div class="mfoot" align="center">
+				<button id="add" onclick="addSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button id="update" onclick="editSubmit()" style="display:none">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
 </body>
 <script>
-	if ($("tbody input:checked").length >= 2) {	 
+	if ($("tbody input:checked").length >= 2) {
 		$("#contrast").on('click', function() {
 			$(".contrast").parent(".modal").show();
 		})
@@ -197,17 +254,17 @@
 	}
 
 
-	{
-		$('.right').on('click', function() {
-			$('#imgBox li').next('li').show().prevAll('li').hide();
+	$('.left').on('click', function() { 
+			var l = $('#imgBox ul>li.block').index();
+			console.log(l);
+			console.log(l-1);
+			if(l < $('#imgBox ul>li').length && l >= 0){				
+				$('#imgBox li').addClass('none').removeClass('block');
+				console.log($('#imgBox li').eq(l-1));
+				$('#imgBox li').eq(l-1).addClass('block');				
+			}		
 		})
 
-		$('.left').on('click', function() {
-			$('#imgBox li').nextAll('li').hide().prev('li').show();
-		})
-
-
-	}
 </script>
 
 </html>

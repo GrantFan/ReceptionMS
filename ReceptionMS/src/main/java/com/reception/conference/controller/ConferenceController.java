@@ -4,7 +4,9 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -38,13 +39,12 @@ public class ConferenceController {
 	IConferenceService ConferenceServiceImpl;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void addConferenect(@ModelAttribute("conferenceEntity")ConferenceEntity conferenceEntity,
-			@RequestParam(value = "file",required = false) MultipartFile file){
-		this.ConferenceServiceImpl.addConferenect(conferenceEntity,file); 
+	public void addConferenect(@ModelAttribute("conferenceEntity")ConferenceEntity conferenceEntity){
+		this.ConferenceServiceImpl.addConferenect(conferenceEntity); 
 	}
-	@RequestMapping(value = "{id}",method = RequestMethod.DELETE)
-	public String delConferenect(@PathVariable("id")String id){
-		boolean flag =  this.ConferenceServiceImpl.delConferenect(id);  
+	@RequestMapping(value = "delConferenect",method = RequestMethod.POST)
+	public String delConferenect(@RequestParam(value="idArray[]")String[] idArray){ 
+		boolean flag =  this.ConferenceServiceImpl.delConferenect(idArray);  
 		return JSONHelper.toJSON(flag);
 	}	 
 	@RequestMapping(method = RequestMethod.PUT)
@@ -63,17 +63,27 @@ public class ConferenceController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String queryConferenectByPage(
 			@RequestParam(value="pageNum",required = false,defaultValue = "1")   int pageNum,
-			@RequestParam(value="pageSize",required = false,defaultValue = "10") int pageSize){
+			@RequestParam(value="pageSize",required = false,defaultValue = "10") int pageSize,
+			@RequestParam(value="hotel",required = false) String hotel,
+			@RequestParam(value="boardType",required = false) String boardType){
 		PageHelper.startPage(pageNum, pageSize);  
-		List<ConferenceEntity> list =  this.ConferenceServiceImpl.queryConferenectByPage();  
+		Map map = new HashMap(2);
+		map.put("hotel", hotel);
+		map.put("boardType", boardType);
+		List<ConferenceEntity> list =  this.ConferenceServiceImpl.queryConferenectByPage(map);  
 		PageInfo<ConferenceEntity> pageInfo = new PageInfo<ConferenceEntity>(list);  
-		System.out.println(JSONHelper.toJSON(pageInfo)); 
+	 
 		return JSONHelper.toJSON(pageInfo);
 	}
 	@RequestMapping(value = "export",method = RequestMethod.GET)
 	public void queryConferenectExport( 
-			HttpServletResponse res){ 
-
+			HttpServletResponse res,
+			@RequestParam(value="hotel",required = false) String hotel,
+			@RequestParam(value="boardType",required = false) String boardType){
+		Map map = new HashMap(2);
+		map.put("hotel", hotel);
+		map.put("boardType", boardType);
+		
 		res.setContentType("application/xls");
 		try {
 			res.addHeader("Content-Disposition", "attachment;filename="+new String(("eeelist").getBytes("UTF-8"),"iso-8859-1")+".xls");
@@ -82,7 +92,7 @@ public class ConferenceController {
 			e.printStackTrace();
 		}
 
-		List<ConferenceEntity> list =  this.ConferenceServiceImpl.queryConferenectByPage();  
+		List<ConferenceEntity> list =  this.ConferenceServiceImpl.queryConferenectByPage(map);  
 		BufferedInputStream input = new  BufferedInputStream(ImportExcelUtil.excelModelbyClass(ConferenceEntity.class, null, null,list));
 		byte buffBytes[] = new byte[1024];
 		OutputStream os;
@@ -100,6 +110,12 @@ public class ConferenceController {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@RequestMapping(value = "queryConferenectList",method = RequestMethod.GET)
+	public String queryConferenectList(
+			@RequestParam(value="hotel_name")String hotel_name){
+		return JSONHelper.toJSON(this.ConferenceServiceImpl.queryConferenectList(hotel_name.trim()));
 	}
 
 }

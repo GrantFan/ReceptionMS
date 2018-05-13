@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>酒店平面图展示</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<meta name="applicable-device" content="pc,mobile" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+		
+		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="./js/HotelImages.js"></script>
+	</head>
+
+	<body>
+		<div class="modal block imgModal">
+			<div class="box">
+				<h4 class="overflow">
+					<p class="lt">
+						<span>酒店平面图信息明细</span>
+					</p>
+					<p class="rt" id="close"
+						onclick="$(this).parents('.modal').hide(800)">
+						<u></u>
+					</p>
+				</h4>
+				<div class="mbody">
+					<div class="btns overflow">
+						 <span class="personattr">照片:</span>
+						  <span>
+					        <img id="thumburlShow" src="file:///F|/img/00.jpeg" width="120" height="120"/>
+					      </span>
+					     <input type="hidden" name="img"  id="thumbUrl"/>
+					     <input type="file" name="logoFile" id="logoFile" onchange="setImg(this);">
+					     <span onclick="deleteImage()">删除</span>
+					</div>
+				</div>
+				<div class="mfoot" align="center">
+				<button id="update" onclick="editSubmit()" style="display:none">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+
+			</div>
+		</div>
+		<script type="text/javascript">
+				$('.right').on('click', function() {
+					$('#imgBox li').next('li').show().prevAll('li').hide();
+				})
+		
+				$('.left').on('click', function() {
+					$('#imgBox li').nextAll('li').hide().prev('li').show();
+				})
+		</script>
+	</body>
+
+</html>

@@ -154,9 +154,7 @@
 			<section class="lt">
 				<div id="Tab">
 					 <span>当前位置：</span>
-					 <i>基础数据</i>
-					 <i>&nbsp;/&nbsp;</i>
-					 <i>酒店信息</i>
+					 <i>首页</i>
 				</div>
 				<div id="iframeBox"></div>
 			</section>			
@@ -207,7 +205,8 @@
 		 var day = new Date(); 
 		 var today = new Array('星期日','星期一','星期二','星期三','星期四','星期五','星期六');  
 		 var week = today[day.getDay()];  
+		 var month = day.getMonth()+1;
 		 //最终结果为：  
-		 $('#time').text(day.getFullYear()+"年"+day.getDay()+ "月"+day.getDate()+"日"+ week)
+		 $('#time').text(day.getFullYear()+"年"+ month + "月"+day.getDate()+"日"+ week)
 	</script>
 </html>

@@ -62,4 +62,5 @@ debug: false
 #  file: D:\spring\ResourceCatalog\logs\ResourceCatalog-${server.port}.log
   
 photoPath: E:/Reception/ReceptionMS/src/main/webapp/views/upload/imgs/photo/
+hotelphotoPath: E:/Workspaces/MyEclipse 2017/ReceptionMS/src/main/webapp/views/upload/imgs/hotelphoto/
 filePath: E:\\

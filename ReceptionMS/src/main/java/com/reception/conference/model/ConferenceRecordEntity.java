@@ -10,84 +10,134 @@ import java.util.Date;
      @date 2018年4月16日下午3:37:42*/
 public class ConferenceRecordEntity {
 	
-	private Integer id;
+	private String ID;
 	//会议室使用编号
-	private String use_number;
+	private String USE_NUMBER;
 	//会议室名称
-	private String conference_name;
+	private String CONFERENCE_NAME;
 	//酒店名称
-	private String hotel;
+	private String HOTEL;
 	//使用日期
-	private Date use_date;
+	private String USE_DATE;
 	//开始时间
-	private Date start_time;
+	private String START_TIME;
 	//结束时间
-	private Date end_time;
+	private String END_TIME;
 	//用途说明
-	private String purpose;
+	private String PURPOSE;
 	//来宾人数
-	private String guest_num;
+	private String GUEST_NUM;
 	//
-	private String remark;
-	public Integer getId() {
-		return id;
+	private String REMARK;
+	
+	private String CONFERENCE_TYPE;
+	
+	private String START_DATE;
+	
+	private String END_DATE;
+
+	public String getID() {
+		return ID;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setID(String iD) {
+		ID = iD;
 	}
-	public String getUse_number() {
-		return use_number;
+
+	public String getUSE_NUMBER() {
+		return USE_NUMBER;
 	}
-	public void setUse_number(String use_number) {
-		this.use_number = use_number;
+
+	public void setUSE_NUMBER(String uSE_NUMBER) {
+		USE_NUMBER = uSE_NUMBER;
 	}
-	public String getConference_name() {
-		return conference_name;
+
+	public String getCONFERENCE_NAME() {
+		return CONFERENCE_NAME;
 	}
-	public void setConference_name(String conference_name) {
-		this.conference_name = conference_name;
+
+	public void setCONFERENCE_NAME(String cONFERENCE_NAME) {
+		CONFERENCE_NAME = cONFERENCE_NAME;
 	}
-	public String getHotel() {
-		return hotel;
+
+	public String getHOTEL() {
+		return HOTEL;
 	}
-	public void setHotel(String hotel) {
-		this.hotel = hotel;
+
+	public void setHOTEL(String hOTEL) {
+		HOTEL = hOTEL;
 	}
-	public Date getUse_date() {
-		return use_date;
+  
+	public String getUSE_DATE() {
+		return USE_DATE;
 	}
-	public void setUse_date(Date use_date) {
-		this.use_date = use_date;
+
+	public void setUSE_DATE(String uSE_DATE) {
+		USE_DATE = uSE_DATE;
 	}
-	public Date getStart_time() {
-		return start_time;
+
+	public String getSTART_TIME() {
+		return START_TIME;
 	}
-	public void setStart_time(Date start_time) {
-		this.start_time = start_time;
+
+	public void setSTART_TIME(String sTART_TIME) {
+		START_TIME = sTART_TIME;
 	}
-	public Date getEnd_time() {
-		return end_time;
+
+	public String getEND_TIME() {
+		return END_TIME;
 	}
-	public void setEnd_time(Date end_time) {
-		this.end_time = end_time;
+
+	public void setEND_TIME(String eND_TIME) {
+		END_TIME = eND_TIME;
 	}
-	public String getPurpose() {
-		return purpose;
+
+	public String getPURPOSE() {
+		return PURPOSE;
 	}
-	public void setPurpose(String purpose) {
-		this.purpose = purpose;
+
+	public void setPURPOSE(String pURPOSE) {
+		PURPOSE = pURPOSE;
 	}
-	public String getGuest_num() {
-		return guest_num;
+
+	public String getGUEST_NUM() {
+		return GUEST_NUM;
 	}
-	public void setGuest_num(String guest_num) {
-		this.guest_num = guest_num;
+
+	public void setGUEST_NUM(String gUEST_NUM) {
+		GUEST_NUM = gUEST_NUM;
 	}
-	public String getRemark() {
-		return remark;
+
+	public String getREMARK() {
+		return REMARK;
 	}
-	public void setRemark(String remark) {
-		this.remark = remark;
+
+	public void setREMARK(String rEMARK) {
+		REMARK = rEMARK;
 	}
+
+	public String getCONFERENCE_TYPE() {
+		return CONFERENCE_TYPE;
+	}
+
+	public void setCONFERENCE_TYPE(String cONFERENCE_TYPE) {
+		CONFERENCE_TYPE = cONFERENCE_TYPE;
+	}
+
+	public String getSTART_DATE() {
+		return START_DATE;
+	}
+
+	public void setSTART_DATE(String sTART_DATE) {
+		START_DATE = sTART_DATE;
+	}
+
+	public String getEND_DATE() {
+		return END_DATE;
+	}
+
+	public void setEND_DATE(String eND_DATE) {
+		END_DATE = eND_DATE;
+	} 
  
 }

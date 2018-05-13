@@ -46,10 +46,9 @@ public interface Guest_InfoMapper {
      * 导出信息查询
      * @return
      */
-    @Select("SELECT a.id,a.guest_name,a.main_position,a.deputy_position,a.office_area,b.name AS xb,a.BIRTH_DATE AS birthDate,"+
-  "d.name as nation_name,c.name as education_name,a.origin_place,a.telphone,a.phone,"+
-  "a.email,a.address,a.guest_type,a.remark FROM guest_info a,dm_sex b,dm_education c,dm_nation d"+
-  " WHERE (a.sex = b.value and a.nation = d.value and a.education = c.value) order by a.id")
+    @Select("SELECT A . ID,A .guest_name,A .main_position,A .deputy_position,A .office_area,a. sex AS xb,"
+    		+ "A .BIRTH_DATE AS birthDate,A . nation AS nation_name,A. education AS education_name,"
+	        +"A .origin_place,A .telphone,A .phone,A .email,A .address,A .guest_type,A .remark FROM guest_info A")
     List<Guest_Info> SelectGuest_Info();
     
     

@@ -24,27 +24,27 @@ public class Menu_Info implements Serializable{
      *套餐编号
      */
 	@ModelProp(name="套餐编号",colIndex=1)
-    private String  menu_number;
+    private String  menu_number= "";
     /**
      * 套餐简称
      */
 	@ModelProp(name="套餐简称",colIndex=2)
-    private String short_name;
+    private String short_name= "";
     /**
      * 套餐类型
      */
 	@ModelProp(name="套餐类型",colIndex=3)
-    private String menu_type;
+    private String menu_type= "";
     /**
      * 酒店
      */
 	@ModelProp(name="酒店",colIndex=4)
-    private String hotel;
+    private String hotel= "";
     /**
      * 用餐时间
      */
 	@ModelProp(name="用餐时间",colIndex=5)
-    private String meals_time;
+    private String meals_time= "";
     /**
      * 用餐方式
      */
@@ -54,12 +54,12 @@ public class Menu_Info implements Serializable{
      *标准分类
      */
 	@ModelProp(name="标准分类",colIndex=7)
-    private String standard;
+    private String standard= "";
     /**
      * 备注
      */
 	@ModelProp(name="备注",colIndex=8)
-    private String remark;
+    private String remark= "";
 
     /**
      * 菜品信息

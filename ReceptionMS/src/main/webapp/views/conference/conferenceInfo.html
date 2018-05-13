@@ -10,6 +10,8 @@
 	charset="utf-8"></script>
 <script src="../assets/js/pagination.min.js" type="text/javascript"
 	charset="utf-8"></script>
+	<script src="./js/comfernceInfo.js" type="text/javascript"
+	charset="utf-8"></script>
 </head>
 <body>
 	<div class="operationsArea">
@@ -17,7 +19,7 @@
 			<button onclick="view()" class="active">
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
-			<button>
+			<button onclick="copyView()">
 				<u class="fzxz"></u><span class="webkit">复制新增</span>
 			</button>
 			<button onclick="edit()">
@@ -25,68 +27,25 @@
 			</button>
 			<button onclick="dele()">
 				<u class="sc"></u><span class="webkit">删除</span>
-			</button>
-			<button>
-				<u class="dyyl"></u><span class="webkit">打印预览</span>
-			</button>
-			<button>
-				<u class="dy"></u><span class="webkit">打印</span>
-			</button>
-			<button>
-				<u class="dr"></u><span class="webkit">导入</span>
-			</button>
-			<button>
+			</button> 
+			<button onclick="exportConFereceinfo()">
 				<u class="dc"></u><span class="webkit">导出</span>
-			</button>
-			<button>
-				<u class="sh"></u><span class="webkit">审核</span>
-			</button>
-			<button>
-				<u class="cx"></u><span class="webkit">撤销</span>
-			</button>
-			<button>
-				<u class="sx"></u><span class="webkit">刷新</span>
-			</button>
-			<button onclick="shut()" class="m-0">
-				<u class="gb"></u><span class="webkit">关闭</span>
+			</button> 
 			</button>
 		</div>
 		<div class="inputs">
-			<select name="">
-				<option value=""></option>
-				<option value="">且</option>
-				<option value="">或</option>
-			</select> <select name="">
-				<option value="">接待编号</option>
-				<option value="">接待日期</option>
-				<option value="">接待人</option>
-				<option value="">宾客姓名</option>
-				<option value="">用餐</option>
-				<option value="">用餐时间</option>
-				<option value="">宾客喜好</option>
-				<option value="">备注</option>
-			</select> <select name="">
-				<option value="">等于</option>
-				<option value="">不等于</option>
-				<option value="">包含</option>
-				<option value="">不包含</option>
-				<option value="">开头是</option>
-				<option value="">开头不是</option>
-				<option value="">结尾是</option>
-				<option value="">结尾不是</option>
-				<option value="">为空</option>
-				<option value="">不为空</option>
-			</select> <input type="text" />
-			<button>查询</button>
-			<button class="m-0">清空</button>
-		</div>
-
+			<select id="Qhotel" name="Qhotel" onchange="" class="hotel">
+			</select> <select id="QboardType" name="QboardType" onchange="">
+			</select>
+			<button onclick = load_conferenceInfo(sessionStorage.currPage,sessionStorage.pageSize);>
+				<span class="webkit" >查询</span>
+			</button> 
+		</div> 
 		<div class="tab">
 			<table class="table" cellspacing="0">
 				<thead>
 					<tr>
-						<th>选择</th>
-						<th>序号</th>
+						<th>选择</th> 
 						<th>会议室名称</th>
 						<th>所属酒店</th>
 						<th>会议室类型</th>
@@ -96,7 +55,7 @@
 					</tr>
 				</thead>
 				<tbody id="info">
-				<td><input type="Checkbox" id= "asd" name= "asd" >
+				
 				</tbody>
 			</table>
 			<div id="page" class="text-center"></div>
@@ -118,12 +77,12 @@
 			<div class="mbody">
 				<label for="conference_name"> <span>会议室名称：</span> <input
 					type="text" name="conference_name" id="conference_name" value="" />
-				</label> <label for="hotel"> <span>所属酒店：</span> <input type="text"
-					name="hotel" id="hotel" />
-				</label> <label for="role"> <span>会议室类型：</span> <select name="type"
-					id="type" />
-					<option>会议室</option>
-					<option>讲座室</option> </select>
+				</label> <label for="hotel"> <span>所属酒店：</span> <select type="text" class="hotel"
+					name="HOTEL" id="HOTEL">
+					</select>
+				</label> <label for="role"> <span>会议室类型：</span> <select name="boardType"
+					id="boardType" class="boardType"/> 
+					</select>
 				</label> <label for="user"> <span>位置：</span> <input type="text"
 					name="position" id="position" value="" />
 				</label> <label for="user"> <span>容纳人数：</span> <input type="text"
@@ -154,15 +113,27 @@
 	function load_conferenceInfo(pageNum, pageSize) {
 		pageNum == null ? "" : pageNum;
 		pageSize == null ? "" : pageSize;
+		
+		var hotel,boardType;
+		if($("#Qhotel").val() != ""){
+			hotel = $("#Qhotel").find("option:selected").text();
+		}
+		
+		if($("#QboardType").val() != ""){
+			boardType = $("#QboardType").find("option:selected").text();
+		}
+		
 		$.get("../../ConferenceController", {
 			pageNum : pageNum,
-			pageSize : pageSize 
+			pageSize : pageSize,
+			hotel : hotel,
+			boardType:boardType
 		}, function(result) {
 			console.log(result);
 			var info = $("#info").empty()
 			for (var i = 0, j = result.list.length; i < j; i++) {
 				var list = result.list[i];
-				info.append("<tr dblclick = 'view()'><td><label><input type=\"Checkbox\" id=\"" + list.id + "\" name=\"" + list.id + "\" ><u></u></label></td><td>" + list.id + "</td><td>" + list.conference_name + "</td><td>" + list.hotel + "</td><td>" + list.type + "</td>" +
+				info.append("<tr dblclick='edit()' ><td><label><input type=\"Checkbox\" id=\"" + list.id + "\" value=\"" + list.id + "\"  name=\"" + list.id + "\"  ><u></u></label></td><td>" + list.conference_name + "</td><td>" + list.hotel + "</td><td>" + list.type + "</td>" +
 					"<td>" + list.position + "</td><td>" + list.capacity_num + "</td><td>" + list.remark + "</td></tr>");
 			}
 			$("#page").whjPaging({
@@ -232,16 +203,19 @@
 
 	function view() {
 		$('.modal').show(500);
+		upHotelShow();
+		upboardTypeShow();
 	}
 	function add(){
 		$.post("../../ConferenceController", {
 			conference_name : $("#conference_name").val(),
-			hotel : $("#hotel").val(),
-			type : $("#type").val(),
+			hotel : $("#HOTEL").find("option:selected").text() ,
+			type : $("#boardType").val(),
 			position : $("#position").val(),
 			capacity_num : $("#capacity_num").val(),
 			remark : $("#remark").val()
 		}, function(result) {
+			alert("新增成功");
 			emptyAdd();
 			$('.modal').hide();
 			load_conferenceInfo(sessionStorage.currPage,sessionStorage.pageSize);
@@ -252,25 +226,49 @@
 	}
 	function emptyAdd(){
 		$("#conference_name").val("");
-		$("#hotel").val(""); 
+		$("#HOTEL").val(''); 
 		$("#position").val("");
 	    $("#capacity_num").val("");
 		$("#remark").val("");
 	}
-	function del(){ 
-	    var id = "1525189228436";
+	function dele(){ 
+	    var idArray = new Array; 
+	    $('input[type=checkbox]:checked').each(function(){ 
+			idArray.push($(this).val()); 
+		})   
+		
+		if(idArray.length == 0 ){
+			alert("请选择要删除的数据！");
+			return false;
+		}  
+		 
+		var asd = [1,2,3,4,5];
+		
+		console.log(idArray);
+		console.log(asd);
+		
 		$.ajax({
-	    url: '../../ConferenceController/'+id,
-	    type: 'Delete', 
+	    url: '../../ConferenceController/delConferenect',
+	    type: 'POST', 
+	    data:{"idArray":idArray,asd:asd},
 	    success: function(result) {
-	        alert(result);
+	        alert("删除成功！");
+	        load_conferenceInfo(sessionStorage.currPage,sessionStorage.pageSize);
 	    }
 });
 	}
-	function edit(){ 
-	   var id = "11";
+	function edit(){  
+	    var idArray = new Array; 
+	    $('input[type=checkbox]:checked').each(function(){ 
+			idArray.push($(this).val()); 
+		})   
+		
+		if(idArray.length != 1 ){
+			alert("请选择要修改的数据！");
+			return false;
+		} 
 		$.get(
-			'../../ConferenceController/'+id,
+			'../../ConferenceController/'+idArray[0],
 			function(result){ 
 				$("#modal_name").text("会议室修改");
 				$('#add').hide(); 
@@ -278,12 +276,39 @@
 				$('.modal').show(500);
 				$("#id").val(result.id);
 				$("#conference_name").val(result.conference_name);
-				$("#hotel").val(result.hotel); 
+				//$("#hotel").val(result.hotel); 
+				upHotelShow(result.hotel); 
+				upboardTypeShow(result.type);  
 				$("#position").val(result.position);
 			    $("#capacity_num").val(result.capacity_num);
 				$("#remark").val(result.remark); 
 			} 
 		);
+	}
+	function copyView(){
+		    var idArray = new Array; 
+	    $('input[type=checkbox]:checked').each(function(){ 
+			idArray.push($(this).val()); 
+		})   
+		
+		if(idArray.length != 1 ){
+			alert("请选择要修改的数据！");
+			return false;
+		} 
+		$.get(
+			'../../ConferenceController/'+idArray[0],
+			function(result){  
+				console.log(result);
+				$('.modal').show(500);
+				$("#id").val(result.id);
+				$("#conference_name").val(result.conference_name); 
+				upHotelShow(result.hotel); 
+				upboardTypeShow(result.type); 
+				$("#position").val(result.position);
+			    $("#capacity_num").val(result.capacity_num);
+				$("#remark").val(result.remark); 
+			} 
+		); 
 	}
 	function update(){
 		$.ajax({
@@ -292,22 +317,32 @@
 	    data: {
 	    	id : $("#id").val(),
 	    	conference_name : $("#conference_name").val(),
-			hotel : $("#hotel").val(),
-			type : $("#type").val(),
+			hotel : $("#HOTEL").find("option:selected").text() ,
+			type : $("#boardType").val(),
 			position : $("#position").val(),
 			capacity_num : $("#capacity_num").val(),
 			remark : $("#remark").val()
 	    },
 	    success: function(result) {
 	        if(result == true){
+	        	alert("更新成功");
 	        	$('.modal').hide(500);
-	        	$('#add').show(); 
-				$('#update').hide(500);
+	        	$('#add').show(500); 
+				$('#update').hide();
 				$("#modal_name").text("会议室新增");
+				$("#id").val("");
 				load_conferenceInfo(sessionStorage.currPage,sessionStorage.pageSize);
 	        }
 	    } 
 	    });
 	}
+	function exportConFereceinfo(){
+		var form=$("<form>");//定义一个form表单 
+		        form.attr("method","get");
+		        form.attr("action",'../ConferenceController/export');
+		        $("body").append(form);//将表单放置在web中 
+		        form.submit();//表单提交   
+		        form.remove(); 
+		}
 </script>
 </html>

@@ -1,7 +1,12 @@
 package com.reception.conference.controller;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -15,32 +20,41 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.reception.conference.api.IConferenceRecordService;
 import com.reception.conference.model.ConferenceRecordEntity;
+import com.reception.conference.model.HotelUtil;
 import com.reception.exceptionfilter.EntityNotFoundException;
 import com.reception.util.JSONHelper;
  
 @RestController
-@RequestMapping(value= "ConferenceRecordController" ,produces = "application/json;charset=UTF-8")
+@RequestMapping(value="ConferenceRecordController")
 public class ConferenceRecordController {
 	
 	@Resource
 	private IConferenceRecordService conferenceRecordServiceImpl;
 	
-	@RequestMapping(method = RequestMethod.POST)
-	public void addConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
-		this.conferenceRecordServiceImpl.addConferenceRecord(conferenceRecordEntity); 
+	@RequestMapping(value = "addConferenceRecord",method = RequestMethod.POST)
+	public String addConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
+		
+		boolean flag = this.conferenceRecordServiceImpl.checkConferenceRecord(conferenceRecordEntity); 
+		
+		if(flag){ 
+//			this.conferenceRecordServiceImpl.addConferenceRecord(conferenceRecordEntity); 
+			return "新增成功";
+		}else{
+			return "该时间已被预订"; 
+		} 
 	}
-	@RequestMapping(value = "{/id}",method = RequestMethod.DELETE)
-	public String delConferenceRecord(@PathVariable("id")String id){
+	@RequestMapping(value = "delConferenceRecord/{id}",method = RequestMethod.DELETE)
+	public String delConferenceRecord(String id){
 		boolean flag =  this.conferenceRecordServiceImpl.delConferenceRecord(id);  
 		return JSONHelper.toJSON(flag);
 	}	 
-	@RequestMapping(value = "{id}",method = RequestMethod.PUT)
-	public String modConferenceRecord(@PathVariable("id")Integer id){
-		boolean flag =  this.conferenceRecordServiceImpl.modConferenceRecord(id);  
+	@RequestMapping(value = "modConferenceRecord",method = RequestMethod.PUT)
+	public String modConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
+		boolean flag =  this.conferenceRecordServiceImpl.modConferenceRecord(conferenceRecordEntity);  
 		return JSONHelper.toJSON(flag);
 	}
-	@RequestMapping(value = "{id}",method = RequestMethod.GET)
-	public String queryConferenceRecordById(@PathVariable("id")Integer id){
+	@RequestMapping(value = "queryConferenceRecordById/{id}",method = RequestMethod.GET)
+	public String queryConferenceRecordById(@PathVariable("id")String id){
 		ConferenceRecordEntity conferenceRecordEntity =  this.conferenceRecordServiceImpl.queryConferenceRecordById(id);  
 		if(conferenceRecordEntity == null){
 			new EntityNotFoundException("不存在"); 
@@ -56,7 +70,33 @@ public class ConferenceRecordController {
 		System.out.println(JSONHelper.toJSON(pageInfo)); 
 		return JSONHelper.toJSON(pageInfo);
 	}
+	@RequestMapping(value = "queryConferenceRecordList",method = RequestMethod.GET)
+	public String queryConferenceRecordList(
+			@RequestParam(required = false)String hotelName,
+			@RequestParam(required = false)String confernce_TYPE,
+			@RequestParam(required = true)String date){
+		Map map = new HashMap(3);
+		 
+		Date now_date = new Date();  
+	    DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    String nowtime = format.format(now_date);
+		 
+		map.put("hotelName", hotelName.trim());
+		map.put("CONFERENCE_TYPE", confernce_TYPE.trim());
+		map.put("date", date);
+		map.put("nowtime", nowtime);
+		
+		List<HotelUtil> list =  this.conferenceRecordServiceImpl.hotelList(map);  
+		return JSONHelper.toJSON(list);
+	}
 	
+	@RequestMapping(value = "getUse_Number",method = RequestMethod.POST)
+	public String getUse_Number(){
+		Date now_date = new Date();  
+        DateFormat format=new SimpleDateFormat("yyyyMMdd");  
+		String  use_Number =  this.conferenceRecordServiceImpl.getUse_Number(format.format(now_date));  
+		return use_Number;
+	}
 	
 	
 }

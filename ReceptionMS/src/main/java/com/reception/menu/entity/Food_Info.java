@@ -22,32 +22,32 @@ public class Food_Info implements Serializable{
      * 套餐编号
      */
    @ModelProp(name="套餐编号",colIndex=1)
-   private String food_number;
+   private String food_number = "";
     /**
      * 菜品名称
      */
    @ModelProp(name="菜品名称",colIndex=2)
-   private String food_name;
+   private String food_name= "";
     /**
      * 菜品单价
      */
    @ModelProp(name="菜品单价",colIndex=3)
-   private String price;
+   private String price= "";
     /**
      * 菜品口味
      */
    @ModelProp(name="菜品口味",colIndex=4)
-   private String flavor;
+   private String flavor= "";
     /**
      * 菜品类型（热菜/凉菜/主食/土产/饮品
      */
    @ModelProp(name="菜品类型",colIndex=5)
-   private String type;
+   private String type= "";
     /**
      * 备注
      */
    @ModelProp(name="备注",colIndex=6)
-   private String remark;
+   private String remark= "";
 
     public Integer getId() {
         return id;

@@ -1,7 +1,7 @@
 $(function(){
     document.getElementById("modal").style.visibility="hidden";//隱藏
     //初始化賓客信息
-    select_guest(1,5);
+    select_guest(1,10);
     //page();
 })
 
@@ -64,8 +64,8 @@ function select_guest(pageNum,pageSize){
 function page(result){
 	 $("#pagination").whjPaging({
          pageSizeOpt: [
-             {'value': 5, 'text': '5条/页', 'selected': true},
-             {'value': 10, 'text': '10条/页'},
+             {'value': 5, 'text': '5条/页'},
+             {'value': 10, 'text': '10条/页', 'selected': true},
              {'value': 15, 'text': '15条/页'},
              {'value': 20, 'text': '20条/页'}
          ],
@@ -74,7 +74,7 @@ function page(result){
 		    //可选，总页数
 		    totalPage: result.pages,
 		    //可选，展示页码数量，默认5个页码数量
-		    showPageNum: 5,
+		    showPageNum: 10,
 		    //可选，首页按钮展示文本，默认显示文本为首页
 		    firstPage: '首页',
 		    //可选，上一页按钮展示文本，默认显示文本为上一页
@@ -405,10 +405,11 @@ function import_Excel(obj){
 	        contentType: false,
 	        dataType:"json",
 	        success: function(str) {
-             alert("删除成功！");
+             alert("导入成功！");
+             select_guest(1,10);
 	        },
 	        error: function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert("000");
+	        	alert("请求失败，请检查网络后重试");
 	        }
 	    });
 }

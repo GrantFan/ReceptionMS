@@ -1,7 +1,7 @@
 $(function(){
     document.getElementById("modal").style.visibility="hidden";//隱藏
     //初始化賓客信息
-    select_menu(1,5);
+    select_menu(1,10);
     select_hotel();
     //page();
 })
@@ -60,8 +60,8 @@ function select_menu(pageNum,pageSize){
 function page(result){
 	 $("#pagination").whjPaging({
          pageSizeOpt: [
-             {'value': 5, 'text': '5条/页', 'selected': true},
-             {'value': 10, 'text': '10条/页'},
+             {'value': 5, 'text': '5条/页'},
+             {'value': 10, 'text': '10条/页', 'selected': true},
              {'value': 15, 'text': '15条/页'},
              {'value': 20, 'text': '20条/页'}
          ],
@@ -70,7 +70,7 @@ function page(result){
 		    //可选，总页数
 		    totalPage: result.pages,
 		    //可选，展示页码数量，默认5个页码数量
-		    showPageNum: 5,
+		    showPageNum: 10,
 		    //可选，首页按钮展示文本，默认显示文本为首页
 		    firstPage: '首页',
 		    //可选，上一页按钮展示文本，默认显示文本为上一页
@@ -304,6 +304,7 @@ function trAdd(){
 		+'<td><input type="number" name="price"></td>'
 		+'<td><input type="text" name="type"/></td>'	
 		+'<td><input type="text" name="remark"/></td>'	
+		+'<td><button onclick="trDel(this)">×</button></td>'	
 		+'</tr>';
     $('.Tmodal table.tabTbody').append(tr)
 }

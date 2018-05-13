@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -36,7 +37,7 @@ public class ConferenceServiceImpl implements IConferenceService{
 	
 	@Override
 	@Transactional(rollbackFor=Exception.class)
-	public void addConferenect(ConferenceEntity conferenceEntity, MultipartFile file) {
+	public void addConferenect(ConferenceEntity conferenceEntity) {
 		    
 		conferenceEntity.setId(String.valueOf((System.currentTimeMillis())));
 		
@@ -45,8 +46,8 @@ public class ConferenceServiceImpl implements IConferenceService{
 	
 	@Override
 	@Transactional(rollbackFor=Exception.class)
-	public boolean delConferenect(String id) {
-		return this.conferenceMapper.delConferenect(id) == 1 ? true : false;
+	public boolean delConferenect(String[] id) {
+		return this.conferenceMapper.delConferenect(id) == id.length ? true : false;
 	}
 
 	@Override
@@ -61,9 +62,11 @@ public class ConferenceServiceImpl implements IConferenceService{
 	}
 
 	@Override
-	public List<ConferenceEntity> queryConferenectByPage() {
-		return this.conferenceMapper.queryConferenectByPage();
+	public List<ConferenceEntity> queryConferenectByPage(Map map) {
+		return this.conferenceMapper.queryConferenectByPage(map);
 	}
  
-	
+	public List<ConferenceEntity> queryConferenectList(String hotel_name){
+		return this.conferenceMapper.queryConferenectList(hotel_name);
+	}
 }

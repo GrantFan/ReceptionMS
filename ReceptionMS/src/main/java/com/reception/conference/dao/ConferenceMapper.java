@@ -1,13 +1,13 @@
 package com.reception.conference.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.type.TypeHandler;
 
 import com.reception.conference.model.ConferenceEntity;
 
@@ -19,9 +19,14 @@ public interface ConferenceMapper {
 	public void addConferenect(ConferenceEntity conferenceEntity);
 	
 	@Delete("<script>" 
-			+ "DELETE FROM conference_info where id = #{id}" 
+			+ "DELETE FROM conference_info" 
+			+ " where id in "
+			+ "<foreach collection=\"array\" item=\"id\"   "
+            + " open=\"(\" close=\")\" separator=\",\"> "  
+            + " #{id} " 
+            + " </foreach>  "  
 			+ "</script>")
-	public int delConferenect(String id);
+	public int delConferenect(String[] id);
 	
 	@Update("UPDATE conference_info SET "
 			+ "conference_name = #{conference_name}, hotel = #{hotel}, type = #{type}, position = #{position},"
@@ -32,6 +37,19 @@ public interface ConferenceMapper {
 	@Select("SELECT * FROM conference_info WHERE id = #{id}")
 	public ConferenceEntity queryConferenectById(String id);
 	
-	@Select("SELECT * FROM conference_info ")
-	public List<ConferenceEntity> queryConferenectByPage();
+	@Select("<script>"
+			+ "SELECT * FROM conference_info "
+			+ "WHERE 1 = 1 "
+			+ " <if test=\" '' != hotel  and null != hotel\"> "
+			+ " and hotel = #{hotel,jdbcType=VARCHAR} "
+			+ " </if>"
+			+ " <if test=\" '' != boardType  and null != boardType\"> "
+			+ " and type = #{boardType,jdbcType=VARCHAR} "
+			+ " </if>"
+			+ "</script>")
+	public List<ConferenceEntity> queryConferenectByPage(Map map);
+	
+	@Select("SELECT con.id,con.conference_name FROM conference_info con where con.hotel = #{hotel_name} ")
+	public List<ConferenceEntity> queryConferenectList(String hotel_name);
+	
 }
