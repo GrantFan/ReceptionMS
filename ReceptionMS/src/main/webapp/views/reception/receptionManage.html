@@ -9,6 +9,7 @@
 	href="../assets/css/pagination.css" />
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../assets/js/Calendar.js"></script>
 <!-- Paginator -->
 <script src="../assets/js/pagination.min.js"></script>
 <script type="text/javascript" src="js/receptionManage.js"></script>
@@ -55,8 +56,8 @@
 				<option value="">用餐时间</option>
 				<option value="">宾客喜好</option>
 				<option value="">备注</option>
-			</select> 接待名称：<input id="input_receptionTitle" type="text" value="" /> 接待日期：<input
-				id="input_receptionDate" type="text" value="" />
+			</select> 接待名称：<input id="input_receptionTitle" type="text" value="" />
+			 接待日期：<input id="input_receptionDate" onclick="new Calendar().show(this);" type="text" value="" />
 			<button onclick="search()">
 				<span class="webkit">查询</span>
 			</button>

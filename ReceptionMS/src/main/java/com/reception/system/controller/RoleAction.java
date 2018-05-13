@@ -53,7 +53,7 @@ public class RoleAction {
 	 */
 	@RequestMapping(value = "/listByName", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
 	public @ResponseBody String selectRoleList(@RequestParam(value = "roleName", required = false) String roleName,
-			@RequestParam(value = "pageSize", required = false, defaultValue = "5") String pageSize,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") String pageSize,
 			@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
 			HttpServletRequest req) {
 		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
@@ -154,38 +154,5 @@ public class RoleAction {
 
 	}
 
-	/**
-	 * 修改角色的权限
-	 * 
-	 * @param role
-	 * @return string
-	 */
-	@RequestMapping(value = "/system/action/update_role_menu")
-	public @ResponseBody String update_role_menu(Role role) {
-		// if(role!=null && !role.equals("")){
-		// //修改角色权限
-		// int num=roleService.selectRoleModule(role);
-		// if(num==1){
-		// logger.info("修改权限成功!");
-		// return "true";
-		// }else{
-		// logger.info("修改权限失败");
-		// return "false";
-		// }
-		// }
-		return "error";
-	}
 
-	/**
-	 * 角色权限表的查询
-	 * 
-	 * @param role_id
-	 * @return string
-	 */
-	@RequestMapping(value = "/system/action/select_role_menu")
-	public @ResponseBody String select_role_menu(String role_id) {
-
-		// List<RoleMenu> roleMenu=roleService.selectRoleMenu(role_id);
-		return "error";
-	}
 }

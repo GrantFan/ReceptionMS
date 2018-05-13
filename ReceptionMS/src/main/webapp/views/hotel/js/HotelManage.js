@@ -4,7 +4,7 @@
 
 //init
 $(function() {
-	showHotelList(1, 5); //加载酒店列表
+	showHotelList(1, 10); //加载酒店列表
 });
 
 //酒店列表
@@ -93,7 +93,7 @@ function showHotelList(pageNum, pageSize) {
 				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
 				callBack : function(currPage, pageSize) {
 					sessionStorage.currPage = currPage;
-					sessionStorage.pageSize = pageSize;
+					sessionStorage.pageSize = 10;
 					showHotelList(currPage, pageSize);
 				}
 			});
@@ -118,7 +118,7 @@ function query() {
 		url : "../../hotel/listByName",
 		success : function(data) {
 			var obj = eval(data);
-			//console.log(obj);
+//			console.log(obj);
 			$("#tablebody").empty();
 			var tbody = "";
 			for (i = 0, len = obj.length; i < len; i++) {
@@ -183,11 +183,12 @@ function addSubmit() {
 		linkman : $("#linkman").val(),
 		telphone : $("#telphone").val(),
 		phone : $("#phone").val(),
-		area : $("#area").val(),
+		area : $("#area option:selected").text(),
 		address : $("#address").val(),
 		planeGraph : $("#graph").val(),
 		remark : $("#remark").val()
 	}, function(result) {
+		alert(result);
 		$('.modal').hide();
 		showHotelList(sessionStorage.currPage, sessionStorage.pageSize);
 	}
@@ -240,7 +241,7 @@ function editSubmit() {
 			linkman : $("#linkman").val(),
 			telphone : $("#telphone").val(),
 			phone : $("#phone").val(),
-			area : $("#area").val(),
+			area : $("#area option:selected").text(),
 			address : $("#address").val(),
 			planeGraph : $("#graph").val(),
 			remark : $("#remark").val()

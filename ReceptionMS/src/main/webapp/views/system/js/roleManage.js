@@ -4,7 +4,7 @@
 
 //init
 $(function() {
-	showRoleList(1, 5);
+	showRoleList(1, 10);
 //	showModule();
 });
 
@@ -187,8 +187,8 @@ function query() {
 				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
 				callBack : function(currPage) {
 					sessionStorage.currPage = currPage;
-					sessionStorage.pageSize = pageSize;
-					showRoleList(currPage, 5);
+					sessionStorage.pageSize = 10;
+					showRoleList(currPage, 10);
 				}
 			});
 		},
@@ -329,7 +329,7 @@ function addSubmit() {
 		if (result == "true") {
 			$('.modal').hide();
 			alert("添加成功");
-			showRoleList(sessionStorage.currPage, 5);
+			showRoleList(sessionStorage.currPage, 10);
 		} else {
 			alert("添加失败");
 		}
@@ -379,7 +379,7 @@ function editSubmit() {
 			if (result == "true") {
 				alert("修改成功");
 				$('.modal').hide();
-				showRoleList(sessionStorage.currPage, 5);
+				showRoleList(sessionStorage.currPage, 10);
 			} else {
 				alert("修改失败");
 			}
@@ -405,7 +405,7 @@ function dele() {
 			success : function(result) {
 				if (result == "true") {
 					alert("删除成功");
-					showRoleList(sessionStorage.currPage, 5);
+					showRoleList(sessionStorage.currPage, 10);
 				} else {
 					alert("删除失败");
 				}

@@ -92,7 +92,7 @@ public class ReceptionRecordAction {
 		return flag;
 	};
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/delete")
 	public String deleteHotelInfo(@ModelAttribute("receptionRecordEntity") ReceptionRecordEntity reception) {
 		String flag = "false";
 		int i = receptionRecordServiceImpl.delete(reception);

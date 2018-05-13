@@ -73,7 +73,7 @@ public class HotelAction {
 
 	@RequestMapping(value = "/list", produces = "application/text; charset=utf-8")
 	public String selectList(@RequestParam(value="pageNum",required = false,defaultValue = "1")String pageNum,
-							@RequestParam(value="pageSize",required = false,defaultValue = "5")String pageSize) {
+							@RequestParam(value="pageSize",required = false,defaultValue = "10")String pageSize) {
 		// long total = PageHelper.count(() ->
 		// {hotelServiceImpl.selectList();});
 		// Page page = PageHelper.getLocalPage();
@@ -100,8 +100,7 @@ public class HotelAction {
 	@RequestMapping(value = "/listByName", produces = "application/text; charset=utf-8")
 	public String selectListByName(HotelInfoEntity hotel) {
 		List<HotelInfoEntity> list = hotelServiceImpl.selectListByName(hotel);
-		JSONHelper jsonHelper = new JSONHelper();
-		String json = jsonHelper.toJSON(list);
+		String json = JSONHelper.toJSON(list);
 		System.out.println(json);
 		return json;
 	};

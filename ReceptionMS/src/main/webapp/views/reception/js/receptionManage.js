@@ -5,7 +5,30 @@
 //init
 $(function() {
 	showReceptionList(1,5);//加载接待信息列表
+	hotelShow();
 });
+
+function hotelShow() {
+	$.ajax({
+		type : "post",
+		//		data :{"hotelName":""},
+		url : "../../hotel/listByName",
+		success : function(data) {
+			var obj = eval(data);
+			//			console.log(obj);
+			$("#input_hotel").empty();
+			$("#input_hotel").append("<option></option>");
+			for (var i = 0, len = obj.length; i < len; i++) {
+				$("#input_hotel").append(
+					"<option value='" + obj[i].id + "'>" + obj[i].hotelName + "</option>"
+				);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	})
+}
 
 //接待信息列表
 function showReceptionList(pageNum, pageSize) {
@@ -109,7 +132,7 @@ function showReceptionList(pageNum, pageSize) {
 }
 
 function search(pageNum,pageSize){
-	var input_hotel = $("#input_hotel").val();
+	var input_hotel = $("#input_hotel option:selected").text()
 	var input_receptionTitle= $("#input_receptionTitle").val();
 	var input_receptionDate= $("#input_receptionDate").val();
 	
@@ -188,7 +211,7 @@ function search(pageNum,pageSize){
 				//可选，是否展示首页与尾页，默认true
 				isShowFL : true,
 				//可选，是否展示每页N条下拉框，默认true
-				isShowPageSizeOpt : flase,
+				isShowPageSizeOpt : false,
 				//可选，是否展示跳到指定页数，默认true
 				isShowSkip : true,
 				//可选，是否展示刷新，默认true
@@ -439,8 +462,11 @@ function dele() {
 			number = $(this).val(); // 每一个被选中项的值
 		});
 		$.ajax({
-			url : '../../recep/' + number,
-			type : 'Delete',
+			url : '../../recep/delete',
+			data : {
+				receptionNumber: number
+			},
+			type : 'post',
 			success : function(result) {
 				if(result=="true"){
 					alert("删除成功");

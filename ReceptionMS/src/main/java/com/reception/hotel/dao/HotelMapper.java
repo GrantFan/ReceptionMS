@@ -18,7 +18,7 @@ public interface HotelMapper {
 	 * @param hotel
 	 * return int
 	 * */
-	@Insert("insert into hotel_info(hotel_name,linkman,telphone,phone,area,address,plane_graph,remark) values(#{hotelName},#{linkman},#{telphone},#{phone},#{area},#{address},#{planeGraph},#{remark} )")
+	@Insert("insert into hotel_info(id,hotel_name,linkman,telphone,phone,area,address,plane_graph,remark) values((select nvl(max(id),0)+1 from hotel_info),#{hotelName},#{linkman},#{telphone},#{phone},#{area},#{address},#{planeGraph},#{remark} )")
 	public int addHotelInfo(HotelInfoEntity hotel);
 	
 	/*

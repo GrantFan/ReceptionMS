@@ -60,7 +60,7 @@ public class UserAction {
 	@RequestMapping(value = "/list", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String queryUser(@RequestParam(value="userName",required = false,defaultValue = "")String userName,
 			@RequestParam(value="pageNum",required = false,defaultValue = "1")String pageNum,
-			@RequestParam(value="pageSize",required = false,defaultValue = "5")String pageSize) {
+			@RequestParam(value="pageSize",required = false,defaultValue = "10")String pageSize) {
 		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
 		List<User> list = userService.selectList(userName);
 		PageInfo<User> pageInfo = new PageInfo<User>(list);

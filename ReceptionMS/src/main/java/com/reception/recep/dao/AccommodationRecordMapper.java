@@ -18,7 +18,7 @@ public interface AccommodationRecordMapper {
 			+ "VALUES ( #{id},#{receptionNumber},#{roomNumber},#{hotel},#{checkinTime},#{checkoutTime},#{hobby},sysdate,#{remark} )")
 	int add(AccommodationRecordEntity accommodation);
 	
-	@Update("update accommodation_record set hotel=#{hotel},room_number=#{roomNumber},checkin_time=#{checkinTime},checkout_time=#{checkoutTime},hobby=#{hobby},record_time=#{recordTime},remark=#{remark} where id= #{id}")
+	@Update("update accommodation_record set hotel=#{hotel},room_number=#{roomNumber},checkin_time=#{checkinTime},checkout_time=#{checkoutTime},hobby=#{hobby},record_time=sysdate,remark=#{remark} where id= #{id}")
 	int update(AccommodationRecordEntity accommodation);
 	
 	@Delete("delete from accommodation_record where id=#{id}")
@@ -29,4 +29,7 @@ public interface AccommodationRecordMapper {
 	
 	@Select("select id,reception_number receptionNumber,hotel,room_number roomNumber,checkin_time checkinTime,checkout_time checkoutTime,hobby,record_time recordTime,remark from accommodation_record where reception_number=#{receptionNumber}")
 	List<AccommodationRecordEntity> selectByReceptionNumber(String receptionNumber);
+
+	@Delete("delete from accommodation_record where reception_number=#{receptionNumber}")
+	int deleteByNumber(String receptionNumber);
 }

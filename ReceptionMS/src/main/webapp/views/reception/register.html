@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
 		
 		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../assets/js/Calendar.js"></script>
 		<script type="text/javascript" src="js/register.js"></script>
 		<style>
 			.Tmodal div.tab>table th, .Tmodal div.tab>table td{
@@ -114,7 +115,7 @@
 								type="text" name="receptionNumber" id="receptionNumber" value="" />
 							</label> 
 							<label for="receptionDate"> <span>接待日期</span> <input
-								name="receptionDate" id="receptionDate" value="" />
+								name="receptionDate" id="receptionDate" onclick="new Calendar().show(this);" value="" />
 							</label>
 							 <label for="guestName"> <span>宾客姓名</span> <input
 								name="guestName" id="guestName" value="" />
@@ -161,10 +162,10 @@
 									<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
 										<thead>
 											<tr>
-												<th>酒店</th>
-												<th>套餐编号</th>
 												<th>用餐时间</th>
 												<th>用餐喜好</th>
+												<th>酒店</th>
+												<th>套餐编号</th>
 												<th>备注</th>
 											</tr>
 										</thead>
@@ -172,10 +173,10 @@
 									<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
 										<tbody id="table1">
 											<tr>
+												<td><input onchange="addMealsColumn()" type="text" name="" id="" value="" /></td>
+												<td><input type="text" name="" id="" value="" /></td>
 												<td><select id="mealsHotel" class="hotel" onchange="selectMenu()"><option>东方酒店</option></select></td>
-												<td><select id="menu"><option>套餐一</option></select></td>
-												<td><input type="text" name="" id="" value="" /></td>
-												<td><input type="text" name="" id="" value="" /></td>
+												<td><select id="menu" class="menu"><option>套餐一</option></select></td>
 												<td><input type="text" name="" id="" value="" /></td>
 											</tr>
 										</tbody>
@@ -188,11 +189,11 @@
 				 				<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
 									<thead>
 										<tr>
-											<th>酒店</th>
 											<th>房间号</th>
 											<th>入住时间</th>
 											<th>退房时间</th>
 											<th>宾客喜好</th>
+											<th>酒店</th>
 											<th>备注</th>
 										</tr>
 									</thead>
@@ -200,11 +201,11 @@
 								<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
 									<tbody id="table2">
 										<tr>
+											<td><input onchange="addAccomColumn()" type="text" name="" id="" value="" /></td>
+											<td><input type="text" onclick="new Calendar().show(this);" value="" /></td>
+											<td><input type="text" onclick="new Calendar().show(this);" value="" /></td>
+											<td><input type="text" name="" id="" value="" /></td>
 											<td><select class="hotel"><option>东方酒店</option></select></td>
-											<td><input type="text" name="" id="" value="" /></td>
-											<td><input type="text" name="" id="" value="" /></td>
-											<td><input type="text" name="" id="" value="" /></td>
-											<td><input type="text" name="" id="" value="" /></td>
 											<td><input type="text" name="" id="" value="" /></td>
 										</tr>
 									</tbody>

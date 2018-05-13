@@ -80,6 +80,6 @@ public class HotelInfoEntity {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	
+
 	
 }

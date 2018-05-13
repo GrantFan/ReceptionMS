@@ -4,7 +4,7 @@
 
 //init
 $(function() {
-	showUserList(1, 5); 
+	showUserList(1, 10); 
 });
 
 //用户列表
@@ -95,8 +95,8 @@ function showUserList(pageNum, pageSize) {
 				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
 				callBack : function(currPage) {
 					sessionStorage.currPage = currPage;
-					sessionStorage.pageSize = pageSize;
-					showUserList(currPage, pageSize);
+					sessionStorage.pageSize = 10;
+					showUserList(currPage, 10);
 				}
 			});
 		},
@@ -195,8 +195,8 @@ function query() {
 				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
 				callBack : function(currPage) {
 					sessionStorage.currPage = currPage;
-					sessionStorage.pageSize = pageSize;
-					showUserList(currPage, 5);
+					sessionStorage.pageSize = 10;
+					showUserList(currPage, 10);
 				}
 			});
 		},
@@ -247,7 +247,7 @@ function addSubmit() {
 		$('.modal').hide();
 		if(result=="true"){
 			alert("添加成功");
-			showUserList(sessionStorage.currPage, 5);
+			showUserList(sessionStorage.currPage, 10);
 		}else if(result=="exist"){
 			alert("用户名已存在");
 		}else{
@@ -309,7 +309,7 @@ function editSubmit() {
 			if (result == "true") {
 				alert("修改成功");
 				$('.modal').hide();
-				showUserList(sessionStorage.currPage, 5);
+				showUserList(sessionStorage.currPage, 10);
 			}else{
 				alert("修改失败");
 			}

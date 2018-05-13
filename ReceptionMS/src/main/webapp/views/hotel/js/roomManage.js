@@ -11,7 +11,7 @@ $(function() {
 
 function showRoomList(){
 	floorShow($("#hotel").val()); //楼层加载
-	
+	$("#hotelName").text($("#hotel option:selected").text());
 	$.ajax({
 		type : "post",
 		data : {
@@ -167,7 +167,7 @@ function addSubmit() {
 		innerlinePhone : $("#innerlinePhone").val(),
 		outsidePhone : $("#outsidePhone").val(),
 		responsiblePerson : $("#responsiblePerson").val(),
-		rackPrice : $("rackPrice").val(),
+		rackPrice : $("#rackPrice").val(),
 		agreementPrice : $("#agreementPrice").val(),
 		hotel : $("#roomHotel").val(),
 		containFood : $("#containFood").val(),
@@ -178,7 +178,7 @@ function addSubmit() {
 			alert("添加成功");
 			$('.modal').hide();
 			$("#modal_name").text("房间信息");
-			showRoomList();
+//			showRoomList();
 		}else{
 			alert("添加失败");
 		}
@@ -257,7 +257,7 @@ function editSubmit() {
 			innerlinePhone : $("#innerlinePhone").val(),
 			outsidePhone : $("#outsidePhone").val(),
 			responsiblePerson : $("#responsiblePerson").val(),
-			rackPrice : $("rackPrice").val(),
+			rackPrice : $("#rackPrice").val(),
 			agreementPrice : $("#agreementPrice").val(),
 			hotel : $("#roomHotel").val(),
 			containFood : $("#containFood").val(),

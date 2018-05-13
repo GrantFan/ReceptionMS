@@ -4,94 +4,218 @@
 <head>
 <meta charset="UTF-8">
 <title>数据字典维护</title>
+
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 <style>
-.preview>ul.lt {
-	width: 24%;
-}
-
-.preview>ol.lt {
-	width: 76%;
-}
-
-.preview>ul, .preview>ol {
-	border: 1px solid #000;
-}
-
-.preview>ul>li>span:first-child, .preview>ol p>span:first-child {
-	margin-right: 20px;
-}
-
-.preview>ul>li:hover, .preview>ol p:hover, .preview>ul>li.active,
-	.preview>ol p.active {
-	background: #000000;
-	color: #fff;
-}
-
-.preview>ol>li .box {
-	padding-right: 2vw;
-	padding-left: 1vw;
-}
-
 input {
-	background: transparent;
+	width: 100%;
 	border: none;
+	background: none;
+	color: #fff;
+	font-size: 1.0256vw;
+}
+
+input::placeholder {
+	color: #e1dcdc;
+}
+
+button {
+	width: 6.58vw;
+	height: 3.6vh;
+	background: url(../assets/img/button.png) no-repeat 0px 0px;
+	background-size: 100% 100%;
+	border: none;
+	outline: none;
+	color: #fff;
+	cursor: pointer;
+	padding-bottom: 4px;
+	margin-right: 1.302vw;
+	font-size: 0.88vw;
+}
+
+.previewTit {
+	font-size: 1.0256vw;
+	margin-bottom: 1.282vw;
+	font-style: italic;
+}
+
+.preview>.lt {
+	position: relative;
+}
+
+.preview .buttons {
+	position: absolute;
+	bottom: 4vh;
+	left: 1.4vw;
+}
+
+.preview>.lt>ul {
+	padding-top: 1.282vw;
+	height: 86vh;
+	background: rgba(48, 138, 156, 0.8);
+	border: 1px solid #2b7e8f;
+	font-size: 1.0256vw;
+}
+
+.preview>.lt>ol {
+	height: 86vh;
+	background: rgba(48, 138, 156, 0.8);
+	border: 1px solid #2b7e8f;
+	font-size: 1.0256vw;
+}
+
+.preview>.lt>ul>li, .preview>.lt>ol>li .box>div>p.lt {
+	padding-left: 3.717vw;
+	width: 25.5128vw;
+	height: 2.564vw;
+	line-height: 2.564vw;
+}
+
+.preview>.lt>ul>li>span, .preview>.lt>ol>li>span {
+	width: 5vw;
+	text-align: left;
+}
+
+.preview>.lt>ul, .preview>.lt>ol {
+	border: 1px solid #2b7e8f;
+}
+
+.preview>.lt>ul>li>span:first-child, .preview>.lt>ol p>span:first-child
+	{
+	margin-right: 1.282vw;
+}
+
+.preview>.lt>ul>li:hover, .preview>.lt>ol .box>div:hover, .preview>.lt>ul>li.active,
+	.preview>.lt>ol .box>div.active {
+	background-color: #206877;
 	color: #fff;
 }
 
-input:hover {
-	background: #fff;
-	border: none;
-	color: #000;
+.preview>.lt>ol>li .TiBox {
+	color: #e4ff00;
+	font-size: 1.0256vw;
+	height: 3.5897vw;
+	line-height: 3.5897vw;
+}
+
+.preview>.lt>ol>li .TiBox>p, .preview>.lt>ol>li .box>div>p {
+	border-left: 1px solid #2b7e8f;
+	border-right: 1px solid #2b7e8f;
 }
 </style>
 </head>
 
 <body>
-	<div class="preview overflow">
-		<ul class="lt">
-			<li class="active"><b class="none">dm_education</b> <span>1</span>学历</li>
-			<li><b class="none">dm_area</b> <span>2</span> 地区</li>
-			<li><b class="none"></b> <span>3</span>宾客类别</li>
-			<li><b class="none">dm_district</b> <span>4</span>行政区</li>
-			<li><b class="none">dm_menu_type</b> <span>5</span>套餐类型</li>
-			<li><b class="none">dm_meals_time</b> <span>6</span>用餐时间分类</li>
-			<li><b class="none">dm_meals_type</b> <span>7</span>用餐方式分类</li>
-			<li><b class="none">dm_meals_standard</b> <span>8</span>用餐标准分类</li>
-			<li><b class="none">dm_nation</b> <span>9</span>民族</li>
-			<li><b class="none"></b><span>10</span>籍贯</li>
-			<li><b class="none"></b><span>11</span>楼层</li>
-			<li><b class="none">dm_room_type</b> <span>12</span>房间类型</li>
-			<li><b class="none">dm_room_special_type</b> <span>13</span>房间特殊类型</li>
-			<li><b class="none">dm_conference_type</b> <span>14</span>会议室类型</li>
-		</ul>
-		<ol class="lt">
-			<li>
-				<div id="box" class="box overflow"></div>
-			</li>
-		</ol>
-		<button class="save" onclick="addColumn()">新增</button>
+	<div class="operationsArea">
+		<div class="overflow previewTit">
+			<p class="lt" style="width:25.512vw;">数据项</p>
+			<p class="lt">值列表</p>
+		</div>
+		<div class="preview overflow">
+			<div class="lt">
+				<ul>
+					<li><b class="none">dm_education</b> <span>1</span>学历</li>
+					<li><b class="none">dm_area</b><span>2</span>地区</li>
+					<li><b class="none"></b><span>3</span>宾客类别</li>
+					<li><b class="none">dm_district</b><span>4</span>行政区</li>
+					<li><b class="none">dm_menu_type</b><span>5</span>套餐类型</li>
+					<li><b class="none">dm_meals_time</b><span>6</span>用餐时间分类</li>
+					<li><b class="none">dm_meals_type</b><span>7</span>用餐方式分类</li>
+					<li><b class="none">dm_meals_standard</b><span>8</span>用餐标准分类</li>
+					<li><b class="none">dm_nation</b><span>9</span>民族</li>
+					<li><b class="none"></b><span>10</span>籍贯</li>
+					<li><b class="none"></b><span>11</span>楼层</li>
+					<li><b class="none">dm_room_type</b><span>12</span>房间类型</li>
+					<li><b class="none">dm_room_special_type</b><span>13</span>房间特殊类型</li>
+					<li><b class="none">dm_conference_type</b><span>14</span>会议室类型</li>
+				</ul>
+			</div>
+			<div class="lt">
+				<ol>
+					<li>
+						<div class="TiBox overflow">
+							<p class="lt" style="width:25.512vw;">
+								<span
+									style="width:2.564vw;margin-left:2.7564vw;text-align:center;">序号</span>
+								<span style="width:2.564vw;margin-left:4.23vw;">值</span>
+							</p>
+							<p class="lt" style="width:19.744vw;padding-left:3.7179vw;">类别</p>
+							<p class="lt" style="width:25.512vw;padding-left:1.987vw;">备注</p>
+						</div>
+						<div id="box" class="box">
+							<div class="overflow"
+								style="height: 2.564vw;line-height: 2.564vw;">
+								<p class="lt" style="width:25.512vw;padding:0px;">
+									<input type="text" id="id"
+										style="width:2.564vw;margin-left:2.7564vw;text-align:center;"
+										value="1" />
+									<input type="text" id="name"
+										style="width:2.564vw;margin-left:4.8vw;text-align:center;"
+										value="华东" />
+								</p>
+								<p class="lt" style="width:19.744vw;padding-left:3.7179vw;">
+									<input type="text" class="lt" style="line-height: 2.564vw;"
+										value="" />
+								</p>
+								<p class="lt" style="width:25.512vw;padding-left:1.987vw;">
+									<input type="text" class="lt" style="line-height: 2.564vw;"
+										value="上海、江苏、浙江、安徽、江西" />
+								</p>
+							</div>
+						</div>
+					</li>
+				</ol>
+				<div class="buttons">
+					<button onclick="addColumn()">新增</button>
+					
+					<button id="submin">保存修改</button>
+					
+					<!-- onclick="del($('.preview>div.lt>ol .box.active'))" -->
+					<button  id="del">删除</button>
+					<!-- onclick="add()" -->
+					
+					<button  id="save">保存新增</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- <button onclick="addColumn()">新增</button> -->
 	</div>
 </body>
 
 <script type="text/javascript">
-	$(".preview>ul").on("click", "li", function() {
+
+	$(".preview>div.lt>ul").on("click", "li", function() {
 		$(this).addClass('active').siblings('li').removeClass('active');
-		var dic_name = $(this).find("b").text();
-		//console.log(dic_name);
+		var dic_name = $(this).find("b").text(),
+			boxContent = "";
+		// console.log(dic_name);
 		if (dic_name != '') {
 			$.get('../../dic',
 				{
 					tableName : dic_name
 				},
 				function(result) {
-					//console.log(result);
+					console.log(result);
 					$("#box").empty();
 					for (var i = 0, len = result.length; i < len; i++) {
-						$("#box").append("<p class='overflow'><span class='lt'>" + result[i].value + "</span>"
-						+"<input type=\"text\" value='" + result[i].name + "' class='lt'>"
-						+"<button  class=\"del\"  onclick='del(this)' class=\"rt\">删除</button><button class=\"save\" onclick='submit(this)' class=\"rt\">保存</button></p>");
+						/*$("#box").append("<div class='overflow'>
+							<span class='lt'>" + result[i].value + "</span>
+							<input type=\"text\" value='" + result[i].name + "' class='lt'>
+							<button onclick='del(this)' class=\"rt\">删除</button>
+							<button onclick='submit(this)' class=\"rt\">保存</button></div>");*/
+						boxContent = '<div class="overflow">'
+							+ '<p class="lt" style="width:25.512vw;padding:0px;">'
+							+ '<input type="text" id="id" style="width:2.564vw;margin-left:2.7564vw;text-align:center;" value="' + result[i].value + '"/>'
+							+ '<input type="text" id="name" style="width:56%;margin-left:5.4vw;" value="' + result[i].name + '">'
+							+ '</p>'
+							+ '<p class="lt" style="width:19.744vw;padding-left:3.7179vw;">'
+							+ '<input type="text" class="lt" style="line-height: 2.564vw;" value=""/></p>'
+							+ '<p class="lt" style="width:25.512vw;padding-left:1.987vw;">'
+							+ '<input type="text" class="lt" style="line-height: 2.564vw;" value=""/></p>'
+							+ '</div>';
+						$("#box").append(boxContent)
 					}
 				}
 			);
@@ -109,9 +233,29 @@ input:hover {
 
 	//新增
 	function addColumn() {
-		$("#box").append("<p class='overflow'><input type=\"text\" value='' class='lt value' /><input name='name' type=\"text\" value='' class='lt name' /><button class=\"empty\" onclick='removeColumn(this)' class=\"rt\">移除</button><button class=\"save\" onclick='add(this)' class=\"rt\">保存</button></p>");
+		/*$("#box").append("<p class='overflow'>
+			<input type=\"text\" value='' class='lt value' />
+			<input name='name' type=\"text\" value='' class='lt name' />
+			<button onclick='removeColumn(this)' class=\"rt\">移除</button>
+			<button onclick='add(this)' class=\"rt\">保存</button></p>");*/
+		$("#box") ? "" : $("#box").find('div.overflow').removeclass('active');		
+		boxContent = '<div class="overflow active">'
+			+ '<p class="lt" style="width:25.512vw;padding:0px;">'
+			+ '<input id="id" type="text" style="width:2.564vw;margin-left:2.7564vw;text-align:center;" value="" placeholder=""/>'
+			+ '<input id="name" type="text" style="width:56%;margin-left:5.4vw;" value="" placeholder="请输入" />'
+			+ '</p>'
+			+ '<p class="lt" style="width:19.744vw;padding-left:3.7179vw;">'
+			+ '<input type="text" class="lt" style="line-height: 2.564vw;" value="" placeholder="请输入"/></p>'
+			+ '<p class="lt" style="width:25.512vw;padding-left:1.987vw;">'
+			+ '<input type="text" class="lt" style="line-height: 2.564vw;" value="" placeholder="请输入"/></p>'
+			+ '</div>';
+		$("#box").append(boxContent)
+		
+		
 	}
-	function add(button) {
+
+	// 保存新增   save
+	/* function add(button) {
 		var li = $(".preview>ul>li.active");
 		var tableName = li.find("b").text().trim();
 		var value = $(button).parent('p').find("input.value").val().trim();
@@ -141,15 +285,16 @@ input:hover {
 			});
 		} else {
 			alert("值为空~");
-		}
+		}		
 	}
+	 
 	function removeColumn(button) {
 		var p = $(button).parent('p');
 		p.remove();
 	}
-
+	*/
 	//修改
-	function submit(button) {
+	/* function submit(button) {
 		var li = $(".preview>ul>li.active");
 		var tableName = li.find("b").text().trim();
 		var value = $(button).parent('p').find('span').text().trim();
@@ -171,15 +316,144 @@ input:hover {
 			}
 		});
 	}
-
-	function del(button) {
+ */
+ 
+ 	var s = ''
+	$(".preview>div.lt>ol .box").on("click", "div", function() {
+		$(this).addClass('active').siblings('div.overflow').removeClass('active');
+	    s = $(this);
+		return s;			
+	})
+	// 删除
+	$('#del').on('click',function(){
+		let li = $(".preview>div.lt>ul>li.active");
+		let tableName = li.find("b").text().trim();
+		console.log(tableName);
+		let value = s.find('input#id').val().trim();
+		console.log(value);
+		let name = s.find('input#name').val().trim();
+		console.log(name);
+		let r = confirm("确定删除吗？");
+		if (r == true) {				
+			$.ajax({
+				url : '../../dic/delete',
+				type : 'post',
+				data : {
+					name : name,
+					value : value,
+					tableName : tableName
+				},
+				success : function(result) {
+					if (result == true) {
+						alert("删除成功");
+						var dic_name = tableName;
+						if (dic_name != '') {
+							$.get('../../dic',
+								{
+									tableName : dic_name
+								},
+								function(result) {
+									console.log(result);
+									$("#box").empty();
+									for (var i = 0, len = result.length; i < len; i++) {
+										///$("#box").append("<p class='overflow'><span class='lt'>" + result[i].value + "</span><input type=\"text\" value='" + result[i].name + "' class='lt'><button onclick='del(this)' class=\"rt\">删除</button><button onclick='submit(this)' class=\"rt\">保存</button></p>");
+									
+									$("#box").append(	
+										'<div class="overflow">'
+										+ '<p class="lt" style="width:25.512vw;padding:0px;">'
+										+ '<input id="id" type="text" style="width:2.564vw;margin-left:2.7564vw;text-align:center;" value="'+ result[i].value +'"/>'
+										+ '<input name="name" type="text" style="width:56%;margin-left:5.4vw;" value="'+ result[i].name +'" />'
+										+ '</p>'
+										+ '<p class="lt" style="width:19.744vw;padding-left:3.7179vw;">'
+										+ '<input type="text" class="lt" style="line-height: 2.564vw;" value=""/></p>'
+										+ '<p class="lt" style="width:25.512vw;padding-left:1.987vw;">'
+										+ '<input type="text" class="lt" style="line-height: 2.564vw;" value=""/></p>'
+										+ '</div>');
+									}
+								}
+							);
+						} else {
+							$("#box").empty();
+							}
+						}
+					}
+		   	 	});
+			}
+		}); 
+ 
+		
+		
+		// 保存新增	 
+		$("#save").on('click',function(){
+			let li = $(".preview>div.lt>ul>li.active");
+			let tableName = li.find("b").text().trim();
+			console.log(tableName);
+			let value = s.find('input#id').val().trim();
+			console.log(value);
+			let name = s.find('input#name').val().trim();
+			console.log(name);		 
+			if (value != '' && name != '') {
+				$.ajax({
+					url : '../../dic',
+					type : 'post',
+					data : {
+						"name" : name,
+						"value" : value,
+						"tableName" : tableName
+					},
+					success : function(result) {
+						console.log(result);
+						if (result == "true") {
+							alert("添加成功");
+						} else if (result == "exist") {
+							alert("键值已存在");
+							s.find("input.value").val("");
+						}
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {
+						console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+					}
+				});
+			} else {
+				alert("值为空~");
+			}			
+		});		
+ 
+		
+		
+		// 修改
+		 $("#submin").on('click',function(){
+			let li = $(".preview>div.lt>ul>li.active");
+			let tableName = li.find("b").text().trim();
+			console.log(tableName);
+			let value = s.find('input#id').val().trim();
+			console.log(value);
+			let name = s.find('input#name').val().trim();
+			console.log(name);
+			$.ajax({
+				url : '../../dic',
+				type : 'Put',
+				data : {
+					name : name,
+					value : value,
+					tableName : tableName
+				},
+				success : function(result) {
+					if (result == true) {
+						alert("修改成功");
+					}
+				}
+			});
+		});	  	 
+	
+	
+ 	/* function del(button) {
 		var r = confirm("确定删除吗？");
 		if (r == true) {
-			var li = $(".preview>ul>li.active");
-			var tableName = li.find("b").text().trim();
-			var value = $(button).parent('p').find('span').text().trim();
-			var name = $(button).parent('p').find('input').val().trim();
-			//console.log(tableName);
+			var li = $(".preview>div.lt>ul>li.active");
+			var tableName = li.find("b").text().trim();console.log(tableName);
+			var value = $(button).find('input#id').val().trim();console.log(value);
+			var name = $(button).find('input#name').val().trim();console.log(name);
 
 			$.ajax({
 				url : '../../dic/delete',
@@ -200,7 +474,7 @@ input:hover {
 									tableName : dic_name
 								},
 								function(result) {
-									//console.log(result);
+									console.log(result);
 									$("#box").empty();
 									for (var i = 0, len = result.length; i < len; i++) {
 										$("#box").append("<p class='overflow'><span class='lt'>" + result[i].value + "</span><input type=\"text\" value='" + result[i].name + "' class='lt'><button onclick='del(this)' class=\"rt\">删除</button><button onclick='submit(this)' class=\"rt\">保存</button></p>");
@@ -214,6 +488,6 @@ input:hover {
 				}
 			});
 		}
-		}
+	}   */
 </script>
 </html>

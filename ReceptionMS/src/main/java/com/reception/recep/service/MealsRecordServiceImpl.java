@@ -46,6 +46,11 @@ public class MealsRecordServiceImpl implements MealsRecordService {
 		return mealsRecordMapper.selectByReceptionNumber(receptionNumber);
 	}
 
+	public int deleteByNumber(String receptionNumber) {
+		// TODO Auto-generated method stub
+		return mealsRecordMapper.deleteByNumber(receptionNumber);
+	}
+
 	
 
 }

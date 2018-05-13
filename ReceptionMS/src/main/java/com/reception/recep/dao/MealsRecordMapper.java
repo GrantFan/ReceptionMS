@@ -17,7 +17,7 @@ public interface MealsRecordMapper {
 			+ "VALUES ( #{id},#{receptionNumber},#{menuNumber},#{hotel},#{mealsTime},#{hobby},sysdate,#{remark} )")
 	int add(MealsRecordEntity meals);
 	
-	@Update("update meals_record set hotel=#{hotel},menu_number=#{menuNumber},meals_time=#{mealsTime},hobby=#{hobby},record_time=#{recordTime},remark=#{remark} where id= #{id}")
+	@Update("update meals_record set hotel=#{hotel},menu_number=#{menuNumber},meals_time=#{mealsTime},hobby=#{hobby},record_time=sysdate,remark=#{remark} where id= #{id}")
 	int update(MealsRecordEntity meals);
 	
 	@Delete("delete from meals_record where id=#{id}")
@@ -28,4 +28,7 @@ public interface MealsRecordMapper {
 	
 	@Select("select id,reception_number receptionNumber,menu_number menuNumber,hotel,meals_time mealsTime,hobby,record_time recordTime,remark from meals_record where reception_number=#{receptionNumber}")
 	List<MealsRecordEntity> selectByReceptionNumber(String receptionNumber);
+
+	@Delete("delete from meals_record where reception_number=#{receptionNumber}")
+	int deleteByNumber(String receptionNumber);
 }

@@ -60,8 +60,11 @@ public class ReceptionRecordServiceImpl implements ReceptionRecordService {
 	}
 
 	@Override
+	@Transactional(rollbackFor=Exception.class)
 	public int delete(ReceptionRecordEntity reception) {
 		// TODO Auto-generated method stub
+		mealsService.deleteByNumber(reception.getReceptionNumber());
+		accomService.deleteByNumber(reception.getReceptionNumber());
 		return receptionRecordMapper.delete(reception);
 	}
 
