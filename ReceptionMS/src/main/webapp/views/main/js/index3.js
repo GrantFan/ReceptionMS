@@ -3,8 +3,31 @@ $(function() {
 	showModule();
 });
 
+function logout(){
+		$.ajax({
+			type : "post",
+			url : "../../logout",
+			success : function(data) {
+				sessionStorage.usernick="";
+//				alert(data);
+				var flag = String($.trim(data));
+				if (flag == "false") {
+					location.href = "/ReceptionMS/views/login/login.html";
+				} else {
+					location.href = "/ReceptionMS/views/login/login.html";
+				}
+			},
+			error : function(xhr, statue, error) {
+				//console.log(error);
+				location.href = "/ReceptionMS/views/login/login.html";
+			},
+			cache : false
+		});
+}
+
 //显示功能模块结构
 function showModule() {
+	$("#usernick").text(sessionStorage.usernick);
 	$.ajax({
 		type : "post",
 		url : "../../module/show",

@@ -60,7 +60,7 @@ public class RoleAction {
 		List<Role> list = roleService.selectListByName(roleName);
 		PageInfo<Role> pageInfo = new PageInfo<Role>(list);
 		String json = JSONHelper.toJSON(pageInfo);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	}
 
@@ -69,7 +69,7 @@ public class RoleAction {
 	public @ResponseBody String selectRoleModule(String roleId) {
 		List<RoleModule> list = roleService.selectRoleModule(roleId);
 		String json = JSONHelper.toJSON(list);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	}
 

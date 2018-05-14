@@ -60,7 +60,7 @@ public class RoomAction {
 		List<RoomInfoEntity> list = roomServiceImpl.selectList();
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	};
 	
@@ -69,7 +69,7 @@ public class RoomAction {
 		List<RoomInfoEntity> list = roomServiceImpl.selectListByHotel(room);
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	};
 	
@@ -78,7 +78,7 @@ public class RoomAction {
 		List<RoomInfoEntity> list = roomServiceImpl.selectFloorByHotel(room);
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	};
 	
@@ -87,7 +87,7 @@ public class RoomAction {
 		List<RoomInfoEntity> list = roomServiceImpl.selectFlooRoomrByHotel(room);
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	};
 	
@@ -107,7 +107,7 @@ public class RoomAction {
 		map.put("hotel_l", list1);
 		map.put("hotel_r", list2);
 		String json = JSONHelper.toJSON(map);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	};
 	

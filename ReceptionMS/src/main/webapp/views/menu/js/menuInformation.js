@@ -40,6 +40,7 @@ function select_menu(pageNum,pageSize){
             		info.append("<tr><td><label><input type='checkbox' name='mean_info' value="+list.menu_number+"><u></u></label></td>"+
             				"<td  id= 'id' style='display:none' >"+list.id+
             				"</td><td>"+list.menu_number+
+            				"</td><td>"+list.short_name+
             				"</td><td>"+list.menu_type+
             				"</td><td>"+list.hotel+
             				"</td><td>"+list.meals_time+
@@ -114,6 +115,7 @@ function page(result){
 	  var tr = table.getElementsByTagName("tr");
 	  var str='{"menu_number" :"'+ $('#menu_number').val()+
 			  '","menu_type" : "'+ $('#menu_type').val()+
+			  '","short_name" : "'+ $('#short_name').val()+
 		   	  '","hotel" : "'+$('#hotel').val() +
 		   	   '","meals_time" :"'+ $('#meals_time').val()+
 		   	   '","meals_type" :"'+ $('#meals_type').val()+
@@ -191,6 +193,7 @@ function selectById(menu_number){
         	  var result =  eval('(' + data + ')');
         	  if(result != null){
         		  $('#menu_number').val(result.menu_number),
+        		  $('#short_name').val(result.short_name),
         		   $('#menu_type').val(result.menu_type),
             	   $('#hotel').val(result.hotel),
             	   $('#meals_time').val(result.meals_time),

@@ -49,8 +49,8 @@ public class Menu_InfoAction {
 	@Autowired
 	private Menu_InfoApi menu_InfoApi;
 
-	@Value("${filePath}")
-	private String filePath;
+//	@Value("${filePath}")
+//	private String filePath;
 
 	/**
 	 * 添加菜品信息

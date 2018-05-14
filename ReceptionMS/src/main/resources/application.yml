@@ -9,6 +9,10 @@ spring:
     url: jdbc:oracle:thin:@10.1.2.42:1521:ORCL
     username: test_gs
     password: test_gs
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
+#    url: jdbc:oracle:thin:@192.168.1.108:1521:ORCL
+#    username: db_gs
+#    password: hC0bdmqw15XM9U7V
     # 连接池的配置信息
     # 初始化大小，最小，最大
     initialSize: 5
@@ -32,14 +36,14 @@ spring:
     # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
   #redis
-  redis:
-    host: localhost
-    port: 6379
+#  redis:
+#    host: localhost
+#    port: 6379
   http: 
     multipart: 
       maxFileSize: 10MB  
       maxRequestSize: 10MB 
-      location: D:\local\ #windows格式 
+      location: E:\local\ #windows格式 
       #location: /app/tmp  linux格式 
 # 分页配置
 pagehelper:
@@ -55,12 +59,12 @@ pagehelper:
   params: count=countSql #为了支持startPage(Object params)方法
 
 server:
-  port: 8088
+  port: 8080
   context-path: /ReceptionMS
 debug: false
 #logging:
 #  file: D:\spring\ResourceCatalog\logs\ResourceCatalog-${server.port}.log
   
-photoPath: E:/Reception/ReceptionMS/src/main/webapp/views/upload/imgs/photo/
-hotelphotoPath: E:/Workspaces/MyEclipse 2017/ReceptionMS/src/main/webapp/views/upload/imgs/hotelphoto/
-filePath: E:\\
+photoPath: ../upload/imgs/photo/
+hotelphotoPath: ../upload/imgs/hotelphoto/
+#filePath: E:\\

@@ -60,8 +60,8 @@ public class Guest_InfoAction {
     @Value("${photoPath}")
     private String photoPath;
     
-    @Value("${filePath}")
-    private String filePath;
+//    @Value("${filePath}")
+//    private String filePath;
     
     @Autowired
     private Guest_InfoService guest_infoService;

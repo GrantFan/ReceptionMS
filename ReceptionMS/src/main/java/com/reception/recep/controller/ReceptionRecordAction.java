@@ -43,7 +43,7 @@ public class ReceptionRecordAction {
 		List<ReceptionRecordEntity> list = receptionRecordServiceImpl.selectList();
 		PageInfo<ReceptionRecordEntity> pageInfo = new PageInfo<ReceptionRecordEntity>(list); 
 		String json = JSONHelper.toJSON(pageInfo);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	}
 	
@@ -62,7 +62,7 @@ public class ReceptionRecordAction {
 		List<ReceptionRecordEntity> list = receptionRecordServiceImpl.selectLike(reception);
 		PageInfo<ReceptionRecordEntity> pageInfo = new PageInfo<ReceptionRecordEntity>(list); 
 		String json = JSONHelper.toJSON(pageInfo);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	}
 	
@@ -78,7 +78,7 @@ public class ReceptionRecordAction {
 		map.put("accommodation", acclist);
 		map.put("meals", meallist);
 		String json = JSONHelper.toJSON(map);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	}
 	

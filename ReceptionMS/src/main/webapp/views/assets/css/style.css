@@ -3,6 +3,7 @@
 	padding: 0px;
 	list-style: none;
 	box-sizing: border-box;
+	-webkit-text-size-adjust:none
 }
 /* 公共样式               start */   
 .none{
@@ -405,8 +406,8 @@ iframe{
 	display:table-row;
 }
 .operationsArea>.tab>table tr{
-	height: 46px;
-	line-height: 46px;
+	height: 6.6vh;
+	line-height:  6.6vh;
 	color: #fff;
 }
 .operationsArea>.tab>table>tbody{
@@ -794,7 +795,7 @@ iframe{
 }
 .modal>.box>.mfoot>button{
 	width: 5.769vw;
-	height: 30px;
+	height: 3.6vh;
 	background:url(../img/button2.png) no-repeat 0px 0px;
 	background-size: 100% 100%;
 	color: #fff;
@@ -806,15 +807,21 @@ iframe{
 	font-size: 0.897vw;
 	position: relative;
 }
-.modal>.box>.mfoot>button>u.lt{
-	position: absolute;
-    top: 5px;
-    left: 1vw;
-}
+ .modal>.box>.mfoot>button>u.lt{
+	/* position: absolute;
+    top: 0.3vw;
+    left: 1vw; */
+    margin-top:-0.2vh;
+}  
 .modal>.box>.mfoot>button>span.lt{
-	position: absolute;
-    top: 4px;
-    left: 2.5vw;
+	/* position: absolute;
+    top: 0.4vh;
+    left: 2.5vw; */
+    transform: scale(1) translate(0px,0.26vw);
+    -ms-transform: scale(1) translate(0px,0.26vw);
+    -moz-transform: scale(1) translate(0px,0.26vw);
+    -webkit-transform: scale(0.86) translate(0px,-0.26vw);   
+    margin-left:-0.4vw;
 }
 
 
@@ -900,8 +907,11 @@ iframe{
 	span.webkit,   
 	b.webkit{ 
 		font-size: 10px;
-		-webkit-transform: scale(0.76);	
+		-webkit-transform: scale(0.86);	
 		-moz-transform: scale(1);						
+	}
+	.login>.loginBox>label>input{
+		width:70%;
 	}
 	.operationsArea>.buttons>button>u{
 		-moz-transform: translate(-3px,0px);

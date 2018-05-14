@@ -45,4 +45,13 @@ public class LoginAction {
 		}
 		return "false";
 	}
+
+	@RequestMapping(value = "/logout")
+	public @ResponseBody String login(HttpSession session) {
+		if (null != session.getAttribute("user")) {
+			session.removeAttribute("user");
+			return "true";
+		}
+		return "false";
+	}
 }

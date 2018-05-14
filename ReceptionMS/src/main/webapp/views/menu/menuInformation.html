@@ -30,14 +30,6 @@
 						<u class="dyyl"></u>
 						<span class="webkit">查看详情</span>
 					</button>
-					<button>
-						<u class="dy"></u>
-						<span class="webkit">打印</span>
-					</button>
-					<button>
-						<u class="dr"></u>
-						<span class="webkit">导入</span>
-					</button>
 					<button onclick="export_menu()">
 						<u class="dc"></u>
 						<span class="webkit">导出套餐</span>
@@ -53,6 +45,7 @@
 					<tr>
 						<th>选择</th>
 						<th>套餐编号</th>
+						<th>套餐简称</th>
 						<th>套餐类型</th>
 						<th>酒店名称</th>
 						<th>用餐时间分类</th>
@@ -83,8 +76,14 @@
 					<div class="inputs overflow">
 						<div class="lt">
 							<label for="ID">
-								<span>套餐编号：</span>
-								<input type="text" name="menu_number" id="menu_number" disabled="disabled"/>
+								<span>套餐简称：</span>
+								<input type="hidden" name="menu_number" id="menu_number" disabled="disabled"/>
+								<select name="short_name" id="short_name">
+									<option value="A单">A单</option>
+									<option value="B单">B单</option>
+									<option value="C单">C单</option>
+									<option value="D单">D单</option>
+								</select>
 							</label>
 							<label for="HotelName">
 								<span>酒店名称：</span>

@@ -320,8 +320,9 @@ function getImage(hotel) {
 			"hotel" : hotel
 		},
 		success : function(result) {
-			var list = eval("(" + result + ")")
-//			console.log(list)
+			var list = eval("(" + result + ")");
+//			$("#inmpage").text("1/"+list.length);
+			console.log(list)
 			var info = $("#imageOver").empty();
 			for (var i = 0; i < list.length; i++) {
 				if (i == 0) {
@@ -371,8 +372,10 @@ function setImg(obj) { //用于进行图片上传，返回地址
 		success : function(suc) {
 			if (suc.code == 0) {
 				// $("#thumbUrl").val(suc.message);//将地址存储好
-				// $("#thumburlShow").attr("src",suc.message);//显示图片        
+//				var graphId = $("#imageOver li.block>img").attr("src",suc.message);
+//				 $("#thumburlShow").attr("src",suc.message);//显示图片        
 				alert("上传成功");
+				getImage($("#hotelId").val());
 			} else {
 				alertLayel("上传失败");
 				$("#url").val("");
@@ -401,6 +404,7 @@ function delImg() {
 //			alert(suc)
 			if (suc) {
 				alert("删除成功");
+				getImage($("#hotelId").val());
 			//$("#thumburlShow").attr("src","");//显示图片        
 			}
 		},

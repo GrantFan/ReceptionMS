@@ -4,6 +4,8 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>接待管理系统</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
 		<script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
@@ -25,8 +27,11 @@
 				</div>
 				<div class="rt">
 					<i class="user"></i>
+					<span class="name" >
+						你好， <strong id="usernick" style="color:#eaed51;">管理员</strong> |
+					</span>
 					<span class="name">
-						你好， <strong style="color:#eaed51;">管理员</strong> |
+						<a onclick="logout()" href="../login/login.html" style="color:#fff;">退出</a>
 					</span>
 					<span id="time"></span>
 				</div> 

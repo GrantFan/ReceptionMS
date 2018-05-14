@@ -72,8 +72,8 @@
 				</label> <label for="nickName"> <span>会议室名称：</span> <select
 					name="CONFERENCE_NAME" id="CONFERENCE_NAME">
 				</select>
-				</label> <label for="role"> <span>使用日期：</span> <input
-					type="date" name="USE_DATE" id="USE_DATE" value="" class="date_input"/>
+				</label> <label for="role"> <span>使用日期：</span> <input onclick="new Calendar().show(this);"
+					type="text" name="USE_DATE" id="USE_DATE" value="" class="date_input"/>
 				</label>
 				<div class="timeBox overflow">
 					<label for="startTime" class="lt"> <span>开始时间：</span> <input

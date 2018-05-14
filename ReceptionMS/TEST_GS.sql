@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110100
 File Encoding         : 65001
 
-Date: 2018-05-13 19:01:25
+Date: 2018-05-14 11:45:18
 */
 
 
@@ -48,7 +48,6 @@ COMMENT ON COLUMN "TEST_GS"."ACCOMMODATION_RECORD"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of ACCOMMODATION_RECORD
 -- ----------------------------
-INSERT INTO "TEST_GS"."ACCOMMODATION_RECORD" VALUES ('196b6e785aaa4cdeae9b836dbb9e3fd3', 'JD20180512110504', 'bzd', 'roomNumber', 'checkinTime', 'checkinTime', 'bzd', TO_DATE('2018-05-12 11:31:04', 'YYYY-MM-DD HH24:MI:SS'), 'bzd');
 INSERT INTO "TEST_GS"."ACCOMMODATION_RECORD" VALUES ('75e60b04f2844b098d5e4cb661112585', 'JD20180513100501', '东方国际大酒店', '201', '2018-05-16', '2018-05-24', '没有', TO_DATE('2018-05-13 11:06:23', 'YYYY-MM-DD HH24:MI:SS'), 'null');
 INSERT INTO "TEST_GS"."ACCOMMODATION_RECORD" VALUES ('5cef71f52176468382172f9a8689ccdb', 'JD20180513100501', '光明大酒店', '201', '2018-05-09', '2018-05-22', '没有', TO_DATE('2018-05-13 11:06:35', 'YYYY-MM-DD HH24:MI:SS'), 'null');
 
@@ -83,8 +82,8 @@ COMMENT ON COLUMN "TEST_GS"."CONFERENCE_INFO"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of CONFERENCE_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('2', '1111', '敦煌国际大酒店', '会议室', null, null, '1', null);
-INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('3', '2222', '敦煌国际大酒店', '讲座室', null, null, '2', null);
+INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('2', '侯见厅', '敦煌国际大酒店', '会议室', null, null, '1', null);
+INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('3', '悬泉厅', '敦煌国际大酒店', '讲座室', null, null, '2', null);
 INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('4', '东二楼多功能厅', '敦煌丝路怡苑大酒店', '会议室', null, null, '200-350', null);
 INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('5', '侯见厅', '东方国际大酒店', '会议室', '一号楼', null, '30', null);
 INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('6', '多功能厅', '敦煌宾馆', '会议室', '南楼', null, '200', null);
@@ -100,7 +99,7 @@ INSERT INTO "TEST_GS"."CONFERENCE_INFO" VALUES ('12', '飞天厅', '敦煌宾馆
 -- ----------------------------
 DROP TABLE "TEST_GS"."CONFERENCE_RECORD";
 CREATE TABLE "TEST_GS"."CONFERENCE_RECORD" (
-"ID" NUMBER(11) NOT NULL ,
+"ID" NUMBER(15) NOT NULL ,
 "USE_NUMBER" NVARCHAR2(128) NULL ,
 "CONFERENCE_NAME" NVARCHAR2(255) NULL ,
 "HOTEL" NVARCHAR2(255) NULL ,
@@ -109,7 +108,9 @@ CREATE TABLE "TEST_GS"."CONFERENCE_RECORD" (
 "END_TIME" NVARCHAR2(255) NULL ,
 "PURPOSE" NVARCHAR2(255) NULL ,
 "GUEST_NUM" NUMBER(11) NULL ,
-"REMARK" NVARCHAR2(255) NULL 
+"REMARK" NVARCHAR2(255) NULL ,
+"CREATEDATE" DATE NULL ,
+"UPDATEDATE" DATE NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -126,16 +127,12 @@ COMMENT ON COLUMN "TEST_GS"."CONFERENCE_RECORD"."END_TIME" IS '结束时间';
 COMMENT ON COLUMN "TEST_GS"."CONFERENCE_RECORD"."PURPOSE" IS '用途说明';
 COMMENT ON COLUMN "TEST_GS"."CONFERENCE_RECORD"."GUEST_NUM" IS '来宾人数';
 COMMENT ON COLUMN "TEST_GS"."CONFERENCE_RECORD"."REMARK" IS '备注';
+COMMENT ON COLUMN "TEST_GS"."CONFERENCE_RECORD"."CREATEDATE" IS '创建时间';
+COMMENT ON COLUMN "TEST_GS"."CONFERENCE_RECORD"."UPDATEDATE" IS '更新时间';
 
 -- ----------------------------
 -- Records of CONFERENCE_RECORD
 -- ----------------------------
-INSERT INTO "TEST_GS"."CONFERENCE_RECORD" VALUES ('1', 'H20180207001', '东二楼多功能厅', '敦煌丝路怡苑大酒店', TO_DATE('2018-02-07 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '08:00', '09:00', null, '10', null);
-INSERT INTO "TEST_GS"."CONFERENCE_RECORD" VALUES ('2', 'H20180207002', '东二楼多功能厅', '敦煌丝路怡苑大酒店', TO_DATE('2018-02-07 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '13:00:00', '15:00:00', null, '20', null);
-INSERT INTO "TEST_GS"."CONFERENCE_RECORD" VALUES ('3', 'H20180207003', '侯见厅', '东方国际大酒店', TO_DATE('2018-02-08 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '9:00:00', '12:00:00', null, '10', null);
-INSERT INTO "TEST_GS"."CONFERENCE_RECORD" VALUES ('4', 'H20180207004', '多功能厅', '敦煌宾馆', TO_DATE('2018-02-08 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '13:00:00', '17:00:00', null, '50', null);
-INSERT INTO "TEST_GS"."CONFERENCE_RECORD" VALUES ('5', 'H20180208001', '孟兰厅', '酒店名称
-东方国际大酒店', TO_DATE('2018-02-08 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '15:00:00', '16:00:00', null, '2', null);
 
 -- ----------------------------
 -- Table structure for DM_AREA
@@ -158,11 +155,11 @@ COMMENT ON COLUMN "TEST_GS"."DM_AREA"."DECRIPTION" IS '描述';
 -- ----------------------------
 -- Records of DM_AREA
 -- ----------------------------
+INSERT INTO "TEST_GS"."DM_AREA" VALUES ('西南', '5', null);
 INSERT INTO "TEST_GS"."DM_AREA" VALUES ('华东', '1', '上海、江苏、浙江、安徽、江西');
 INSERT INTO "TEST_GS"."DM_AREA" VALUES ('华南', '2', '广东、福建、广西、海南');
 INSERT INTO "TEST_GS"."DM_AREA" VALUES ('华北', '3', '北京、天津、河北、山东、河南、山西、内蒙古');
 INSERT INTO "TEST_GS"."DM_AREA" VALUES ('华中', '4', '湖北、湖南');
-INSERT INTO "TEST_GS"."DM_AREA" VALUES ('西南', '5', '四川、重庆、贵州、云南、西藏');
 INSERT INTO "TEST_GS"."DM_AREA" VALUES ('西北', '7', '陕西、甘肃、宁夏、青海、新疆');
 
 -- ----------------------------
@@ -613,14 +610,12 @@ COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of GUEST_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('1', 'adsf', 'asdf', 'sadf', null, '男', null, 'http://localhost:8088/ReceptionMS/views/upload/imgs/photo/1526206262827_285.png', '2018-05-16', null, null, null, null, null, null, null, '小客户', null);
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('2', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', '本科', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('3', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', '硕士', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('4', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', '本科', null, null, null, null, null, null, '小客户', '很快就好');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('5', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('6', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('7', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('8', 'sdaf', 'adf', 'asdf', 'sadf', '女', null, null, '2018-05-08', '本科', null, 'sadf', 'sadf', 'sdaf', 'sadf', 'sadf', '普通客户', null);
 
 -- ----------------------------
 -- Table structure for HOTEL_INFO
@@ -654,8 +649,6 @@ COMMENT ON COLUMN "TEST_GS"."HOTEL_INFO"."PLANE_GRAPH" IS '酒店平面图';
 -- ----------------------------
 -- Records of HOTEL_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('13', null, null, null, null, null, null, null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('1', '酒店名称', '联系人', '联系电话', '酒店座机', '所属行政区', '酒店地址', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('3', '东方国际大酒店', '马艳玲', '18193748166', '0937-2699999', '敦煌', '酒泉市肃州区仓门街6号', null, '11111');
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('4', '光明大酒店', '王海锋', '18919375595', '0937-2807777', '肃州区', '甘肃省酒泉市肃州区盘旋中路18号', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('5', '宏兴大酒店', '陈浩', '18919427777', '0937-2802222', '肃州区', '甘肃省酒泉市肃州区盘旋西路7号', null, null);
@@ -665,7 +658,7 @@ INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('8', '敦煌华夏国际大酒店', '
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('9', '敦煌国际大酒店', '叶彦萍', '13993722999', '0397-8821821', '敦煌', '甘肃省酒泉市敦煌市鸣山北路827号', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('10', '敦煌天润大酒店', '权玉霞', '18993732897', '0937-8819501', '敦煌', '甘肃省酒泉市敦煌市鸣山路309号', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('11', '敦煌太阳大酒店', '张春艳', '13893726729', '0937-8841858', '敦煌', null, null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('12', '行星酒店', '我也不', '1235135', '1231412', '肃州区', '肃州区', '123', '空');
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('12', '行星酒店', '我也不', '1235135', '1231412', '肃州区', '肃州区', null, null);
 
 -- ----------------------------
 -- Table structure for HOTEL_PLANE_GRAPH
@@ -691,9 +684,8 @@ COMMENT ON COLUMN "TEST_GS"."HOTEL_PLANE_GRAPH"."HOTEL" IS '所属酒店';
 -- ----------------------------
 -- Records of HOTEL_PLANE_GRAPH
 -- ----------------------------
-INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('3', '{3B07188B-5C96-4120-81DE-AC5631EA9DDB}_光明大酒店', 'http://localhost:8088/ReceptionMS/views/upload/imgs/hotelphoto/1526207977306_232.png', null, '3');
-INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('2', 'QQ截图20180330094419', 'http://localhost:8088/ReceptionMS/views/upload/imgs/hotelphoto/1526207519330_779.png', null, '3');
-INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('4', '{4F8E9606-F8AA-4EAE-9B76-7E378385E1B7}_贵宾楼平面图', 'http://localhost:8088/ReceptionMS/views/upload/imgs/hotelphoto/1526208003797_377.jpg', null, '3');
+INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('1', '{7D9777D2-1EEC-4F0B-94A4-E72C4CF26D3F}_六', 'http://localhost:8080/ReceptionMS/views/upload/imgs/hotelphoto/1526267608329_74.jpg', null, '3');
+INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('2', '{3B07188B-5C96-4120-81DE-AC5631EA9DDB}_光明大酒店', 'http://localhost:8080/ReceptionMS/views/upload/imgs/hotelphoto/1526268007050_49.png', null, '3');
 
 -- ----------------------------
 -- Table structure for MEALS_RECORD
@@ -726,8 +718,6 @@ COMMENT ON COLUMN "TEST_GS"."MEALS_RECORD"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of MEALS_RECORD
 -- ----------------------------
-INSERT INTO "TEST_GS"."MEALS_RECORD" VALUES ('f3a47c2bcad84788bc315325b8de2a29', 'JD20180512110540', 'bzd', 'bzd', 'bzd', 'bzd', TO_DATE('2018-05-12 11:35:41', 'YYYY-MM-DD HH24:MI:SS'), 'bzd');
-INSERT INTO "TEST_GS"."MEALS_RECORD" VALUES ('921ddcbb17694366a8dc9700f5ae9f28', 'JD20180512110540', 'bzd', 'bzd', 'bzd', 'bzd', TO_DATE('2018-05-12 11:35:41', 'YYYY-MM-DD HH24:MI:SS'), 'bzd');
 INSERT INTO "TEST_GS"."MEALS_RECORD" VALUES ('83a91f03b38f4b81a8d6cb9c97ccf104', 'JD20180513100501', 'A单', '东方国际大酒店', '2018-01-01', '没有', TO_DATE('2018-05-13 10:56:01', 'YYYY-MM-DD HH24:MI:SS'), '无');
 
 -- ----------------------------
@@ -763,8 +753,7 @@ COMMENT ON COLUMN "TEST_GS"."MENU_INFO"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of MENU_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('6', 'T6', null, '贵宾套餐', '宏兴大酒店', '正餐', '桌餐', '50', null);
-INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('2', 'T00005', null, '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
+INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('2', 'T00005', 'A单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
 INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('3', 'T00006', 'B单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
 INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('4', 'T00007', 'C单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
 INSERT INTO "TEST_GS"."MENU_INFO" VALUES ('5', 'T00009', 'D单', '一般套餐', '东方国际大酒店', '早餐', '自助餐', '30', null);
@@ -814,7 +803,6 @@ COMMENT ON COLUMN "TEST_GS"."RECEPTION_RECORD"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of RECEPTION_RECORD
 -- ----------------------------
-INSERT INTO "TEST_GS"."RECEPTION_RECORD" VALUES ('2', 'JD20180512110504', '13', '2018-01-01', '31', '3', '11', '13', '123', '13', '31', '光明大酒店', '31', TO_DATE('2018-05-12 11:31:04', 'YYYY-MM-DD HH24:MI:SS'), '13');
 INSERT INTO "TEST_GS"."RECEPTION_RECORD" VALUES ('4', 'JD20180513100501', '领导视察', '2018-05-13', '10', '李丹丹', '嘉佳', '某哦某', '10', '12', '5', '东方国际大酒店', '没有', TO_DATE('2018-05-13 10:56:01', 'YYYY-MM-DD HH24:MI:SS'), '无');
 
 -- ----------------------------
@@ -986,7 +974,7 @@ INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('17', '数据字典维护', '17', '1'
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('18', '宾客管理', '18', '0', null, '3', null, 'bkxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', '1', null, 'bkxxgl', null);
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', null, 'Jddb', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('21', '餐厅(包厢)信息设置', '21', '10', null, '5', null, 'fjxxgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('21', '餐厅(包厢)信息设置', '21', '10', '../conference/conferenceInfo.html', '5', null, 'fjxxgl', null);
 
 -- ----------------------------
 -- Table structure for SYS_OPERATION_LOG
@@ -1103,9 +1091,9 @@ COMMENT ON COLUMN "TEST_GS"."SYS_USER"."ROLE_ID" IS '角色id';
 -- ----------------------------
 -- Records of SYS_USER
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-13 19:00:07', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-12 19:26:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:48', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'wwww', 'ww1', '111111', null, null, TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:12:45', 'YYYY-MM-DD HH24:MI:SS'), null, '1');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '超级管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-14 11:36:45', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', '123456', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-12 19:26:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:48', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'wwww', '测试', '123456', null, null, TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:12:45', 'YYYY-MM-DD HH24:MI:SS'), null, '1');
 
 -- ----------------------------
 -- Indexes structure for table ACCOMMODATION_RECORD
@@ -1136,18 +1124,9 @@ ALTER TABLE "TEST_GS"."CONFERENCE_INFO" ADD CHECK ("ID" IS NOT NULL);
 ALTER TABLE "TEST_GS"."CONFERENCE_INFO" ADD PRIMARY KEY ("ID");
 
 -- ----------------------------
--- Indexes structure for table CONFERENCE_RECORD
--- ----------------------------
-
--- ----------------------------
 -- Checks structure for table CONFERENCE_RECORD
 -- ----------------------------
 ALTER TABLE "TEST_GS"."CONFERENCE_RECORD" ADD CHECK ("ID" IS NOT NULL);
-
--- ----------------------------
--- Primary Key structure for table CONFERENCE_RECORD
--- ----------------------------
-ALTER TABLE "TEST_GS"."CONFERENCE_RECORD" ADD PRIMARY KEY ("ID");
 
 -- ----------------------------
 -- Indexes structure for table FOOD_INFO

@@ -65,7 +65,7 @@ public class UserAction {
 		List<User> list = userService.selectList(userName);
 		PageInfo<User> pageInfo = new PageInfo<User>(list);
 		String json = JSONHelper.toJSON(pageInfo);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	}
 	

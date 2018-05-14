@@ -84,7 +84,7 @@ public class HotelAction {
 		List<HotelInfoEntity> list = hotelServiceImpl.selectList();
 		PageInfo<HotelInfoEntity> pageInfo = new PageInfo<HotelInfoEntity>(list);
 		String json = JSONHelper.toJSON(pageInfo);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	};
 
@@ -101,7 +101,7 @@ public class HotelAction {
 	public String selectListByName(HotelInfoEntity hotel) {
 		List<HotelInfoEntity> list = hotelServiceImpl.selectListByName(hotel);
 		String json = JSONHelper.toJSON(list);
-		System.out.println(json);
+//		System.out.println(json);
 		return json;
 	};
 

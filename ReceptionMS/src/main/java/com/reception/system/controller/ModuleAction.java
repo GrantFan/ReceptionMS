@@ -118,7 +118,7 @@ public class ModuleAction {
 				List<Module> list = moduleServiceImpl.selectModuleByRole(user.getRoleId()); // 超级管理员role_id为0
 				JSONHelper jsonHelper = new JSONHelper();
 				String json = jsonHelper.toJSON(list);
-				System.out.println(json);
+//				System.out.println(json);
 				return json;
 			}
 		} catch (Exception e) {

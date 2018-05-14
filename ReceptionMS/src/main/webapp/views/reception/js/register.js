@@ -99,7 +99,7 @@ function addSubmit() {
 	var tr2 = $("#table2 tr");
 	console.log(tr1);
 	var data = '{'
-		+ '"receptionNumber":"' + $("#receptionNumber").val() + '",'
+//		+ '"receptionNumber":"' + $("#receptionNumber").val() + '",'
 		+ '"receptionTitle":"' + $("#receptionTitle").val() + '",'
 		+ '"receptionDate":"' + $("#receptionDate").val() + '",'
 		+ '"receptionPerson":"' + $("#receptionPerson").val() + '",'
@@ -113,7 +113,7 @@ function addSubmit() {
 		+ '"description":"' + $("#description").val() + '",'
 		+ '"remark":"' + $("#remark").val() + '",'
 		+ '"meals":[';
-	for (var i = 0; i < tr1.length; i++) {
+	for (var i = 0; i < tr1.length-1; i++) {
 		var tds = $(tr1[i]).find("td")
 		//		console.log(tds[2]);
 		var hotel = $(tds[2]).find("select option:selected").text();
@@ -121,17 +121,19 @@ function addSubmit() {
 		var mealsTime = $(tds[0]).find("input").val();
 		var hobby = $(tds[1]).find("input").val();
 		var remark = $(tds[4]).find("input").val();
-		if (i == tr1.length - 1) {
-			data += '{"hotel":\"' + hotel + '\",\"menuNumber\":\"' + menuNumber + '\",\"mealsTime\":\"' + mealsTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"}'
+		if(mealsTime!=""){
+		if (i == tr1.length-2) {
+				data += '{"hotel":\"' + hotel + '\",\"menuNumber\":\"' + menuNumber + '\",\"mealsTime\":\"' + mealsTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"}'
 		} else {
 			data += '{"hotel":\"' + hotel + '\",\"menuNumber\":\"' + menuNumber + '\",\"mealsTime\":\"' + mealsTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"},'
 		}
-	}
+		}
+		}
 	//			+'{"hotel":\"bzd\",\"menuNumber\":\"bzd\",\"mealsTime\":\"bzd\",\"hobby\":\"bzd\",\"remark\":\"bzd\"},'
 	//			+'{\"hotel\":\"bzd\",\"menuNumber\":\"bzd\",\"mealsTime\":\"bzd\",\"hobby\":\"bzd\",\"remark\":\"bzd\"}'
 	data += '],'
 	data += '"accom":['
-	for (var i = 0; i < tr2.length; i++) {
+	for (var i = 0; i < tr2.length-1; i++) {
 		var tds = $(tr2[i]).find("td")
 		console.log(tds[2]);
 		var hotel = $(tds[4]).find("select option:selected").text();
@@ -140,12 +142,14 @@ function addSubmit() {
 		var checkoutTime = $(tds[2]).find("input").val();
 		var hobby = $(tds[3]).find("input").val();
 		var remark = $(tds[5]).find("input").val();
-		if (i == tr2.length - 1) {
-			data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"}'
-		} else {
-			data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"},'
+		if(roomNumber!=""){
+			if (i == tr2.length-2) {
+				data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"}'
+			} else {
+				data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"},'
+			}
 		}
-	}
+		}
 	//			+'{"hotel":\"bzd\",\"roomNumber\":\"roomNumber\",\"checkinTime\":\"checkinTime\",\"checkoutTime\":\"checkinTime\",\"hobby\":\"bzd\",\"remark\":\"bzd\"},'
 	//			+'{"hotel":\"bzd\",\"roomNumber\":\"roomNumber\",\"checkinTime\":\"checkinTime\",\"checkoutTime\":\"checkinTime\",\"hobby\":\"bzd\",\"remark\":\"bzd\"}'
 	data += ']'
@@ -158,10 +162,9 @@ function addSubmit() {
 		data :data,
 		contentType:"application/json",
 		success : function(result) {
-			console.log(result);
+//			console.log(result);
 			if (result == "true") {
 				alert("登记成功");
-				resetFrom();
 			}else{
 				alert("登记失败");
 			}

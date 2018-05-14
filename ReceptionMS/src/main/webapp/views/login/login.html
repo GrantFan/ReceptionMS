@@ -63,12 +63,13 @@
 			//	password :  "admin"
 			},
 			success : function(data) {
-				alert(data);
+				//alert(data);
 				var flag = String($.trim(data));
 				if (flag == "false") {
 					alert("登录失败");
 					location.href = "/ReceptionMS/views/login/login.html";
 				} else {
+					sessionStorage.usernick = flag;
 					alert("登录成功");
 					location.href = "/ReceptionMS/views/main/index3.html";
 				}
