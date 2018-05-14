@@ -9,27 +9,22 @@
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../assets/js/jquery-timepicker.js"></script> 
+<script type="text/javascript" src="../assets/js/Calendar.js"></script>
+
 </head>
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
-			<button onclick="add()" class="active">
+			<button onclick="add()">
 				<u class="xz"></u> <span class="webkit">新增</span>
-			</button> 
-			<button>
-				<u class="dy"></u> <span class="webkit">打印</span>
-			</button>
-			<button>
-				<u class="dr"></u> <span class="webkit">导入</span>
-			</button>
-			<button>
+			</button>  
+			<button onclick="exportConFereceManage()">
 				<u class="dc"></u> <span class="webkit">导出</span>
 			</button>
 		</div>
 		<div class="inputs">
-			<label for="role"> <span>使用日期：</span> <input
-					type="date" name="Q_DATE" id="Q_DATE" value="" />
-			</label>
+			<span>使用日期：</span>
+			<input type="text" name="Q_DATE" id="Q_DATE" value="" onclick="new Calendar().show(this);"/>			
 			<select id="hotel" name="hotel" onchange="" class="hotel">
 			</select> <select id="boardType" name="boardType" onchange="">
 			</select>
@@ -53,8 +48,9 @@
 			<div class="seat"></div>
 		</div>
 	</div>
+	<input type="hidden" id="SID" name="SID" value="" />
 	<!--模态框-->
-	<div class="modal block">
+	<div class="modal none">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -124,7 +120,6 @@
 </body>
 <script type="text/javascript">
 		$(function(){
-			$('.modal').hide();
 			hotelShow();
 			boardTypeShow();
 			queryConferenceRecordList();
@@ -252,8 +247,8 @@
 				date = nowDate();
 			}
 			 
-			var hotel = $("#hotel").text();
-			var boardType = $("#boardType").text();
+			var hotel = $("#hotel").find("option:selected").text();
+			var boardType = $("#boardType").find("option:selected").text();
 			 
 			if($("#hotel").val() == "" || $("#hotel").val() == null){
 				hotel = "";
@@ -261,15 +256,13 @@
 			
 			if($("#boardType").val() == "" || $("#boardType").val() == null){
 				boardType = "";
-			}
-			
+			}  
 		$.get("../../ConferenceRecordController/queryConferenceRecordList",
 			{
 			hotelName : hotel,
-			confernce_TYPE : hotel,
+			confernce_TYPE : boardType,
 			date : date}, 
-			function(data){ 
-				console.log(data);
+			function(data){   
 				var obj = eval(data); 
 				var ConferenceRecordList = "";  
 				$(".seat").empty();
@@ -282,10 +275,10 @@
 							     );
 						     ConferenceRecordList = obj[i].ConferenceRecordList;   
 					for(var z = 0, y = ConferenceRecordList.length; z < y ; z++){   
-						  if(ConferenceRecordList[z].USE_DATE == null){
+						  if(ConferenceRecordList[z].Use_date == null){
 						  	str ="<li> "+
-										"<p class=\"name\" onclick=\"addRecord('"+ConferenceRecordList[z].CONFERENCE_NAME+"','"+ConferenceRecordList[z].HOTEL+"')\"  \> "+
-											"<span class=\"room\" >"+ConferenceRecordList[z].CONFERENCE_NAME+"</span> "+ 	
+										"<p class=\"name\" onclick=\"addRecord('"+ConferenceRecordList[z].Conference_name+"','"+ConferenceRecordList[z].Hotel+"')\"  \> "+
+											"<span class=\"room\" >"+ConferenceRecordList[z].Conference_name+"</span> "+ 	
 						  					"<span class=\"null\">空闲</span> "+
 										"</p> "+
 										"<p class=\"icon\"> "+
@@ -294,8 +287,8 @@
 									"</li> "
 						  }else{
 						  	str = 	"<li> "+
-										"<p class=\"name\" onclick=\"showConferenceRecord('"+ConferenceRecordList[z].ID+"'  )\"  \> "+
-											"<span class=\"room\" >"+ConferenceRecordList[z].CONFERENCE_NAME+"</span> "+ 
+										"<p class=\"name\" onclick=\"showConferenceRecord('"+ConferenceRecordList[z].Id+"'  )\"  \> "+
+											"<span class=\"room\" >"+ConferenceRecordList[z].Conference_name+"</span> "+ 
 											"<span class=\"useIng\">使用中</span> "+
 										"</p> "+
 										"<p class=\"icon\"> "+
@@ -361,23 +354,26 @@
 			}
 			
 			$.post("../../ConferenceRecordController/addConferenceRecord",
-				{
-					USE_NUMBER : $("#Use_Number").val(),
-					CONFERENCE_NAME : $("#CONFERENCE_NAME").find("option:selected").text() ,
-					HOTEL : $("#HOTEL").find("option:selected").text() ,
-					USE_DATE : $("#USE_DATE").val(),
-					START_TIME : $("#START_TIME").val(),
-					END_TIME : $("#END_TIME").val(),
-					PURPOSE : $("#PURPOSE").val(),
-					GUEST_NUM : $("#GUEST_NUM").val(),
-					REMARK : $("#REMARK").val(),
-					CONFERENCE_TYPE : $("#CONFERENCE_TYPE").val() 
+				{ 
+					Use_number : $("#Use_Number").val(),
+					Conference_name : $("#CONFERENCE_NAME").find("option:selected").text() ,
+					Hotel : $("#HOTEL").find("option:selected").text() ,
+					Use_date : $("#USE_DATE").val(),
+					Start_time : $("#START_TIME").val(),
+					End_time : $("#END_TIME").val(),
+					Purpose : $("#PURPOSE").val(),
+					Guest_num : $("#GUEST_NUM").val(),
+					Remark : $("#REMARK").val() 
 				},
 				function(data){ 
-					alert(data);
-					 $('.modal').hide(500);
-					 emptyModal();
-					 queryConferenceRecordList();
+					 if(data == "true"){
+					 	 alert("新增成功");
+					 	 $('.modal').hide(500);
+						 emptyModal();
+						 queryConferenceRecordList();
+					 }else{
+					 	 alert("使用时间已被占用，请重新选择！");
+					 } 
 				} 
 			);  
 		} 
@@ -432,23 +428,27 @@
 				return false;
 			}
 			
-			$.post("../../ConferenceRecordController/addConferenceRecord",
+			$.post("../../ConferenceRecordController/modConferenceRecord",
 				{
-					USE_NUMBER : $("#Use_Number").val(),
-					CONFERENCE_NAME : $("#CONFERENCE_NAME").find("option:selected").text() ,
-					HOTEL : $("#HOTEL").find("option:selected").text() ,
-					USE_DATE : $("#USE_DATE").val(),
-					START_TIME : $("#START_TIME").val(),
-					END_TIME : $("#END_TIME").val(),
-					PURPOSE : $("#PURPOSE").val(),
-					GUEST_NUM : $("#GUEST_NUM").val(),
-					REMARK : $("#REMARK").val(),
-					CONFERENCE_TYPE : $("#CONFERENCE_TYPE").val() 
+					Use_number : $("#Use_Number").val(),
+					Conference_name : $("#CONFERENCE_NAME").find("option:selected").text() ,
+					Hotel : $("#HOTEL").find("option:selected").text() ,
+					Use_date : $("#USE_DATE").val(),
+					Start_time : $("#START_TIME").val(),
+					End_time : $("#END_TIME").val(),
+					Purpose : $("#PURPOSE").val(),
+					Guest_num : $("#GUEST_NUM").val(),
+					Remark : $("#REMARK").val(), 
+					Id : $("#SID").val()
 				},
-				function(data){ 
-					alert("修改成功!");
-					 $('.modal').hide(500);
-					 emptyModal();
+				function(data){  
+					 if(data == "true"){
+					 	 alert("修改成功!");
+						 $('.modal').hide(500);
+						 emptyModal();
+					 }else{
+					 	 alert("使用时间已被占用，请重新选择！");
+					 } 
 				} 
 			); 
 			
@@ -483,21 +483,23 @@
 				function(result){  
 					 data = $.parseJSON(result);  
 					 $('.modal').show(500); 
-					 $("#Use_Number").val(data.USE_NUMBER);
-					 upHotelShow(data.HOTEL);
-					 upconfereceList(data.HOTEL,data.CONFERENCE_NAME);
-					 $("#HOTEL").val(data.HOTEL) ;
-					 $("#USE_DATE").val(data.USE_DATE);
-					 $("#START_TIME").val(data.START_TIME);
-					 $("#END_TIME").val(data.END_TIME);
-					 $("#PURPOSE").val(data.PURPOSE);
-					 $("#GUEST_NUM").val(data.GUEST_NUM);
-					 $("#REMARK").val(data.REMARK);
+					 $("#Use_Number").val(data.Use_number);
+					 upHotelShow(data.Hotel);
+					 upconfereceList(data.Hotel,data.Conference_name);
+					 $("#HOTEL").val(data.Hotel) ;
+					 $("#USE_DATE").val(data.Use_date);
+					 $("#START_TIME").val(data.Start_time);
+					 $("#END_TIME").val(data.End_time);
+					 $("#PURPOSE").val(data.Purpose);
+					 $("#GUEST_NUM").val(data.Guest_num);
+					 $("#REMARK").val(data.Remark);
+					 $("#SID").val(data.Id);
 				} 
 			);
 			
     }
     function emptyModal(){
+    	$("#SID").val('');
 		$("#Use_Number").val(''); 
 		$("#HOTEL").val('') ;
 		$("#USE_DATE").val('');
@@ -573,5 +575,25 @@
 			}
 		})
 	}
+	function exportConFereceManage(){
+			var hotel = $("#hotel").find("option:selected").text();
+			var boardType = $("#boardType").find("option:selected").text();
+			 
+			if($("#hotel").val() == "" || $("#hotel").val() == null){
+				hotel = "";
+			}
+			
+			if($("#boardType").val() == "" || $("#boardType").val() == null){
+				boardType = "";
+			}  
+			alert(1234);
+			var utl = '../../ConferenceRecordController/export?hotelName='+hotel+'&confernce_TYPE='+boardType;
+		var form=$("<form>");//定义一个form表单 
+		        form.attr("method","get");
+		        form.attr("action",utl);
+		        $("body").append(form);//将表单放置在web中 
+		        form.submit();//表单提交   
+		        form.remove(); 
+		}
 	</script>
 </html>

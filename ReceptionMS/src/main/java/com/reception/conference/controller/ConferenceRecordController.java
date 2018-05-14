@@ -1,6 +1,10 @@
 package com.reception.conference.controller;
 
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +28,7 @@ import com.reception.conference.model.ConferenceRecordEntity;
 import com.reception.conference.model.HotelUtil;
 import com.reception.exceptionfilter.EntityNotFoundException;
 import com.reception.util.JSONHelper;
+import com.reception.util.poi.ImportExcelUtil;
  
 @RestController
 @RequestMapping(value="ConferenceRecordController")
@@ -34,13 +40,13 @@ public class ConferenceRecordController {
 	@RequestMapping(value = "addConferenceRecord",method = RequestMethod.POST)
 	public String addConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
 		
-		boolean flag = this.conferenceRecordServiceImpl.checkConferenceRecord(conferenceRecordEntity); 
+		Boolean flag = this.conferenceRecordServiceImpl.checkConferenceRecord(conferenceRecordEntity); 
 		
 		if(flag){ 
-//			this.conferenceRecordServiceImpl.addConferenceRecord(conferenceRecordEntity); 
-			return "新增成功";
+			this.conferenceRecordServiceImpl.addConferenceRecord(conferenceRecordEntity); 
+			return flag.toString();
 		}else{
-			return "该时间已被预订"; 
+			return flag.toString(); 
 		} 
 	}
 	@RequestMapping(value = "delConferenceRecord/{id}",method = RequestMethod.DELETE)
@@ -48,10 +54,16 @@ public class ConferenceRecordController {
 		boolean flag =  this.conferenceRecordServiceImpl.delConferenceRecord(id);  
 		return JSONHelper.toJSON(flag);
 	}	 
-	@RequestMapping(value = "modConferenceRecord",method = RequestMethod.PUT)
+	@RequestMapping(value = "modConferenceRecord",method = RequestMethod.POST)
 	public String modConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
-		boolean flag =  this.conferenceRecordServiceImpl.modConferenceRecord(conferenceRecordEntity);  
-		return JSONHelper.toJSON(flag);
+		Boolean flag = this.conferenceRecordServiceImpl.checkConferenceRecord(conferenceRecordEntity); 
+		
+		if(flag){ 
+			this.conferenceRecordServiceImpl.modConferenceRecord(conferenceRecordEntity);  
+			return flag.toString();
+		}else{
+			return flag.toString(); 
+		}  
 	}
 	@RequestMapping(value = "queryConferenceRecordById/{id}",method = RequestMethod.GET)
 	public String queryConferenceRecordById(@PathVariable("id")String id){
@@ -65,9 +77,9 @@ public class ConferenceRecordController {
 	public String queryConferenceRecordByPage(@RequestParam(required = true)int pageNum,
 			@RequestParam(required = true)int pageSize){
 		PageHelper.startPage(pageNum, pageSize);  
-		List<ConferenceRecordEntity> list =  this.conferenceRecordServiceImpl.queryConferenceRecordByPage();  
-		PageInfo<ConferenceRecordEntity> pageInfo = new PageInfo<ConferenceRecordEntity>(list);  
-		System.out.println(JSONHelper.toJSON(pageInfo)); 
+		Map map = new HashMap(1);
+		List<ConferenceRecordEntity> list =  this.conferenceRecordServiceImpl.queryConferenceRecordByPage(map);  
+		PageInfo<ConferenceRecordEntity> pageInfo = new PageInfo<ConferenceRecordEntity>(list);   
 		return JSONHelper.toJSON(pageInfo);
 	}
 	@RequestMapping(value = "queryConferenceRecordList",method = RequestMethod.GET)
@@ -81,8 +93,8 @@ public class ConferenceRecordController {
 	    DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	    String nowtime = format.format(now_date);
 		 
-		map.put("hotelName", hotelName.trim());
-		map.put("CONFERENCE_TYPE", confernce_TYPE.trim());
+	    map.put("hotelName", hotelName == null ? "" : hotelName.trim());
+		map.put("CONFERENCE_TYPE", confernce_TYPE == null ? "" : confernce_TYPE.trim());
 		map.put("date", date);
 		map.put("nowtime", nowtime);
 		
@@ -97,6 +109,42 @@ public class ConferenceRecordController {
 		String  use_Number =  this.conferenceRecordServiceImpl.getUse_Number(format.format(now_date));  
 		return use_Number;
 	}
-	
+	@RequestMapping(value = "export",method = RequestMethod.GET)
+	public void queryConferenectExport( 
+			HttpServletResponse res,
+			@RequestParam(required = false)String hotelName,
+			@RequestParam(required = false)String confernce_TYPE){
+		Map map = new HashMap(2);
+		
+		map.put("hotelName", hotelName == null ? "" : hotelName.trim());
+		map.put("CONFERENCE_TYPE", confernce_TYPE == null ? "" : confernce_TYPE.trim());
+		
+		res.setContentType("application/xls");
+		try {
+			res.addHeader("Content-Disposition", "attachment;filename="+new String(("会议室使用登记表").getBytes("UTF-8"),"iso-8859-1")+".xls");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		List<ConferenceRecordEntity> list =  this.conferenceRecordServiceImpl.queryConferenceRecordByPage(map);   
+		BufferedInputStream input = new  BufferedInputStream(ImportExcelUtil.excelModelbyClass(ConferenceRecordEntity.class, null, null,list));
+		byte buffBytes[] = new byte[1024];
+		OutputStream os;
+		try {
+			os = res.getOutputStream();
+			int read = 0;
+			while ((read = input.read(buffBytes)) != -1) {
+				os.write(buffBytes, 0, read);
+			}
+			os.flush();
+			os.close();
+			input.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 }

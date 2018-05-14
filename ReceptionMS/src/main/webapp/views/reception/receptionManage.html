@@ -245,6 +245,11 @@
 		</div>
 	</div>
 	<script>
+		// 关于按钮组的切换
+		$(".buttons>button").on("click",function(e){
+			$(this).addClass('active').siblings('button').removeClass('active');
+		});
+	
 		// 新增 tr
 		var tr = '<tr>'
 			+ '<td><input type="text" name="" id="" value=""  onchange="trAdd(this)"/></td>'
@@ -269,13 +274,6 @@
 			$(tr).parent('td').parent('tr').remove();
 		}
 	
-		// 操作 
-		if ($(".Tmodal tbody input:checked").length >= 2) {
-			console.log($("tbody input:checked").parents('tr').siblings().html())
-			$("#contrast").on('click', function() {
-				$(".contrast").parent(".modal").show();
-			})
-		}
 	</script>
 </body>
 </html>

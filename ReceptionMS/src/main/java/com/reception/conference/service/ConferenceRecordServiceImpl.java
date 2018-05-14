@@ -24,7 +24,7 @@ public class ConferenceRecordServiceImpl implements IConferenceRecordService{
 	
 	@Override
 	public void addConferenceRecord(ConferenceRecordEntity conferenceRecordEntity) {
-		conferenceRecordEntity.setID(String.valueOf(System.currentTimeMillis()));
+		conferenceRecordEntity.setId(String.valueOf(System.currentTimeMillis()));
 		this.conferenceRecordMapper.addConferenectRecord(conferenceRecordEntity); 
 	}
 
@@ -58,9 +58,8 @@ public class ConferenceRecordServiceImpl implements IConferenceRecordService{
 	}
 
 	@Override
-	public List<ConferenceRecordEntity> queryConferenceRecordByPage() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ConferenceRecordEntity> queryConferenceRecordByPage(Map map) { 
+		return this.conferenceRecordMapper.queryConferenectRecordByPage(map);
 	}
 
 	@Override
@@ -78,25 +77,28 @@ public class ConferenceRecordServiceImpl implements IConferenceRecordService{
 	@Override
 	public boolean checkConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
 		List<ConferenceRecordEntity> list = this.conferenceRecordMapper.checkConferenceRecord(conferenceRecordEntity); 
+		
+		if (list.size() == 0) return true;
+		
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-		String USE_DATE = conferenceRecordEntity.getUSE_DATE();
-		String be_TIME = conferenceRecordEntity.getSTART_TIME();
-		String af_TIME = conferenceRecordEntity.getEND_TIME();
+		String USE_DATE = conferenceRecordEntity.getUse_date();
+		String be_TIME = conferenceRecordEntity.getStart_time();
+		String af_TIME = conferenceRecordEntity.getEnd_time();
 		
 		Date  ibe_TIME = null; 
 		Date  iaf_TIME = null;
 		
 		try {
-			ibe_TIME = sf.parse(USE_DATE+" "+be_TIME+":00");
-			iaf_TIME = sf.parse(USE_DATE+" "+af_TIME+":00");
+			ibe_TIME = sf.parse(USE_DATE+" "+be_TIME+":00"); //输入的使用日期+开始时间
+			iaf_TIME = sf.parse(USE_DATE+" "+af_TIME+":00"); //输入的使用日期+结束时间
 			
-			Date  ube_TIME = null; 
-			Date  uaf_TIME = null; 
+			Date  ube_TIME = null;  //比较用的使用日期+开始时间
+			Date  uaf_TIME = null;  //比较用使用日期+结束时间
 			for(int i = 0,j = list.size() ; i < j ; i++){
 				ube_TIME = sf.parse(list.get(i).getSTART_DATE()); 
-				uaf_TIME = sf.parse(list.get(i).getEND_DATE());
-				if((ibe_TIME.getTime() > ube_TIME.getTime() && ibe_TIME.getTime() < iaf_TIME.getTime()) ||
-						(iaf_TIME.getTime() > ube_TIME.getTime() && iaf_TIME.getTime() < iaf_TIME.getTime())){
+				uaf_TIME = sf.parse(list.get(i).getEND_DATE());  
+				if((ibe_TIME.getTime() > ube_TIME.getTime() && ibe_TIME.getTime() < uaf_TIME.getTime()) ||
+						(iaf_TIME.getTime() > ube_TIME.getTime() && iaf_TIME.getTime() < uaf_TIME.getTime())){
 					 return false;
 				} 
 			}

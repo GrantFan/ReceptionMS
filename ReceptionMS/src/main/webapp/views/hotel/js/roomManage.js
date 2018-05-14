@@ -29,7 +29,7 @@ function showRoomList(){
 					var room = ""
 					if (rooms[j].state == "1") {
 						room += "<li><p class=\"icon\" onclick=\"showRoom('"+rooms[j].id+"')\"><u class=\"idle\"></u>"
-							+ "</p> <span class=\"idle\">" + rooms[j].roomNumber + "</span></li>";
+							+ "</p> <span class=\"null\">" + rooms[j].roomNumber + "</span></li>";
 					} else {
 						room += "<li><p class=\"icon\" onclick=\"showRoom('"+rooms[j].id+"')\"><u class=\"useI\"></u>"
 							+ "</p> <span class=\"useIng\">" + rooms[j].roomNumber + "</span></li>";
@@ -67,7 +67,7 @@ function showFloorRoomList() {
 				var room = ""
 				if (obj[i].state == "1") {
 					room += "<li><p class=\"icon\" onclick=\"showRoom('"+obj[i].id+"')\"><u class=\"idle\"></u>"
-						+ "</p> <span class=\"idle\">" + obj[i].roomNumber + "</span></li>";
+						+ "</p> <span class=\"null\">" + obj[i].roomNumber + "</span></li>";
 				} else {
 					room += "<li><p class=\"icon\" onclick=\"showRoom('"+obj[i].id+"')\"><u class=\"useI\"></u>"
 						+ "</p> <span class=\"useIng\">" + obj[i].roomNumber + "</span></li>";

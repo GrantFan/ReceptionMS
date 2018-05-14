@@ -72,7 +72,7 @@
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
-			<button onclick="add()" class="active">
+			<button onclick="add()">
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
 			<button onclick="edit()">
@@ -109,6 +109,7 @@
 						<th>选择</th>
 						<th>角色名</th>
 						<th>角色描述</th>
+						<th>备注</th>
 					</tr>
 				</thead>
 
@@ -118,6 +119,7 @@
 								value=“" ><u></u></label></td>
 						<td>use1</td>
 						<td>用户名1</td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
@@ -138,7 +140,7 @@
 				</p>
 			</h4>
 			<div class="mbody">
-				<input type="text" name="id" id="id" value="" /> <label
+				<input type="hidden" name="id" id="id" value="" /> <label
 					for="roleName"> <span>角色名：</span> <input type="text"
 					name="roleName" id="roleName" />
 				</label> <label for="description"> <span>描述：</span> <input
@@ -279,5 +281,11 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		// 关于按钮组的切换
+			$(".buttons>button").on("click",function(e){
+				$(this).addClass('active').siblings('button').removeClass('active');
+			});
+	</script>
 </body>
 </html>

@@ -32,7 +32,7 @@ function Calendar(beginYear, endYear, language, patternDelimiter, date2StringPat
 	this.year = this.date.getFullYear();
 	this.month = this.date.getMonth();
 	
-	this.colors = {"bg_cur_day":"#00CC33","bg_over":"#EFEFEF","bg_out":"#FFCC00"}
+	this.colors = {"bg_cur_day":"#00CC33","bg_over":"#EFEFEF","bg_out":"#00CC33"}
 };
 
 Calendar.language = {
@@ -342,7 +342,7 @@ __ci.document.writeln('select {font-size:12px;background-color:#EFEFEF;}');
 __ci.document.writeln('table {border:0px solid #CCCCCC;background-color:#FFFFFF}');
 __ci.document.writeln('th {font-size:12px;font-weight:normal;background-color:#FFFFFF;}');
 __ci.document.writeln('th.theader {font-weight:normal;background-color:#666666;color:#FFFFFF;width:24px;}');
-__ci.document.writeln('select.year {width:64px;}');
+__ci.document.writeln('select.year {width:70px;}');
 __ci.document.writeln('select.month {width:60px;}');
 __ci.document.writeln('td {font-size:12px;text-align:center;}');
 __ci.document.writeln('td.sat {color:#0000FF;background-color:#EFEFEF;}');

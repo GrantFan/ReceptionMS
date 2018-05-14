@@ -14,7 +14,7 @@
 	<body>
 		<div class="operationsArea">
 			<div class="buttons">
-					<button onclick="add_menu()" class="active">
+					<button onclick="add_menu()">
 						<u class="xz"></u>
 						<span class="webkit">新增</span>
 					</button>
@@ -69,7 +69,7 @@
 		</div>
 		</div>	
 		<!--模态框-->
-		<div class="Tmodal modal block" id="modal">
+		<div class="Tmodal modal none" id="modal">
 			<div class="box">
 				<h4 class="overflow">
 					<p class="lt">
@@ -170,9 +170,14 @@
 						<span class="lt">返回</span>
 					</button>
 				</div>
-			</div>
-			
+			</div>			
 		</div>
+		<script>
+			// 关于按钮组的切换
+			$(".buttons>button").on("click",function(e){
+				$(this).addClass('active').siblings('button').removeClass('active');
+			});
+		</script>
 	</body>
 	
 </html>

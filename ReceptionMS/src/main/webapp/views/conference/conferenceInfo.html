@@ -16,7 +16,7 @@
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
-			<button onclick="view()" class="active">
+			<button onclick="view()">
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
 			<button onclick="copyView()">
@@ -63,7 +63,7 @@
 	</div>
 	<input value="" type="hidden" id="id" >
 	<!--模态框-->
-	<div class="modal block">
+	<div class="modal none">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -106,8 +106,12 @@
 	</div>
 </body>
 <script type="text/javascript">
+	// 关于按钮组的切换
+	$(".buttons>button").on("click",function(e){
+		$(this).addClass('active').siblings('button').removeClass('active');
+	});
+
 	$(function() {
-		$('.modal').hide();
 		load_conferenceInfo(); 
 	});
 	function load_conferenceInfo(pageNum, pageSize) {

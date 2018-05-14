@@ -3,32 +3,45 @@ package com.reception.conference.model;
 
 import java.util.Date;
 
+import com.reception.util.poi.ModelProp;
+import com.reception.util.poi.ModelTitle;
+
 /*** <p>Title:Conference_recordEntity </p> 
      <p>Description: 会意思详细信息</p> 
      <p>Company: </p>  
      @author Administrator
      @date 2018年4月16日下午3:37:42*/
+@ModelTitle(name = "会议室使用信息")
 public class ConferenceRecordEntity {
 	
-	private String ID;
+	private String Id;
 	//会议室使用编号
-	private String USE_NUMBER;
+	@ModelProp(name = "会议室使用编号",colIndex = 1)
+	private String Use_number;
 	//会议室名称
-	private String CONFERENCE_NAME;
+	@ModelProp(name = "会议室名称",colIndex = 2)
+	private String Conference_name;
 	//酒店名称
-	private String HOTEL;
+	@ModelProp(name = "酒店名称",colIndex = 3)
+	private String Hotel;
 	//使用日期
-	private String USE_DATE;
+	@ModelProp(name = "使用日期",colIndex = 4)
+	private String Use_date;
 	//开始时间
-	private String START_TIME;
+	@ModelProp(name = "开始时间",colIndex = 5)
+	private String Start_time;
 	//结束时间
-	private String END_TIME;
+	@ModelProp(name = "结束时间",colIndex = 6)
+	private String End_time;
 	//用途说明
-	private String PURPOSE;
+	@ModelProp(name = "用途说明",colIndex = 7)
+	private String Purpose;
 	//来宾人数
-	private String GUEST_NUM;
+	@ModelProp(name = "来宾人数",colIndex = 8)
+	private String Guest_num;
 	//
-	private String REMARK;
+	@ModelProp(name = "备注",colIndex = 9)
+	private String Remark;
 	
 	private String CONFERENCE_TYPE;
 	
@@ -36,84 +49,85 @@ public class ConferenceRecordEntity {
 	
 	private String END_DATE;
 
-	public String getID() {
-		return ID;
+	
+	public String getId() {
+		return Id;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		Id = id;
 	}
 
-	public String getUSE_NUMBER() {
-		return USE_NUMBER;
+	public String getUse_number() {
+		return Use_number;
 	}
 
-	public void setUSE_NUMBER(String uSE_NUMBER) {
-		USE_NUMBER = uSE_NUMBER;
+	public void setUse_number(String use_number) {
+		Use_number = use_number;
 	}
 
-	public String getCONFERENCE_NAME() {
-		return CONFERENCE_NAME;
+	public String getConference_name() {
+		return Conference_name;
 	}
 
-	public void setCONFERENCE_NAME(String cONFERENCE_NAME) {
-		CONFERENCE_NAME = cONFERENCE_NAME;
+	public void setConference_name(String conference_name) {
+		Conference_name = conference_name;
 	}
 
-	public String getHOTEL() {
-		return HOTEL;
+	public String getHotel() {
+		return Hotel;
 	}
 
-	public void setHOTEL(String hOTEL) {
-		HOTEL = hOTEL;
-	}
-  
-	public String getUSE_DATE() {
-		return USE_DATE;
+	public void setHotel(String hotel) {
+		Hotel = hotel;
 	}
 
-	public void setUSE_DATE(String uSE_DATE) {
-		USE_DATE = uSE_DATE;
+	public String getUse_date() {
+		return Use_date;
 	}
 
-	public String getSTART_TIME() {
-		return START_TIME;
+	public void setUse_date(String use_date) {
+		Use_date = use_date;
 	}
 
-	public void setSTART_TIME(String sTART_TIME) {
-		START_TIME = sTART_TIME;
+	public String getStart_time() {
+		return Start_time;
 	}
 
-	public String getEND_TIME() {
-		return END_TIME;
+	public void setStart_time(String start_time) {
+		Start_time = start_time;
 	}
 
-	public void setEND_TIME(String eND_TIME) {
-		END_TIME = eND_TIME;
+	public String getEnd_time() {
+		return End_time;
 	}
 
-	public String getPURPOSE() {
-		return PURPOSE;
+	public void setEnd_time(String end_time) {
+		End_time = end_time;
 	}
 
-	public void setPURPOSE(String pURPOSE) {
-		PURPOSE = pURPOSE;
+	public String getPurpose() {
+		return Purpose;
 	}
 
-	public String getGUEST_NUM() {
-		return GUEST_NUM;
+	public void setPurpose(String purpose) {
+		Purpose = purpose;
 	}
 
-	public void setGUEST_NUM(String gUEST_NUM) {
-		GUEST_NUM = gUEST_NUM;
+	public String getGuest_num() {
+		return Guest_num;
 	}
 
-	public String getREMARK() {
-		return REMARK;
+	public void setGuest_num(String guest_num) {
+		Guest_num = guest_num;
 	}
 
-	public void setREMARK(String rEMARK) {
-		REMARK = rEMARK;
+	public String getRemark() {
+		return Remark;
+	}
+
+	public void setRemark(String remark) {
+		Remark = remark;
 	}
 
 	public String getCONFERENCE_TYPE() {

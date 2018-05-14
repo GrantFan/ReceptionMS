@@ -49,13 +49,19 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-				$('.right').on('click', function() {
-					$('#imgBox li').next('li').show().prevAll('li').hide();
-				})
-		
-				$('.left').on('click', function() {
-					$('#imgBox li').nextAll('li').hide().prev('li').show();
-				})
+			// 关于按钮组的切换
+			$(".buttons>button").on("click",function(e){
+				$(this).addClass('active').siblings('button').removeClass('active');
+			});
+			
+				
+			$('.right').on('click', function() {
+				$('#imgBox li').next('li').show().prevAll('li').hide();
+			})
+	
+			$('.left').on('click', function() {
+				$('#imgBox li').nextAll('li').hide().prev('li').show();
+			})
 		</script>
 	</body>
 

@@ -20,7 +20,7 @@ public interface IConferenceRecordService {
 	public ConferenceRecordEntity queryConferenceRecordById(String id);
 	
 	
-	public List<ConferenceRecordEntity> queryConferenceRecordByPage();
+	public List<ConferenceRecordEntity> queryConferenceRecordByPage(Map map);
 	
 	public List<HotelUtil> hotelList(Map map);
 	

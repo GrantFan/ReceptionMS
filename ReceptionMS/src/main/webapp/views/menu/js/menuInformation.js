@@ -1,5 +1,4 @@
 $(function(){
-    document.getElementById("modal").style.visibility="hidden";//隱藏
     //初始化賓客信息
     select_menu(1,10);
     select_hotel();

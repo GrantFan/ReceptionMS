@@ -12,45 +12,80 @@
 		<script type="text/javascript" src="../assets/js/Calendar.js"></script>
 		<script type="text/javascript" src="./js/guestInformation.js"></script>
 		<style>
-			#files:checked{
-				
+			.Ibtn{
+				width: 6.58vw;
+		   	 	height: 3.6vh;
+		    	background: url(../assets/img/button.png) no-repeat 0px 0px;
+		    	background-size: 100% 100%;
+		    	border: none;
+		    	outline: none;
+		    	color: #fff;
+		    	cursor: pointer;
+		    	padding-bottom: 4px;
+		    	margin-right: 1.302vw;
+		    	font-size: 0.88vw;
 			}
 			
+			
+			.buttons>label{
+				width: 6.75%;
+			    height: 4.1vh;
+			    line-height: 4.1vh;
+			    text-align:center;
+			    border: none;
+			    background: url(../assets/img/index3_11.png) no-repeat 0px 0px;
+			    background-size: 100% 100%;
+			    color: #fff;
+			    outline: none;
+			    margin-right: 1.382%;
+			    font-size: 0.625vw;
+			    cursor: pointer;
+			}
+			.buttons>label>u{
+				position: relative;
+			    top: 2px;
+			    left: 6px;
+			}    
+		
+			.mbody img{
+				width:14vw;
+				height:22vh;
+				margin-top:2vh;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="operationsArea">
 			<div class="buttons">
-					<button onclick="add_guest()" class="active">
+					<button onclick="add_guest()">
 						<u class="xz"></u>
-						新增
+						<span class="webkit">新增</span>
 					</button>
 					<button onclick="edit_guest()">
 						<u class="bj"></u>
-						编辑
+						<span class="webkit">编辑</span>
 					</button>
 					<button onclick="delete_guest()">
 						<u class="sc"></u>
-						删除
+						<span class="webkit">删除</span>
 					</button>
 					<button onclick="select_detail()">
 						<u class="dyyl"></u>
-						    查看详情
+						<span class="webkit">查看详情</span>
 					</button>
 					<button>
 						<u class="dy"></u>
-						
-						打印
+						<span class="webkit">打印</span>						
 					</button>
 					<label for="file">
 						<u class="dr"></u>
-						<input type="file" name="file" id="file_excel"  onchange="import_Excel(this);">
-						导入
-					</label>
+						<input type="file" name="file" id="file_excel" class="none"  onchange="import_Excel(this);">
+						<span class="webkit">导入</span>
+					</label>	
 					<!-- <button  onclick="import_Excel()" style="position:relative;" id='files'></button> -->
 					<button  onclick="export_guest()">
 						<u class="dc"></u>
-						导出
+						<span class="webkit">导出</span>
 					</button>
 			</div>
 		<div class="tab">
@@ -98,12 +133,12 @@
 					</tr> -->
 				</tbody>
 			</table>
-			<div id="pagination">
+			<div id="pagination" class="text-center">
 			</div>
 		</div>
 		</div>	
 		<!--模态框-->
-		<div class="modal block imgModal" id="modal">
+		<div class="modal none imgModal" id="modal">
 			<div class="box" style="top:0px;">
 				<h4 class="overflow">
 					<p class="lt">
@@ -163,71 +198,75 @@
 									<option value="维吾尔族">维吾尔族</option>
 									<option value="其他">其他</option>
 								</select>
-							</label>
-							<label>
-								<span>学历：</span>
-								<span style="color: red">*</span>
-								<select id="add_education" name="add_education">
-										<option   selected="selected">请选择...</option>
-										<option value="博士">博士</option>
-										<option value="硕士">硕士</option>
-										<option value="本科">本科</option>
-										<option value="大专">大专</option>
-										<option value=">高中及以下">高中及以下</option>
-								</select>
-							</label>
-							
-							<label>
-								<span>联系电话：</span>
-								<input type="text" name="add_telphone" id="add_telphone" />
-							</label>
-							<label>
-								<span>家庭/办公电话：</span>
-								<input type="text" name="add_phone" id="add_phone" />
-							</label>
+							</label>							
 					</div>
-					<div class="btns overflow">
-						 <span class="personattr">照片:</span>
-						  <span>
-					        <img id="thumburlShow" src="file:///F|/img/00.jpeg" width="120" height="120"/>
-					      </span>
-					     <input type="hidden" name="img"  id="thumbUrl"/>
-					     <input type="file" name="logoFile" id="logoFile" onchange="setImg(this);">
-					     <span onclick="delete_img()">删除</span>
+						<div class="rt">					 
+							 <img id="thumburlShow" /> 
+						     <input type="hidden" name="img"  id="thumbUrl"/>
+						     <div class="overflow" style="margin-top:1vh;">
+						     	<label for="logoFile" class="Ibtn lt m-0" style="width: 6.58vw;">
+						     	 	<span >上传头像</span>
+						    	 	<input type="file" name="logoFile" id="logoFile" onchange="setImg(this);" class="none">	
+						    	</label>					     
+						     	<span onclick="delete_img()" class="Ibtn lt" style="margin-left:1.2vw; margin-right:0px;">删除</span>
+						     </div>
+						     
+						</div>
+						<div class="">
+								<label>
+									<span>学历：</span>
+									<span style="color: red">*</span>
+									<select id="add_education" name="add_education">
+											<option   selected="selected">请选择...</option>
+											<option value="博士">博士</option>
+											<option value="硕士">硕士</option>
+											<option value="本科">本科</option>
+											<option value="大专">大专</option>
+											<option value=">高中及以下">高中及以下</option>
+									</select>
+								</label>
+								
+								<label>
+									<span>联系电话：</span>
+									<input type="text" name="add_telphone" id="add_telphone" />
+								</label>
+								<label>
+									<span>家庭/办公电话：</span>
+									<input type="text" name="add_phone" id="add_phone" />
+								</label>
+								<label>
+										<span>任职地区：</span>
+										<input type="text" name="add_office_area" id="add_office_area" />
+								</label>
+								<label>
+										<span>籍贯：</span>
+										<input type="text" name="add_origin_place" id="add_origin_place" />
+								</label>
+								<label>
+									<span>邮件地址：</span>
+									<input type="text" name="add_email" id="add_email" />
+								</label>
+								<label>
+									<span>家庭住址：</span>
+									<input type="text" name="add_address" id="add_address" />
+								</label>
+								<label>
+									<span>宾客类别：</span>
+									<span style="color: red">*</span>
+									<select id="add_guest_type" name="add_guest_type">
+											<option   selected="selected">请选择...</option>
+											<option value="小客户">小客户</option>
+											<option value="普通客户">普通客户</option>
+											<option value="次要客户">次要客户</option>
+											<option value="重要客户">重要客户</option>
+									</select>
+								</label>
+								<label>
+									<span>备注</span>
+									<textarea name="" rows="5" cols="30" id="add_remark"></textarea>
+								</label>
+						</div>					
 					</div>
-					<div class="">
-							<label>
-									<span>任职地区：</span>
-									<input type="text" name="add_office_area" id="add_office_area" />
-							</label>
-							<label>
-									<span>籍贯：</span>
-									<input type="text" name="add_origin_place" id="add_origin_place" />
-							</label>
-							<label>
-								<span>邮件地址：</span>
-								<input type="text" name="add_email" id="add_email" />
-							</label>
-							<label>
-								<span>家庭住址：</span>
-								<input type="text" name="add_address" id="add_address" />
-							</label>
-							<label>
-								<span>宾客类别：</span>
-								<span style="color: red">*</span>
-								<select id="add_guest_type" name="add_guest_type">
-										<option   selected="selected">请选择...</option>
-										<option value="小客户">小客户</option>
-										<option value="普通客户">普通客户</option>
-										<option value="次要客户">次要客户</option>
-										<option value="重要客户">重要客户</option>
-								</select>
-							</label>
-							<label>
-								<span>备注</span>
-								<textarea name="" rows="5" cols="30" id="add_remark"></textarea>
-							</label>
-					</div>					
 				</div>
 				<div class="mfoot" align="center">
 					<button id="tijiao">
@@ -240,6 +279,11 @@
 					</button>
 				</div>
 			</div>
-		</div>
+		<script>
+			// 关于按钮组的切换
+			$(".buttons>button").on("click",function(e){
+				$(this).addClass('active').siblings('button').removeClass('active');
+			});
+		</script>
 	</body>
 </html>

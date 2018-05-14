@@ -1,5 +1,4 @@
 $(function(){
-    document.getElementById("modal").style.visibility="hidden";//隱藏
     //初始化賓客信息
     select_guest(1,10);
     //page();
@@ -33,7 +32,7 @@ function select_guest(pageNum,pageSize){
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
             		var list = result.list[i];
-            		info.append("<tr><td><label><input type='radio' name='gueat_info' value="+list.id+
+            		info.append("<tr><td><label><input type='checkbox' name='gueat_info' value="+list.id+
             				"><u></u></label></td>"+
             				"<td  id= 'id' style='display:none' >"+list.id+
             				"</td><td>"+list.guest_name+

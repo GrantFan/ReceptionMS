@@ -28,7 +28,7 @@ function showRoleList(pageNum, pageSize) {
 				//console.log(obj[i]);
 				tbody += "<tr>"
 					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
-					+ "<td>" + obj[i].roleName + "</td><td>" + obj[i].description + "</td>"
+					+ "<td>" + obj[i].roleName + "</td><td>" + obj[i].description + "</td><td></td>"
 					+ "</tr>";
 			}
 			$("#tablebody").append(tbody);
