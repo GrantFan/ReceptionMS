@@ -349,9 +349,9 @@ function trDel(tr){
  * 导出菜单信息
  */
 function export_menu(){
-	location.href='http://localhost:8088/ReceptionMS/menu_info/menu.xls';
+	location.href='../../menu_info/menu.xls';
 }
 
 function export_food(){
-	location.href='http://localhost:8088/ReceptionMS/menu_info/food.xls';
+	location.href='../../menu_info/food.xls';
 }

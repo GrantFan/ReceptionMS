@@ -201,6 +201,14 @@ function query() {
 	})
 }
 
+//全选 反选
+function toggle(checkbox){
+	var check = $(checkbox).prop("checked");
+	var subChecks = $(checkbox).parent().parent().parent().find("ul").find("input.module");
+	for(var i=0;i<subChecks.length;i++){
+		$(subChecks[i]).prop("checked",check);
+	}
+}
 //显示功能模块结构
 function showModule() {
 	$.ajax({
@@ -213,7 +221,7 @@ function showModule() {
 				for (var i = 0; i < data.length; i++) {
 					if (data[i].moduleParentId == '0') {
 						$("#accordion").append(
-							"<li name='" + data[i].moduleId + "'><div class=\"link\"><span class=\"lt\">" + data[i].moduleName + "</span><label class=\"rt\"><input type=\"checkbox\" class=\"module\" value='" + data[i].moduleId + "'><u class=\"top_1\"></u></label></div></li>");
+							"<li name='" + data[i].moduleId + "'><div class=\"link\"><span class=\"lt\">" + data[i].moduleName + "</span><label class=\"rt\"><input onchange='toggle(this)' type=\"checkbox\" class=\"module\" value='" + data[i].moduleId + "'><u class=\"top_1\"></u></label></div></li>");
 						var ul = '<ul class=\"submenu\" style=\"display:block;\">';
 						for (var j = 0; j < data.length; j++) {
 							if (data[j].moduleParentId == data[i].moduleId) {

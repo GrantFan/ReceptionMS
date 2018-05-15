@@ -35,35 +35,36 @@
 			<button onclick="dele()">
 				<u class="sc"></u> <span class="webkit">删除</span>
 			</button>
+			<!--  
 			<button>
 				<u class="dyyl"></u> <span class="webkit">打印预览</span>
 			</button>
 			<button>
 				<u class="dy"></u> <span class="webkit">打印</span>
 			</button>
+			-->
 			<button>
 				<u class="dr"></u> <span class="webkit">导入</span>
 			</button>
-			<button>
-				<u class="dc"></u> <span class="webkit">导出</span>
+			<button onclick="exprotReception()">
+				<u class="dc"></u> <span class="webkit">导出接待</span>
+			</button>
+			<button onclick="exprotMeals()">
+				<u class="dc"></u> <span class="webkit">导出用餐</span>
+			</button>
+			<button onclick="exprotAccom()">
+				<u class="dc"></u> <span class="webkit">导出住房</span>
 			</button>
 		</div>
 		<div class="inputs">
 			接待酒店： <select id="input_hotel">
 				<option value="">东方大酒店</option>
-				<option value="">接待日期</option>
-				<option value="">接待人</option>
-				<option value="">宾客姓名</option>
-				<option value="">用餐</option>
-				<option value="">用餐时间</option>
-				<option value="">宾客喜好</option>
-				<option value="">备注</option>
 			</select> 接待名称：<input id="input_receptionTitle" type="text" value="" />
 			 接待日期：<input id="input_receptionDate" onclick="new Calendar().show(this);" type="text" value="" />
 			<button onclick="search()">
 				<span class="webkit">查询</span>
 			</button>
-			<button class="m-0">
+			<button onclick="reset()" class="m-0">
 				<span class="webkit">清空</span>
 			</button>
 		</div>
@@ -89,7 +90,7 @@
 				</thead>
 
 				<tbody id="tablebody">
-					<tr ondblclick="view()">
+					<!-- <tr ondblclick="view()">
 						<td><label><input type="Checkbox" name="check"
 								value=""/><u></u></label></td>
 						<td>接待编号</td>
@@ -103,7 +104,7 @@
 						<td>退房日期</td>
 						<td>宾客喜好</td>
 						<td>备注</td>
-					</tr>
+					</tr> -->
 				</tbody>
 			</table>
 			<!-- 分页插件  -->

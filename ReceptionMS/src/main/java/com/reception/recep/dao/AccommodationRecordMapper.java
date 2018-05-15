@@ -24,7 +24,7 @@ public interface AccommodationRecordMapper {
 	@Delete("delete from accommodation_record where id=#{id}")
 	int delete(AccommodationRecordEntity accommodation);
 	
-	@Select("select id,reception_number receptionNumber,hotel,room_number roomNumber,checkin_time checkinTime,checkout_time checkoutTime,hobby,record_time recordTime,remark from accommodation_record")
+	@Select("select id,reception_number receptionNumber,hotel,room_number roomNumber,checkin_time checkinTime,checkout_time checkoutTime,hobby,record_time recordTime,remark from accommodation_record order by record_time desc,reception_number")
 	List<AccommodationRecordEntity> selectList();
 	
 	@Select("select id,reception_number receptionNumber,hotel,room_number roomNumber,checkin_time checkinTime,checkout_time checkoutTime,hobby,record_time recordTime,remark from accommodation_record where reception_number=#{receptionNumber}")

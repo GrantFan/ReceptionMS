@@ -16,7 +16,7 @@
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
-			<button onclick="view()">
+			<button onclick="view()" class="active">
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
 			<button onclick="copyView()">
@@ -63,7 +63,7 @@
 	</div>
 	<input value="" type="hidden" id="id" >
 	<!--模态框-->
-	<div class="modal none">
+	<div class="modal block">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -106,12 +106,8 @@
 	</div>
 </body>
 <script type="text/javascript">
-	// 关于按钮组的切换
-	$(".buttons>button").on("click",function(e){
-		$(this).addClass('active').siblings('button').removeClass('active');
-	});
-
 	$(function() {
+		$('.modal').hide();
 		load_conferenceInfo(); 
 	});
 	function load_conferenceInfo(pageNum, pageSize) {
@@ -343,7 +339,7 @@
 	function exportConFereceinfo(){
 		var form=$("<form>");//定义一个form表单 
 		        form.attr("method","get");
-		        form.attr("action",'../ConferenceController/export');
+		        form.attr("action",'../../ConferenceController/export');
 		        $("body").append(form);//将表单放置在web中 
 		        form.submit();//表单提交   
 		        form.remove(); 

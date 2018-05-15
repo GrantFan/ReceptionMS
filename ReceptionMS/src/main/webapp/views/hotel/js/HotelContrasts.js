@@ -63,9 +63,9 @@ function contrastHotel() {
 			$.ajax({
 				type : "post",
 				data : {
-					"hotel_l" : $("#hotel_l").val(),
-					"hotel_r" : $("#hotel_r").val(),
-					"roomType" : $("#contrast_type").val()
+					"hotel_l" : $("#hotel_l option:selected").text(),
+					"hotel_r" : $("#hotel_r option:selected").text(),
+					"roomType" : $("#contrast_type option:selected").text()
 				},
 				url : "../../room/roomType",
 				success : function(data) {

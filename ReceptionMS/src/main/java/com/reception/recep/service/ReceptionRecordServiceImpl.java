@@ -47,7 +47,7 @@ public class ReceptionRecordServiceImpl implements ReceptionRecordService {
 			accom.setId(UUID.randomUUID().toString().replace("-", ""));
 			k = accomService.add(accom);
 		}
-		if (i > 0 && j > 0 && k > 0) {
+		if (i > 0) {
 			return 1;
 		}
 		return 0;

@@ -15,7 +15,7 @@ import com.reception.conference.model.ConferenceEntity;
 public interface ConferenceMapper {
 	
 	@Insert("INSERT INTO conference_info VALUES"
-			+ " (#{id}, #{conference_name}, #{hotel}, #{type}, #{position}, #{capacity_num}, #{remark})")
+			+ " (#{id}, #{conference_name}, #{hotel}, #{type}, #{position},#{floor} #{capacity_num}, #{remark})")
 	public void addConferenect(ConferenceEntity conferenceEntity);
 	
 	@Delete("<script>" 

@@ -144,7 +144,7 @@ public class RoleAction {
 	@RequestMapping(value="/setRoleModule", produces = "text/plain; charset=utf-8")
 	public @ResponseBody String addRoleAndModule(@RequestParam(value = "roleId") String roleId,
 												 @RequestParam(value = "menuIds") String menuIds) {
-		System.out.println(menuIds);
+//		System.out.println(menuIds);
 		String[] arr = menuIds.split(",");
 		int i = roleService.setRoleModule(arr, roleId);
 		if (i>0) {

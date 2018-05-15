@@ -36,7 +36,7 @@ public class AccommodationRecordServiceImpl implements AccommodationRecordServic
 	@Override
 	public List<AccommodationRecordEntity> selectList() {
 		// TODO Auto-generated method stub
-		return null;
+		return accommodationRecordMapper.selectList();
 	}
 
 	@Override

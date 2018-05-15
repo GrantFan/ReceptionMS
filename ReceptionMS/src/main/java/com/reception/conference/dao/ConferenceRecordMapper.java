@@ -78,9 +78,9 @@ public interface ConferenceRecordMapper {
 			+ " <if test=\" '' != hotelName  and null != hotelName\"> "
 			+ " and HOTEL_NAME = #{hotelName} "
 			+ "</if>"
-			+ " <if test=\" '' != CONFERENCE_TYPE  and null != CONFERENCE_TYPE\"> "
-			+ " and CONFERENCE_TYPE = #{CONFERENCE_TYPE} "
-			+ "</if>"
+//			+ " <if test=\" '' != CONFERENCE_TYPE  and null != CONFERENCE_TYPE\"> "
+//			+ " and CONFERENCE_TYPE = #{CONFERENCE_TYPE} "
+//			+ "</if>"
 			+ " GROUP BY HOTEL_NAME, HOTEL.ID " 
 			+ " ORDER BY HOTEL.ID    "
 			+ "</script>") 
@@ -97,6 +97,9 @@ public interface ConferenceRecordMapper {
 			+ "   and #{date,jdbcType=VARCHAR} = to_char(use_date,'yyyy-mm-dd')) record"
 			+ "  on info.conference_name = record.conference_name"
 			+ "  WHERE info.hotel = #{name,jdbcType=VARCHAR} "
+			+ " <if test=\" '' != CONFERENCE_TYPE  and null != CONFERENCE_TYPE\"> "
+			+ " and type = #{CONFERENCE_TYPE} "
+			+ "</if>"
 			+ "  ORDER BY info.CONFERENCE_NAME " 
 		    + "</script>") 
 	public List<ConferenceRecordEntity> queryConferenecByHotelName(Map map); 

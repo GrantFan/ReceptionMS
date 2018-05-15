@@ -2,25 +2,47 @@ package com.reception.room.model;
 
 import java.util.List;
 
+import com.reception.util.poi.ModelProp;
+import com.reception.util.poi.ModelTitle;
+
+@ModelTitle(name="房间信息")
 public class RoomInfoEntity {
 
+	@ModelProp(name="ID",colIndex=0)
 	private Integer id ;
-	private String roomNumber ;//房间号码
-	private String floor;//楼层
-	private String orientation;//房间朝向
-	private String roomType;//房间类型
-	private String specialType;//特殊类型
-	private String supportFacilities;//配套设施
-	private String specialServe;//特色服务
-	private String outsidePhone;//外线电话
-	private String innerlinePhone;//内线电话
-	private String responsiblePerson;//房间负责人
-	private String rackPrice;//门市价
-	private String agreementPrice;//协议价
-	private String containFood;//是否含餐
-	private String state;//房间状态
-	private String remark;
+	@ModelProp(name="酒店名称",colIndex=1)
 	private String hotel;//所属酒店
+	@ModelProp(name="房间号码",colIndex=2)
+	private String roomNumber ;//房间号码
+	@ModelProp(name="楼层",colIndex=3)
+	private String floor;//楼层
+	@ModelProp(name="房间朝向",colIndex=4)
+	private String orientation;//房间朝向
+	@ModelProp(name="房间类型",colIndex=5)
+	private String roomType;//房间类型
+	@ModelProp(name="特殊类型",colIndex=6)
+	private String specialType;//特殊类型
+	@ModelProp(name="配套设施",colIndex=7)
+	private String supportFacilities;//配套设施
+	@ModelProp(name="特色服务",colIndex=8)
+	private String specialServe;//特色服务
+	@ModelProp(name="外线电话",colIndex=9)
+	private String outsidePhone;//外线电话
+	@ModelProp(name="内线电话",colIndex=10)
+	private String innerlinePhone;//内线电话
+	@ModelProp(name="房间负责人",colIndex=11)
+	private String responsiblePerson;//房间负责人
+	@ModelProp(name="门市价",colIndex=12)
+	private String rackPrice;//门市价
+	@ModelProp(name="协议价",colIndex=13)
+	private String agreementPrice;//协议价
+	@ModelProp(name="是否含餐",colIndex=14)
+	private String containFood;//是否含餐
+	@ModelProp(name="房间状态",colIndex=15)
+	private String state;//房间状态
+	@ModelProp(name="备注",colIndex=16)
+	private String remark;
+
 	
 	private List<RoomInfoEntity> list;
 

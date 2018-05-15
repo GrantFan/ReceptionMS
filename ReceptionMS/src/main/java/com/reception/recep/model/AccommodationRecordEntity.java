@@ -1,18 +1,31 @@
 package com.reception.recep.model;
 
+import com.reception.util.poi.ModelProp;
+import com.reception.util.poi.ModelTitle;
+
 /*
  * 接待住房记录实体
  */
+@ModelTitle(name="住房记录")
 public class AccommodationRecordEntity {
 
+	@ModelProp(name="ID")
 	private String id;
+	@ModelProp(name="接待编号",colIndex=1)
 	private String receptionNumber;//接待编号
+	@ModelProp(name="入住酒店",colIndex=2)
 	private String hotel;//酒店
+	@ModelProp(name="房间号",colIndex=3)
 	private String roomNumber;//房间号
+	@ModelProp(name="入住时间",colIndex=4)
 	private String checkinTime;//入住时间
+	@ModelProp(name="退房时间",colIndex=5)
 	private String checkoutTime;//退房时间
+	@ModelProp(name="宾客喜好",colIndex=6)
 	private String hobby;//宾客喜好
+	@ModelProp(name="登记时间",colIndex=7)
 	private String recordTime;//登记时间
+	@ModelProp(name="备注",colIndex=8)
 	private String remark;
 	
 	

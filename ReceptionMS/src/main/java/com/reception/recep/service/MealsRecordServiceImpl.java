@@ -37,7 +37,7 @@ public class MealsRecordServiceImpl implements MealsRecordService {
 	@Override
 	public List<MealsRecordEntity> selectList() {
 		// TODO Auto-generated method stub
-		return null;
+		return mealsRecordMapper.selectList();
 	}
 
 	@Override

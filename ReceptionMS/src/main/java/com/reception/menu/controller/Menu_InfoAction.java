@@ -93,7 +93,7 @@ public class Menu_InfoAction {
 	public String selectByHotel(@RequestParam("hotel") String hotel) {
 		List<Menu_Info> list = menu_InfoApi.selectByHotel(hotel);
 		String result = JSONHelper.toJSON(list);
-		System.out.println(result);
+//		System.out.println(result);
 		return result;
 	}
 	

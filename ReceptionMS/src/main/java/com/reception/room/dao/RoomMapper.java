@@ -42,7 +42,7 @@ public interface RoomMapper {
 	@Delete("delete from room_info where id = #{id}")
 	public int deleteRoomInfo(RoomInfoEntity room);
 	
-	@Select("select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info order by room_number")
+	@Select("select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info order by hotel,floor,room_number")
 	public List<RoomInfoEntity> selectList();
 	
 	@Select({"<script>",

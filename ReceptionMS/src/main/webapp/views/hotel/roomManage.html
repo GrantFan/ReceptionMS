@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script type="text/javascript" src="js/hotelShow.js"></script>
 <script type="text/javascript" src="js/roomManage.js"></script>
 </head>
@@ -17,16 +18,16 @@
 			<button onclick="add()" >
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
-			<button>
+			<button onclick="doprint('tab')">
 				<u class="dyyl"></u><span class="webkit">打印预览</span>
-			</button>
-			<button>
+			</button> 
+			<button onclick="print()">
 				<u class="dy"></u><span class="webkit">打印</span>
 			</button>
 			<button>
 				<u class="dr"></u><span class="webkit">导入</span>
 			</button>
-			<button>
+			<button onclick="exportExcel()">
 				<u class="dc"></u><span class="webkit">导出</span>
 			</button>
 		</div>
@@ -34,22 +35,18 @@
 			<input type="text" id="hotel_input" name="hotel_input"
 				onchange="hotelShow(this)" placeholder="酒店名称" value="" />
 				<select id="hotel" name="hotel" onchange="showRoomList()">
-				<option value="">------------</option>
-				<option value="">东方国际大酒店</option>
-				<option value="">光明大酒店</option>
-				<option value="">宏兴大酒店</option>
 				</select>
 				<select id="floor" name="floor" onchange="showFloorRoomList()">
 				</select>
-			<button>
+			<button onclick="showRoomList()">
 				<span class="webkit">查询</span>
 			</button>
 			<button>
 				<span class="webkit">清空</span>
 			</button>
 		</div>
-
-	<div class="tab">
+	<!--startprint-->
+	<div id="tab" class="tab">
 		<h6 class="title overflow">
 			<span class="lt" id="hotelName">酒店房间信息</span>
 			<p class="lt idleIcon">
@@ -66,6 +63,7 @@
 
 		</div>
 	</div>
+	<!--endprint-->
 	</div>
 	<!-- 模态框 -->
 		<div class="modal none">

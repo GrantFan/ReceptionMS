@@ -23,7 +23,7 @@ public interface MealsRecordMapper {
 	@Delete("delete from meals_record where id=#{id}")
 	int delete(MealsRecordEntity meals);
 	
-	@Select("select id,reception_number receptionNumber,menu_number menuNumber,hotel,meals_time mealsTime,hobby,record_time recordTime,remark from meals_record")
+	@Select("select id,reception_number receptionNumber,menu_number menuNumber,hotel,meals_time mealsTime,hobby,record_time recordTime,remark from meals_record order by record_time desc,reception_number ")
 	List<MealsRecordEntity> selectList();
 	
 	@Select("select id,reception_number receptionNumber,menu_number menuNumber,hotel,meals_time mealsTime,hobby,record_time recordTime,remark from meals_record where reception_number=#{receptionNumber}")

@@ -69,7 +69,19 @@ function selectMenu() {
 		}
 	});
 }
-function resetFrom() {
+//重置按钮
+function reset() {
+	$("#receptionTitle").val("");
+	$("#receptionDate").val("");
+	$("#receptionPerson").val("");
+	$("#receptionPrinter").val("");
+	$("#guestName").val("");
+	$("#entourage").val("");
+	$("#guestNum").val("");
+	$("#receptionNum").val("");
+	$("#receptionDays").val("");
+	$("#description").val("");
+	$("#remark").val("");
 }
 
 function addMealsColumn(){

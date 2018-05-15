@@ -41,7 +41,7 @@ public interface ReceptionRecordMapper {
 	@Delete("delete from reception_record where reception_number=#{receptionNumber}")
 	int delete(ReceptionRecordEntity reception);
 	
-	@Select("select id,reception_number receptionNumber,reception_title receptionTitle,reception_date receptionDate,reception_person receptionPerson,reception_printer receptionPrinter,guest_name guestName,entourage,guest_num guestNum,reception_num receptionNum,reception_days receptionDays,hotel,description,record_time recordTime,remark from reception_record")
+	@Select("select id,reception_number receptionNumber,reception_title receptionTitle,reception_date receptionDate,reception_person receptionPerson,reception_printer receptionPrinter,guest_name guestName,entourage,guest_num guestNum,reception_num receptionNum,reception_days receptionDays,hotel,description,record_time recordTime,remark from reception_record order by record_time desc")
 	List<ReceptionRecordEntity> selectList();
 	
 	@Select("select id,reception_number receptionNumber,reception_title receptionTitle,reception_date receptionDate,reception_person receptionPerson,reception_printer receptionPrinter,guest_name guestName,entourage,guest_num guestNum,reception_num receptionNum,reception_days receptionDays,hotel,description,record_time recordTime,remark from reception_record where reception_number=#{receptionNumber}")

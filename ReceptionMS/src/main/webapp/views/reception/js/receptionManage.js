@@ -237,6 +237,13 @@ function search(pageNum,pageSize){
 	})
 }
 
+//重置按钮
+function reset() {
+	$("#input_receptionTitle").val("");
+	$("#input_receptionDate").val("");
+	
+}
+
 function view(tr){
 	$(".modal").show(500);
 	$("#update").hide();
@@ -671,4 +678,14 @@ function accomDelete(button){
 	} else {
 		return;
 	}
+}
+
+function exprotReception(){
+	location.href = '../../recep/export';
+}
+function exprotMeals(){
+	location.href = '../../meals/export';
+}
+function exprotAccom(){
+	location.href = '../../accom/export';
 }

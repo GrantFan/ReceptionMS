@@ -2,27 +2,46 @@ package com.reception.recep.model;
 
 import java.util.List;
 
+import com.reception.util.poi.ModelProp;
+import com.reception.util.poi.ModelTitle;
+
 /*
  * 接待记录实体
  */
+@ModelTitle(name="接待记录")
 public class ReceptionRecordEntity {
 	
+	@ModelProp(name="ID")
 	private Integer id;
-	private String receptionNumber ;//接待编号
-	private String receptionTitle;//接待名称
-	private String receptionDate;//接待日期
-	private String receptionPerson;//接待人
-	private String receptionPrinter;//接待资料打印人员
-	private String description;//描述
-	private String recordTime;//登记时间
-	private String remark;//备注
+	@ModelProp(name="接待编号",colIndex=1)
+	private String receptionNumber = "";//接待编号
+	@ModelProp(name="接待名称",colIndex=2)
+	private String receptionTitle = "";//接待名称
+	@ModelProp(name="接待日期",colIndex=3)
+	private String receptionDate = "";//接待日期
+	@ModelProp(name="接待人员",colIndex=4)
+	private String receptionPerson  = "";//接待人员
+	@ModelProp(name="接待资料打印人员",colIndex=5)
+	private String receptionPrinter  = "";//接待资料打印人员
+	@ModelProp(name="宾客姓名",colIndex=6)
+	private String guestName = "";//宾客姓名
+	@ModelProp(name="陪同人员",colIndex=7)
+	private String entourage = "";//陪同人员
+	@ModelProp(name="来宾人数",colIndex=8)
+	private String guestNum = "";//来宾人数
+	@ModelProp(name="接待人次",colIndex=9)
+	private String receptionNum = "";//接待人次
+	@ModelProp(name="接待天数",colIndex=10)
+	private String receptionDays = "";//接待天数
+	@ModelProp(name="接待酒店",colIndex=11)
+	private String hotel = "";//酒店
+	@ModelProp(name="描述",colIndex=12)
+	private String description  = "";//描述
+	@ModelProp(name="登记时间",colIndex=13)
+	private String recordTime  = "";//登记时间
+	@ModelProp(name="备注",colIndex=14)
+	private String remark  = "";//备注
 	
-	private String guestName;//宾客姓名
-	private String entourage;//陪同人员
-	private Integer guestNum;//来宾人数
-	private Integer receptionNum;//接待人次
-	private String receptionDays;//接待天数
-	private String hotel;//酒店
 	
 	private List<MealsRecordEntity> meals;//用餐记录
 	private List<AccommodationRecordEntity> accom;//用餐记录
@@ -100,16 +119,17 @@ public class ReceptionRecordEntity {
 	public void setEntourage(String entourage) {
 		this.entourage = entourage;
 	}
-	public Integer getGuestNum() {
+
+	public String getGuestNum() {
 		return guestNum;
 	}
-	public void setGuestNum(Integer guestNum) {
+	public void setGuestNum(String guestNum) {
 		this.guestNum = guestNum;
 	}
-	public Integer getReceptionNum() {
+	public String getReceptionNum() {
 		return receptionNum;
 	}
-	public void setReceptionNum(Integer receptionNum) {
+	public void setReceptionNum(String receptionNum) {
 		this.receptionNum = receptionNum;
 	}
 	public String getReceptionDays() {
