@@ -108,7 +108,43 @@ function contrastHotel() {
 				}
 			})
 		}
-	}else{
+	} else {
 		alert("请选择比较类型~");
 	}
+}
+
+//打印
+function print() {
+	var canvas = document.getElementById("mycanvas");
+	console.log(canvas);
+	var dataUrl = canvas.toDataURL();
+	var newImg = document.createElement("img");
+	newImg.src = dataUrl;
+	var printWindow = window.open(newImg.src);
+	printWindow.document.write('<img src="' + newImg.src + '" />')
+	printWindow.print();
+}
+//打印预览
+function doprint(id) {
+	html2canvas(document.querySelector("#" + id)).then(canvas => {
+		canvas.id = "mycanvas";
+		//				document.body.appendChild(canvas);
+		$("#img").empty();
+		$("#img").append(canvas)
+		$("#printModal").show(800);
+	});
+}
+
+//打印
+function printHtml(){
+	bdhtml = window.document.body.innerHTML;  
+	sprnstr = "<!--startprint-->";  
+	eprnstr = "<!--endprint-->";  
+	prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17);  
+	prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));  
+	var style = "<head><style></style></head>";
+	var newWin = window.open('', '', '');
+	newWin.document.write(style);
+	newWin.document.write(prnhtml);
+	newWin.print();
 }

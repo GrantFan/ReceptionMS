@@ -314,7 +314,7 @@ function doprint(id) {
 //				document.body.appendChild(canvas);
 				$("#img").empty();
 				$("#img").append(canvas)
-				$("#yulan").show(800);
+				$("#printModal").show(800);
 			});
 }
 
