@@ -322,7 +322,7 @@ function getImage(hotel) {
 		success : function(result) {
 			var list = eval("(" + result + ")");
 //			$("#inmpage").text("1/"+list.length);
-			console.log(list)
+//			console.log(list)
 			var info = $("#imageOver").empty();
 			for (var i = 0; i < list.length; i++) {
 				if (i == 0) {
@@ -410,4 +410,14 @@ function delImg() {
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {}
 	});
+}
+
+//打印
+function print(){
+  var img = $("#imageOver li.block img");
+  var newImg = document.createElement("img");  
+  newImg.src = img[0].src;  
+  var printWindow = window.open(newImg.src);  
+  printWindow.document.write('<img src="'+newImg.src+'" />')  
+  printWindow.print();  
 }

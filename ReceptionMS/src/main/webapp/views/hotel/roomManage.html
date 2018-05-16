@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="http://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script type="text/javascript"
+	src="../assets/js/html2canvas.min.js"></script>
 <script type="text/javascript" src="js/hotelShow.js"></script>
 <script type="text/javascript" src="js/roomManage.js"></script>
 </head>
@@ -15,13 +16,13 @@
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
-			<button onclick="add()" >
+			<button onclick="add()">
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
 			<button onclick="doprint('tab')">
 				<u class="dyyl"></u><span class="webkit">打印预览</span>
-			</button> 
-			<button onclick="print()">
+			</button>
+			<button onclick="printHtml()">
 				<u class="dy"></u><span class="webkit">打印</span>
 			</button>
 			<button>
@@ -33,11 +34,10 @@
 		</div>
 		<div class="inputs">
 			<input type="text" id="hotel_input" name="hotel_input"
-				onchange="hotelShow(this)" placeholder="酒店名称" value="" />
-				<select id="hotel" name="hotel" onchange="showRoomList()">
-				</select>
-				<select id="floor" name="floor" onchange="showFloorRoomList()">
-				</select>
+				onchange="hotelShow(this)" placeholder="酒店名称" value="" /> <select
+				id="hotel" name="hotel" onchange="showRoomList()">
+			</select> <select id="floor" name="floor" onchange="showFloorRoomList()">
+			</select>
 			<button onclick="showRoomList()">
 				<span class="webkit">查询</span>
 			</button>
@@ -45,128 +45,134 @@
 				<span class="webkit">清空</span>
 			</button>
 		</div>
-	<!--startprint-->
-	<div id="tab" class="tab">
-		<h6 class="title overflow">
-			<span class="lt" id="hotelName">酒店房间信息</span>
-			<p class="lt idleIcon">
-				<i class="idle"></i> 
-				<span class="webkit">空闲</span>
-			</p>
-			<p class="lt inUseIcon">
-				<i class="inUse"></i>
-				<span class="webkit">预定</span>
-			</p>
-		</h6>
-		<!--酒店 -->
-		<div id="seat" class="seat">
-
+		<!--startprint-->
+		<div id="tab" class="tab">
+			<h6 class="title overflow">
+				<span class="lt" id="hotelName">酒店房间信息</span>
+				<p class="lt idleIcon">
+					<i class="idle"></i> <span class="webkit">空闲</span>
+				</p>
+				<p class="lt inUseIcon">
+					<i class="inUse"></i> <span class="webkit">预定</span>
+				</p>
+			</h6>
+			<!--酒店 -->
+			<div id="seat" class="seat"></div>
 		</div>
-	</div>
-	<!--endprint-->
+		<!--endprint-->
 	</div>
 	<!-- 模态框 -->
-		<div class="modal none">
-			<div class="box" style="width:80vw;">
-				<h4 class="overflow">
+	<div id="modal" class="modal none">
+		<div class="box" style="width:80vw;">
+			<h4 class="overflow">
 				<p class="lt">
-					<span id="modal_name">酒店信息</span>
+					<span id="modal_name">房间信息</span>
 				</p>
 				<p class="rt" id="close"
 					onclick="$(this).parents('.modal').hide(800)">
 					<u></u>
 				</p>
 			</h4>
-				<div class="mbody overflow">
-					<input type="hidden" name="id" id="id" />					
-					<div class="lt" style="width:49%;">
-						<label for="hotel"> <span>所属酒店：</span> 
-							<!-- <input type="text" name="input_hotel" id="input_hotel" value="" onchange="roomHotelLoad(this.value)" placeholder="查询酒店" /> -->
-							<select id="roomHotel" name="roomHotel" >
-								<option value="">-------------</option>
-								<option value="">东方国际大酒店</option>
-								<option value="">光明大酒店</option>
-								<option value="">宏兴大酒店</option>
-							</select>
-						</label> 
-							<label for="roomNumber"> <span>房间号：</span> <input
-							type="text" name="roomNumber" id="roomNumber" value="" />
-						</label> <label for="roomFloor"> <span>房间楼层：</span> <input
-							type="text" name="roomFloor" id="roomFloor" />
-						</label> <label for="orientation"> <span>房间朝向：</span> <input
-							type="text" name="orientation" id="orientation" />
-						</label> <label for="supportFacilities"> <span>配套设施：</span> <input type="text"
-							name="supportFacilities" id="supportFacilities" />
-						</label>
-						<label for=roomType> <span>房间类型：</span> 
-							<select id="roomType" name="roomType">
+			<div class="mbody overflow">
+				<input type="hidden" name="id" id="id" />
+				<div class="lt" style="width:49%;">
+					<label for="hotel"> <span>所属酒店：</span> <!-- <input type="text" name="input_hotel" id="input_hotel" value="" onchange="roomHotelLoad(this.value)" placeholder="查询酒店" /> -->
+						<select id="roomHotel" name="roomHotel">
+							<option value="">-------------</option>
+							<option value="">东方国际大酒店</option>
+							<option value="">光明大酒店</option>
+							<option value="">宏兴大酒店</option>
+					</select>
+					</label> <label for="roomNumber"> <span>房间号：</span> <input
+						type="text" name="roomNumber" id="roomNumber" value="" />
+					</label> <label for="roomFloor"> <span>房间楼层：</span> <input
+						type="text" name="roomFloor" id="roomFloor" />
+					</label> <label for="orientation"> <span>房间朝向：</span> <input
+						type="text" name="orientation" id="orientation" />
+					</label> <label for="supportFacilities"> <span>配套设施：</span> <input
+						type="text" name="supportFacilities" id="supportFacilities" />
+					</label> <label for=roomType> <span>房间类型：</span> <select
+						id="roomType" name="roomType">
 							<option value="">-------------</option>
 							<option value="">标准间</option>
 							<option value="">商务房</option>
-							</select>
-						</label> 
-							<label for=specialType> <span>特殊类型：</span> 
-							<input type="text"
-							name="specialType" id="specialType" />
-						</label> 
-						<label for="specialServe"> <span>特色服务：</span> <input type="text"
-							name="specialServe" id="specialServe" />
-						</label>
-					</div>
-					<div class="rt" style="width:49%;">
-						<label for="outsidePhone"> <span>外线电话：</span> <input type="text"
-						name="outsidePhone" id="outsidePhone" />
-						</label>
-						<label for="innerlinePhone"> <span>内线电话：</span> <input type="text"
-							name="innerlinePhone" id="innerlinePhone" />
-						</label>
-						<label for="responsiblePerson"> <span>房间负责人：</span> <input type="text"
-							name="responsiblePerson" id="responsiblePerson" />
-						</label>
-							<label for="rackPrice"> <span>门市价：</span> <input type="text"
-							name="rackPrice" id="rackPrice" />
-						</label>
-							<label for="agreementPrice"> <span>协议价：</span> <input type="text"
-							name="agreementPrice" id="agreementPrice" />
-						</label>
-							<label for="containFood"> <span>是否含餐：</span> 
-							<select name="containFood" id="containFood">
+					</select>
+					</label> <label for=specialType> <span>特殊类型：</span> <input
+						type="text" name="specialType" id="specialType" />
+					</label> <label for="specialServe"> <span>特色服务：</span> <input
+						type="text" name="specialServe" id="specialServe" />
+					</label>
+				</div>
+				<div class="rt" style="width:49%;">
+					<label for="outsidePhone"> <span>外线电话：</span> <input
+						type="text" name="outsidePhone" id="outsidePhone" />
+					</label> <label for="innerlinePhone"> <span>内线电话：</span> <input
+						type="text" name="innerlinePhone" id="innerlinePhone" />
+					</label> <label for="responsiblePerson"> <span>房间负责人：</span> <input
+						type="text" name="responsiblePerson" id="responsiblePerson" />
+					</label> <label for="rackPrice"> <span>门市价：</span> <input
+						type="text" name="rackPrice" id="rackPrice" />
+					</label> <label for="agreementPrice"> <span>协议价：</span> <input
+						type="text" name="agreementPrice" id="agreementPrice" />
+					</label> <label for="containFood"> <span>是否含餐：</span> <select
+						name="containFood" id="containFood">
 							<option value="Y">是</option>
 							<option value="N">否</option>
-							</select>
-						</label>
-							<label for="state"> <span>房间状态：</span> 
-							<select name="state" id="state">
+					</select>
+					</label> <label for="state"> <span>房间状态：</span> <select
+						name="state" id="state">
 							<option value="1">空闲</option>
 							<option value="2">预定</option>
-							</select>
-						</label>
-						 <label for="remark"> <span>备注</span> <textarea
-								name="remark" rows="2" cols="30" id="remark"></textarea>
-						</label>
-					</div>
-					
-					
+					</select>
+					</label> <label for="remark"> <span>备注</span> <textarea
+							name="remark" rows="2" cols="30" id="remark"></textarea>
+					</label>
 				</div>
-				<div class="mfoot" align="center">
-					<button id="add" onclick="addSubmit()">
+
+
+			</div>
+			<div class="mfoot" align="center">
+				<button id="add" onclick="addSubmit()">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
-					<button id="update" onclick="editSubmit()" style="display:none">
+				<button id="update" onclick="editSubmit()" style="display:none">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
-					<button onclick="$(this).parents('.modal').hide(800)">
+				<button onclick="$(this).parents('.modal').hide(800)">
 					<u class="cancel lt"></u> <span class="lt">取消</span>
 				</button>
-				</div>
 			</div>
 		</div>
-		<script type="text/javascript">
-			// 关于按钮组的切换
-			$(".buttons>button").on("click",function(e){
-				$(this).addClass('active').siblings('button').removeClass('active');
-			});
-		</script>
+	</div>
+
+	<div id="yulan" class="modal none">
+		<div class="box" style="width:80vw;">
+			<h4 class="overflow">
+				<p class="lt">
+					<span id="modal_name">房间信息</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div id="img" class="mbody overflow"></div>
+			<div class="mfoot" align="center">
+				<button onclick="print()">
+					<u class="confirm lt"></u> <span class="lt">打印</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		// 关于按钮组的切换
+		$(".buttons>button").on("click", function(e) {
+			$(this).addClass('active').siblings('button').removeClass('active');
+		});
+	</script>
 </body>
 
 </html>

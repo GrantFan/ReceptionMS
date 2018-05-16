@@ -149,7 +149,7 @@ function exportExcel() {
 //新增
 function add() {
 	//重置表单
-	$(".modal").show(500);
+	$("#modal").show(500);
 	$('#add').show();
 	$('#update').hide(500);
 
@@ -194,7 +194,7 @@ function addSubmit() {
 	}, function(result) {
 		if (result == "true") {
 			alert("添加成功");
-			$('.modal').hide();
+			$('#modal').hide();
 			$("#modal_name").text("房间信息");
 		//			showRoomList();
 		} else {
@@ -210,7 +210,7 @@ function addSubmit() {
 function showRoom(roomId) {
 	//	alert(roomId);
 	$("#modal_name").text("房间信息");
-	$(".modal").show(500);
+	$("#modal").show(500);
 	$('#add').hide();
 	$('#update').show(500);
 	$("#input_hotel").hide();
@@ -286,7 +286,7 @@ function editSubmit() {
 			//console.log(result);
 			if (result == "true") {
 				alert("修改成功");
-				$('.modal').hide();
+				$('#modal').hide();
 				$("#modal_name").text("房间信息");
 				showRoomList();
 			} else {
@@ -296,58 +296,38 @@ function editSubmit() {
 	});
 }
 
+//打印
 function print(){
+	var canvas = document.getElementById("mycanvas");
+	console.log(canvas);
+	var dataUrl = canvas.toDataURL();  
+    var newImg = document.createElement("img");  
+    newImg.src = dataUrl;  
+    var printWindow = window.open(newImg.src);  
+    printWindow.document.write('<img src="'+newImg.src+'" />')  
+    printWindow.print();  
+}
+//打印预览
+function doprint(id) {
+			html2canvas(document.querySelector("#"+id)).then(canvas => {
+				canvas.id = "mycanvas";
+//				document.body.appendChild(canvas);
+				$("#img").empty();
+				$("#img").append(canvas)
+				$("#yulan").show(800);
+			});
+}
+
+//打印
+function printHtml(){
 	bdhtml = window.document.body.innerHTML;  
 	sprnstr = "<!--startprint-->";  
 	eprnstr = "<!--endprint-->";  
 	prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17);  
 	prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));  
 	var style = "<head><style></style></head>";
-	console.log(prnhtml);
-//	window.document.body.innerHTML = prnhtml;  
-//	window.print();  
 	var newWin = window.open('', '', '');
 	newWin.document.write(style);
 	newWin.document.write(prnhtml);
 	newWin.print();
 }
-
-function doprint(id) {
-	var dataUrl=html2canvas(document.querySelector("#tab")).then(canvas => {
-		canvas.id = "mycanvas";
-		console.log(canvas);
-	    document.body.appendChild(canvas);
-	    dataUrl = canvas.toDataURL();
-	    var dataUrl = canvas.toDataURL();
-	    console.log(dataUrl)
-	    return dataUrl;
-	});
-	  console.log(dataUrl)
-	  var printWindow = window.open('','',''); 
-	  printWindow.document.write("<img src='"+dataUrl+"' />");
-      printWindow.print(); 
-	
-	
-//	img = dataUrl;
-//    var newWin = window.open();
-//	newWin.document.write("<img src='"+img+"' />");
-//	newWin.print();
-//    html2canvas(document.getElementById(id), {  
-//        allowTaint : true,  
-//        taintTest : false,  
-//        onrendered : function(canvas) {  
-//            canvas.id = "mycanvas";  
-//            //document.body.appendChild(canvas);  
-//            //生成base64图片数据  
-//            var dataUrl = canvas.toDataURL();  
-//            var newImg = document.createElement("img");  
-//            newImg.src = dataUrl;  
-//            /* document.body.appendChild(newImg);  */  
-//            /* window.open(newImg.src); */  
-//            var printWindow = window.open(newImg.src);
-//                // printWindow.document.write();   
-//                 printWindow.document.write('<img src="'+newImg.src+'" />')  
-//                 printWindow.print();  
-//        }  
-//    });  
-}  
