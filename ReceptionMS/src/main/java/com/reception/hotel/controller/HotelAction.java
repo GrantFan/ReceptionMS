@@ -1,5 +1,7 @@
 package com.reception.hotel.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +15,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -35,7 +40,9 @@ import com.reception.util.poi.ModelTitle;
 @RestController
 @RequestMapping(value = "/hotel")
 public class HotelAction {
-
+	@Value("${spring.http.multipart.location}")
+    private String location;
+	
 	@Resource
 	HotelServiceImpl hotelServiceImpl;
 	@Resource
@@ -72,8 +79,8 @@ public class HotelAction {
 	};
 
 	@RequestMapping(value = "/list", produces = "application/text; charset=utf-8")
-	public String selectList(@RequestParam(value="pageNum",required = false,defaultValue = "1")String pageNum,
-							@RequestParam(value="pageSize",required = false,defaultValue = "10")String pageSize) {
+	public String selectList(@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") String pageSize) {
 		// long total = PageHelper.count(() ->
 		// {hotelServiceImpl.selectList();});
 		// Page page = PageHelper.getLocalPage();
@@ -84,7 +91,7 @@ public class HotelAction {
 		List<HotelInfoEntity> list = hotelServiceImpl.selectList();
 		PageInfo<HotelInfoEntity> pageInfo = new PageInfo<HotelInfoEntity>(list);
 		String json = JSONHelper.toJSON(pageInfo);
-//		System.out.println(json);
+		// System.out.println(json);
 		return json;
 	};
 
@@ -101,7 +108,7 @@ public class HotelAction {
 	public String selectListByName(HotelInfoEntity hotel) {
 		List<HotelInfoEntity> list = hotelServiceImpl.selectListByName(hotel);
 		String json = JSONHelper.toJSON(list);
-//		System.out.println(json);
+		// System.out.println(json);
 		return json;
 	};
 
@@ -138,7 +145,8 @@ public class HotelAction {
 			byte[] bytes = new byte[1024];
 
 			response.setContentType("application/octet-stream;charset=utf-8");
-			response.setHeader("Content-Disposition", "attachment;filename=" +URLEncoder.encode(filename,"UTF-8")+ ".xls;filename*=UTF-8''"+URLEncoder.encode(filename,"UTF-8")+".xls");
+			response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8")
+					+ ".xls;filename*=UTF-8''" + URLEncoder.encode(filename, "UTF-8") + ".xls");
 			response.addHeader("Pargam", "no-cache");
 			response.addHeader("Cache-Control", "no-cache");
 
@@ -170,4 +178,29 @@ public class HotelAction {
 
 		return "false";
 	};
+
+	@RequestMapping(value = "/import", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	public String getFileUrl(@RequestParam(value = "file", required = false) MultipartFile file) {
+		File f = new File(location+ file.getOriginalFilename());
+		int count = 0;
+		try {
+			file.transferTo(f);
+			InputStream in =   new FileInputStream(f);
+			List<HotelInfoEntity> list = ImportExcelUtil.importExcel(HotelInfoEntity.class, in);
+//			System.out.println(list.size());
+			for(HotelInfoEntity hotel : list){
+				hotelServiceImpl.addHotelInfo(hotel);
+				count++;
+			}
+			return "{\"flag\":\"true\",\"count\":\""+count+"\"}";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "{\"flag\":\"false\",\"count\":\""+count+"\"}";
+		} finally {
+			if (f.exists()) {
+				f.delete();
+			}
+		}
+	}
+
 }

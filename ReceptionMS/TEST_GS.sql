@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110100
 File Encoding         : 65001
 
-Date: 2018-05-15 19:13:07
+Date: 2018-05-17 10:55:55
 */
 
 
@@ -610,6 +610,12 @@ COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of GUEST_INFO
 -- ----------------------------
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('9', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('8', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('10', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('11', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('12', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('13', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('2', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('3', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', '硕士', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
 INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('4', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', '本科', null, null, null, null, null, null, '小客户', '很快就好');
@@ -649,16 +655,15 @@ COMMENT ON COLUMN "TEST_GS"."HOTEL_INFO"."PLANE_GRAPH" IS '酒店平面图';
 -- ----------------------------
 -- Records of HOTEL_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('13', null, null, null, null, null, null, null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('3', '东方国际大酒店', '马艳玲', '18193748166', '0937-2699999', '敦煌', '酒泉市肃州区仓门街6号', null, '11111');
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('4', '光明大酒店', '王海锋', '18919375595', '0937-2807777', '肃州区', '甘肃省酒泉市肃州区盘旋中路18号', null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('5', '宏兴大酒店', '陈浩', '18919427777', '0937-2802222', '肃州区', '甘肃省酒泉市肃州区盘旋西路7号', null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('6', '惠城大酒店', '马春梅', '18093729288', '0937-2671616', '玉门市', '酒泉市新城区莫高路16号', null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('8', '敦煌华夏国际大酒店', '侯红林', '13519375666', '0937-8887110', '敦煌', '甘肃省酒泉市敦煌市敦月公路中端888号', null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('9', '敦煌国际大酒店', '叶彦萍', '13993722999', '0397-8821821', '敦煌', '甘肃省酒泉市敦煌市鸣山北路827号', null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('10', '敦煌天润大酒店', '权玉霞', '18993732897', '0937-8819501', '敦煌', '甘肃省酒泉市敦煌市鸣山路309号', null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('11', '敦煌太阳大酒店', '张春艳', '13893726729', '0937-8841858', '敦煌', null, null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('12', '行星酒店', '我也不', '1235135', '1231412', '肃州区', '肃州区', null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('3', '宏兴大酒店', '陈浩', '18919427777', '0937-2802222', '肃州区', '甘肃省酒泉市肃州区盘旋西路7号', null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('1', '东方国际大酒店', '马艳玲', '18193748166', '0937-2699999', '敦煌', '酒泉市肃州区仓门街6号', null, '11111');
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('2', '光明大酒店', '王海锋', '18919375595', '0937-2807777', '肃州区', '甘肃省酒泉市肃州区盘旋中路18号', null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('4', '惠城大酒店', '马春梅', '18093729288', '0937-2671616', '玉门市', '酒泉市新城区莫高路16号', null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('5', '敦煌华夏国际大酒店', '侯红林', '13519375666', '0937-8887110', '敦煌', '甘肃省酒泉市敦煌市敦月公路中端888号', null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('6', '敦煌国际大酒店', '叶彦萍', '13993722999', '0397-8821821', '敦煌', '甘肃省酒泉市敦煌市鸣山北路827号', null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('7', '敦煌天润大酒店', '权玉霞', '18993732897', '0937-8819501', '敦煌', '甘肃省酒泉市敦煌市鸣山路309号', null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('8', '敦煌太阳大酒店', '张春艳', '13893726729', '0937-8841858', '敦煌', null, null, null);
+INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('9', '行星酒店', '我也不', '1235135', '1231412', '肃州区', '肃州区', null, null);
 
 -- ----------------------------
 -- Table structure for HOTEL_PLANE_GRAPH
@@ -1093,7 +1098,7 @@ COMMENT ON COLUMN "TEST_GS"."SYS_USER"."ROLE_ID" IS '角色id';
 -- ----------------------------
 -- Records of SYS_USER
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '超级管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-15 17:32:12', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '超级管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-17 10:48:18', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
 INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', '123456', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-12 19:26:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:48', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
 INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'wwww', '测试', '123456', null, null, TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:12:45', 'YYYY-MM-DD HH24:MI:SS'), null, '1');
 

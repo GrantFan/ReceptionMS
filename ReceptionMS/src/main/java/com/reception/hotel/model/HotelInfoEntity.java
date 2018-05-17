@@ -6,23 +6,23 @@ import com.reception.util.poi.ModelTitle;
 @ModelTitle(name="酒店信息")
 public class HotelInfoEntity {
 
-	@ModelProp(name="ID")
+//	@ModelProp(name="ID")
 	private Integer id ;
-	@ModelProp(name="酒店名称",colIndex=1)
+	@ModelProp(name="酒店名称",colIndex=0)
 	private String hotelName ;
-	@ModelProp(name="酒店联系人",colIndex=2)
+	@ModelProp(name="酒店联系人",colIndex=1)
 	private String linkman;
-	@ModelProp(name="联系电话",colIndex=3)
+	@ModelProp(name="联系电话",colIndex=2)
 	private String telphone;
-	@ModelProp(name="座机",colIndex=4)
+	@ModelProp(name="座机",colIndex=3)
 	private String phone;
-	@ModelProp(name="所属行政区",colIndex=5)
+	@ModelProp(name="所属行政区",colIndex=4)
 	private String area;
-	@ModelProp(name="酒店地址",colIndex=6)
+	@ModelProp(name="酒店地址",colIndex=5)
 	private String address;
-	@ModelProp(name="酒店平面图路径",colIndex=7)
+	@ModelProp(name="酒店平面图路径",colIndex=6)
 	private String planeGraph;
-	@ModelProp(name="备注",colIndex=8)
+	@ModelProp(name="备注",colIndex=7)
 	private String remark;
 	
 	

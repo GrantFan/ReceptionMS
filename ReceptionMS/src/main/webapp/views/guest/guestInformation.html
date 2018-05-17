@@ -77,12 +77,10 @@
 						<u class="dy"></u>
 						<span class="webkit">打印</span>						
 					</button>
-					<label for="file">
+					<button  onclick="importModal()">
 						<u class="dr"></u>
-						<input type="file" name="file" id="file_excel" class="none"  onchange="import_Excel(this);">
-						<span class="webkit">导入</span>
-					</label>	
-					<!-- <button  onclick="import_Excel()" style="position:relative;" id='files'></button> -->
+						<span class="webkit">导入</span>	
+					</button>
 					<button  onclick="export_guest()">
 						<u class="dc"></u>
 						<span class="webkit">导出</span>
@@ -279,6 +277,37 @@
 					</button>
 				</div>
 			</div>
+			</div>
+			
+		<div id="importModal" class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>导入文件选择</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+					<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
+						<label for="file" class="Ibtn lt text-center" style="margin:0px 1.302vw 0px 0px;">
+						 导入 文件选择
+						<input onchange="import_Excel(this);" type="file"  class="" id="file_excel">
+						</label>
+					</div>
+			</div>
+			<div class="mfoot" align="center">
+				<button >
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+		</div>
 		<script>
 			// 关于按钮组的切换
 			$(".buttons>button").on("click",function(e){

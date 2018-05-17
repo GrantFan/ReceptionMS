@@ -7,7 +7,7 @@ $(function(){
 //添加宾客功能
 function add_guest(){
     document.getElementById("modal").style.visibility="visible";//显示
-    $('.modal').show(500);
+    $('#modal').show(500);
     $("#tijiao").show();
     $("#tijiao").attr("onclick","save_guest()");
     $("#modal input").val("");
@@ -167,7 +167,7 @@ function select_detail(){
 	   }
 	  if(id != -1){
 		  document.getElementById("modal").style.visibility="visible";//显示
-		  $('.modal').show(500);
+		  $('#modal').show(500);
 		  $("#tijiao").hide();
 		  selectById(id);
 	  }else{
@@ -253,7 +253,7 @@ function edit_guest(){
 	    }
 	  if(id != -1){
 		 document.getElementById("modal").style.visibility="visible";//显示
-		    $('.modal').show(500);
+		    $('#modal').show(500);
 		    $("#tijiao").show();
 		    $("#tijiao").attr("onclick","update_guest("+id+")");
 		    selectById(id);
@@ -373,9 +373,13 @@ function delete_img(){
  * 导出酒店信息信息
  */
 function export_guest(){
-	location.href='http://localhost:8088/ReceptionMS/guest/guest.xls';
+	location.href='../../guest/guest.xls';
 }
 
+
+function importModal(){
+	$("#importModal").show(500);
+}
 
 /**
  * 导入

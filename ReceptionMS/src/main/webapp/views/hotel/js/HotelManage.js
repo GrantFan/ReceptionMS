@@ -291,6 +291,49 @@ function dele() {
 	}
 }
 
+function importModal(){
+	$("#importModal").show(500);
+}
+/**
+ * 导入
+ */
+function importExcel(obj) {
+	var f = $(obj).val();
+	if (f == null || f == undefined || f == '') {
+		return false;
+	}
+	if (!/\.(?:xls|xlsx)$/.test(f)) {
+		alert("请上传Excel文件");
+		$(obj).val('');
+		return false;
+	}
+	var data = new FormData();
+	$.each($("#file_excel")[0].files, function(i, file) {
+		data.append('file', file);
+	})
+	$.ajax({
+		type : "POST",
+		url : "../../hotel/import",
+		data : data,
+		cache : false,
+		processData : false,
+		contentType : false,
+		dataType : "json",
+		success : function(str) {
+			console.log(str);
+			if (str.flag == "true") {
+				alert("导入成功！ 导入" + str.count + "条数据");
+				showHotelList(1, 10);
+				$("#importModal").hide(500);
+			} else {
+				alert("导入" + str.count + "条数据");
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("请求失败，请检查网络后重试");
+		}
+	});
+}
 //exportExcel
 function exportExcel() {
 	location.href = '../../hotel/export';
