@@ -680,6 +680,21 @@ function accomDelete(button){
 	}
 }
 
+//打印预览
+//打印
+function printHtml(){
+	bdhtml = window.document.body.innerHTML;  
+	sprnstr = "<!--startprint-->";  
+	eprnstr = "<!--endprint-->";  
+	prnhtml = bdhtml.substr(bdhtml.indexOf(sprnstr) + 17);  
+	prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr));  
+	var style = "<head><style></style></head>";
+	var newWin = window.open('', '', '');
+	newWin.document.write(style);
+	newWin.document.write(prnhtml);
+	newWin.print();
+}
+
 function exprotReception(){
 	location.href = '../../recep/export';
 }

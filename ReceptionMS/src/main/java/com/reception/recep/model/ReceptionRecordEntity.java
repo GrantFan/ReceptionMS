@@ -11,35 +11,34 @@ import com.reception.util.poi.ModelTitle;
 @ModelTitle(name="接待记录")
 public class ReceptionRecordEntity {
 	
-	@ModelProp(name="ID")
 	private Integer id;
-	@ModelProp(name="接待编号",colIndex=1)
+	@ModelProp(name="接待编号",colIndex=0)
 	private String receptionNumber = "";//接待编号
-	@ModelProp(name="接待名称",colIndex=2)
+	@ModelProp(name="接待名称",colIndex=1)
 	private String receptionTitle = "";//接待名称
-	@ModelProp(name="接待日期",colIndex=3)
+	@ModelProp(name="接待日期",colIndex=2)
 	private String receptionDate = "";//接待日期
-	@ModelProp(name="接待人员",colIndex=4)
+	@ModelProp(name="接待人员",colIndex=3)
 	private String receptionPerson  = "";//接待人员
-	@ModelProp(name="接待资料打印人员",colIndex=5)
+	@ModelProp(name="接待资料打印人员",colIndex=4)
 	private String receptionPrinter  = "";//接待资料打印人员
-	@ModelProp(name="宾客姓名",colIndex=6)
+	@ModelProp(name="宾客姓名",colIndex=5)
 	private String guestName = "";//宾客姓名
-	@ModelProp(name="陪同人员",colIndex=7)
+	@ModelProp(name="陪同人员",colIndex=6)
 	private String entourage = "";//陪同人员
-	@ModelProp(name="来宾人数",colIndex=8)
+	@ModelProp(name="来宾人数",colIndex=7)
 	private String guestNum = "";//来宾人数
-	@ModelProp(name="接待人次",colIndex=9)
+	@ModelProp(name="接待人次",colIndex=8)
 	private String receptionNum = "";//接待人次
-	@ModelProp(name="接待天数",colIndex=10)
+	@ModelProp(name="接待天数",colIndex=9)
 	private String receptionDays = "";//接待天数
-	@ModelProp(name="接待酒店",colIndex=11)
+	@ModelProp(name="接待酒店",colIndex=10)
 	private String hotel = "";//酒店
-	@ModelProp(name="描述",colIndex=12)
+	@ModelProp(name="描述",colIndex=11)
 	private String description  = "";//描述
-	@ModelProp(name="登记时间",colIndex=13)
+	@ModelProp(name="登记时间",colIndex=12)
 	private String recordTime  = "";//登记时间
-	@ModelProp(name="备注",colIndex=14)
+	@ModelProp(name="备注",colIndex=13)
 	private String remark  = "";//备注
 	
 	

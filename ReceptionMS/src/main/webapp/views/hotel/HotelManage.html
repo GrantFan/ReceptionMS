@@ -90,7 +90,7 @@
 			<button onclick="importModal()">
 				<u class="dr"></u><span class="webkit"> 导入</span>
 			</button>
-			
+
 			<button onclick="exportExcel()">
 				<u class="dc"></u><span class="webkit">导出 </span>
 			</button>
@@ -283,8 +283,8 @@
 				</button>
 			</div>
 		</div>
-		</div>
-		<div id="importModal" class="modal none">
+	</div>
+	<div id="importModal" class="modal none">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -296,15 +296,17 @@
 				</p>
 			</h4>
 			<div class="mbody">
-					<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
-						<label  class="Ibtn lt text-center" style="margin:0px 1.302vw 0px 0px;">
-						 导入 文件选择
-						<input onchange="importExcel(this)" type="file"  class="" id="file_excel">
-						</label>
-					</div>
+				<label> *请按导出文件格式填写数据，并选择对应的导入文件~
+				</label>
+				<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
+					<label class="Ibtn lt text-center"
+						style="margin:0px 1.302vw 0px 0px;"> 导入 文件选择 <input
+						onchange="importExcel(this)" type="file" class="" id="file_excel">
+					</label>
+				</div>
 			</div>
 			<div class="mfoot" align="center">
-				<button >
+				<button>
 					<u class="confirm lt"></u> <span class="lt">导入</span>
 				</button>
 				<button onclick="$(this).parents('.modal').hide(800)">
@@ -312,7 +314,7 @@
 				</button>
 			</div>
 		</div>
-		</div>
+	</div>
 </body>
 <script>
 	// 关于按钮组的切换

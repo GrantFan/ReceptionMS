@@ -27,22 +27,22 @@ public class Guest_Info implements Serializable{
     /**
      * 宾客姓名
      */
-	@ModelProp(name="宾客姓名",colIndex=1)
+	@ModelProp(name="宾客姓名",colIndex=0)
     private String guest_name = "";
     /**
      * 主职务
      */
-	@ModelProp(name="主职务",colIndex=2)
+	@ModelProp(name="主职务",colIndex=1)
     private String main_position  = "";
     /**
      * 副职务
      */
-	@ModelProp(name="副职务",colIndex=3)
+	@ModelProp(name="副职务",colIndex=2)
     private String deputy_position  = "";
     /**
      * 任职地区
      */
-	@ModelProp(name="任职地区",colIndex=4)
+	@ModelProp(name="任职地区",colIndex=3)
     private String office_area = "";
     /**
      * 性别
@@ -50,7 +50,7 @@ public class Guest_Info implements Serializable{
 	
     private String sex = "";
     
-    @ModelProp(name="性别",colIndex=5)
+    @ModelProp(name="性别",colIndex=4)
 	private String xb  = "";
 	
     /**
@@ -63,14 +63,14 @@ public class Guest_Info implements Serializable{
    
     private String birth_date;
     
-    @ModelProp(name="出生日期",colIndex=6)
+    @ModelProp(name="出生日期",colIndex=5)
     private String birthDate;
     /**
      * 民族
      */
     private String nation = "";
     
-    @ModelProp(name="民族",colIndex=7)
+    @ModelProp(name="民族",colIndex=6)
 	private String nation_name = "";
     /**
      * 学历
@@ -78,42 +78,42 @@ public class Guest_Info implements Serializable{
 	
     private String education = "";
 	
-    @ModelProp(name="学历",colIndex=8)
+    @ModelProp(name="学历",colIndex=7)
 	private String education_name = "";
     /**
      * 籍贯
      */
-	@ModelProp(name="籍贯",colIndex=9)
+	@ModelProp(name="籍贯",colIndex=8)
     private String origin_place = "";
     /**
      * 联系电话
      */
-	@ModelProp(name="联系电话",colIndex=10)
+	@ModelProp(name="联系电话",colIndex=9)
     private String telphone = "";
     /**
      * 家庭/办公电话
      */
-	@ModelProp(name="家庭/办公电话",colIndex=11)
+	@ModelProp(name="家庭/办公电话",colIndex=10)
     private String phone = "";
     /**
      * 邮件地址
      */
-	@ModelProp(name="邮件地址",colIndex=12)
+	@ModelProp(name="邮件地址",colIndex=11)
     private String email = "";
     /**
      * 家庭地址
      */
-	@ModelProp(name="家庭地址",colIndex=13)
+	@ModelProp(name="家庭地址",colIndex=12)
     private String address = "";
     /**
      * 宾客类型
      */
-	@ModelProp(name="宾客类型",colIndex=14)
+	@ModelProp(name="宾客类型",colIndex=13)
     private String guest_type = "";
     /**
      * 备注
      */
-	@ModelProp(name="备注",colIndex=15)
+	@ModelProp(name="备注",colIndex=14)
     private String remark = "";
     
     private String url = "";

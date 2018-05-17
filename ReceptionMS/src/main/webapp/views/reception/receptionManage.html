@@ -11,6 +11,7 @@
 	href="../assets/css/pagination.css" />
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../assets/js/html2canvas.min.js"></script>
 <script type="text/javascript" src="../assets/js/Calendar.js"></script>
 <!-- Paginator -->
 <script src="../assets/js/pagination.min.js"></script>
@@ -112,8 +113,11 @@
 		</div>
 	</div>
 	<!--模态框-->
-	<div class="modal none Tmodal">
+	
+	<div id="modal" class="modal none Tmodal">
+	
 		<div class="box" style="width:88vw;">
+		<!--startprint-->
 			<h4 class="overflow">
 				<p class="lt">
 					<span>接待记录明细</span>
@@ -233,12 +237,12 @@
 			
 			</div>
 				
-			</div>
+			</div><!--endprint-->
 			<div class="mfoot" align="center">
 				<button id="update" onclick="editSubmit()" class="none">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
-				<button id="print">
+				<button onclick="printHtml()">
 					<u class="dy lt"></u> <span class="lt">打印</span>
 				</button>
 				<button onclick="$(this).parents('.modal').hide(800)">
@@ -247,6 +251,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<script>
 		// 关于按钮组的切换
 		$(".buttons>button").on("click",function(e){
