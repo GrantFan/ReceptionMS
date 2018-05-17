@@ -92,7 +92,7 @@ public class RoleAction {
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public String queryUserById(@PathVariable("id") String id) {
+	public String queryRoleById(@PathVariable("id") String id) {
 		Role role = this.roleService.selectById(id);
 		if (role == null) {
 			new EntityNotFoundException("不存在");

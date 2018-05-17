@@ -15,10 +15,12 @@ public interface ModuleService{
 	
 	int updateModule(Module module);
 	
-	int deleteModule(Module module);
+	int deleteModule(String module);
 	
-	List<Module> selectModuleList(String moduleName) ;
+	List<Module> selectModuleListByName(String moduleName) ;
 	
 	List<Module> selectModuleByRole(String role_id) ;
+
+	List<Module> selectModuleList();
 
 }

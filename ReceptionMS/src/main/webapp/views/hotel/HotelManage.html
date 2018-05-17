@@ -200,12 +200,12 @@
 						<div class="btns overflow">
 							<p class="lt">
 								<button>
-									添加 <input type="file" name="" id="" value="">
+									添加 <input type="file" >
 								</button>
 							</p>
 							<p class="lt">
 								<button class="lt">
-									替换 <input type="file" name="" id="" value="">
+									替换 <input type="file" >
 								</button>
 							</p>
 							<button class="lt">删除</button>
@@ -301,12 +301,12 @@
 				<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
 					<label class="Ibtn lt text-center"
 						style="margin:0px 1.302vw 0px 0px;"> 导入 文件选择 <input
-						onchange="importExcel(this)" type="file" class="" id="file_excel">
+						type="file" class="" id="file_excel">
 					</label>
 				</div>
 			</div>
-			<div class="mfoot" align="center">
-				<button>
+			<div class="mfoot">
+				<button onclick="importExcel(this)">
 					<u class="confirm lt"></u> <span class="lt">导入</span>
 				</button>
 				<button onclick="$(this).parents('.modal').hide(800)">

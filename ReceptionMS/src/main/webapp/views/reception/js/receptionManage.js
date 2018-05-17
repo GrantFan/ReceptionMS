@@ -48,7 +48,7 @@ function showReceptionList(pageNum, pageSize) {
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr ondblclick=\"view(this)\">"
-					+ "<td><label><input type=\"Checkbox\" name='check' value='" + obj[i].receptionNumber + "' /><u></u></label></td>"
+					+ "<td><label><input onclick='singleCheck(this)' type=\"Checkbox\" name='check' value='" + obj[i].receptionNumber + "' /><u></u></label></td>"
 					+ "<td class='number'>" + obj[i].receptionNumber + "</td><td>" + obj[i].receptionTitle + "</td>"
 					+ "<td>" + obj[i].receptionDate + "</td><td>" + obj[i].receptionPerson + "</td>"
 					+ "<td>" + obj[i].receptionPrinter + "</td><td>" + obj[i].guestName + "</td>	"
@@ -130,7 +130,10 @@ function showReceptionList(pageNum, pageSize) {
 		}
 	})
 }
-
+//单选设置
+function singleCheck(check){
+	$("input:checkbox[name=check]").not($(check)).attr("checked", false);
+}
 function search(pageNum,pageSize){
 	var input_hotel = $("#input_hotel option:selected").text()
 	var input_receptionTitle= $("#input_receptionTitle").val();
@@ -154,7 +157,7 @@ function search(pageNum,pageSize){
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr ondblclick=\"view(this)\">"
-					+ "<td><label><input type=\"Checkbox\" name='check' value='" + obj[i].receptionNumber + "' ><u></u></label></td>"
+					+ "<td><label><input onclick='singleCheck(this)' type=\"Checkbox\" name='check' value='" + obj[i].receptionNumber + "' ><u></u></label></td>"
 					+ "<td class='number'>" + obj[i].receptionNumber + "</td><td>" + obj[i].receptionTitle + "</td>"
 					+ "<td>" + obj[i].receptionDate + "</td><td>" + obj[i].receptionPerson + "</td>"
 					+ "<td>" + obj[i].receptionPrinter + "</td><td>" + obj[i].guestName + "</td>	"
@@ -395,8 +398,8 @@ function edit() {
 				$("#table2").append("<tr><input type=\"hidden\" value='"+accommodation[i].id+"' />"
 								+"<td><input class='hotel' value='"+accommodation[i].hotel+"' /></td>"
 								+"<td><input class='roomNumber' value='"+accommodation[i].roomNumber+"' /></td>"
-								+"<td><input class='checkinTime' value='"+accommodation[i].checkinTime+"' /></td>"
-								+"<td><input class='checkoutTime' value='"+accommodation[i].checkoutTime+"' /></td>"
+								+"<td><input onclick=\"new Calendar().show(this);\" class='checkinTime' value='"+accommodation[i].checkinTime+"' /></td>"
+								+"<td><input onclick=\"new Calendar().show(this);\" class='checkoutTime' value='"+accommodation[i].checkoutTime+"' /></td>"
 								+"<td><input class='hobby' value='"+accommodation[i].hobby+"' /></td>"
 								+"<td><input class='recordTime' value='"+accommodation[i].recordTime+"' /></td>"
 								+"<td><input class='remark' value='"+accommodation[i].remark+"' /></td>"
@@ -406,8 +409,8 @@ function edit() {
 			$("#table2").append("<tr><input type=\"hidden\" value='' />"
 					+"<td><input class='hotel' value='' /></td>"
 					+"<td><input onchange='addColumnAccom()' class='roomNumber' value='' /></td>"
-					+"<td><input class='checkinTime' value='' /></td>"
-					+"<td><input class='checkoutTime' value='' /></td>"
+					+"<td><input onclick=\"new Calendar().show(this);\" class='checkinTime' value='' /></td>"
+					+"<td><input onclick=\"new Calendar().show(this);\" class='checkoutTime' value='' /></td>"
 					+"<td><input class='hobby' value='' /></td>"
 					+"<td><input class='recordTime' value='' /></td>"
 					+"<td><input class='remark' value='' /></td>"
@@ -610,8 +613,8 @@ function addColumnAccom(){
 	$("#table2").append("<tr><input type=\"hidden\" value='' />"
 			+"<td><input class='hotel' value='' /></td>"
 			+"<td><input onchange='addColumnAccom()' class='roomNumber' value='' /></td>"
-			+"<td><input class='checkinTime' value='' /></td>"
-			+"<td><input class='checkoutTime' value='' /></td>"
+			+"<td><input onclick=\"new Calendar().show(this);\" class='checkinTime' value='' /></td>"
+			+"<td><input onclick=\"new Calendar().show(this);\" class='checkoutTime' value='' /></td>"
 			+"<td><input class='hobby' value='' /></td>"
 			+"<td><input class='recordTime' value='' /></td>"
 			+"<td><input class='remark' value='' /></td>"

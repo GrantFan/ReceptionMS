@@ -37,7 +37,7 @@ function select_menu(pageNum,pageSize){
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
             		var list = result.list[i];
-            		info.append("<tr><td><label><input type='checkbox' name='mean_info' value="+list.menu_number+"><u></u></label></td>"+
+            		info.append("<tr><td><label><input type='checkbox' name='mean_info' onclick='singleCheck()' value="+list.menu_number+"><u></u></label></td>"+
             				"<td  id= 'id' style='display:none' >"+list.id+
             				"</td><td>"+list.menu_number+
             				"</td><td>"+list.short_name+
@@ -354,4 +354,13 @@ function export_menu(){
 
 function export_food(){
 	location.href='../../menu_info/food.xls';
+}
+
+/**
+ * 单选
+ */
+function singleCheck(){
+    $('#menu_info tr td label').find('input[type=checkbox]').bind('click', function(){
+   $('#menu_info tr td label').find('input[type=checkbox]').not(this).attr("checked", false);
+  });
 }

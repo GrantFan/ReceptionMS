@@ -27,7 +27,7 @@ function showUserList(pageNum, pageSize) {
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr>"
-					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
+					+ "<td><label><input onclick='singleCheck(this)' type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
 					+ "<td>" + obj[i].userName + "</td><td>" + obj[i].userNick + "</td>"
 					+ "<td><input type='hidden' value=\"" + obj[i].roleId + "\" >" + obj[i].roleName + "</td><td>" + obj[i].lastLoginComputer + "</td>"
 					+ "<td>" + obj[i].lastLoginTime + "</td>"
@@ -127,7 +127,7 @@ function query() {
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr>"
-					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
+					+ "<td><label><input onclick='singleCheck(this)' type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
 					+ "<td>" + obj[i].userName + "</td><td>" + obj[i].userNick + "</td>"
 					+ "<td><input type='hidden' value=\"" + obj[i].roleId + "\" >" + obj[i].roleName + "</td><td>" + obj[i].lastLoginComputer + "</td>"
 					+ "<td>" + obj[i].lastLoginTime + "</td>"
@@ -207,6 +207,10 @@ function query() {
 			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
 		}
 	})
+}
+//单选设置
+function singleCheck(check){
+	$("input:checkbox[name=check]").not($(check)).attr("checked", false);
 }
 
 //加载角色列表

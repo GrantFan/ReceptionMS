@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -239,10 +240,13 @@ public class Guest_InfoAction {
 		int index;
 		byte[] bytes = new byte[1024];
 		try {
-			fileName = java.net.URLEncoder.encode("guest", "gb2312");
-			response.setContentType("application/octet-stream;charset=gb2312");
+			response.setContentType("application/octet-stream;charset=utf-8");
+			response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("宾客信息", "UTF-8")
+			+ ".xls;filename*=UTF-8''" + URLEncoder.encode("宾客信息", "UTF-8") + ".xls");
+			//fileName = java.net.URLEncoder.encode("guest", "gb2312");
+			//response.setContentType("application/octet-stream;charset=gb2312");
 			// 设置title
-			response.setHeader("Content-Disposition", "attachment;filename=" + fileName + ".xls");
+			//response.setHeader("Content-Disposition", "attachment;filename=" + fileName + ".xls");
 			response.addHeader("Pargam", "no-cache");
 			response.addHeader("Cache-Control", "no-cache");
 

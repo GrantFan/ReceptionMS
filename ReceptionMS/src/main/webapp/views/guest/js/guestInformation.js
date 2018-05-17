@@ -32,7 +32,7 @@ function select_guest(pageNum,pageSize){
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
             		var list = result.list[i];
-            		info.append("<tr><td><label><input type='checkbox' name='gueat_info' value="+list.id+
+            		info.append("<tr><td><label><input type='checkbox' onclick='singleCheck()' name='gueat_info' value="+list.id+
             				"><u></u></label></td>"+
             				"<td  id= 'id' style='display:none' >"+list.id+
             				"</td><td>"+list.guest_name+
@@ -415,4 +415,13 @@ function import_Excel(obj){
 	        	alert("请求失败，请检查网络后重试");
 	        }
 	    });
+}
+
+/**
+ * 单选
+ */
+function singleCheck(){
+    $('#guest_info tr td label').find('input[type=checkbox]').bind('click', function(){
+   $('#guest_info tr td label').find('input[type=checkbox]').not(this).attr("checked", false);
+  });
 }

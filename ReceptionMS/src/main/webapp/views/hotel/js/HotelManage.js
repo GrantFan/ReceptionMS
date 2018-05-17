@@ -26,7 +26,7 @@ function showHotelList(pageNum, pageSize) {
 			for (i = 0, len = obj.length; i < len; i++) {
 				//console.log(obj[i]);
 				tbody += "<tr>"
-					+ "<td><label><input type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
+					+ "<td><label><input onclick='singleCheck(this)' type=\"Checkbox\" name='check' value=\"" + obj[i].id + "\" ><u></u></label></td>"
 					+ "<td>" + obj[i].hotelName + "</td><td>" + obj[i].linkman + "</td>"
 					+ "<td>" + obj[i].telphone + "</td><td>" + obj[i].phone + "</td>"
 					+ "<td>" + obj[i].area + "</td><td>" + obj[i].address + "</td>	"
@@ -106,7 +106,10 @@ function showHotelList(pageNum, pageSize) {
 		}
 	})
 }
-
+//单选设置
+function singleCheck(check){
+	$("input:checkbox[name=check]").not($(check)).attr("checked", false);
+}
 //通过酒店名称模糊查询酒店信息
 function query() {
 	var hotelName = $("#hotelName").val();
@@ -297,14 +300,14 @@ function importModal(){
 /**
  * 导入
  */
-function importExcel(obj) {
-	var f = $(obj).val();
+function importExcel() {
+	var f = $("#file_excel").val();
 	if (f == null || f == undefined || f == '') {
 		return false;
 	}
 	if (!/\.(?:xls|xlsx)$/.test(f)) {
 		alert("请上传Excel文件");
-		$(obj).val('');
+		$("#file_excel").val('');
 		return false;
 	}
 	var data = new FormData();

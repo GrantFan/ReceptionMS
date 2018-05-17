@@ -23,7 +23,7 @@ public interface ModuleDao {
 	 * @param menu
 	 * @return int
 	 */
-	@Insert("insert into sys_module(module_name,module_id,module_parent_id,url,sort,create_time,icon,remark) values(#{moduleName},#{moduleId},#{moduleParentId},#{url},#{sort},#{createTime},#{icon},#{remark})")
+	@Insert("insert into sys_module(id,module_name,module_id,module_parent_id,url,sort,create_time,icon,remark) values((select nvl(max(id),0)+1 from sys_module),#{moduleName},(select nvl(max(module_id),0)+1 from sys_module),#{moduleParentId},#{url},#{sort},sysdate,#{icon},#{remark})")
 	int addModule(Module module);
 
 	/**
@@ -31,8 +31,8 @@ public interface ModuleDao {
 	 * @param menu
 	 * @return int
 	 */
-	@Delete("delete from sys_module where module_id=#{moduleId}")
-	int deleteModule(Module module) ;
+	@Delete("delete from sys_module where id=#{id}")
+	int deleteModule(@Param("id")String id) ;
 
 	/**
 	 * 修改菜单
@@ -43,19 +43,22 @@ public interface ModuleDao {
 		"update  sys_module ",
         "<set>",
         "<if test=\"moduleName!=null and moduleName!='' \">",
-        "module_name=#{moduleName,jdbcType=VARCHAR},",
+        "module_name=#{moduleName,jdbcType=VARCHAR}",
         "</if>",
         "<if test=\"moduleParentId!=null and moduleParentId!='' \">",
-        "module_parent_id=#{moduleParentId,jdbcType=VARCHAR},",
+        ",module_parent_id=#{moduleParentId,jdbcType=VARCHAR} ",
         "</if>",
         "<if test=\"url!=null and url!='' \">",
-        "url=#{url,jdbcType=VARCHAR},",
+        ",url=#{url,jdbcType=VARCHAR}",
         "</if>",
        	"<if test=\"sort!=null and sort!='' \">",
-       	"sort=#{sort,jdbcType=VARCHAR},",
+       	",sort=#{sort,jdbcType=VARCHAR}",
+       	"</if>",
+    	"<if test=\"remark!=null and remark!='' \">",
+       	",remark=#{remark,jdbcType=VARCHAR}",
        	"</if>",
         "</set>",
-       	 "where module_id=#{moduleId}",
+       	 "where id=#{id}",
 	"</script>"})
 	int updateModule(Module module) ;
 	
@@ -65,15 +68,25 @@ public interface ModuleDao {
 	 * @return list
 	 */
 	@Select({"<script>",
-		"select id,module_name,module_id,module_parent_id,url,sort,create_time,icon,remark from sys_module order by sort",
+		"SELECT ID, module_name moduleName, module_id moduleId, MODULE_PARENT_ID, url, SORT, create_time createTime, icon, remark FROM sys_module  ORDER BY MODULE_PARENT_ID, SORT",
+		"</script>"})
+	List<Module> selectModuleList() ;
+	
+	/**
+	 * 查询模块列表
+	 * @return list
+	 */
+	@Select({"<script>",
+		"SELECT ID, module_name moduleName, module_id moduleId, MODULE_PARENT_ID, nvl((select MODULE_NAME from SYS_MODULE a where b.MODULE_PARENT_ID=a.MODULE_ID),'接待管理系统') moduleParentName, nvl(url,'无') url, SORT, create_time createTime, icon, remark FROM sys_module b ",
 		"<where>",
-		"<if test=\" '' != module_name and null != module_name  \">",
-		" and module_name like #{moduleName} ",
+		"<if test=\" '' != moduleName and null != moduleName  \">",
+		" and module_name like concat(#{moduleName},'%')",
 		"</if>",
 		"</where>",
+		"ORDER BY MODULE_PARENT_ID, SORT",
 	"</script>"})
-	List<Module> selectModuleList(String moduleName) ;
-	 
+	List<Module> selectModuleListByName(@Param(value="moduleName")String moduleName) ;
+	
 	/**
 	 * 通过角色权限查询功能模块
 	 * @param menu
@@ -97,5 +110,11 @@ public interface ModuleDao {
 	 */
 	@Delete("delete from sys_role_module where module_id=#{module_id}")
 	int deleteModuleRole(String module_id) ;
+
+	
+	@Select({"<script>",
+		"SELECT ID, module_name moduleName, module_id moduleId, MODULE_PARENT_ID, url, SORT, create_time createTime, icon, remark FROM sys_module  where id=#{id}",
+		"</script>"})
+	Module selectModuleById(@Param("id")String id);
 
 }

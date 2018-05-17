@@ -8,14 +8,15 @@ import java.io.Serializable;
 public class Module implements Serializable{
 	
 	private Integer id;
+	private String moduleName;  	//名称
 	private String moduleId;   		//模块id
 	private String moduleParentId;  //父级id
-	private String moduleName;  	//名称
+	private String moduleParentName;//父级名称
 	private String url;  			//资源路径
 	private String sort;       		//排序
 	private String icon;		//图标
 	private String   createTime;  	//创建时间
-	
+	private String remark;
 	
 	public Integer getId() {
 		return id;
@@ -64,6 +65,18 @@ public class Module implements Serializable{
 	}
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public String getModuleParentName() {
+		return moduleParentName;
+	}
+	public void setModuleParentName(String moduleParentName) {
+		this.moduleParentName = moduleParentName;
 	}
 	
 }

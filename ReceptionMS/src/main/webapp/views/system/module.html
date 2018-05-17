@@ -1,10 +1,303 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>模块设置</title>
-	</head>
-	<body>
-		模块设置
-	</body>
+<head>
+<meta charset="UTF-8">
+<title>模块设置</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" />
+
+<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+<!-- Paginator -->
+<script src="../assets/js/pagination.min.js"></script>
+<script type="text/javascript" src="js/moduleManage.js"></script>
+
+<style>
+	.modal>.box>.mbody .accordion{
+		overflow-y:scroll;
+		height:30vh;
+	}
+	.modal>.box>.mbody .accordion .link{
+		color:#fff;
+		background-color:#5cb2c8;
+	}
+	.modal>.box>.mbody .accordion .link u{
+		top:1vh;
+	}
+	.modal>.box>.mbody .accordion .submenu li{
+		position:relative;
+		background-color:#53838f;
+		border-bottom:1px solid #9dd2b8;
+		color:#b3e8f6;
+	}
+	.modal>.box>.mbody .accordion .submenu u{
+		top:0.6vh;
+	}
+	.modal>.box>.mbody .accordion label{
+		width:auto;
+		margin:0px;	
+	}
+	.modal>.box>.mbody .accordion input[type = checkbox]{
+		width:1.0256vw;
+	    height: 1.0256vw;
+	    opacity: 0;
+	    margin: 0px;
+	    position: absolute;
+	    top: 2px;
+	    right:0px;		
+	}
+	.modal>.box>.mbody .accordion input[type = checkbox]+u{
+		width:1.0256vw;
+	    height: 1.0256vw;
+		position: absolute;
+	   /* top: 2px;		*/
+	    right:0px;
+	}
+	.modal>.box>.mbody .accordion input[type = checkbox]:checked+u{
+		width:1.0256vw;
+	    height: 1.0256vw;
+	}
+	.modal>.box>.mbody .accordion ul.submenu span.lt{
+		padding-left:30px;
+	}
+	
+	.modal>.box>.mbody .accordion .submenu li.active, 
+	.modal>.box>.mbody .accordion .submenu li:hover{
+			box-shadow:none;
+			background: none;
+	}
+</style>
+</head>
+<body>
+	<div class="operationsArea">
+		<div class="buttons">
+			<button onclick="add()">
+				<u class="xz"></u><span class="webkit">新增</span>
+			</button>
+			<button onclick="edit()">
+				<u class="bj"></u> <span class="webkit">编辑</span>
+			</button>
+			<button onclick="dele()">
+				<u class="sc"></u> <span class="webkit">删除</span>
+			</button>
+			 <!-- 
+			<button>
+				<u class="dy"></u> <span class="webkit">打印</span>
+			</button>
+			<button>
+				<u class="dr"></u> <span class="webkit">导入</span>
+			</button>
+			<button>
+				<u class="dc"></u> <span class="webkit">导出</span>
+			</button>
+			 -->
+		</div>
+		<div class="inputs">
+			<input id="input_moduleName" placeholder="模块名称" type="text" />
+			<button onclick="query()">查询</button>
+			<button class="m-0">清空</button>
+		</div>
+
+		<div class="tab">
+			<table class="table" cellspacing="0">
+				<thead>
+					<tr>
+						<th>选择</th>
+						<th>模块名称</th>
+						<th>上级模块</th>
+						<th>页面地址</th>
+						<th>排序</th>
+						<th>图标</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+
+				<tbody id="tablebody">
+				</tbody>
+			</table>
+			<!-- 分页插件  -->
+			<div class="text-center" id="page"></div>
+		</div>
+	</div>
+	<!--模态框-->
+	<div id="modal" class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>模块信息</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<input type="hidden" name="id" id="id" value="" /> <label
+					for="moduleName"> <span>模块名称：</span> <input type="text"
+					name="moduleName" id="moduleName" />
+				</label>
+				<label
+					for="moduleParentId"> <span>上级模块：</span> 
+					<select id="moduleParent"></select>
+				</label> 
+				<label
+					for="url"> <span>页面地址：</span> <input type="text"
+					name="url" id="url" />
+				</label> 
+				<label
+					for="sort"> <span>排序：</span> <input type="text"
+					name="sort" id="sort" />
+				</label> 
+				<label
+					for="icon"> <span>图标：</span> <input type="text"
+					name="icon" id="icon" />
+				</label> 
+				 <!-- <label for="createTime"> <span>创建时间：</span> <input
+					type="text" name="createTime" id="createTime" />
+				</label> -->
+				 <label for="remark"> <span>备注：</span> <input
+					type="text" name="remark" id="remark" />
+				</label>
+			</div>
+			<div class="mfoot" align="center">
+				<button id="add" onclick="addSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button id="update" onclick="editSubmit()" style="display:none">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<!--模块分配模态框-->
+	<div id="module" class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>角色模块分配</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<input type="hidden" id="roleId" value="" /> 
+					<label for="roleName">
+					<span>角色名：</span> <input type="text" name="roleName" id="r_roleName" />
+					</label>
+				 	<label for="description"> <span>描述：</span> <input
+						type="description" name="" id="r_description" />
+					</label>
+					<label for="role"> <span>角色模块：</span>
+				    <ul id="accordion" class="accordion">
+						<li>
+							<div class="link">
+								<span class="lt">接待管理</span>
+								<label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div>
+							<ul class="submenu" style="display:block">
+								<li class="overflow">
+									<span class="lt">接待登记</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									 <span class="lt">接待信息</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									  <span class="lt">会议室使用登记</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="link">
+								<span class="lt">酒店管理</span><label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div> 
+							<ul class="submenu" style="display:block;">
+								<li class="overflow">
+									<span class="lt">酒店信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">房间信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">会议室信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">套餐菜品设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									 <span class="lt">餐厅(包厢)信息设置</span><label class="rt"><input type="checkbox" name="check"><u class="top_06"></u></label>
+									
+								</li>
+								<li class="overflow">
+									<span class="lt">酒店对比</span><label class="rt"><input type="checkbox" name="check"><u></u></label>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="link">
+								<span class="lt">宾客管理</span><label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div>
+							<ul class="submenu" style="display:block;">
+								<li class="overflow">
+									 <span class="lt">宾客信息设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<div class="link">
+								<span class="lt">系统管理</span><label class="rt"><input type="checkbox" name="check"><u class="top_1"></u></label>
+							</div>
+							<ul class="submenu" style="display:block;">
+								<li class="overflow">									
+									<span class="lt">用户设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>
+									
+								</li>
+								<li class="overflow">									
+									<span class="lt">角色设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>								
+								</li>
+								<li class="overflow">
+									<span class="lt">模块设置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>									
+								</li>
+								<li class="overflow">
+									<span class="lt">操作日志</span><label class="rt"><input type="checkbox" name="check"><u></u></label>									
+								</li>
+								<li class="overflow">
+									<span class="lt">数据库配置</span><label class="rt"><input type="checkbox" name="check"><u></u></label>									
+								</li>
+								<li class="overflow">
+									<span class="lt">数据字典维护</span><label class="rt"><input type="checkbox" name="check"><u></u></label>						
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</label>
+			</div>
+			<div class="mfoot" align="center">
+				<button id="add" onclick="setModuleSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		// 关于按钮组的切换
+			$(".buttons>button").on("click",function(e){
+				$(this).addClass('active').siblings('button').removeClass('active');
+			});
+	</script>
+</body>
 </html>
