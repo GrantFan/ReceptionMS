@@ -31,7 +31,7 @@ public interface ModuleDao {
 	 * @param menu
 	 * @return int
 	 */
-	@Delete("delete from sys_module where id=#{id}")
+	@Delete("delete from sys_module where id=#{id} and delete_flag='1' ")
 	int deleteModule(@Param("id")String id) ;
 
 	/**

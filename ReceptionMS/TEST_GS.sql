@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110100
 File Encoding         : 65001
 
-Date: 2018-05-17 19:09:28
+Date: 2018-05-18 14:41:23
 */
 
 
@@ -141,7 +141,7 @@ DROP TABLE "TEST_GS"."DM_AREA";
 CREATE TABLE "TEST_GS"."DM_AREA" (
 "NAME" NVARCHAR2(255) NULL ,
 "VALUE" NVARCHAR2(255) NULL ,
-"DECRIPTION" NVARCHAR2(255) NULL 
+"REMARK" NVARCHAR2(255) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -150,7 +150,7 @@ NOCACHE
 ;
 COMMENT ON COLUMN "TEST_GS"."DM_AREA"."NAME" IS '地区名称';
 COMMENT ON COLUMN "TEST_GS"."DM_AREA"."VALUE" IS '值';
-COMMENT ON COLUMN "TEST_GS"."DM_AREA"."DECRIPTION" IS '描述';
+COMMENT ON COLUMN "TEST_GS"."DM_AREA"."REMARK" IS '描述';
 
 -- ----------------------------
 -- Records of DM_AREA
@@ -168,7 +168,8 @@ INSERT INTO "TEST_GS"."DM_AREA" VALUES ('西北', '7', '陕西、甘肃、宁夏
 DROP TABLE "TEST_GS"."DM_CONFERENCE_TYPE";
 CREATE TABLE "TEST_GS"."DM_CONFERENCE_TYPE" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -182,9 +183,9 @@ COMMENT ON COLUMN "TEST_GS"."DM_CONFERENCE_TYPE"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_CONFERENCE_TYPE
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_CONFERENCE_TYPE" VALUES ('会议室', '1');
-INSERT INTO "TEST_GS"."DM_CONFERENCE_TYPE" VALUES ('讲座室', '2');
-INSERT INTO "TEST_GS"."DM_CONFERENCE_TYPE" VALUES ('演播室', '3');
+INSERT INTO "TEST_GS"."DM_CONFERENCE_TYPE" VALUES ('会议室', '1', null);
+INSERT INTO "TEST_GS"."DM_CONFERENCE_TYPE" VALUES ('讲座室', '2', null);
+INSERT INTO "TEST_GS"."DM_CONFERENCE_TYPE" VALUES ('演播室', '3', null);
 
 -- ----------------------------
 -- Table structure for DM_DISTRICT
@@ -192,7 +193,8 @@ INSERT INTO "TEST_GS"."DM_CONFERENCE_TYPE" VALUES ('演播室', '3');
 DROP TABLE "TEST_GS"."DM_DISTRICT";
 CREATE TABLE "TEST_GS"."DM_DISTRICT" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -206,10 +208,10 @@ COMMENT ON COLUMN "TEST_GS"."DM_DISTRICT"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_DISTRICT
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('敦煌', '1');
-INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('肃州区', '2');
-INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('金塔县', '3');
-INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('玉门市', '4');
+INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('敦煌', '1', null);
+INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('肃州区', '2', null);
+INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('金塔县', '3', null);
+INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('玉门市', '4', null);
 
 -- ----------------------------
 -- Table structure for DM_EDUCATION
@@ -217,7 +219,8 @@ INSERT INTO "TEST_GS"."DM_DISTRICT" VALUES ('玉门市', '4');
 DROP TABLE "TEST_GS"."DM_EDUCATION";
 CREATE TABLE "TEST_GS"."DM_EDUCATION" (
 "NAME" NVARCHAR2(128) NULL ,
-"VALUE" NVARCHAR2(64) NULL 
+"VALUE" NVARCHAR2(64) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -231,11 +234,11 @@ COMMENT ON COLUMN "TEST_GS"."DM_EDUCATION"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_EDUCATION
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('高中及以下', '1');
-INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('大专', '2');
-INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('本科', '3');
-INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('硕士', '4');
-INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('博士', '5');
+INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('高中及以下', '1', null);
+INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('大专', '2', null);
+INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('本科', '3', null);
+INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('硕士', '4', null);
+INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('博士', '5', null);
 
 -- ----------------------------
 -- Table structure for DM_MEALS_STANDARD
@@ -243,7 +246,8 @@ INSERT INTO "TEST_GS"."DM_EDUCATION" VALUES ('博士', '5');
 DROP TABLE "TEST_GS"."DM_MEALS_STANDARD";
 CREATE TABLE "TEST_GS"."DM_MEALS_STANDARD" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -257,9 +261,9 @@ COMMENT ON COLUMN "TEST_GS"."DM_MEALS_STANDARD"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_MEALS_STANDARD
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_MEALS_STANDARD" VALUES ('30', '1');
-INSERT INTO "TEST_GS"."DM_MEALS_STANDARD" VALUES ('50', '2');
-INSERT INTO "TEST_GS"."DM_MEALS_STANDARD" VALUES ('120', '3');
+INSERT INTO "TEST_GS"."DM_MEALS_STANDARD" VALUES ('30', '1', null);
+INSERT INTO "TEST_GS"."DM_MEALS_STANDARD" VALUES ('50', '2', null);
+INSERT INTO "TEST_GS"."DM_MEALS_STANDARD" VALUES ('120', '3', null);
 
 -- ----------------------------
 -- Table structure for DM_MEALS_TIME
@@ -267,7 +271,8 @@ INSERT INTO "TEST_GS"."DM_MEALS_STANDARD" VALUES ('120', '3');
 DROP TABLE "TEST_GS"."DM_MEALS_TIME";
 CREATE TABLE "TEST_GS"."DM_MEALS_TIME" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -281,9 +286,9 @@ COMMENT ON COLUMN "TEST_GS"."DM_MEALS_TIME"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_MEALS_TIME
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_MEALS_TIME" VALUES ('早餐', '1');
-INSERT INTO "TEST_GS"."DM_MEALS_TIME" VALUES ('正餐', '2');
-INSERT INTO "TEST_GS"."DM_MEALS_TIME" VALUES ('晚餐', '3');
+INSERT INTO "TEST_GS"."DM_MEALS_TIME" VALUES ('早餐', '1', null);
+INSERT INTO "TEST_GS"."DM_MEALS_TIME" VALUES ('正餐', '2', null);
+INSERT INTO "TEST_GS"."DM_MEALS_TIME" VALUES ('晚餐', '3', null);
 
 -- ----------------------------
 -- Table structure for DM_MEALS_TYPE
@@ -291,7 +296,8 @@ INSERT INTO "TEST_GS"."DM_MEALS_TIME" VALUES ('晚餐', '3');
 DROP TABLE "TEST_GS"."DM_MEALS_TYPE";
 CREATE TABLE "TEST_GS"."DM_MEALS_TYPE" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -304,9 +310,9 @@ COMMENT ON COLUMN "TEST_GS"."DM_MEALS_TYPE"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_MEALS_TYPE
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_MEALS_TYPE" VALUES ('餐桌', '1');
-INSERT INTO "TEST_GS"."DM_MEALS_TYPE" VALUES ('自助餐', '2');
-INSERT INTO "TEST_GS"."DM_MEALS_TYPE" VALUES ('工作餐', '3');
+INSERT INTO "TEST_GS"."DM_MEALS_TYPE" VALUES ('餐桌', '1', null);
+INSERT INTO "TEST_GS"."DM_MEALS_TYPE" VALUES ('自助餐', '2', null);
+INSERT INTO "TEST_GS"."DM_MEALS_TYPE" VALUES ('工作餐', '3', null);
 
 -- ----------------------------
 -- Table structure for DM_MENU_TYPE
@@ -314,7 +320,8 @@ INSERT INTO "TEST_GS"."DM_MEALS_TYPE" VALUES ('工作餐', '3');
 DROP TABLE "TEST_GS"."DM_MENU_TYPE";
 CREATE TABLE "TEST_GS"."DM_MENU_TYPE" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -328,8 +335,8 @@ COMMENT ON COLUMN "TEST_GS"."DM_MENU_TYPE"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_MENU_TYPE
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_MENU_TYPE" VALUES ('一般套餐', '1');
-INSERT INTO "TEST_GS"."DM_MENU_TYPE" VALUES ('贵宾套餐', '2');
+INSERT INTO "TEST_GS"."DM_MENU_TYPE" VALUES ('一般套餐', '1', null);
+INSERT INTO "TEST_GS"."DM_MENU_TYPE" VALUES ('贵宾套餐', '2', null);
 
 -- ----------------------------
 -- Table structure for DM_NATION
@@ -337,7 +344,8 @@ INSERT INTO "TEST_GS"."DM_MENU_TYPE" VALUES ('贵宾套餐', '2');
 DROP TABLE "TEST_GS"."DM_NATION";
 CREATE TABLE "TEST_GS"."DM_NATION" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -351,10 +359,10 @@ COMMENT ON COLUMN "TEST_GS"."DM_NATION"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_NATION
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_NATION" VALUES ('汉族', '1');
-INSERT INTO "TEST_GS"."DM_NATION" VALUES ('回族', '2');
-INSERT INTO "TEST_GS"."DM_NATION" VALUES ('蒙古族', '3');
-INSERT INTO "TEST_GS"."DM_NATION" VALUES ('藏族', '4');
+INSERT INTO "TEST_GS"."DM_NATION" VALUES ('汉族', '1', null);
+INSERT INTO "TEST_GS"."DM_NATION" VALUES ('回族', '2', null);
+INSERT INTO "TEST_GS"."DM_NATION" VALUES ('蒙古族', '3', null);
+INSERT INTO "TEST_GS"."DM_NATION" VALUES ('藏族', '4', null);
 
 -- ----------------------------
 -- Table structure for DM_ROOM_SPECIAL_TYPE
@@ -362,7 +370,8 @@ INSERT INTO "TEST_GS"."DM_NATION" VALUES ('藏族', '4');
 DROP TABLE "TEST_GS"."DM_ROOM_SPECIAL_TYPE";
 CREATE TABLE "TEST_GS"."DM_ROOM_SPECIAL_TYPE" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -376,8 +385,8 @@ COMMENT ON COLUMN "TEST_GS"."DM_ROOM_SPECIAL_TYPE"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_ROOM_SPECIAL_TYPE
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_ROOM_SPECIAL_TYPE" VALUES ('有柱子', '1');
-INSERT INTO "TEST_GS"."DM_ROOM_SPECIAL_TYPE" VALUES ('噪音大', '2');
+INSERT INTO "TEST_GS"."DM_ROOM_SPECIAL_TYPE" VALUES ('有柱子', '1', null);
+INSERT INTO "TEST_GS"."DM_ROOM_SPECIAL_TYPE" VALUES ('噪音大', '2', null);
 
 -- ----------------------------
 -- Table structure for DM_ROOM_TYPE
@@ -385,7 +394,8 @@ INSERT INTO "TEST_GS"."DM_ROOM_SPECIAL_TYPE" VALUES ('噪音大', '2');
 DROP TABLE "TEST_GS"."DM_ROOM_TYPE";
 CREATE TABLE "TEST_GS"."DM_ROOM_TYPE" (
 "NAME" NVARCHAR2(255) NULL ,
-"VALUE" NVARCHAR2(255) NULL 
+"VALUE" NVARCHAR2(255) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -399,10 +409,10 @@ COMMENT ON COLUMN "TEST_GS"."DM_ROOM_TYPE"."VALUE" IS '值';
 -- ----------------------------
 -- Records of DM_ROOM_TYPE
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('普通标间', '1');
-INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('商务标间', '2');
-INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('商务单间', '3');
-INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('豪华套间', '4');
+INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('普通标间', '1', null);
+INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('商务标间', '2', null);
+INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('商务单间', '3', null);
+INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('豪华套间', '4', null);
 
 -- ----------------------------
 -- Table structure for DM_SEX
@@ -410,7 +420,8 @@ INSERT INTO "TEST_GS"."DM_ROOM_TYPE" VALUES ('豪华套间', '4');
 DROP TABLE "TEST_GS"."DM_SEX";
 CREATE TABLE "TEST_GS"."DM_SEX" (
 "NAME" NVARCHAR2(8) NULL ,
-"VALUE" NUMBER(11) NULL 
+"VALUE" NUMBER(11) NULL ,
+"REMARK" VARCHAR2(255 BYTE) NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -421,9 +432,9 @@ NOCACHE
 -- ----------------------------
 -- Records of DM_SEX
 -- ----------------------------
-INSERT INTO "TEST_GS"."DM_SEX" VALUES ('男', '1');
-INSERT INTO "TEST_GS"."DM_SEX" VALUES ('女', '2');
-INSERT INTO "TEST_GS"."DM_SEX" VALUES ('其他', '0');
+INSERT INTO "TEST_GS"."DM_SEX" VALUES ('男', '1', null);
+INSERT INTO "TEST_GS"."DM_SEX" VALUES ('女', '2', null);
+INSERT INTO "TEST_GS"."DM_SEX" VALUES ('其他', '0', null);
 
 -- ----------------------------
 -- Table structure for FOOD_INFO
@@ -956,7 +967,8 @@ CREATE TABLE "TEST_GS"."SYS_MODULE" (
 "SORT" NVARCHAR2(62) NULL ,
 "CREATE_TIME" DATE NULL ,
 "ICON" NVARCHAR2(255) NULL ,
-"REMARK" NVARCHAR2(255) NULL 
+"REMARK" NVARCHAR2(255) NULL ,
+"DELETE_FLAG" VARCHAR2(10 BYTE) DEFAULT 1  NULL 
 )
 LOGGING
 NOCOMPRESS
@@ -970,30 +982,31 @@ COMMENT ON COLUMN "TEST_GS"."SYS_MODULE"."URL" IS '模块页面地址';
 COMMENT ON COLUMN "TEST_GS"."SYS_MODULE"."SORT" IS '排序';
 COMMENT ON COLUMN "TEST_GS"."SYS_MODULE"."CREATE_TIME" IS '创建时间';
 COMMENT ON COLUMN "TEST_GS"."SYS_MODULE"."ICON" IS '图标';
+COMMENT ON COLUMN "TEST_GS"."SYS_MODULE"."DELETE_FLAG" IS '可删除标识  0为不可删除 1为可删除';
 
 -- ----------------------------
 -- Records of SYS_MODULE
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('1', '系统管理', '1', '0', null, '4', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'xtgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('2', '用户设置', '2', '1', '../system/userSheZhi.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'yhsz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jssz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('4', '模块设置', '4', '1', '../system/module.html', '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'mksz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('5', '操作日志', '5', '1', '../system/log.html', '4', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'czrz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', '5', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'sjkpz', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('7', '接待管理', '7', '0', null, '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jdgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('8', '接待登记', '8', '7', '../reception/register.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jddj', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jdxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('10', '酒店管理', '10', '0', null, '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'Jdgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'Jdxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'fjxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'hysxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomManage.html', '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'hyssyjl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'tccpxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', '6', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'sjzdwh', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('18', '宾客管理', '18', '0', null, '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'bkxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'bkxxgl', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'Jddb', null);
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('21', '餐厅(包厢)信息设置', '21', '10', '../conference/conferenceInfo.html', '5', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'fjxxgl', null);
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('1', '系统管理', '1', '0', null, '4', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'xtgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('2', '用户设置', '2', '1', '../system/userSheZhi.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'yhsz', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jssz', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('4', '模块设置', '4', '1', '../system/module.html', '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'mksz', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('5', '操作日志', '5', '1', '../system/log.html', '4', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'czrz', null, '1');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('6', '数据库配置', '6', '1', '../system/configure.html', '5', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'sjkpz', null, '1');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('7', '接待管理', '7', '0', null, '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jdgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('8', '接待登记', '8', '7', '../reception/register.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jddj', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jdxxgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('10', '酒店管理', '10', '0', null, '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'Jdgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('11', '酒店信息设置', '11', '10', '../hotel/HotelManage.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'Jdxxgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('12', '房间信息设置', '12', '10', '../hotel/roomManage.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'fjxxgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('13', '会议室信息设置', '13', '10', '../conference/conferenceInfo.html', '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'hysxxgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('14', '会议室使用登记', '14', '7', '../reception/boardroomManage.html', '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'hyssyjl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('15', '套餐菜品设置', '15', '10', '../menu/menuInformation.html', '4', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'tccpxxgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('17', '数据字典维护', '17', '1', '../system/weiHu.html', '6', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'sjzdwh', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('18', '宾客管理', '18', '0', null, '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'bkxxgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('19', '宾客信息设置', '19', '18', '../guest/guestInformation.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'bkxxgl', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('20', '酒店对比', '20', '10', '../hotel/HotelContrasts.html', '6', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'Jddb', null, '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('21', '餐厅(包厢)信息设置', '21', '10', '../conference/conferenceInfo.html', '5', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'fjxxgl', null, '0');
 
 -- ----------------------------
 -- Table structure for SYS_OPERATION_LOG
@@ -1107,7 +1120,7 @@ COMMENT ON COLUMN "TEST_GS"."SYS_USER"."ROLE_ID" IS '角色id';
 -- ----------------------------
 -- Records of SYS_USER
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '超级管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-17 19:01:32', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '超级管理员', 'admin', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-18 09:38:38', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:46', 'YYYY-MM-DD HH24:MI:SS'), '1', '0');
 INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', '123456', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-12 19:26:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:48', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
 INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'wwww', '测试', '123456', null, null, TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:12:45', 'YYYY-MM-DD HH24:MI:SS'), null, '1');
 

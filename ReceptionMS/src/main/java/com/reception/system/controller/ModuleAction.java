@@ -52,18 +52,15 @@ public class ModuleAction {
 	 * @return String
 	 */
 	@RequestMapping("/delete")
-	public @ResponseBody String deleteModuleAndRole(@RequestParam(value="id")String id) {
+	public @ResponseBody String deleteModuleAndRole(@RequestParam(value = "id") String id) {
 		String result = "false";
-		try {
-			 moduleServiceImpl.deleteModule(id);
+		int i = moduleServiceImpl.deleteModule(id);
+		if (i > 0) {
 			result = "true";
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = "false";
 		}
 		return result;
-
 	}
+
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public String queryModuleById(@PathVariable("id") String id) {
 		Module modulee = this.moduleServiceImpl.selectModuleById(id);
@@ -72,6 +69,7 @@ public class ModuleAction {
 		}
 		return JSONHelper.toJSON(modulee);
 	}
+
 	/**
 	 * 修改菜单
 	 * 
@@ -96,12 +94,12 @@ public class ModuleAction {
 	 */
 	@RequestMapping(value = "/list", produces = "application/json; charset=utf-8")
 	public @ResponseBody String queryModuleList() {
-		
+
 		List<Module> list = moduleServiceImpl.selectModuleList();
 		String json = JSONHelper.toJSON(list);
 		return json;
 	}
-	
+
 	/**
 	 * 查询菜单
 	 * 
@@ -113,7 +111,7 @@ public class ModuleAction {
 			@RequestParam(value = "pageSize", required = false, defaultValue = "10") String pageSize,
 			@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
 			@RequestParam(value = "moduleName", required = false, defaultValue = "") String moduleName) {
-		
+
 		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
 		List<Module> list = moduleServiceImpl.selectModuleListByName(moduleName);
 		PageInfo<Module> page = new PageInfo<Module>(list);
@@ -131,7 +129,7 @@ public class ModuleAction {
 				List<Module> list = moduleServiceImpl.selectModuleByRole(user.getRoleId()); // 超级管理员role_id为0
 				JSONHelper jsonHelper = new JSONHelper();
 				String json = jsonHelper.toJSON(list);
-//				System.out.println(json);
+				// System.out.println(json);
 				return json;
 			}
 		} catch (Exception e) {
