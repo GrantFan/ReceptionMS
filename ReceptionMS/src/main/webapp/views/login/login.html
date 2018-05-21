@@ -17,12 +17,13 @@
 				type="text" name="" id="userName" value="" />
 			</label> <br /> <label for="pass" style="margin-top: 7.4vh;"> <i
 				class="pass"></i> <span>密 &nbsp;&nbsp; 码：</span> <input
-				type="password" name="" id=password value="" />
+				type="password" name="" id="password" value="" />
 			</label> <br />
 			<div class="check overflow">
 				<label for="remember" class="lt" style="margin-right:4.0625vw;">
 					<input type="checkbox" name="" id="remember" value="" /> <u></u> <span>记住用户名和密码</span>
-				</label> <label for="automatism" class="lt"> <input type="checkbox"
+				</label> 
+				<label for="automatism" class="lt"> <input type="checkbox"
 					name="" id="automatism" value="" /> <u></u> <span>自动登录</span>
 				</label>
 			</div>
@@ -43,6 +44,16 @@
 
 <script>
 	$(function() {
+		var localStorage = window.localStorage;
+		if (localStorage.getItem("uAccount") != null) {
+			$("#userName").val(localStorage.getItem("uAccount"));
+			$("#password").val(localStorage.getItem("uPassword"));
+			$("#remember").attr("checked", true);
+			/* $("#automatism").attr("checked", true);
+			if($("#automatism").is(':checked')){
+				login();
+			} */
+		}
 		//回车登录
 		$("#password").on('keydown', function(e) {
 			if (e.which == 13) {
@@ -53,12 +64,25 @@
 	})
 
 	function login() {
+		var localStorage = window.localStorage;
+		var $uAccount = $("#userName").val();
+		var $uPassword = $("#password").val();
+		if ($('#remember').is(':checked')) {
+			localStorage.setItem("uAccount", $uAccount);
+			localStorage.setItem("uPassword", $uPassword);
+		} else {
+			if (localStorage.getItem("uAccount") != null) {
+				localStorage.removeItem("uAccount");
+				localStorage.removeItem("uPassword");
+			}
+		}
+		
 		$.ajax({
 			type : "post",
 			url : "../../login",
 			data : {
-				userName : $("#userName").val(),
-				password : $("#password").val()
+				userName : $uAccount,
+				password : $uPassword
 			//	username : "admin",
 			//	password :  "admin"
 			},
@@ -76,8 +100,8 @@
 			},
 			error : function(xhr, statue, error) {
 				alert("登录失败")
-				//console.log(error);
-				//location.href = "/ReceptionMS/views/login/login.html";
+			//console.log(error);
+			//location.href = "/ReceptionMS/views/login/login.html";
 			},
 			cache : false
 		});
