@@ -203,4 +203,21 @@ public class HotelAction {
 		}
 	}
 
+	@RequestMapping(value = "/info/{id}.app", method = RequestMethod.GET)
+	public String queryHotelByIdApp(@PathVariable("id") String id) {
+		HotelInfoEntity hotel = this.hotelServiceImpl.selectById(id);
+		if (hotel == null) {
+			new EntityNotFoundException("不存在");
+			return "";
+		}
+		return JSONHelper.toJSON(hotel);
+	}
+
+	@RequestMapping(value = "/list.app", produces = "application/json; charset=utf-8")
+	public String selectListByNameApp(HotelInfoEntity hotel) {
+		List<HotelInfoEntity> list = hotelServiceImpl.selectListByName(hotel);
+		String json = JSONHelper.toJSON(list);
+		// System.out.println(json);
+		return json;
+	};
 }

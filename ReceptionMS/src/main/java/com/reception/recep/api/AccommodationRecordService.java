@@ -16,4 +16,6 @@ public interface AccommodationRecordService {
 	List<AccommodationRecordEntity> selectList();
 	
 	List<AccommodationRecordEntity> selectByReceptionNumber(String receptionNumber);
+
+	AccommodationRecordEntity selectById(String id);
 }

@@ -50,5 +50,11 @@ public class AccommodationRecordServiceImpl implements AccommodationRecordServic
 		return accommodationRecordMapper.deleteByNumber(receptionNumber);
 	}
 
+	@Override
+	public AccommodationRecordEntity selectById(String id) {
+		// TODO Auto-generated method stub
+		return accommodationRecordMapper.selectById(id);
+	}
+
 
 }

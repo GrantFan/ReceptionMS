@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +24,7 @@ import com.reception.recep.api.AccommodationRecordService;
 import com.reception.recep.model.AccommodationRecordEntity;
 import com.reception.recep.model.MealsRecordEntity;
 import com.reception.recep.model.ReceptionRecordEntity;
+import com.reception.util.JSONHelper;
 import com.reception.util.poi.ImportExcelUtil;
 import com.reception.util.poi.ModelTitle;
 
@@ -117,4 +119,18 @@ public class AccommodationRecordAction {
 
 		return "false";
 	};
+	
+	@RequestMapping(value="/list.app",produces="application/json; charset=utf-8")
+	public @ResponseBody String accomRecordListApp(){
+		List<AccommodationRecordEntity> list = accommodationRecordService.selectList();
+		String json = JSONHelper.toJSON(list);
+		return json;
+	}
+	
+	@RequestMapping(value="/info/{id}.app", method = RequestMethod.GET,produces="application/json; charset=utf-8")
+	public @ResponseBody String accomRecordInfoApp(@PathVariable("id")String id){
+		AccommodationRecordEntity accom = accommodationRecordService.selectById(id);
+		String json = JSONHelper.toJSON(accom);
+		return json;
+	}
 }

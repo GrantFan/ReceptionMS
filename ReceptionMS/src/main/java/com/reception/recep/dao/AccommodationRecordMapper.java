@@ -32,4 +32,7 @@ public interface AccommodationRecordMapper {
 
 	@Delete("delete from accommodation_record where reception_number=#{receptionNumber}")
 	int deleteByNumber(String receptionNumber);
+
+	@Select("select id,reception_number receptionNumber,hotel,room_number roomNumber,checkin_time checkinTime,checkout_time checkoutTime,hobby,record_time recordTime,remark from accommodation_record where id=#{id}")
+	AccommodationRecordEntity selectById(String id);
 }

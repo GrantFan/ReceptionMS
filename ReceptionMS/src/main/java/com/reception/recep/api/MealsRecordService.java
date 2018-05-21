@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.reception.recep.model.MealsRecordEntity;
+import com.reception.recep.model.ReceptionRecordEntity;
 
 public interface MealsRecordService {
 	
@@ -16,4 +17,7 @@ public interface MealsRecordService {
 	List<MealsRecordEntity> selectList();
 	
 	List<MealsRecordEntity> selectByReceptionNumber(String receptionNumber);
+
+	MealsRecordEntity selectById(String id);
+
 }

@@ -74,7 +74,7 @@ public class ReceptionRecordServiceImpl implements ReceptionRecordService {
 		return receptionRecordMapper.selectList();
 	}
 
-	public List<ReceptionRecordEntity> selectByNumber(String receptionNumber) {
+	public ReceptionRecordEntity selectByNumber(String receptionNumber) {
 		// TODO Auto-generated method stub
 		return receptionRecordMapper.selectByNumber(receptionNumber);
 	}

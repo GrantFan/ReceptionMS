@@ -51,6 +51,12 @@ public class MealsRecordServiceImpl implements MealsRecordService {
 		return mealsRecordMapper.deleteByNumber(receptionNumber);
 	}
 
+	@Override
+	public MealsRecordEntity selectById(String id) {
+		// TODO Auto-generated method stub
+		return mealsRecordMapper.selectById( id);
+	}
+
 	
 
 }

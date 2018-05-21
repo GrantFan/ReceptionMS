@@ -14,8 +14,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +58,7 @@ public class ReceptionRecordAction {
 		return json;
 	}
 	
+	
 	@RequestMapping(value="/search",produces="application/json; charset=utf-8")
 	public @ResponseBody String receptionRecordSearch(
 			@RequestParam(value="hotel")String hotel,
@@ -78,8 +81,7 @@ public class ReceptionRecordAction {
 	@RequestMapping(value="/recordInfo",produces="application/text; charset=utf-8")
 	public @ResponseBody String receptionRecord(@RequestParam(value="receptionNumber")String receptionNumber){
 		
-		List<ReceptionRecordEntity> list = receptionRecordServiceImpl.selectByNumber(receptionNumber);
-		ReceptionRecordEntity reception = list.get(0);
+		ReceptionRecordEntity reception = receptionRecordServiceImpl.selectByNumber(receptionNumber);
 		List<AccommodationRecordEntity> acclist = accommodationRecordService.selectByReceptionNumber(receptionNumber);
 		List<MealsRecordEntity> meallist = mealsRecordService.selectByReceptionNumber(receptionNumber);
 		Map map = new HashMap<String, Object>();
@@ -191,4 +193,23 @@ public class ReceptionRecordAction {
 		return "false";
 	};
 	
+	
+	
+	@RequestMapping(value="/list.app",produces="application/json; charset=utf-8")
+	public @ResponseBody String receptionRecordListApp(@RequestParam(value="receptionTitle")String receptionTitle,
+													   @RequestParam(value="receptionDate")String receptionDate){
+		ReceptionRecordEntity reception = new ReceptionRecordEntity();
+		reception.setReceptionTitle(receptionTitle);
+		reception.setReceptionDate(receptionDate);
+		List<ReceptionRecordEntity> list = receptionRecordServiceImpl.selectLike(reception);
+		String json = JSONHelper.toJSON(list);
+		return json;
+	}
+	
+	@RequestMapping(value="/info/{receptionNumber}.app", method = RequestMethod.GET,produces="application/json; charset=utf-8")
+	public @ResponseBody String receptionRecordInfoApp(@PathVariable("receptionNumber")String receptionNumber){
+		ReceptionRecordEntity recep = receptionRecordServiceImpl.selectByNumber(receptionNumber);
+		String json = JSONHelper.toJSON(recep);
+		return json;
+	}
 }

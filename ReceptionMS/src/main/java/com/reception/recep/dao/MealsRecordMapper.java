@@ -31,4 +31,7 @@ public interface MealsRecordMapper {
 
 	@Delete("delete from meals_record where reception_number=#{receptionNumber}")
 	int deleteByNumber(String receptionNumber);
+
+	@Select("select id,reception_number receptionNumber,menu_number menuNumber,hotel,meals_time mealsTime,hobby,record_time recordTime,remark from meals_record where id=#{id}")
+	MealsRecordEntity selectById(String id);
 }
