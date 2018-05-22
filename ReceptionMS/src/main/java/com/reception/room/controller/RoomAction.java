@@ -1,5 +1,7 @@
 package com.reception.room.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,16 +15,20 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.reception.dictionary.model.DictionaryTableEntity;
 import com.reception.exceptionfilter.EntityNotFoundException;
 import com.reception.hotel.model.HotelInfoEntity;
+import com.reception.operate_log.util.LogAnnotation;
 import com.reception.room.model.RoomInfoEntity;
 import com.reception.room.service.RoomServiceImpl;
 import com.reception.util.JSONHelper;
@@ -33,6 +39,9 @@ import com.reception.util.poi.ModelTitle;
 @RequestMapping(value = "/room")
 public class RoomAction {
 
+	@Value("${spring.http.multipart.location}")
+    private String location;
+	
 	@Resource
 	RoomServiceImpl roomServiceImpl;
 
@@ -197,4 +206,29 @@ public class RoomAction {
 
 		return "false";
 	};
+	
+	@LogAnnotation(module = "房间信息",remark = "导入房间信息")
+	@RequestMapping(value = "/import", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	public String getFileUrl(@RequestParam(value = "file", required = false) MultipartFile file) {
+		File f = new File(location+ file.getOriginalFilename());
+		int count = 0;
+		try {
+			file.transferTo(f);
+			InputStream in =   new FileInputStream(f);
+			List<RoomInfoEntity> list = ImportExcelUtil.importExcel(RoomInfoEntity.class, in);
+//			System.out.println(list.size());
+			for(RoomInfoEntity room : list){
+				roomServiceImpl.addRoomInfo(room);
+				count++;
+			}
+			return "{\"flag\":\"true\",\"count\":\""+count+"\"}";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "{\"flag\":\"false\",\"count\":\""+count+"\"}";
+		} finally {
+			if (f.exists()) {
+				f.delete();
+			}
+		}
+	}
 }

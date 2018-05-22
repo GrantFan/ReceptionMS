@@ -1,6 +1,8 @@
 package com.reception.guest.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -51,11 +53,9 @@ public class Guest_InfoAction {
 
     private static final Logger log = LoggerFactory.getLogger(Guest_InfoAction.class);
 
-    @Value("${photoPath}")
-    private String photoPath;
-    
-//    @Value("${filePath}")
-//    private String filePath;
+	@Value("${spring.http.multipart.location}")
+	private String location;
+	
     
     @Autowired
     private Guest_InfoService guest_infoService;
@@ -141,17 +141,14 @@ public class Guest_InfoAction {
         int code=1;
         String fileName=file.getOriginalFilename();//获取文件名加后缀
         if(fileName!=null&&fileName!=""){ 
-        	//String returnUrl = "D://upload/imgs/";//存储路径
-            //String path = "D://upload/imgs"; //文件存储位置
-            //String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/upload/imgs/";//存储路径
-        	String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/views/upload/imgs/";//存储路径
-            String path = request.getSession().getServletContext().getRealPath("views/upload/imgs"); //文件存储位置
-            String fileF = fileName.substring(fileName.lastIndexOf("."), fileName.length());//文件后缀
-            fileName=new Date().getTime()+"_"+new Random().nextInt(1000)+fileF;//新的文件名
+//        	String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/views/upload/imgs/";//存储路径
+//            String path = request.getSession().getServletContext().getRealPath("views/upload/imgs"); //文件存储位置
+//            String fileF = fileName.substring(fileName.lastIndexOf("."), fileName.length());//文件后缀
+            fileName=new Date().getTime()+"_"+new Random().nextInt(1000)+".png";//新的文件名
 
             //先判断文件是否存在
-            String fileAdd = "photo";
-            File file1 =new File(path+"/"+fileAdd); 
+            String fileAdd = "guestphoto";
+            File file1 = new File(location + fileAdd);
             //如果文件夹不存在则创建    
             if(!file1 .exists()  && !file1 .isDirectory()){       
                 file1 .mkdir();
@@ -161,7 +158,8 @@ public class Guest_InfoAction {
             try {
                 file.transferTo(targetFile);
 //              msg=returnUrl+fileName;
-                msg=returnUrl+fileAdd+"/"+fileName;
+//                msg=returnUrl+fileAdd+"/"+fileName;
+                msg = "../../guest/img/" +fileName;
                 code=0;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -169,6 +167,46 @@ public class Guest_InfoAction {
         }
         return JSONHelper.toJSON(ResponseResult.result(code, msg));
     }
+    
+  //通过图片名获取图片文件 返回到前台生成图片
+  	@RequestMapping(value = "/img/{filePath}", method = RequestMethod.GET)
+  	public void getImage(@PathVariable("filePath") String filePath, HttpServletResponse response) {
+  		String fileAdd = "guestphoto/";
+  		filePath = location + fileAdd + filePath + ".png";
+  		// System.out.println(filePath);
+  		FileInputStream fis = null;
+  		OutputStream out = null;
+  		try {
+  			File file = new File(filePath);
+  			fis = new FileInputStream(file);
+  			response.setContentType("image/jpg");
+  			int index;
+  			byte[] bytes = new byte[1024];
+  			out = response.getOutputStream();
+  			while ((index = fis.read(bytes)) != -1) {
+  				out.write(bytes, 0, index);
+  				out.flush();
+  			}
+  		} catch (FileNotFoundException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		} catch (IOException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		} finally {
+  			try {
+  				if (null != fis) {
+  					fis.close();
+  				}
+  				if (null != out) {
+  					out.close();
+  				}
+  			} catch (IOException e) {
+  				// TODO Auto-generated catch block
+  				e.printStackTrace();
+  			}
+  		}
+  	}
     
     @RequestMapping(value = "/deleteImg" , method =  RequestMethod.POST)
     public @ResponseBody int deletePicture(){
@@ -182,11 +220,11 @@ public class Guest_InfoAction {
     		}
 		}
     	//获取指定路径下的全部文件名 
-    	File file = new File(photoPath);
+    	File file = new File(location + "guestphoto");;
     	 String [] fileNames = file.list();
          for (String name : fileNames) {
  			if(!photoNames.contains(name)){
- 				File f = new File(photoPath+name);
+ 				File f = new File(location + "guestphoto/" + name);
  				if(f.exists()){
  		    	     f.delete();
  		        }

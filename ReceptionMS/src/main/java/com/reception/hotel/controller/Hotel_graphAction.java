@@ -3,7 +3,6 @@ package com.reception.hotel.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -66,12 +65,12 @@ public class Hotel_graphAction {
 			// String path =
 			// request.getSession().getServletContext().getRealPath("views/upload/imgs");
 			// //文件存储位置
-			String fileF = fileName.substring(fileName.lastIndexOf("."), fileName.length());// 文件后缀
+//			String fileF = fileName.substring(fileName.lastIndexOf("."), fileName.length());// 文件后缀
 			fileName = new Date().getTime() + "_" + new Random().nextInt(1000) + ".png";// 新的文件名
 
 			// 先判断文件是否存在
 			String fileAdd = "hotelphoto";
-			File file1 = new File(location + "\\" + fileAdd);
+			File file1 = new File(location + fileAdd);
 			// 如果文件夹不存在则创建
 			if (!file1.exists() && !file1.isDirectory()) {
 				file1.mkdir();
@@ -141,7 +140,7 @@ public class Hotel_graphAction {
 	@RequestMapping(value = "/img/{filePath}", method = RequestMethod.GET)
 	public void getImage(@PathVariable("filePath") String filePath, HttpServletResponse response) {
 		String fileAdd = "hotelphoto/";
-		filePath = location + fileAdd + filePath + ".png";
+		filePath = location + fileAdd + filePath + ".png";;
 		// System.out.println(filePath);
 		FileInputStream fis = null;
 		OutputStream out = null;
@@ -198,7 +197,7 @@ public class Hotel_graphAction {
 		if (null != fileNames) {
 			for (String name : fileNames) {
 				if (!photoNames.contains(name)) {
-					File f = new File(location + "hotelphoto\\" + name);
+					File f = new File(location + "hotelphoto/" + name);
 					if (f.exists()) {
 						f.delete();
 					}

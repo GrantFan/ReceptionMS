@@ -142,6 +142,51 @@ function loadRoomType() {
 	);
 }
 
+
+function importModal(){
+	$("#importModal").show(500);
+}
+/**
+ * 导入
+ */
+function importExcel() {
+	var f = $("#file_excel").val();
+	if (f == null || f == undefined || f == '') {
+		return false;
+	}
+	if (!/\.(?:xls|xlsx)$/.test(f)) {
+		alert("请上传Excel文件");
+		$("#file_excel").val('');
+		return false;
+	}
+	var data = new FormData();
+	$.each($("#file_excel")[0].files, function(i, file) {
+		data.append('file', file);
+	})
+	$.ajax({
+		type : "POST",
+		url : "../../room/import",
+		data : data,
+		cache : false,
+		processData : false,
+		contentType : false,
+		dataType : "json",
+		success : function(str) {
+			console.log(str);
+			if (str.flag == "true") {
+				alert("导入成功！ 导入" + str.count + "条数据");
+				showHotelList(1, 10);
+				$("#importModal").hide(500);
+			} else {
+				alert("导入" + str.count + "条数据");
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert("请求失败，请检查网络后重试");
+		}
+	});
+}
+//导出
 function exportExcel() {
 	location.href = '../../room/export';
 }
@@ -304,7 +349,7 @@ function print(){
     var newImg = document.createElement("img");  
     newImg.src = dataUrl;  
     var printWindow = window.open(newImg.src);  
-    printWindow.document.write('<img src="'+newImg.src+'" />')  
+    printWindow.document.write('<img width="1200px" src="'+newImg.src+'" />')  
     printWindow.print();  
 }
 //打印预览

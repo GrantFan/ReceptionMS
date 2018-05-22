@@ -24,8 +24,8 @@
 			<button onclick="printHtml()">
 				<u class="dy"></u><span class="webkit">打印</span>
 			</button>
-			<button>
-				<u class="dr"></u><span class="webkit">导入</span>
+			<button onclick="importModal()">
+				<u class="dr"></u><span class="webkit"> 导入</span>
 			</button>
 			<button onclick="exportExcel()">
 				<u class="dc"></u><span class="webkit">导出</span>
@@ -159,6 +159,37 @@
 			<div class="mfoot" align="center">
 				<button onclick="print()">
 					<u class="confirm lt"></u> <span class="lt">打印</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
+		<div id="importModal" class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>导入文件选择</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<label> *请按导出文件格式填写数据，并选择对应的导入文件~
+				</label>
+				<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
+					<label class="Ibtn lt text-center"
+						style="margin:0px 1.302vw 0px 0px;"> 导入 文件选择 <input
+						type="file" class="" id="file_excel">
+					</label>
+				</div>
+			</div>
+			<div class="mfoot">
+				<button onclick="importExcel()">
+					<u class="confirm lt"></u> <span class="lt">导入</span>
 				</button>
 				<button onclick="$(this).parents('.modal').hide(800)">
 					<u class="cancel lt"></u> <span class="lt">取消</span>
