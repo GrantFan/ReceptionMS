@@ -1,4 +1,4 @@
-package com.reception.util;
+package com.reception.guest.controller;
 
 import java.io.BufferedInputStream;
 import java.io.File;

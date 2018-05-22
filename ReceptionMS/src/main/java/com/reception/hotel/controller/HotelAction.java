@@ -33,6 +33,7 @@ import com.reception.dictionary.service.DictionaryTableServiceImpl;
 import com.reception.exceptionfilter.EntityNotFoundException;
 import com.reception.hotel.model.HotelInfoEntity;
 import com.reception.hotel.service.HotelServiceImpl;
+import com.reception.operate_log.util.LogAnnotation;
 import com.reception.util.JSONHelper;
 import com.reception.util.poi.ImportExcelUtil;
 import com.reception.util.poi.ModelTitle;
@@ -48,6 +49,7 @@ public class HotelAction {
 	@Resource
 	DictionaryTableServiceImpl dictionaryTableServiceImpl;
 
+	@LogAnnotation(module = "酒店信息",remark = "添加酒店")
 	@RequestMapping(value = "/add", produces = "application/text; charset=utf-8")
 	public @ResponseBody String addHotelInfo(HotelInfoEntity hotel) {
 		String flag = "false";
@@ -58,6 +60,7 @@ public class HotelAction {
 		return flag;
 	};
 
+	@LogAnnotation(module = "酒店信息",remark = "修改酒店信息")
 	@RequestMapping(value = "/update", produces = "application/text; charset=utf-8")
 	public String updateHotelInfo(HotelInfoEntity hotel) {
 		String flag = "false";
@@ -68,6 +71,7 @@ public class HotelAction {
 		return flag;
 	};
 
+	@LogAnnotation(module = "酒店信息",remark = "删除酒店")
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public String deleteHotelInfo(@ModelAttribute("hotelInfoEntity") HotelInfoEntity hotel) {
 		String flag = "false";
@@ -112,6 +116,7 @@ public class HotelAction {
 		return json;
 	};
 
+	@LogAnnotation(module = "酒店信息",remark = "导出酒店信息")
 	@RequestMapping(value = "/export")
 	public @ResponseBody String export(HttpServletResponse response) {
 		OutputStream out = null;
@@ -141,8 +146,6 @@ public class HotelAction {
 			List<HotelInfoEntity> list = hotelServiceImpl.selectList();
 			// 导出
 			input = ImportExcelUtil.excelModelbyClass(HotelInfoEntity.class, map, (int) rowSize, list);
-			int index;
-			byte[] bytes = new byte[1024];
 
 			response.setContentType("application/octet-stream;charset=utf-8");
 			response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8")
@@ -150,6 +153,8 @@ public class HotelAction {
 			response.addHeader("Pargam", "no-cache");
 			response.addHeader("Cache-Control", "no-cache");
 
+			int index;
+			byte[] bytes = new byte[1024];
 			out = response.getOutputStream();
 			while ((index = input.read(bytes)) != -1) {
 				out.write(bytes, 0, index);
@@ -179,6 +184,7 @@ public class HotelAction {
 		return "false";
 	};
 
+	@LogAnnotation(module = "酒店信息",remark = "导入酒店信息")
 	@RequestMapping(value = "/import", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public String getFileUrl(@RequestParam(value = "file", required = false) MultipartFile file) {
 		File f = new File(location+ file.getOriginalFilename());

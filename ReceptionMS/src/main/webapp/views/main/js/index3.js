@@ -27,6 +27,7 @@ function logout(){
 
 //显示功能模块结构
 function showModule() {
+	console.time("showModule");
 	$("#usernick").text(sessionStorage.usernick);
 	$.ajax({
 		type : "post",
@@ -69,6 +70,7 @@ function showModule() {
 			alert(textStatus);
 		}
 	})
+	console.timeEnd("showModule");
 }
 
 //显示功能模块

@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.reception.exceptionfilter.EntityNotFoundException;
+import com.reception.operate_log.util.LogAnnotation;
 import com.reception.system.model.User;
 import com.reception.system.service.UserServiceImpl;
 import com.reception.util.JSONHelper;
+import com.reception.util.Md5Util;
 
 /**
  * 用户Action层
@@ -39,11 +41,13 @@ public class UserAction {
 	 * @param user
 	 * @return String
 	 */
+	@LogAnnotation(module = "用户设置",remark = "添加用户")
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String UserAdd(@ModelAttribute("user") User user, HttpSession session) {
 		String result = "false";
 		int num = userService.isExistUser(user);
 		if (num == 0) {
+			user.setPassword(Md5Util.EncoderByMd5(user.getPassword()));
 			num = userService.addUser(user);
 			result = "true";
 		} else {
@@ -78,6 +82,7 @@ public class UserAction {
 		return JSONHelper.toJSON(user);
 	}
 	
+	@LogAnnotation(module = "用户设置",remark = "删除用户")
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public String deleteHotelInfo(@ModelAttribute("user") User user) {
 		String flag = "false";
@@ -93,10 +98,12 @@ public class UserAction {
 	 * @param user
 	 * @return String
 	 */
+	@LogAnnotation(module = "用户设置",remark = "修改用户")
 	@RequestMapping(value = "/update", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String updateUser(User user) {
 
 		// 查询要修改的User
+		user.setPassword(Md5Util.EncoderByMd5(user.getPassword()));
 		int num = userService.updateUser(user);
 		if (num > 0) {
 			return "true";
@@ -111,6 +118,7 @@ public class UserAction {
 	 * @param user
 	 * @return String
 	 */
+	@LogAnnotation(module = "用户设置",remark = "删除用户")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String deleteUser(User user) {
 		int num = userService.deleteUser(user);

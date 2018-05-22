@@ -62,6 +62,11 @@
 			<artifactId>gson</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+		<!-- 添加aop切面 -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 		<!--POI -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>餐厅信息设置</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" />
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/pagination.css" />
+<script src="../assets/js/jquery-1.10.2.min.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="../assets/js/pagination.min.js" type="text/javascript"
+	charset="utf-8"></script>
+<script src="./js/restaurantInfo.js" type="text/javascript"
+	charset="utf-8"></script>
+</head>
+<body>
+	<div class="operationsArea">
+		<div class="buttons">
+			<button onclick="view()" class="active">
+				<u class="xz"></u><span class="webkit">新增</span>
+			</button>
+			<button onclick="copyView()">
+				<u class="fzxz"></u><span class="webkit">复制新增</span>
+			</button>
+			<button onclick="edit()">
+				<u class="bj"></u><span class="webkit">编辑</span>
+			</button>
+			<button onclick="dele()">
+				<u class="sc"></u><span class="webkit">删除</span>
+			</button>
+			<button onclick="exportRestaurantInfo()">
+				<u class="dc"></u><span class="webkit">导出</span>
+			</button>
+			</button>
+		</div>
+		<div class="inputs">
+			<select id="Qhotel" name="Qhotel"   class="hotel" onchange = 'restaurantTypeList(this);load_restaurantInfo();'
+				>
+			</select> <select id="QrestaurantType" name="QrestaurantType"
+				onchange="load_restaurantInfo();">
+			</select>
+			<button
+				onclick=load_restaurantInfo(sessionStorage.currPage,sessionStorage.pageSize);>
+				<span class="webkit">查询</span>
+			</button>
+		</div>
+		<div class="tab">
+			<table class="table" cellspacing="0">
+				<thead>
+					<tr>
+						<th>选择</th>
+						<th>餐厅编号</th>
+						<th>餐厅名 包厢名</th>
+						<th>餐厅类型</th>
+						<th>所属酒店</th>
+						<th>位置 在哪座楼</th>
+						<th>楼层</th>
+						<th>容纳人数</th>
+						<th>状态</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody id="info">
+
+				</tbody>
+			</table>
+			<div id="page" class="text-center"></div>
+		</div>
+	</div>
+	<input value="" type="hidden" id="id">
+	<!--模态框-->
+	<div class="modal none">
+		<div class="box">
+			<h4 class="overflow">
+				<p class="lt">
+					<span id="modal_name">餐厅新增</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<label for="restaurant_number"> <span>餐厅编号：</span> <input
+					type="text" name="restaurant_number" id="restaurant_number"
+					value="" />
+				</label> <label for="hotel"> <span>餐厅名 包厢名：</span> <input
+					type="text" name="restaurant_name" id="restaurant_name" value="" /> 
+				</label> <label for="role"> <span>餐厅类型：</span> <select type="text"
+					name="restaurant_type" id="restaurant_type">
+				</select>
+				</label> <label for="user"> <span>所属酒店：</span><select type="text"
+					class="hotel" name="HOTEL" id="HOTEL">
+				</select>
+				</label> <label for="user"> <span>位置 在哪座楼：</span> <input type="text"
+					name="position" id="position" value="" />
+				</label> <label for="user"> <span>楼层：</span> <input type="text"
+					name="floor" id="floor" value="" />
+				</label> <label for="user"> <span>容纳人数：</span> <input type="text"
+					name="capacity_num" id="capacity_num" value="" />
+				</label> <label for="user"> <span>状态：</span> 
+				<select type="text"
+					name="state" id="state">
+					<option value="开放">开放</option>
+					<option value="关闭">关闭</option>
+				</select> 
+				</label> <label for="remarks"> <span>备注</span> <textarea
+						name="remark" rows="5" cols="30" id="remark"></textarea>
+				</label>
+			</div>
+			<div class="mfoot" align="center">
+				<button id="add" onclick="add()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button id="update" onclick="update()" style="display:none">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800);emptyAdd();">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"> 
+	$(function() {
+		$('.modal').hide();
+		load_restaurantInfo(); 
+	});
+	function load_restaurantInfo(pageNum, pageSize) {
+		pageNum == null ? "" : pageNum;
+		pageSize == null ? "" : pageSize;
+		
+		var hotel,restaurantType;
+		if($("#Qhotel").val() != ""){
+			hotel = $("#Qhotel").find("option:selected").text();
+		}
+		
+		if($("#QrestaurantType").val() != ""){
+			restaurantType = $("#QrestaurantType").find("option:selected").text();
+		}
+
+		$.get("../../RestaurantInfoController", {
+			pageNum : pageNum,
+			pageSize : pageSize,
+			hotel : hotel,
+			restaurantType:restaurantType
+		}, function(result) { 
+			var info = $("#info").empty()
+			for (var i = 0, j = result.list.length; i < j; i++) {
+				var list = result.list[i];
+				info.append("<tr dblclick='edit()' ><td><label><input type=\"Checkbox\" id=\"" + list.id + "\" value=\"" + list.id + "\"  name=\"" + list.id + "\"  ><u></u></label></td><td>" + list.restaurant_number + "</td><td>" + list.restaurant_name + "</td>"+
+				    "<td>" + list.restaurant_type + "</td><td>" + list.hotel + "</td><td>" + (list.position == null ? '' : list.position) + "</td><td>" + (list.floor == null ? '' : list.floor) + "</td>" +
+					"<td>" + (list.capacity_num == null ? '' : list.capacity_num)+ "</td><td>" + list.state + "</td><td>" + (list.remark == null ? '' : list.remark) + "</td></tr>");
+			}
+			$("#page").whjPaging({
+				//可选，每页显示条数下拉框，默认下拉框5条/页(默认)、10条/页、15条/页、20条/页
+				pageSizeOpt : [
+					{
+						'value' : 5,
+						'text' : '5条/页'
+					},
+					{
+						'value' : 10,
+						'text' : '10条/页',
+						'selected' : true
+					},
+					{
+						'value' : 15,
+						'text' : '15条/页'
+					},
+					{
+						'value' : 20,
+						'text' : '20条/页'
+					}
+				],
+				//可选，css设置，可设置值：css-1，css-2，css-3，css-4，css-5，默认css-1，可自定义样式
+				css : 'css-1',
+				//可选，总页数
+				totalPage : result.pages,
+				//可选，展示页码数量，默认5个页码数量
+				showPageNum : 10,
+				//可选，首页按钮展示文本，默认显示文本为首页
+				firstPage : '首页',
+				//可选，上一页按钮展示文本，默认显示文本为上一页
+				previousPage : '上一页',
+				//可选，下一页按钮展示文本，默认显示文本为下一页
+				nextPage : '下一页',
+				//可选，尾页按钮展示文本，默认显示文本为尾页
+				lastPage : '尾页',
+				//可选，跳至展示文本，默认显示文本为跳至
+				skip : '跳至',
+				//可选，确认按钮展示文本，默认显示文本为确认
+				confirm : '确认',
+				//可选，刷新按钮展示文本，默认显示文本为刷新
+				refresh : '刷新',
+				//可选，共{}页展示文本，默认显示文本为共{}页，其中{}会在js具体转化为数字
+				totalPageText : '共{}页',
+				//可选，是否展示首页与尾页，默认true
+				isShowFL : true,
+				//可选，是否展示每页N条下拉框，默认true
+				isShowPageSizeOpt : true,
+				//可选，是否展示跳到指定页数，默认true
+				isShowSkip : true,
+				//可选，是否展示刷新，默认true
+				isShowRefresh : true,
+				//可选，是否展示共{}页，默认true
+				isShowTotalPage : true,
+				//可选，是否需要重新设置当前页码及总页数，默认false，如果设为true，那么在请求服务器返回数据时，需要调用setPage方法
+				isResetPage : false,
+				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
+				callBack : function(currPage, pageSize) {
+					sessionStorage.currPage = currPage;
+					sessionStorage.pageSize = pageSize;
+					load_restaurantInfo(currPage, pageSize);
+				}
+			});
+		});
+	}
+
+	function view() {
+		$('.modal').show(500);
+		getNumber();
+		upHotelShow();
+		uprestaurantTypeShow();
+	}
+	function add(){
+		$.post("../../RestaurantInfoController", {
+			restaurant_number : $("#restaurant_number").val(),
+			restaurant_name : $("#restaurant_name").val(),
+			restaurant_type : $("#restaurant_type").find("option:selected").text(),
+			hotel : $("#HOTEL").find("option:selected").text() , 
+			position : $("#position").val(),
+			floor : $("#floor").val(),
+			capacity_num : $("#capacity_num").val(),
+			state : $("#state").find("option:selected").text(),  
+			remark : $("#remark").val()
+		}, function(result) {
+			alert("新增成功");
+			emptyAdd();
+			$('.modal').hide();
+			load_restaurantInfo(sessionStorage.currPage,sessionStorage.pageSize);
+			}
+		).error(function(a){
+			console.log(a);
+		}); 
+	}
+	function emptyAdd(){
+		$("#restaurant_number").val("");
+		$("#restaurant_name").val(''); 
+		$("#restaurant_type").val("");
+	    $("#HOTEL").val("");
+		$("#position").val(""); 
+		$("#floor").val("");
+		$("#capacity_num").val(''); 
+		$("#state").val("");
+	    $("#remark").val(""); 
+	}
+	function dele(){ 
+	    var idArray = new Array; 
+	    $('input[type=checkbox]:checked').each(function(){ 
+			idArray.push($(this).val()); 
+		})   
+		
+		if(idArray.length == 0 ){
+			alert("请选择要删除的数据！");
+			return false;
+		}  
+		  
+		$.ajax({
+	    url: '../../RestaurantInfoController/delRestaurantInfo',
+	    type: 'POST', 
+	    data:{"idArray":idArray},
+	    success: function(result) {
+	        alert("删除成功！");
+	        load_restaurantInfo(sessionStorage.currPage,sessionStorage.pageSize);
+	    }
+});
+	}
+	function edit(){  
+	    var idArray = new Array; 
+	    $('input[type=checkbox]:checked').each(function(){ 
+			idArray.push($(this).val()); 
+		})   
+		
+		if(idArray.length != 1 ){
+			alert("请选择要修改的数据！");
+			return false;
+		} 
+		$.get(
+			'../../RestaurantInfoController/'+idArray[0],
+			function(result){ 
+				$("#modal_name").text("餐厅信息修改");
+				$('#add').hide(); 
+				$('#update').show(500); 
+				$('.modal').show(500);
+				$("#id").val(result.id);
+				$("#restaurant_number").val(result.restaurant_number); 
+				$("#restaurant_name").val(result.restaurant_name); 
+				upHotelShow(result.hotel);
+				uprestaurantTypeShow(result.restaurant_type);   
+			    $("#position").val(result.position);
+			    $("#floor").val(result.floor);
+			    $("#capacity_num").val(result.capacity_num);
+			    $("#state").val(result.state);
+				$("#remark").val(result.remark); 
+			} 
+		);
+	}
+	function copyView(){
+		    var idArray = new Array; 
+	    $('input[type=checkbox]:checked').each(function(){ 
+			idArray.push($(this).val()); 
+		})   
+		
+		if(idArray.length != 1 ){
+			alert("请选择要修改的数据！");
+			return false;
+		} 
+		$.get(
+			'../../RestaurantInfoController/'+idArray[0],
+			function(result){  
+				
+				$('.modal').show(500); 
+				$("#restaurant_name").val(result.restaurant_name); 
+				upHotelShow(result.hotel);
+				uprestaurantTypeShow(result.restaurant_type);   
+			    $("#position").val(result.position);
+			    $("#floor").val(result.floor);
+			    $("#capacity_num").val(result.capacity_num);
+			    $("#state").val(result.state);
+				$("#remark").val(result.remark);
+				getNumber();
+			} 
+		); 
+	}
+	function update(){
+		$.ajax({
+	    url: '../../RestaurantInfoController/',
+	    type: 'Put', 
+	    data: {
+	    	id : $("#id").val(),
+	    	restaurant_number : $("#restaurant_number").val(),
+			restaurant_name : $("#restaurant_name").val(),
+			restaurant_type : $("#restaurant_type").val(),
+			hotel : $("#HOTEL").find("option:selected").text() , 
+			position : $("#position").val(),
+			floor : $("#floor").val(),
+			capacity_num : $("#capacity_num").val(),
+			state : $("#state").val(),  
+			remark : $("#remark").val()
+	    },
+	    success: function(result) {
+	        if(result == true){
+	        	alert("更新成功");
+	        	$('.modal').hide(500);
+	        	$('#add').show(500); 
+				$('#update').hide();
+				$("#modal_name").text("餐厅新增");
+				$("#id").val("");
+				load_restaurantInfo(sessionStorage.currPage,sessionStorage.pageSize);
+	        }
+	    } 
+	    });
+	}
+	function exportRestaurantInfo(){
+		var form=$("<form>");//定义一个form表单 
+		        form.attr("method","get");
+		        form.attr("action",'../../RestaurantInfoController/export');
+		        $("body").append(form);//将表单放置在web中 
+		        form.submit();//表单提交   
+		        form.remove(); 
+		}
+    function getNumber(){
+    	$.get("../../RestaurantInfoController/getrestaurant_number",
+    	 function(result){ 
+    	 	$("#restaurant_number").val(result);
+    	 }
+    	);　
+    }
+</script>
+</html>

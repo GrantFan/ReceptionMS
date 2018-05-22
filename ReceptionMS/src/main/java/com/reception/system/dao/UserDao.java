@@ -89,7 +89,7 @@ public interface UserDao {
 	 * @param user
 	 * @return int
 	 */
-	@Delete("delete from sys_user where id=#{id}")
+	@Delete("delete from sys_user where id=#{id} and ENABLED='1' ")//超级管理员不能删除
 	int deleteUser(User user) ;
 
 	

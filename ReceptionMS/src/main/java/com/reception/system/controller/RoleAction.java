@@ -18,6 +18,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.reception.exceptionfilter.EntityNotFoundException;
+import com.reception.operate_log.util.LogAnnotation;
 import com.reception.system.model.Role;
 import com.reception.system.model.RoleModule;
 import com.reception.system.model.User;
@@ -79,6 +80,7 @@ public class RoleAction {
 	 * @param role
 	 * @return string
 	 */
+	@LogAnnotation(module = "角色设置",remark = "添加角色")
 	@RequestMapping(value = "/add")
 	public @ResponseBody String roleAdd(@ModelAttribute("role") Role role) {
 		int num = roleService.addRole(role);
@@ -106,6 +108,7 @@ public class RoleAction {
 	 * @param role
 	 * @return string //
 	 */
+	@LogAnnotation(module = "角色设置",remark = "修改角色")
 	@RequestMapping(value = "/update")
 	public @ResponseBody String updateRole(@ModelAttribute("role") Role role) {
 
@@ -125,6 +128,7 @@ public class RoleAction {
 	 * @param role
 	 * @return string
 	 */
+	@LogAnnotation(module = "角色设置",remark = "删除角色")
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public String deleteRole(@PathVariable("id") String roleId) {
 		String flag = "false";
@@ -141,6 +145,7 @@ public class RoleAction {
 	 * @param role
 	 * @return
 	 */
+	@LogAnnotation(module = "角色设置",remark = "角色模块分配")
 	@RequestMapping(value="/setRoleModule", produces = "text/plain; charset=utf-8")
 	public @ResponseBody String addRoleAndModule(@RequestParam(value = "roleId") String roleId,
 												 @RequestParam(value = "menuIds") String menuIds) {

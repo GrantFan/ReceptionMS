@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.reception.exceptionfilter.EntityNotFoundException;
+import com.reception.operate_log.util.LogAnnotation;
 import com.reception.system.model.Module;
 import com.reception.system.model.User;
 import com.reception.system.service.ModuleServiceImpl;
@@ -33,6 +34,7 @@ public class ModuleAction {
 	 * @param module
 	 * @return String
 	 */
+	@LogAnnotation(module = "模块设置",remark = "添加模块")
 	@RequestMapping(value = "/add")
 	public @ResponseBody String moduleAdd(Module module) {
 		String result = "false";
@@ -51,6 +53,7 @@ public class ModuleAction {
 	 * @param module
 	 * @return String
 	 */
+	@LogAnnotation(module = "模块设置",remark = "删除模块")
 	@RequestMapping("/delete")
 	public @ResponseBody String deleteModuleAndRole(@RequestParam(value = "id") String id) {
 		String result = "false";
@@ -76,6 +79,7 @@ public class ModuleAction {
 	 * @param module
 	 * @return string
 	 */
+	@LogAnnotation(module = "模块设置",remark = "修改模块")
 	@RequestMapping(value = "/update")
 	public @ResponseBody String updatemodule(@ModelAttribute("module") Module module) {
 		int num = moduleServiceImpl.updateModule(module);

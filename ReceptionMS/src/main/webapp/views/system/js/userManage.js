@@ -339,8 +339,7 @@ function dele() {
 			success : function(result) {
 				if(result=="true"){
 					alert("删除成功");
-					alert(sessionStorage.pageSize);
-					showUserList(sessionStorage.currPage, sessionStorage.pageSize);
+					showUserList(sessionStorage.currPage, 10);
 				}else{
 					alert("删除失败");
 				}

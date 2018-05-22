@@ -66,5 +66,3 @@ debug: false
 #  file: D:\spring\ResourceCatalog\logs\ResourceCatalog-${server.port}.log
   
 photoPath: ../upload/imgs/photo/
-hotelphotoPath: ../upload/imgs/hotelphoto/
-#filePath: E:\\

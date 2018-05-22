@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/icon.css" /> 
+		<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" /> 
+		
+		<script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../assets/js/pagination.min.js"></script>
+		<script type="text/javascript" src="../assets/js/Calendar.js"></script>
+		<script type="text/javascript" src="./js/operate_log.js"></script>
+		<style>
+			.Ibtn{
+				width: 6.58vw;
+		   	 	height: 3.6vh;
+		    	background: url(../assets/img/button.png) no-repeat 0px 0px;
+		    	background-size: 100% 100%;
+		    	border: none;
+		    	outline: none;
+		    	color: #fff;
+		    	cursor: pointer;
+		    	padding-bottom: 4px;
+		    	margin-right: 1.302vw;
+		    	font-size: 0.88vw;
+			}
+			
+			
+			.buttons>label{
+				width: 6.75%;
+			    height: 4.1vh;
+			    line-height: 4.1vh;
+			    text-align:center;
+			    border: none;
+			    background: url(../assets/img/index3_11.png) no-repeat 0px 0px;
+			    background-size: 100% 100%;
+			    color: #fff;
+			    outline: none;
+			    margin-right: 1.382%;
+			    font-size: 0.625vw;
+			    cursor: pointer;
+			}
+			.buttons>label>u{
+				position: relative;
+			    top: 2px;
+			    left: 6px;
+			}    
+		
+			.mbody img{
+				width:14vw;
+				height:22vh;
+				margin-top:2vh;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="operationsArea">
+		<div class="buttons" onclick="select_log(1,10);">
+		     起始日期：<input type="text" id="start" onclick="new Calendar().show(this);" readonly="readonly"/>
+		      起始日期：<input type="text" id="end" onclick="new Calendar().show(this);" readonly="readonly"/>
+					<button>
+						<u class="xz"></u>
+						<span class="webkit">查询</span>
+					</button>
+		</div>
+	     <div class="tab">
+			<table class="table" cellspacing="0">
+				<thead>
+					<tr>
+						<!-- <th>序号</th> -->
+						<th>操作用户</th>
+						<th>操作模块</th>
+						<th>操作IP</th>
+						<th>操作时间</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody id="log_info">						 
+				</tbody>
+			</table>
+			<div id="pagination" class="text-center">
+			</div>
+		</div>
+		</div>	
+	</body>
+</html>
