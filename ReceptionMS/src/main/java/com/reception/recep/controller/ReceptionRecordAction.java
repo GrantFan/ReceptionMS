@@ -196,8 +196,10 @@ public class ReceptionRecordAction {
 	
 	
 	@RequestMapping(value="/list.app",produces="application/json; charset=utf-8")
-	public @ResponseBody String receptionRecordListApp(@RequestParam(value="receptionTitle")String receptionTitle,
-													   @RequestParam(value="receptionDate")String receptionDate){
+	public @ResponseBody String receptionRecordListApp(@RequestParam(value="receptionTitle",required = false,defaultValue = "")String receptionTitle,
+													   @RequestParam(value="receptionDate",required = false,defaultValue = "")String receptionDate,
+													   HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		ReceptionRecordEntity reception = new ReceptionRecordEntity();
 		reception.setReceptionTitle(receptionTitle);
 		reception.setReceptionDate(receptionDate);
@@ -207,7 +209,8 @@ public class ReceptionRecordAction {
 	}
 	
 	@RequestMapping(value="/info/{receptionNumber}.app", method = RequestMethod.GET,produces="application/json; charset=utf-8")
-	public @ResponseBody String receptionRecordInfoApp(@PathVariable("receptionNumber")String receptionNumber){
+	public @ResponseBody String receptionRecordInfoApp(@PathVariable("receptionNumber")String receptionNumber,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		ReceptionRecordEntity recep = receptionRecordServiceImpl.selectByNumber(receptionNumber);
 		String json = JSONHelper.toJSON(recep);
 		return json;

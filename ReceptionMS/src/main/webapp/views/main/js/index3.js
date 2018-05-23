@@ -3,6 +3,7 @@ $(function() {
 	showModule();
 	$("#username").val(sessionStorage.username);
 	$("#unick").val(sessionStorage.usernick);
+	$("#userid").val(sessionStorage.userid);
 });
 //退出
 function logout(){
@@ -10,8 +11,9 @@ function logout(){
 			type : "post",
 			url : "../../logout",
 			success : function(data) {
-				sessionStorage.username="";
-				sessionStorage.usernick="";
+				sessionStorage.removeItem("username");
+				sessionStorage.removeItem("usernick");
+				sessionStorage.removeItem("userid");
 //				alert(data);
 				var flag = String($.trim(data));
 				if (flag == "false") {
@@ -36,12 +38,23 @@ function updatePass() {
 		return flase;
 	}
 	if (password == newpassword) {
-		alert("修改成功");
 		$.ajax({
 			type : "post",
+			data : {id : $("#userid").val().trim(),
+					userName : $("#username").val().trim(),
+					userNick : $("#unick").val().trim(),
+					password : password},
 			url : "../../user/updatePass",
-			success : function(data) {},
+			success : function(data) {
+				if(data=="true"){
+					alert("修改成功");
+					$('.modal').hide(300);
+				}else{
+					alert("修改失败");
+				}
+			},
 			error : function(xhr, statue, error) {
+				alert("修改失败");
 				console.log(error);
 			}
 		});

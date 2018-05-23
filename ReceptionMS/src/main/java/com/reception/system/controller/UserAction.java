@@ -113,6 +113,24 @@ public class UserAction {
 	}
 
 	/**
+	 * 修改用户信息
+	 * @param user
+	 * @return String
+	 */
+	@LogAnnotation(module = "修改密码",remark = "用户修改密码")
+	@RequestMapping(value = "/updatePass", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public @ResponseBody String updateUserPass(User user) {
+		// 查询要修改的User
+		user.setPassword(Md5Util.EncoderByMd5(user.getPassword()));
+		int num = userService.updateUser(user);
+		if (num > 0) {
+			return "true";
+		} else {
+			return "false";
+		}
+	}
+	
+	/**
 	 * 删除用户
 	 * 
 	 * @param user

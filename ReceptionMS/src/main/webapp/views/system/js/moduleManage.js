@@ -282,12 +282,18 @@ function edit() {
 		'../../module/' + id,
 		function(result) {
 			var json = JSON.parse(result);
-//						console.log(json);
+//			console.log(json);
 			$("#moduleName").val(json.moduleName);
 			$("#url").val(json.url);
 			$("#sort").val(json.sort);
 			$("#icon").val(json.icon);
-			 $("#remark").val(json.remark);
+			$("#remark").val(json.remark);
+			 
+				for (var i = 0; i < $("#moduleParent option").length; i++) {
+					if ($($("#moduleParent option")[i]).val() == json.moduleParentId) {
+						$("#moduleParent option")[i].selected = true;
+					}
+				}
 		}
 	);
 }

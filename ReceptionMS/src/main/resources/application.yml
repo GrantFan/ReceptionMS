@@ -10,7 +10,7 @@ spring:
     username: test_gs
     password: test_gs
 #    driver-class-name: oracle.jdbc.driver.OracleDriver
-#    url: jdbc:oracle:thin:@192.168.1.108:1521:ORCL
+#    url: jdbc:oracle:thin:@192.168.0.4:1521:ORCL
 #    username: db_gs
 #    password: hC0bdmqw15XM9U7V
     # 连接池的配置信息

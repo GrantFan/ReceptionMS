@@ -177,6 +177,14 @@ html,body{
 	background-size: 100% 100%;
 }
 
+.login>.loginBox .QR>i{
+	width: 78%;
+	height: 78%;
+	background: url(../img/app.png) no-repeat 0px 0px;
+	background-size: 100% 100%;
+	margin-top:8%;
+}
+
 .login>.loginBox p.lt{
 	margin-top: 3.89vh;
 	margin-left: 0.83vw;
@@ -190,10 +198,10 @@ html,body{
 	height: 5.556vh;
 	line-height:5.556vh;
 	background-color: rgba(0,128,128,0.6);
-	padding: 0px 1.875vw 0px 3.75vw;
+	padding: 0px 1.875vw 0px  5.6vw;
 }
 .header>div.lt>a>span{
-	width: 10.9375vw;
+	width: 7vw;
 	height: 2.59vh;
 	background: url(../img/logo.png) no-repeat 0px 0px;
 	background-size: 100% 100%;
@@ -692,7 +700,7 @@ iframe{
 	width: 10.641vw;
 	overflow: hidden;
 	line-height:  3.067vh;
-	margin-right: 1.9vw;
+	margin-right: 1.889vw;
 }
 .modal>.box>.mbody>.timeBox>label:nth-last-child(1){
 	margin-right: 0px;
@@ -832,7 +840,7 @@ iframe{
 	font-size: 0.825vw;
 }
 .Tmodal .inputs>div.lt input,
-.Tmodal .inputs>div.lt select,
+.Tmodal .inputs>div`.lt select,
 .Tmodal .inputs>div.rt input,
 .Tmodal .inputs>div.rt select{
 	width: 11.2vw;
@@ -842,7 +850,7 @@ iframe{
 }
 .Tmodal div.tab{
 	overflow-y: scroll;
-	min-height: 25vh;
+	height: 24.9vh;
 	position: relative;
 	border: 1px solid #000;
 }
@@ -896,6 +904,20 @@ iframe{
 .Tmodal div.tab>table th,
 .Tmodal div.tab>table td{
 	width: 20%;
+}
+.Ibtn, .modal>.box label.Fbtn{
+	width: 6.58vw;
+	height: 3.6vh;
+	background: url(../img/button.png) no-repeat 0px 0px;
+	background-size: 100% 100%;
+	border: none;
+	outline: none;
+	color: #fff;
+	cursor: pointer;
+	padding-bottom: 4px;
+	margin-right: 1.302vw;
+	font-size: 0.88vw;
+}
 }
 
 /* 分页样式  */

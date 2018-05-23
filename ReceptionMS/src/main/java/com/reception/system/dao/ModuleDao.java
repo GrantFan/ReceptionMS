@@ -113,7 +113,7 @@ public interface ModuleDao {
 
 	
 	@Select({"<script>",
-		"SELECT ID, module_name moduleName, module_id moduleId, MODULE_PARENT_ID, url, SORT, create_time createTime, icon, remark FROM sys_module  where id=#{id}",
+		"SELECT ID, module_name moduleName, module_id moduleId, MODULE_PARENT_ID moduleParentId, url, SORT, create_time createTime, icon, remark FROM sys_module  where id=#{id}",
 		"</script>"})
 	Module selectModuleById(@Param("id")String id);
 

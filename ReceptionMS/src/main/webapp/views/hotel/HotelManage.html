@@ -15,19 +15,6 @@
 <script type="text/javascript" src="js/HotelManage.js"></script>
 
 <style>
-.Ibtn, .modal>.box label.Ibtn {
-	width: 6.58vw;
-	height: 3.6vh;
-	background: url(../assets/img/button.png) no-repeat 0px 0px;
-	background-size: 100% 100%;
-	border: none;
-	outline: none;
-	color: #fff;
-	cursor: pointer;
-	padding-bottom: 4px;
-	margin-right: 1.302vw;
-	font-size: 0.88vw;
-}
 
 #graphModal>.box>.mbody {
 	padding: 1vw 0px 1vw 0px;
@@ -250,17 +237,7 @@
 			<div class="mbody">
 				<input id="hotelId" type="hidden" value="">
 				<div id="imgBox">
-					<div class="img" ondblclick="imgView(this)">
-						<b class="close none"
-							onclick="$(this).parent('div.img').removeClass('active');$(this).hide();">
-							× </b>
-						<ul class="overflow" id="imageOver">
-							<li class="block"><img src="image/宏兴大酒店_宏兴大酒店.png"
-								width="100%" height="100%" /></li>
-							<li class="none"><img src="image/东方国际大酒店_东方国际大酒店6楼平面图.png"
-								width="100%" height="100%" /></li>
-						</ul>
-					</div>
+			
 					<div class="btns overflow"
 						style="margin-top:2vh;line-height:3.6vh;">
 						<!-- <span id="inmpage" class="lt text-center" style="width:4vw;">1/1</span> -->
@@ -299,13 +276,13 @@
 				<label> *请按导出文件格式填写数据，并选择对应的导入文件~
 				</label>
 				<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
-					<label class="Ibtn lt text-center"
-						style="margin:0px 1.302vw 0px 0px;"> 导入 文件选择 <input
-						type="file" class="" id="file_excel">
+					<label class="Fbtn lt text-center" for="file_excel"
+						style="margin:0px 1.302vw 0px 0px;">选择文件<input
+						type="file" class="none" id="file_excel">
 					</label>
 				</div>
 			</div>
-			<div class="mfoot">
+			<div class="mfoot text-center">
 				<button onclick="importExcel()">
 					<u class="confirm lt"></u> <span class="lt">导入</span>
 				</button>

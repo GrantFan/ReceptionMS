@@ -32,7 +32,7 @@
 
 			<div class="QRCode overflow">
 				<u class="QR lt"> <i></i>
-				</u>
+s				</u>
 				<p class="lt">
 					手机扫一扫<br /> 下载APP
 				</p>
@@ -95,8 +95,10 @@
 				} else {
 					var username = flag.split(";")[0];
 					var usernick = flag.split(";")[1];
-					sessionStorage.username = username;
-					sessionStorage.usernick = usernick;
+					var userid = flag.split(";")[2];
+					sessionStorage.setItem("username", username);
+					sessionStorage.setItem("usernick", usernick);
+					sessionStorage.setItem("userid", userid);
 					alert("登录成功");
 					location.href = "/ReceptionMS/views/main/index3.html";
 				}
