@@ -210,7 +210,7 @@ public class HotelAction {
 	}
 
 	@RequestMapping(value = "/info/{id}.app", method = RequestMethod.GET)
-	public String queryHotelByIdApp(@PathVariable("id") String id) {
+	public String queryHotelByIdApp(@PathVariable("id") String id,HttpServletResponse response) {
 		HotelInfoEntity hotel = this.hotelServiceImpl.selectById(id);
 		if (hotel == null) {
 			new EntityNotFoundException("不存在");
@@ -220,10 +220,17 @@ public class HotelAction {
 	}
 
 	@RequestMapping(value = "/list.app", produces = "application/json; charset=utf-8")
-	public String selectListByNameApp(HotelInfoEntity hotel) {
+	public  String selectListByNameApp(HotelInfoEntity hotel,HttpServletResponse response) {
+		// 指定允许其他域名访问    
+//		response.setHeader("Access-Control-Allow-Origin", "*");
+//		// 响应类型    
+//		response.setHeader("Access-Control-Allow-Methods","POST");    
+//		// 响应头设置    
+//		response.setHeader("Access-Control-Allow-Headers:x-requested-with","content-type");  
+		
 		List<HotelInfoEntity> list = hotelServiceImpl.selectListByName(hotel);
 		String json = JSONHelper.toJSON(list);
-		// System.out.println(json);
+		 System.out.println(json);
 		return json;
 	};
 }

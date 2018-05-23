@@ -39,7 +39,7 @@ public class LoginAction {
 				loginService.loginLog(user);
 				login.setLastLoginComputer(hostName + ":" + ip);
 				session.setAttribute("user", login);
-				return login.getUserNick();
+				return login.getUserName()+";"+login.getUserNick();
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

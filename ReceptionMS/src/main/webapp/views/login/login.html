@@ -93,7 +93,10 @@
 					alert("登录失败");
 					location.href = "/ReceptionMS/views/login/login.html";
 				} else {
-					sessionStorage.usernick = flag;
+					var username = flag.split(";")[0];
+					var usernick = flag.split(";")[1];
+					sessionStorage.username = username;
+					sessionStorage.usernick = usernick;
 					alert("登录成功");
 					location.href = "/ReceptionMS/views/main/index3.html";
 				}

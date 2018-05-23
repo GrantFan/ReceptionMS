@@ -121,7 +121,7 @@ function print() {
 	var newImg = document.createElement("img");
 	newImg.src = dataUrl;
 	var printWindow = window.open(newImg.src);
-	printWindow.document.write('<img src="' + newImg.src + '" />')
+	printWindow.document.write('<img width="1200px" src="' + newImg.src + '" />')
 	printWindow.print();
 }
 //打印预览

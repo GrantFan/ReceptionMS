@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8" />
 		<title>接待管理系统</title>
@@ -26,7 +25,7 @@
 					<a href=""> <span></span></a>
 				</div>
 				<div class="rt">
-					<i class="user"></i>
+					<i class="user" onclick='$(".modal").show(500)'></i>
 					<span class="name" >
 						你好， <strong id="usernick" style="color:#eaed51;">管理员</strong> |
 					</span>
@@ -173,37 +172,35 @@
 				</h4>
 				<div class="mbody">
 					<label for="user">
-						<strong>*用户名</strong>
-						<input type="text" name="user" id="user" value="" />
+						<strong>用户名</strong>
+						<input type="text" name="user" id="username" value="" disabled />
 					</label>
 					<label for="nickName">
-						<strong>*昵称</strong>
-						<input type="text" name="nickName" id="nickName" value="" />
-					</label>
-					<label for="password">
-						<span>密码</span>
-						<input type="text" name="password" id="password" value="123456" />
-					</label>
-					<label for="role">
-						<strong>*角色</strong>
-						<input type="text" name="role" id="role" value="" />
+						<strong>用户昵称</strong>
+						<input type="text" name="nickName" id="unick" value="" />
 					</label>
 					<label for="start">
-						<span>启用</span>						
-						<input type="checkbox" name="start" id="start" value="" />
-						<u></u>
+						<span>*新密码</span>						
+						<input type="password" name="password" id="password" value="123456" />
 					</label>
-					<label for="remarks">
-						<span>备注</span>
-						<textarea name="" rows="5" cols="30" id="remarks"></textarea>
-					</label>
+					<label for="password">
+						<span>*确认密码</span>
+						<input type="password" name="password" id="newpassword" value="123456" />
+					</label>				 
 				</div>
-				<div class="mfoot">
-					<button>保存</button>
-					<button>取消</button>
+				<div class="mfoot" style="text-align: center;">
+					<button onclick="updatePass()">
+						<u class="confirm lt"></u>
+						<span class="lt">保存</span>
+					</button>
+					<button onclick="$(this).parents('.modal').hide(100)">
+						<u class="cancel lt"></u>
+						<span class="lt">取消</span>
+					</button>
 				</div>
 			</div>
 		</div>
+		
 	</body>
 	<script src="js/index3.js" type="text/javascript" charset="utf-8"></script>	 
 	<script type="text/javascript">
