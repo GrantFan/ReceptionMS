@@ -11,8 +11,9 @@
 <script type="text/javascript" src="../assets/js/Calendar.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
 <style>
-.operationsArea>fieldset>legend {
-	font-size: 1vw;
+.operationsArea>div>p {
+	font-size: 1.025vw;
+	color: #fff;
 	font-weight: bold;
 }
 
@@ -22,25 +23,50 @@
 }
 
 .operationsArea label {
-	width: 22vw;
-	margin: 2vh 4vw;
-	font-size: 0.9vw;
+	width: 20.64vw;
+	height: 2.3vw;
+	line-height: 2.3vw;
+	margin: 0.96vw 2.6vw;
+	font-size: 1.025vw;
 }
 
 .operationsArea label>span {
 	float: left;
+	width: 25%;
+	text-align: right;
 }
 
 .operationsArea label>input, .operationsArea label>select {
 	width: 66%;
+	height: 2.3vw;
 	float: right;
+	border: 1px solid #e6ebff;
+	color: #e6ebff;
+	font-size: 1.025vw;
+	background-color: transparent;
+}
+
+.operationsArea label>select {
+	color: #fff;
+	cursor: pointer;
+	padding: 0px 0.922vw;
+	background: url(../assets/img/selectBg.png) no-repeat scroll right
+		center transparent;
+	background-size: 100% 100%;
+	font-size: 1.12vw;
+	appearance: none;
+}
+
+.operationsArea .tabTbody>tbody>tr>td>select {
+	background: url(../assets/img/selectBg@2.png) no-repeat scroll right
+		center transparent;
 }
 
 .operationsArea>fieldset .tabTbody {
 	margin-top: -2px;
 }
 
-.operationsArea>fieldset .tabTitle, .operationsArea>fieldset .tabTbody {
+.operationsArea .tabTitle, .operationsArea .tabTbody {
 	width: 100%;
 }
 
@@ -48,14 +74,14 @@
 	background-color: #557CBC;
 }
 
-.operationsArea>fieldset .tabTbody input, .operationsArea>fieldset .tabTbody select
-	{
+.operationsArea .tabTbody input, .operationsArea .tabTbody select {
 	width: 100%;
 	height: 100%;
 	background: none;
 	border: none;
 	color: #fff;
 	padding: 0px 0.4vw;
+	font-size: 1.025vw;
 }
 
 .operationsArea>fieldset .tabTbody select>option {
@@ -64,21 +90,23 @@
 }
 
 .operationsArea .tab1, .operationsArea .tab2 {
-	margin-top: 3vh;
+	margin-top: 1.28vw;
 	padding: 1vw;
-	height: 20vh;
-	background: rgba(48, 138, 156, 0.8);
+	max-height: 23.4vh;
+	background: rgba(6, 115, 115, 0.7);
 	color: #fff;
-	overflow-y: scroll;
 }
 
 .operationsArea .tab1>.tab, .operationsArea .tab2>.tab {
-	
+	height: 11.4vh;
+	margin: 1.92vw 3.717vw 2.11vw;
+	border: 1px solid #e6ebff;
+	overflow-y: scroll;
 }
 
 .operationsArea td, .operationsArea th {
-	height: 1.6vw;
-	line-height: 1.6vw;
+	height: 2.82vw;
+	line-height: 2.82vw;
 }
 
 .operationsArea>.tab1 .tabTbody td, .operationsArea>.tab1 .tabTitle th {
@@ -88,62 +116,92 @@
 .operationsArea>.tab2 .tabTbody td, .operationsArea>.tab2 .tabTitle th {
 	width: 18%;
 }
+
+.operationsArea>.tab1 .tabTbody td, .operationsArea>.tab2 .tabTbody td {
+	border-top: 1px solid #e6ebff;
+	border-right: 1px solid #e6ebff;
+}
+
+.operationsArea>.tab1 .tabTbody td:nth-last-child(1), .operationsArea>.tab2 .tabTbody td:nth-last-child(1)
+	{
+	border-right: none;
+}
 </style>
 </head>
 
 <body>
 	<div class="operationsArea">
-		<fieldset style="background: rgba(48, 138, 156, 0.8);" class="input">
-			<legend>接待信息</legend>
-			<div class="inputs overflow ">
-				<!-- <label for="receptionNumber"> <span>接待编号</span> <input
-					type="text" name="receptionNumber" id="receptionNumber" value="" />
-				</label> --> <label for="receptionDate"> <span>接待日期</span> <input
+		<div style="background: rgba(6, 115, 115, 0.7);" class="input">
+			<p>————&nbsp;&nbsp;接待信息&nbsp;&nbsp;————</p>
+			<div class="inputs overflow" style="padding: 0px 8.6vw;">
+				<label for="hotel"> <span>接待酒店</span> <select class="hotel"
+					id="hotel"></select>
+				</label> 
+				
+				<label for="receptionDate"> <span>接待日期</span> <input
 					name="receptionDate" id="receptionDate"
 					onclick="new Calendar().show(this);" value="" />
-				</label> <label for="guestName"> <span>宾客姓名</span> <input
-					name="guestName" id="guestName" value="" />
-				</label> <label for="guestNum"> <span>宾客人数</span> <input
-					name="guestNum" id="guestNum" value="" />
-				</label> <label for="receptionPrinter"> <span>资料打印人</span> <input
-					name="receptionPrinter" id="receptionPrinter" value="" />
-				</label> <label for="hotel"> <span>接待酒店</span> <select class="hotel"
-					id="hotel"></select>
-				</label> <!-- <label for="recordTime"> <span>登记时间</span> <input
-					name="recordTime" id="recordTime" value="" />
-				</label>  --><label for="receptionTitle"> <span>接待名称</span> <input
-					name="receptionTitle" id="receptionTitle" value="" />
-				</label> <label for="receptionPerson"> <span>接待人员：</span> <input
-					name="receptionPerson" id="receptionPerson" />
-				</label> <label for="entourage"> <span>陪同人员</span> <input
-					name="entourage" id="entourage" value="" />
-				</label> <label for="receptionNum"> <span>接待人数</span> <input
-					name="receptionNum" id="receptionNum" value="" />
-				</label> <label for="description"> <span>描述</span> <input
-					name="description" id="description" value="" />
-				</label> <label for="receptionDays"> <span>接待天数</span> <input
+				</label> 
+				
+				<label for="receptionDays"> <span>接待天数</span> <input
 					name="receptionDays" id="receptionDays" value="" />
-				</label> <label for="remark"> <span>备注</span> <input name="remark"
+				</label> 
+				
+				<label for="receptionTitle"> <span>接待名称</span> <input
+					name="receptionTitle" id="receptionTitle" value="" />
+				</label> 
+				
+				<label for="guestName"> <span>宾客姓名</span> <input
+					name="guestName" id="guestName" value="" />
+				</label> 
+				
+				<label for="entourage"> <span>陪同人员</span> <input
+					name="entourage" id="entourage" value="" />
+				</label> 
+				
+				<label for="guestNum"> <span>宾客人数</span> <input
+					name="guestNum" id="guestNum" value="" />
+				</label> 
+				
+				<label for="receptionPerson"> <span>接待人员</span> <input
+					name="receptionPerson" id="receptionPerson" value="" />
+				</label> 
+				
+				<label for="receptionPrinter"> <span>资料打印人</span> <input
+					name="receptionPrinter" id="receptionPrinter" value="" />
+				</label>
+
+				<!--
+				<label for="remark"> <span>备注</span> <input name="remark"
 					id="remark" value="" />
 				</label>
+					<label for="receptionNumber"> <span>接待编号</span> <input
+					type="text" name="receptionNumber" id="receptionNumber" value="" />
+					</label>
+					<label for="recordTime"> <span>登记时间</span> <input
+					name="recordTime" id="recordTime" value="" />
+					</label>    <label for="description"> <span>描述</span> <input
+					name="description" id="description" value="" />
+				</label> -->
 			</div>
-		</fieldset>
-		<fieldset class="tab2">
-			<legend>住房记录</legend>
+		</div>
+		<div class="tab2">
+			<p>————&nbsp;&nbsp;住房记录&nbsp;&nbsp;————</p>
 			<div class="tab">
-				<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
+				<table border="0" cellspacing="0" cellpadding="0" class="tabTitle">
 					<thead>
 						<tr>
 							<th>房间号</th>
 							<th>入住时间</th>
 							<th>退房时间</th>
-							<th>宾客喜好</th>
+							<!--<th>宾客喜好</th>-->
 							<th>酒店</th>
 							<th>备注</th>
 						</tr>
 					</thead>
 				</table>
-				<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
+				<table border="0" cellspacing="0" cellpadding="0"
+					class="tabTbody text-center">
 					<tbody id="table2">
 						<tr>
 							<td><input onchange="addAccomColumn()" type="text" name=""
@@ -152,53 +210,58 @@
 								value="" /></td>
 							<td><input type="text" onclick="new Calendar().show(this);"
 								value="" /></td>
-							<td><input type="text" name="" id="" value="" /></td>
-							<td><select class="hotel"><option>东方酒店</option></select></td>
+							<!--<td><input type="text" name="" id="" value="" /></td>-->
+							<td><select class="hotel">
+									<option>东方酒店</option>
+							</select></td>
 							<td><input type="text" name="" id="" value="" /></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-		</fieldset>
-		<fieldset class="tab1">
-			<legend>用餐记录</legend>
+		</div>
+		<div class="tab1">
+			<p>————&nbsp;&nbsp;用餐记录&nbsp;&nbsp;————</p>
 			<div class="tab">
-				<table border="1" cellspacing="0" cellpadding="0" class="tabTitle">
+				<table border="0" cellspacing="0" cellpadding="0" class="tabTitle">
 					<thead>
 						<tr>
 							<th>用餐时间</th>
-							<th>用餐喜好</th>
+							<!--<th>用餐喜好</th>-->
 							<th>酒店</th>
 							<th>套餐编号</th>
 							<th>备注</th>
 						</tr>
 					</thead>
 				</table>
-				<table border="1" cellspacing="0" cellpadding="0" class="tabTbody">
+				<table border="0" cellspacing="0" cellpadding="0"
+					class="tabTbody text-center">
 					<tbody id="table1">
 						<tr>
 							<td><input onchange="addMealsColumn()" type="text" name=""
 								id="" value="" /></td>
-							<td><input type="text" name="" id="" value="" /></td>
+							<!--<td><input type="text" name="" id="" value="" /></td>-->
 							<td><select id="mealsHotel" class="hotel"
-								onchange="selectMenu()"><option>东方酒店</option></select></td>
-							<td><select id="menu" class="menu"><option>套餐一</option></select></td>
+								onchange="selectMenu()">
+									<option>东方酒店</option>
+							</select></td>
+							<td><select id="menu" class="menu">
+									<option>套餐一</option>
+							</select></td>
 							<td><input type="text" name="" id="" value="" /></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-		</fieldset>
+		</div>
 
-
-		<div class="inputs text-center" style="padding:0px;">
+		<div class="inputs text-center"
+			style="padding:0px;margin-top: 3.852vh;">
 			<button onclick="addSubmit()">
-
-				<span>确定</span>
+				<span class="webkit">确定</span>
 			</button>
-
 			<button onclick="reset()" class="overflow">
-				<span>重置</span>
+				<span class="webkit">重置</span>
 			</button>
 		</div>
 	</div>

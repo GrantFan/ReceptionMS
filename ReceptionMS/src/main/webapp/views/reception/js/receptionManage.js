@@ -53,8 +53,10 @@ function showReceptionList(pageNum, pageSize) {
 					+ "<td>" + obj[i].receptionDate + "</td><td>" + obj[i].receptionPerson + "</td>"
 					+ "<td>" + obj[i].receptionPrinter + "</td><td>" + obj[i].guestName + "</td>	"
 					+ "<td>" + obj[i].entourage + "</td>" + "</td><td>" + obj[i].guestNum + "</td>	"
-					+ "<td>" + obj[i].receptionNum + "</td>" + "</td><td>" + obj[i].receptionDays + "</td>	"
-					+ "<td>" + obj[i].hotel + "</td>" + "</td><td>" + obj[i].description + "</td>	"
+//					+ "<td>" + obj[i].receptionNum + "</td>" 
+					+ "</td><td>" + obj[i].receptionDays + "</td>	"
+					+ "<td>" + obj[i].hotel + "</td>" 
+//					+ "</td><td>" + obj[i].description + "</td>	"
 					+ "</tr>";
 			}
 			$("#tablebody").append(tbody);
@@ -162,8 +164,10 @@ function search(pageNum,pageSize){
 					+ "<td>" + obj[i].receptionDate + "</td><td>" + obj[i].receptionPerson + "</td>"
 					+ "<td>" + obj[i].receptionPrinter + "</td><td>" + obj[i].guestName + "</td>	"
 					+ "<td>" + obj[i].entourage + "</td>" + "</td><td>" + obj[i].guestNum + "</td>	"
-					+ "<td>" + obj[i].receptionNum + "</td>" + "</td><td>" + obj[i].receptionDays + "</td>	"
-					+ "<td>" + obj[i].hotel + "</td>" + "</td><td>" + obj[i].description + "</td>	"
+//					+ "<td>" + obj[i].receptionNum + "</td>" 
+					+ "</td><td>" + obj[i].receptionDays + "</td>	"
+					+ "<td>" + obj[i].hotel + "</td>" 
+//					+ "</td><td>" + obj[i].description + "</td>	"
 					+ "</tr>";
 			}
 			$("#tablebody").append(tbody);
@@ -275,13 +279,13 @@ function view(tr){
 			$("#receptionPrinter").val(reception.receptionPrinter);
 			$("#guestName").val(reception.guestName);
 			$("#entourage").val(reception.entourage);
-			$("#receptionNum").val(reception.receptionNum);
+//			$("#receptionNum").val(reception.receptionNum);
 			$("#receptionDays").val(reception.receptionDays);
 			$("#guestNum").val(reception.guestNum);
 			$("#hotel").val(reception.hotel);
-			$("#description").val(reception.description);
+//			$("#description").val(reception.description);
 			$("#recordTime").val(reception.recordTime);
-			$("#remark").val(reception.remark);
+//			$("#remark").val(reception.remark);
 			//用餐记录显示
 			$("#table1").empty();
 			var ths1 = $("#table1").parent('.tabTbody').prev('.tabTitle').find('th');
@@ -291,7 +295,7 @@ function view(tr){
 								+"<td>"+meals[i].hotel+"</td>"
 								+"<td>"+meals[i].menuNumber+"</td>"
 								+"<td>"+meals[i].mealsTime+"</td>"
-								+"<td>"+meals[i].hobby+"</td>"
+//								+"<td>"+meals[i].hobby+"</td>"
 								+"<td>"+meals[i].recordTime+"</td>"
 								+"<td>"+meals[i].remark+"</td>"
 								+"</tr>");
@@ -306,7 +310,7 @@ function view(tr){
 								+"<td>"+accommodation[i].roomNumber+"</td>"
 								+"<td>"+accommodation[i].checkinTime+"</td>"
 								+"<td>"+accommodation[i].checkoutTime+"</td>"
-								+"<td>"+accommodation[i].hobby+"</td>"
+//								+"<td>"+accommodation[i].hobby+"</td>"
 								+"<td>"+accommodation[i].recordTime+"</td>"
 								+"<td>"+accommodation[i].remark+"</td>"
 								+"</tr>");
@@ -352,13 +356,13 @@ function edit() {
 			$("#receptionPrinter").val(reception.receptionPrinter);
 			$("#guestName").val(reception.guestName);
 			$("#entourage").val(reception.entourage);
-			$("#receptionNum").val(reception.receptionNum);
+//			$("#receptionNum").val(reception.receptionNum);
 			$("#receptionDays").val(reception.receptionDays);
 			$("#guestNum").val(reception.guestNum);
 			$("#hotel").val(reception.hotel);
-			$("#description").val(reception.description);
+//			$("#description").val(reception.description);
 			$("#recordTime").val(reception.recordTime);
-			$("#remark").val(reception.remark);
+//			$("#remark").val(reception.remark);
 			
 			//用餐记录
 			$("#table1").empty();
@@ -372,7 +376,7 @@ function edit() {
 								+"<td><input class='hotel' value='"+meals[i].hotel+"' /></td>"
 								+"<td><input class='menuNumber' value='"+meals[i].menuNumber+"' /></td>"
 								+"<td><input class='mealsTime' value='"+meals[i].mealsTime+"' /></td>"
-								+"<td><input class='hobby' value='"+meals[i].hobby+"' /></td>"
+//								+"<td><input class='hobby' value='"+meals[i].hobby+"' /></td>"
 								+"<td><input class='recordTime' value='"+meals[i].recordTime+"' /></td>"
 								+"<td><input class='remark' value='"+meals[i].remark+"' /></td>"
 								+"<td class='text-center'><button class='save' onclick='mealsUpdate(this)'> </button><button class='del' onclick='mealsDelete(this)'> </button></td>"
@@ -382,7 +386,7 @@ function edit() {
 					+"<td><input class='hotel' value='' /></td>"
 					+"<td><input onchange='addColumnMeals()' class='menuNumber' value='' /></td>"
 					+"<td><input class='mealsTime' value='' /></td>"
-					+"<td><input class='hobby' value='' /></td>"
+//					+"<td><input class='hobby' value='' /></td>"
 					+"<td><input class='recordTime' value='' /></td>"
 					+"<td><input class='remark' value='' /></td>"
 					+"<td class='text-center'><button class='save' onclick='mealsAdd(this)'> </button><button class='empty' onclick='mealsRemove(this)'></button></td>"
@@ -400,7 +404,7 @@ function edit() {
 								+"<td><input class='roomNumber' value='"+accommodation[i].roomNumber+"' /></td>"
 								+"<td><input onclick=\"new Calendar().show(this);\" class='checkinTime' value='"+accommodation[i].checkinTime+"' /></td>"
 								+"<td><input onclick=\"new Calendar().show(this);\" class='checkoutTime' value='"+accommodation[i].checkoutTime+"' /></td>"
-								+"<td><input class='hobby' value='"+accommodation[i].hobby+"' /></td>"
+//								+"<td><input class='hobby' value='"+accommodation[i].hobby+"' /></td>"
 								+"<td><input class='recordTime' value='"+accommodation[i].recordTime+"' /></td>"
 								+"<td><input class='remark' value='"+accommodation[i].remark+"' /></td>"
 								+"<td class='text-center'><button class='save' onclick='accomUpdate(this)'> </button><button class='del' onclick='accomDelete(this)'> </button></td>"
@@ -411,7 +415,7 @@ function edit() {
 					+"<td><input onchange='addColumnAccom()' class='roomNumber' value='' /></td>"
 					+"<td><input onclick=\"new Calendar().show(this);\" class='checkinTime' value='' /></td>"
 					+"<td><input onclick=\"new Calendar().show(this);\" class='checkoutTime' value='' /></td>"
-					+"<td><input class='hobby' value='' /></td>"
+//					+"<td><input class='hobby' value='' /></td>"
 					+"<td><input class='recordTime' value='' /></td>"
 					+"<td><input class='remark' value='' /></td>"
 					+"<td class='text-center'><button class='save' onclick='accomAdd(this)'> </button><button class='empty' onclick='accomRemove(this)'> </button></td>"
@@ -437,11 +441,11 @@ function editSubmit() {
 			guestName : $("#guestName").val(),
 			entourage : $("#entourage").val(),
 			guestNum : $("#guestNum").val(),
-			receptionNum : $("#receptionNum").val(),
+//			receptionNum : $("#receptionNum").val(),
 			receptionDays : $("#receptionDays").val(),
-			hotel : $("#hotel").val(),
-			description : $("#description").val(),
-			remark : $("#remark").val()
+			hotel : $("#hotel").val()
+//			description : $("#description").val(),
+//			remark : $("#remark").val()
 		},
 		success : function(result) {
 			console.log(result);
@@ -498,7 +502,7 @@ function mealsAdd(button){
 	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
 	var menuNumber = $(button).parent().siblings("td").find("input.menuNumber").val();
 	var mealsTime =$(button).parent().siblings("td").find("input.mealsTime").val();
-	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
+//	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
 	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val();
 	var remark =$(button).parent().siblings("td").find("input.remark").val();
 	
@@ -510,7 +514,7 @@ function mealsRemove(button){
 	var hotel = $(button).parent().siblings("td").find("input.hotel").val("");
 	var menuNumber = $(button).parent().siblings("td").find("input.menuNumber").val("");
 	var mealsTime =$(button).parent().siblings("td").find("input.mealsTime").val("");
-	var hobby = $(button).parent().siblings("td").find("input.hobby").val("");
+//	var hobby = $(button).parent().siblings("td").find("input.hobby").val("");
 	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val("");
 	var remark =$(button).parent().siblings("td").find("input.remark").val("");
 }
@@ -519,7 +523,7 @@ function addColumnMeals(){
 			+"<td><input class='hotel' value='' /></td>"
 			+"<td><input onchange='addColumnMeals()' class='menuNumber' value='' /></td>"
 			+"<td><input class='mealsTime' value='' /></td>"
-			+"<td><input class='hobby' value='' /></td>"
+//			+"<td><input class='hobby' value='' /></td>"
 			+"<td><input class='recordTime' value='' /></td>"
 			+"<td><input class='remark' value='' /></td>"
 			+"<td class='text-center'><button class='save' onclick='mealsAdd(this)'></button><button class='empty' onclick='mealsRemove(this)'></button></td>"
@@ -531,7 +535,7 @@ function mealsUpdate(button){
 	var hotel = $(button).parent().siblings("td").find("input.hotel").val();
 	var menuNumber = $(button).parent().siblings("td").find("input.menuNumber").val();
 	var mealsTime =$(button).parent().siblings("td").find("input.mealsTime").val();
-	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
+//	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
 	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val();
 	var remark =$(button).parent().siblings("td").find("input.remark").val();
 //	console.log(id,hotel,menuNumber,mealsTime,hobby,recordTime,remark)
@@ -544,7 +548,7 @@ function mealsUpdate(button){
 			hotel: hotel,
 			menuNumber : menuNumber,
 			mealsTime : mealsTime,
-			hobby : hobby,
+			hobby : '',
 			recordTime :recordTime,
 			remark : remark
 		},
@@ -592,7 +596,7 @@ function accomAdd(button){
 	var roomNumber = $(button).parent().siblings("td").find("input.roomNumber").val();
 	var checkinTime =$(button).parent().siblings("td").find("input.checkinTime").val();
 	var checkoutTime =$(button).parent().siblings("td").find("input.checkoutTime").val();
-	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
+//	var hobby = $(button).parent().siblings("td").find("input.hobby").val();
 	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val();
 	var remark =$(button).parent().siblings("td").find("input.remark").val();
 	
@@ -605,7 +609,7 @@ function accomRemove(button){
 	var roomNumber = $(button).parent().siblings("td").find("input.roomNumber").val("");
 	var checkinTime =$(button).parent().siblings("td").find("input.checkinTime").val("");
 	var checkoutTime =$(button).parent().siblings("td").find("input.checkoutTime").val("");
-	var hobby = $(button).parent().siblings("td").find("input.hobby").val("");
+//	var hobby = $(button).parent().siblings("td").find("input.hobby").val("");
 	var recordTime = $(button).parent().siblings("td").find("input.recordTime").val("");
 	var remark =$(button).parent().siblings("td").find("input.remark").val("");
 }
@@ -615,7 +619,7 @@ function addColumnAccom(){
 			+"<td><input onchange='addColumnAccom()' class='roomNumber' value='' /></td>"
 			+"<td><input onclick=\"new Calendar().show(this);\" class='checkinTime' value='' /></td>"
 			+"<td><input onclick=\"new Calendar().show(this);\" class='checkoutTime' value='' /></td>"
-			+"<td><input class='hobby' value='' /></td>"
+//			+"<td><input class='hobby' value='' /></td>"
 			+"<td><input class='recordTime' value='' /></td>"
 			+"<td><input class='remark' value='' /></td>"
 			+"<td class='text-center'><button class='save' onclick='accomAdd(this)'></button><button class='empty' onclick='accomRemove(this)'></button></td>"
@@ -642,7 +646,7 @@ function accomUpdate(button){
 			roomNumber : roomNumber,
 			checkinTime : checkinTime,
 			checkoutTime : checkoutTime,
-			hobby : hobby,
+			hobby : '',
 			recordTime :recordTime,
 			remark : remark
 		},

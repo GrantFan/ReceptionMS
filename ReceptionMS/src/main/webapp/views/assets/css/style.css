@@ -418,9 +418,6 @@ iframe{
 	line-height:  6.6vh;
 	color: #fff;
 }
-.operationsArea>.tab>table>tbody{
-	font-style: oblique;
-}
 
 .operationsArea>.tab>table>tbody tr:hover{
 	background-color: rgba(0,0,0,0.2);

@@ -73,23 +73,23 @@ function selectMenu() {
 function reset() {
 	$("#receptionTitle").val("");
 	$("#receptionDate").val("");
+	$("#receptionDays").val("");
 	$("#receptionPerson").val("");
 	$("#receptionPrinter").val("");
 	$("#guestName").val("");
 	$("#entourage").val("");
 	$("#guestNum").val("");
-	$("#receptionNum").val("");
-	$("#receptionDays").val("");
-	$("#description").val("");
-	$("#remark").val("");
+//	$("#receptionNum").val("");
+//	$("#description").val("");
+//	$("#remark").val("");
 }
 
 function addMealsColumn(){
 	hotelShow1();
 	$("#table1").append("<tr>"
 						+"<td><input onchange=\"addMealsColumn()\" type=\"text\"  value=\"\" /></td>"
-						+"<td><input type=\"text\" name=\"\"  value=\"\" /></td>"
-						+"<td><select  class=\"hotel1\" onchange=\"selectMenu()\"><option>东方酒店</option></select></td>"
+//						+"<td><input type=\"text\" name=\"\"  value=\"\" /></td>"
+						+"<td><select  class=\"hotel1\" onchange=\"selectMenu()\"><option>东方国际大酒店</option></select></td>"
 						+"<td><select class=\"menu\"><option>套餐一</option></select></td>"
 						+"<td><input type=\"text\" name=\"\" value=\"\" /></td>"
 						+"</tr>");
@@ -100,8 +100,8 @@ function addAccomColumn(){
 			+"<td><input onchange=\"addAccomColumn()\" type=\"text\" value=\"\" /></td>"
 			+"<td><input type=\"text\" onclick=\"new Calendar().show(this);\" value=\"\" /></td>"
 			+"<td><input type=\"text\" onclick=\"new Calendar().show(this);\" value=\"\" /></td>"
-			+"<td><input type=\"text\"  value=\"\" /></td>"
-			+"<td><select class=\"hotel1\"><option>东方酒店</option></select></td>"
+//			+"<td><input type=\"text\"  value=\"\" /></td>"
+			+"<td><select class=\"hotel1\"><option>东方国际大酒店</option></select></td>"
 			+"<td><input type=\"text\"  value=\"\" /></td>"
 			+"</tr>");
 }
@@ -119,25 +119,25 @@ function addSubmit() {
 		+ '"guestName":"' + $("#guestName").val() + '",'
 		+ '"entourage":"' + $("#entourage").val() + '",'
 		+ '"guestNum":"' + $("#guestNum").val() + '",'
-		+ '"receptionNum":"' + $("#receptionNum").val() + '",'
+//		+ '"receptionNum":"' + $("#receptionNum").val() + '",'
 		+ '"receptionDays":"' + $("#receptionDays").val() + '",'
 		+ '"hotel":"' + $("#hotel option:selected").text() + '",'
-		+ '"description":"' + $("#description").val() + '",'
-		+ '"remark":"' + $("#remark").val() + '",'
+//		+ '"description":"' + $("#description").val() + '",'
+//		+ '"remark":"' + $("#remark").val() + '",'
 		+ '"meals":[';
 	for (var i = 0; i < tr1.length-1; i++) {
 		var tds = $(tr1[i]).find("td")
 		//		console.log(tds[2]);
-		var hotel = $(tds[2]).find("select option:selected").text();
-		var menuNumber = $(tds[3]).find("select option:selected").text();
+		var hotel = $(tds[1]).find("select option:selected").text();
+		var menuNumber = $(tds[2]).find("select option:selected").text();
 		var mealsTime = $(tds[0]).find("input").val();
-		var hobby = $(tds[1]).find("input").val();
-		var remark = $(tds[4]).find("input").val();
+//		var hobby = $(tds[1]).find("input").val();
+		var remark = $(tds[3]).find("input").val();
 		if(mealsTime!=""){
 		if (i == tr1.length-2) {
-				data += '{"hotel":\"' + hotel + '\",\"menuNumber\":\"' + menuNumber + '\",\"mealsTime\":\"' + mealsTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"}'
+				data += '{"hotel":\"' + hotel + '\",\"menuNumber\":\"' + menuNumber + '\",\"mealsTime\":\"' + mealsTime + '\",\"hobby\":\"\",\"remark\":\"' + remark + '\"}'
 		} else {
-			data += '{"hotel":\"' + hotel + '\",\"menuNumber\":\"' + menuNumber + '\",\"mealsTime\":\"' + mealsTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"},'
+			data += '{"hotel":\"' + hotel + '\",\"menuNumber\":\"' + menuNumber + '\",\"mealsTime\":\"' + mealsTime + '\",\"hobby\":\"\",\"remark\":\"' + remark + '\"},'
 		}
 		}
 		}
@@ -147,18 +147,18 @@ function addSubmit() {
 	data += '"accom":['
 	for (var i = 0; i < tr2.length-1; i++) {
 		var tds = $(tr2[i]).find("td")
-		console.log(tds[2]);
-		var hotel = $(tds[4]).find("select option:selected").text();
+//		console.log(tds[2]);
+		var hotel = $(tds[3]).find("select option:selected").text();
 		var roomNumber = $(tds[0]).find("input").val();
 		var checkinTime = $(tds[1]).find("input").val();
 		var checkoutTime = $(tds[2]).find("input").val();
-		var hobby = $(tds[3]).find("input").val();
-		var remark = $(tds[5]).find("input").val();
+//		var hobby = $(tds[3]).find("input").val();
+		var remark = $(tds[4]).find("input").val();
 		if(roomNumber!=""){
 			if (i == tr2.length-2) {
-				data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"}'
+				data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"\",\"remark\":\"' + remark + '\"}'
 			} else {
-				data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"' + hobby + '\",\"remark\":\"' + remark + '\"},'
+				data += '{"hotel":\"' + hotel + '\",\"roomNumber\":\"' + roomNumber + '\",\"checkinTime\":\"' + checkinTime + '\",\"checkoutTime\":\"' + checkoutTime + '\",\"hobby\":\"\",\"remark\":\"' + remark + '\"},'
 			}
 		}
 		}
