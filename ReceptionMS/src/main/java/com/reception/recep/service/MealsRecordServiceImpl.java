@@ -57,6 +57,12 @@ public class MealsRecordServiceImpl implements MealsRecordService {
 		return mealsRecordMapper.selectById( id);
 	}
 
+	@Override
+	public List<MealsRecordEntity> selectListBuGuest(String guestName) {
+		// TODO Auto-generated method stub
+		return mealsRecordMapper.selectListBuGuest(guestName);
+	}
+
 	
 
 }

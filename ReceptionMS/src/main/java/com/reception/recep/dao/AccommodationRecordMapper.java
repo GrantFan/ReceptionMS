@@ -35,4 +35,7 @@ public interface AccommodationRecordMapper {
 
 	@Select("select id,reception_number receptionNumber,hotel,room_number roomNumber,checkin_time checkinTime,checkout_time checkoutTime,hobby,record_time recordTime,remark from accommodation_record where id=#{id}")
 	AccommodationRecordEntity selectById(String id);
+
+	@Select("select id,reception_number receptionNumber,hotel,room_number roomNumber,checkin_time checkinTime,checkout_time checkoutTime,hobby,record_time recordTime,remark from accommodation_record where reception_number IN (select reception_number from reception_record where guest_name=#{guestName})")
+	List<AccommodationRecordEntity> selectByGuestName(String guestName);
 }

@@ -1,5 +1,6 @@
 package com.reception.recep.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,11 +10,15 @@ import org.springframework.stereotype.Service;
 import com.reception.recep.api.AccommodationRecordService;
 import com.reception.recep.dao.AccommodationRecordMapper;
 import com.reception.recep.model.AccommodationRecordEntity;
+import com.reception.recep.model.ReceptionRecordEntity;
 
 @Service
 public class AccommodationRecordServiceImpl implements AccommodationRecordService {
 	@Resource
 	AccommodationRecordMapper accommodationRecordMapper;
+	
+	@Resource
+	ReceptionRecordServiceImpl receptionService;
 	
 	@Override
 	public int add(AccommodationRecordEntity accommodation) {
@@ -54,6 +59,12 @@ public class AccommodationRecordServiceImpl implements AccommodationRecordServic
 	public AccommodationRecordEntity selectById(String id) {
 		// TODO Auto-generated method stub
 		return accommodationRecordMapper.selectById(id);
+	}
+
+	@Override
+	public List<AccommodationRecordEntity> selectByGuestName(String guestName) {
+		// TODO Auto-generated method stub
+		return accommodationRecordMapper.selectByGuestName(guestName);
 	}
 
 

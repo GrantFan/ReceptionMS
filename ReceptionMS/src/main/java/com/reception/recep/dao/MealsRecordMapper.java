@@ -34,4 +34,7 @@ public interface MealsRecordMapper {
 
 	@Select("select id,reception_number receptionNumber,menu_number menuNumber,hotel,meals_time mealsTime,hobby,record_time recordTime,remark from meals_record where id=#{id}")
 	MealsRecordEntity selectById(String id);
+
+	@Select("select id,reception_number receptionNumber,menu_number menuNumber,hotel,meals_time mealsTime,hobby,record_time recordTime,remark from meals_record where reception_number IN (select reception_number from reception_record where guest_name=#{guestName})")
+	List<MealsRecordEntity> selectListBuGuest(String guestName);
 }

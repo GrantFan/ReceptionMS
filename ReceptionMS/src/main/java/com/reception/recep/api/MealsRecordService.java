@@ -16,6 +16,8 @@ public interface MealsRecordService {
 	
 	List<MealsRecordEntity> selectList();
 	
+	List<MealsRecordEntity> selectListBuGuest(String guestName);
+	
 	List<MealsRecordEntity> selectByReceptionNumber(String receptionNumber);
 
 	MealsRecordEntity selectById(String id);

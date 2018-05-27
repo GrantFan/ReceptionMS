@@ -120,6 +120,13 @@ public class AccommodationRecordAction {
 		return "false";
 	};
 	
+	@RequestMapping(value="/listByGuest",produces="application/json; charset=utf-8")
+	public @ResponseBody String accomRecordListByGuest(String guestName){
+		List<AccommodationRecordEntity> list = accommodationRecordService.selectByGuestName(guestName);
+		String json = JSONHelper.toJSON(list);
+		return json;
+	}
+	
 	@RequestMapping(value="/list.app",produces="application/json; charset=utf-8")
 	public @ResponseBody String accomRecordListApp(){
 		List<AccommodationRecordEntity> list = accommodationRecordService.selectList();

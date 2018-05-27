@@ -122,7 +122,12 @@ public class MealsRecordAction {
 		return "false";
 	};
 	
-	
+	@RequestMapping(value="/listByGuest",produces="application/json; charset=utf-8")
+	public @ResponseBody String mealsRecordListByGuest(String guestName){
+		List<MealsRecordEntity> list = mealsRecordService.selectListBuGuest(guestName);
+		String json = JSONHelper.toJSON(list);
+		return json;
+	}
 	
 	@RequestMapping(value="/list.app",produces="application/json; charset=utf-8")
 	public @ResponseBody String mealsRecordListApp(){
