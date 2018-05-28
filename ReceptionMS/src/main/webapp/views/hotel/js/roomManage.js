@@ -6,23 +6,43 @@ $(function() {
 	hotelShow(); //加载酒店列表
 	roomHotelLoad();
 	loadRoomType();
-//floorShow(); //楼层加载
 });
 
+function hotelShow(){
+	$.ajax({
+		type : "post",
+//		data :{"hotelName":hotelName},
+		url : "../../hotel/listByName",
+		success : function(data) {
+			var obj = eval(data);
+//			console.log(obj);
+			$("#hotel").empty();
+			for (var i = 0, len = obj.length; i < len; i++) {
+				$("#hotel").append(
+					"<li >" + obj[i].hotelName + "</li>"
+				);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
+		}
+	})
+}
+
 function showRoomList() {
-	var hotelName = $("#hotel option:selected").text();
-	floorShow(hotelName); //楼层加载
-	//	alert($("#hotel option:selected").text());
+	var hotel = $("#hotel>li.active").text();
+	//floorShow(hotelName); //楼层加载
+//	alert(hotel);
 	$.ajax({
 		type : "post",
 		data : {
-			"hotel" : hotelName
+			"hotel" : hotel
 		},
 		url : "../../room/listByHotel",
 		success : function(data) {
 			var obj = eval(data);
 			if (obj.length != 0) {
-				$("#hotelName").text($("#hotel option:selected").text());
+				$("#hotelName").text(hotel);
 				//			console.log(obj);
 				$("#seat").empty();
 				for (var i = 0, len = obj.length; i < len; i++) {
@@ -44,6 +64,7 @@ function showRoomList() {
 					}
 				}
 			} else {
+				$("#seat").empty();
 				alert("无房间信息~");
 			}
 
@@ -56,7 +77,7 @@ function showRoomList() {
 		}
 	})
 }
-/*//加载房间*/
+/*//加载房间
 function showFloorRoomList() {
 	$.ajax({
 		type : "post",
@@ -94,7 +115,7 @@ function showFloorRoomList() {
 		}
 	})
 
-}
+}*/
 
 //加载酒店列表
 function roomHotelLoad(input) {
@@ -344,7 +365,7 @@ function editSubmit() {
 //打印
 function print(){
 	var canvas = document.getElementById("mycanvas");
-	console.log(canvas);
+//	console.log(canvas);s
 	var dataUrl = canvas.toDataURL();  
     var newImg = document.createElement("img");  
     newImg.src = dataUrl;  

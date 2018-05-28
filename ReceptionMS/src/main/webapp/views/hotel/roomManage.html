@@ -8,8 +8,7 @@
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../assets/js/html2canvas.min.js"></script>
-<script type="text/javascript" src="js/hotelShow.js"></script>
-<script type="text/javascript" src="js/roomManage.js"></script>
+s<script type="text/javascript" src="js/roomManage.js"></script>
 <style type="text/css">
 			.HotelName{
 				width:12vw;
@@ -80,8 +79,8 @@
 				</p>
 			</h6>
 			<!--酒店 -->
-				<ul class="HotelName lt">
-					<li class="active">光明大酒店</li>
+				<ul id="hotel" class="HotelName lt">
+					<!-- <li class="active">光明大酒店</li>
 					<li>宏兴大酒店</li>
 					<li>东方国际大酒店</li>
 					<li>惠城大酒店</li>
@@ -89,7 +88,7 @@
 					<li>敦煌国际大酒店</li>
 					<li>敦煌天润大酒店</li>
 					<li>敦煌太阳大酒店</li>
-					<li>行星酒店</li>
+					<li>行星酒店</li> -->
 				</ul>
 			<div id="seat" class="seat"></div>
 		</div>
@@ -240,6 +239,7 @@
 		
 		$('.HotelName').on('click','li',function(){
 			$(this).addClass('active').siblings('li').removeClass('active');
+			showRoomList();
 		})
 	</script>
 </body>
