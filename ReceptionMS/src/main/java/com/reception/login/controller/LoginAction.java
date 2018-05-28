@@ -76,8 +76,7 @@ public class LoginAction {
 		OutputStream out = null;
 		try {
 			response.setContentType("application/octet-stream;charset=utf-8");
-			response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8")
-					+ ".apk;filename*=UTF-8''" + URLEncoder.encode(filename, "UTF-8") + ".apk");
+			response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8")+ ".apk");
 			response.addHeader("Pargam", "no-cache");
 			response.addHeader("Cache-Control", "no-cache");
 

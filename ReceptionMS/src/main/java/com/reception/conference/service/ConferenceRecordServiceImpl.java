@@ -57,7 +57,7 @@ public class ConferenceRecordServiceImpl implements IConferenceRecordService{
 		return list; 
 	}
 
-	@Override
+	@Override                           
 	public List<ConferenceRecordEntity> queryConferenceRecordByPage(Map map) { 
 		return this.conferenceRecordMapper.queryConferenectRecordByPage(map);
 	}

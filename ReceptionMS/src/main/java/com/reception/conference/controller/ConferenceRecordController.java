@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.reception.conference.api.IConferenceRecordService;
+import com.reception.conference.model.ConferenceEntity;
 import com.reception.conference.model.ConferenceRecordEntity;
 import com.reception.conference.model.HotelUtil;
 import com.reception.exceptionfilter.EntityNotFoundException;
@@ -74,10 +75,19 @@ public class ConferenceRecordController {
 		return JSONHelper.toJSON(conferenceRecordEntity);
 	}
 	@RequestMapping(value = "queryConferenceRecordByPage",method = RequestMethod.GET)
-	public String queryConferenceRecordByPage(@RequestParam(required = true)int pageNum,
-			@RequestParam(required = true)int pageSize){
+	public String queryConferenceRecordByPage(
+			@RequestParam(value="pageNum",required = false,defaultValue = "1")   int pageNum,
+			@RequestParam(value="pageSize",required = false,defaultValue = "10") int pageSize,
+			@RequestParam(value="hotelName",required = false) String hotelName,
+			@RequestParam(value="conference_name",required = false) String conference_name,
+			@RequestParam(value="begin_DATE",required = false) String begin_DATE,
+			@RequestParam(value="end_DATE",required = false) String end_DATE){
 		PageHelper.startPage(pageNum, pageSize);  
-		Map map = new HashMap(1);
+		Map map = new HashMap(4);
+		map.put("hotelName", hotelName);
+		map.put("conference_name", conference_name);
+		map.put("begin_DATE", begin_DATE);
+		map.put("end_DATE", end_DATE);
 		List<ConferenceRecordEntity> list =  this.conferenceRecordServiceImpl.queryConferenceRecordByPage(map);  
 		PageInfo<ConferenceRecordEntity> pageInfo = new PageInfo<ConferenceRecordEntity>(list);   
 		return JSONHelper.toJSON(pageInfo);
@@ -87,12 +97,10 @@ public class ConferenceRecordController {
 			@RequestParam(required = false)String hotelName,
 			@RequestParam(required = false)String confernce_TYPE,
 			@RequestParam(required = true)String date){
-		Map map = new HashMap(3);
-		 
+		Map map = new HashMap(4); 
 		Date now_date = new Date();  
 	    DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	    String nowtime = format.format(now_date);
-		 
+	    String nowtime = format.format(now_date); 
 	    map.put("hotelName", hotelName == null ? "" : hotelName.trim());
 		map.put("CONFERENCE_TYPE", confernce_TYPE == null ? "" : confernce_TYPE.trim());
 		map.put("date", date);
@@ -101,7 +109,7 @@ public class ConferenceRecordController {
 		List<HotelUtil> list =  this.conferenceRecordServiceImpl.hotelList(map);  
 		return JSONHelper.toJSON(list);
 	}
-	
+	 
 	@RequestMapping(value = "getUse_Number",method = RequestMethod.POST)
 	public String getUse_Number(){
 		Date now_date = new Date();  
@@ -112,12 +120,16 @@ public class ConferenceRecordController {
 	@RequestMapping(value = "export",method = RequestMethod.GET)
 	public void queryConferenectExport( 
 			HttpServletResponse res,
-			@RequestParam(required = false)String hotelName,
-			@RequestParam(required = false)String confernce_TYPE){
-		Map map = new HashMap(2);
+			@RequestParam(value="hotelName",required = false) String hotelName,
+			@RequestParam(value="conference_name",required = false) String conference_name,
+			@RequestParam(value="begin_DATE",required = false) String begin_DATE,
+			@RequestParam(value="end_DATE",required = false) String end_DATE){
 		
-		map.put("hotelName", hotelName == null ? "" : hotelName.trim());
-		map.put("CONFERENCE_TYPE", confernce_TYPE == null ? "" : confernce_TYPE.trim());
+		Map map = new HashMap(4);
+		map.put("hotelName", hotelName);
+		map.put("conference_name", conference_name);
+		map.put("begin_DATE", begin_DATE);
+		map.put("end_DATE", end_DATE);
 		
 		res.setContentType("application/xls");
 		try {

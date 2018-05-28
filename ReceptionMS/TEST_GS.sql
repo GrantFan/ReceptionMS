@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110100
 File Encoding         : 65001
 
-Date: 2018-05-22 10:24:04
+Date: 2018-05-28 15:22:53
 */
 
 
@@ -604,17 +604,14 @@ CREATE TABLE "TEST_GS"."GUEST_INFO" (
 "DEPUTY_POSITION" NVARCHAR2(255) NULL ,
 "OFFICE_AREA" NVARCHAR2(255) NULL ,
 "SEX" VARCHAR2(11 BYTE) NULL ,
-"AGE" VARCHAR2(11 BYTE) NULL ,
-"URL" VARCHAR2(128 CHAR) NULL ,
 "BIRTH_DATE" VARCHAR2(20 BYTE) NULL ,
 "NATION" VARCHAR2(11 BYTE) NULL ,
-"EDUCATION" VARCHAR2(11 BYTE) NULL ,
+"MENU" VARCHAR2(128 BYTE) NULL ,
+"DRINK" VARCHAR2(128 BYTE) NULL ,
+"FLAVOR" VARCHAR2(128 BYTE) NULL ,
+"SLEEP" VARCHAR2(128 BYTE) NULL ,
 "ORIGIN_PLACE" NVARCHAR2(255) NULL ,
-"TELPHONE" NVARCHAR2(11) NULL ,
-"PHONE" NVARCHAR2(11) NULL ,
-"EMAIL" NVARCHAR2(30) NULL ,
-"ADDRESS" NVARCHAR2(255) NULL ,
-"GUEST_TYPE" NVARCHAR2(255) NULL ,
+"URL" VARCHAR2(128 CHAR) NULL ,
 "REMARK" NVARCHAR2(255) NULL 
 )
 LOGGING
@@ -628,44 +625,33 @@ COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."MAIN_POSITION" IS '主职务';
 COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."DEPUTY_POSITION" IS '副职务';
 COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."OFFICE_AREA" IS '任职地区';
 COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."SEX" IS '性别';
-COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."AGE" IS '年龄';
 COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."BIRTH_DATE" IS '出生日期';
 COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."NATION" IS '民族';
-COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."EDUCATION" IS '学历';
+COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."MENU" IS '菜品';
+COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."DRINK" IS '饮品';
+COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."FLAVOR" IS '口味';
+COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."SLEEP" IS '住宿';
 COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."ORIGIN_PLACE" IS '籍贯';
-COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."TELPHONE" IS '联系电话';
-COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."PHONE" IS '家庭/办公电话';
-COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."EMAIL" IS '邮件地址';
-COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."ADDRESS" IS '家庭地址';
-COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."GUEST_TYPE" IS '宾客类型';
 COMMENT ON COLUMN "TEST_GS"."GUEST_INFO"."REMARK" IS '备注';
 
 -- ----------------------------
 -- Records of GUEST_INFO
 -- ----------------------------
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('14', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('16', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('15', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('17', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('18', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('19', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('20', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('21', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('22', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('25', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', '博士', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', null);
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('26', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', '硕士', null, null, null, null, null, null, '小客户', null);
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('9', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('8', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('10', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('11', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('12', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('13', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('2', '张三', '局长', '家长', '无', '女', null, 'http://localhost:8888/ReceptionMS/views/upload/imgs/photo/1526627993319_286.png', '2018-05-10', '汉族', '博士', '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('3', '张三', '局长', '家长', '无', '其他', null, null, '2018-05-10', '硕士', null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('4', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', '本科', null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('5', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('6', '张三', '局长', '家长', '无', '女', null, null, '2018-05-10', null, null, '内蒙古', '1634473945', '15344475945', '1364', '1', '小客户', 'hjkh');
-INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('7', '阿斯顿发', null, null, null, '男', null, null, '2018-05-10', null, null, null, null, null, null, null, '小客户', '很快就好');
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('1', '张三', '经理', '主管', '阿斯突然有吗', '男', '2018-05-14', '蒙古族', '发生', '地方', '发多少', '阿斯顿发我让育儿', '阿斯顿发', '../../guest/img/1527477790037_750.png', null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('8', '李四', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('7', '张三', '经理', '主管', '阿斯突然有吗', '男', '2018-05-14', '蒙古族', '发生', '地方', '发多少', '阿斯顿发我让育儿', '阿斯顿发', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('10', '嘉佳', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('11', '张三', '经理', '主管', '阿斯突然有吗', '男', '2018-05-14', '蒙古族', '发生', '地方', '发多少', '阿斯顿发我让育儿', '阿斯顿发', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('12', '李四', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('13', '张三', '经理', '主管', '阿斯突然有吗', '男', '2018-05-14', '蒙古族', '发生', '地方', '发多少', '阿斯顿发我让育儿', '阿斯顿发', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('14', '张三', '经理', '主管', '阿斯突然有吗', '男', '2018-05-14', '蒙古族', '发生', '地方', '发多少', '阿斯顿发我让育儿', '阿斯顿发', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('15', '嘉佳', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('16', '李四', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('17', '张三', '经理', '主管', '阿斯突然有吗', '男', '2018-05-14', '蒙古族', '发生', '地方', '发多少', '阿斯顿发我让育儿', '阿斯顿发', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('18', '嘉佳', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('4', '李四', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('5', '张三', '经理', '主管', '阿斯突然有吗', '男', '2018-05-14', '蒙古族', '发生', '地方', '发多少', '阿斯顿发我让育儿', '阿斯顿发', null, null);
+INSERT INTO "TEST_GS"."GUEST_INFO" VALUES ('6', '嘉佳', '发', '阿斯顿发', '儿童椅', '女', '2018-05-07', '蒙古族', '阿斯顿发', '撒旦法', '阿尔亲爱的师傅', '为二位', '发送到', '../../guest/img/1527491832267_342.png', null);
 
 -- ----------------------------
 -- Table structure for HOTEL_INFO
@@ -707,7 +693,6 @@ INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('5', '敦煌华夏国际大酒店', '
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('6', '敦煌国际大酒店', '叶彦萍', '13993722999', '0397-8821821', '敦煌', '甘肃省酒泉市敦煌市鸣山北路827号', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('7', '敦煌天润大酒店', '权玉霞', '18993732897', '0937-8819501', '敦煌', '甘肃省酒泉市敦煌市鸣山路309号', null, null);
 INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('8', '敦煌太阳大酒店', '张春艳', '13893726729', '0937-8841858', '敦煌', null, null, null);
-INSERT INTO "TEST_GS"."HOTEL_INFO" VALUES ('9', '行星酒店', '我也不', '1235135', '1231412', '肃州区', '肃州区', null, null);
 
 -- ----------------------------
 -- Table structure for HOTEL_PLANE_GRAPH
@@ -727,14 +712,13 @@ NOCACHE
 ;
 COMMENT ON COLUMN "TEST_GS"."HOTEL_PLANE_GRAPH"."GRAPH_NAME" IS '平面图名称';
 COMMENT ON COLUMN "TEST_GS"."HOTEL_PLANE_GRAPH"."GRAPH_URL" IS '图片路径';
-COMMENT ON COLUMN "TEST_GS"."HOTEL_PLANE_GRAPH"."FLOOR" IS '楼层';
+COMMENT ON COLUMN "TEST_GS"."HOTEL_PLANE_GRAPH"."FLOOR" IS '所属酒店';
 COMMENT ON COLUMN "TEST_GS"."HOTEL_PLANE_GRAPH"."HOTEL" IS '所属酒店';
 
 -- ----------------------------
 -- Records of HOTEL_PLANE_GRAPH
 -- ----------------------------
-INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('2', '{93BCE904-E5CD-4116-AF70-C577FDD453F7}_五楼会议室平面图', '1526954646998_261.png', null, '2');
-INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('1', '{3B07188B-5C96-4120-81DE-AC5631EA9DDB}_光明大酒店', '1526953973039_219.png', null, '2');
+INSERT INTO "TEST_GS"."HOTEL_PLANE_GRAPH" VALUES ('2', '{93BCE904-E5CD-4116-AF70-C577FDD453F7}_五楼会议室平面图', '1527473064725_506.png', null, '1');
 
 -- ----------------------------
 -- Table structure for MEALS_RECORD
@@ -944,12 +928,20 @@ COMMENT ON COLUMN "TEST_GS"."ROOM_INFO"."REMARK" IS '备注';
 -- ----------------------------
 INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('38', '101', '敦煌国际大酒店', '1', '豪华套间', null, '南', null, null, '11111111', '22222222', '小波', '1212', '1232', '否', '空闲', null);
 INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('36', '111', '宏兴大酒店', '1', '商务标间', '没有', '北', '没有', '没有', '123', '123', '没有', '123', '1231', '否', '预定', '11');
-INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('1', '101', '东方国际大酒店', '1', '商务标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '是', '空闲', '没有');
-INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('2', '201', '东方国际大酒店', '2', '普通标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '否', '预定', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('1', '102', '东方国际大酒店', '1', '商务标间', '没有', '北', '没有', '没有', '没有', '没有', '没有', '111', '111', '是', '空闲', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('2', '202', '东方国际大酒店', '2', '普通标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '否', '预定', '没有');
 INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('3', '102', '光明大酒店', '1', '商务标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '222', '222', '否', '空闲', '没有');
 INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('33', '303', '东方国际大酒店', '3', '普通标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', null, '111', '否', '预定', '没有');
 INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('35', '202', '光明大酒店', '2', '商务单间', '有噪音', '南', '电脑', '没有', '123456323', null, '我', null, null, '否', '预定', null);
-INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('37', '111', '光明大酒店', '1', '商务单间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '否', '预定', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('37', '112', '光明大酒店', '1', '商务单间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '否', '预定', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('39', '101', '东方国际大酒店', '1', '商务单间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '是', '空闲', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('40', '201', '东方国际大酒店', '2', '普通标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '否', '预定', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('41', '301', '东方国际大酒店', '3', '普通标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', null, '111', '否', '空闲', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('42', '102', '光明大酒店', '1', '商务标间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '222', '222', '否', '空闲', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('43', '111', '光明大酒店', '1', '商务单间', '没有', '南', '没有', '没有', '没有', '没有', '没有', '111', '111', '否', '预定', '没有');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('44', '202', '光明大酒店', '2', '商务单间', '有噪音', '南', '电脑', '没有', '123456323', null, '我', null, null, '否', '预定', null);
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('45', '111', '宏兴大酒店', '1', '商务标间', '没有', '北', '没有', '没有', '123', '123', '没有', '123', '1231', '否', '预定', '11');
+INSERT INTO "TEST_GS"."ROOM_INFO" VALUES ('46', '101', '敦煌国际大酒店', '1', '豪华套间', null, '南', null, null, '11111111', '22222222', '小波', '1212', '1232', '否', '预定', null);
 
 -- ----------------------------
 -- Table structure for ROOM_TYPE
@@ -1016,7 +1008,7 @@ INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('2', '用户设置', '2', '1', '../sy
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('3', '角色设置', '3', '1', '../system/roleSheZhi.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jssz', null, '0');
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('4', '模块设置', '4', '1', '../system/module.html', '3', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'mksz', null, '0');
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('5', '操作日志', '5', '1', '../log/operate_log.html', '4', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'czrz', null, '0');
-INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('6', '数据库配置', '6', '1', '../../druid/index.html', '5', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'sjkpz', '../system/configure.html', '0');
+INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('6', '数据库监控', '6', '1', '../../druid/index.html', '5', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'sjkpz', '../system/configure.html', '0');
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('7', '接待管理', '7', '0', null, '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jdgl', null, '0');
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('8', '接待登记', '8', '7', '../reception/register.html', '1', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jddj', null, '0');
 INSERT INTO "TEST_GS"."SYS_MODULE" VALUES ('9', '接待信息', '9', '7', '../reception/receptionManage.html', '2', TO_DATE('2018-05-17 16:44:17', 'YYYY-MM-DD HH24:MI:SS'), 'jdxxgl', null, '0');
@@ -1063,14 +1055,46 @@ COMMENT ON COLUMN "TEST_GS"."SYS_OPERATION_LOG"."REMARK" IS '备注';
 -- ----------------------------
 -- Records of SYS_OPERATION_LOG
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('1', 'admin', '查询信息', null, '2018-05-21 16:01:12', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '查询宾客信息');
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('2', 'admin', '查询信息', null, '2018-05-21 16:01:22', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '查询宾客信息');
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('6', 'admin', '宾客信息', null, '2018-05-22 09:35:39', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('7', 'admin', '宾客信息', null, '2018-05-22 09:35:45', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('3', 'admin', '查询信息', null, '2018-05-21 16:05:11', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('8', 'admin', '宾客信息', null, '2018-05-22 10:18:46', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('4', 'admin', '宾客信息', null, '2018-05-21 17:26:48', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
-INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('5', 'admin', '宾客信息', null, '2018-05-21 17:30:02', 'DESKTOP-VTDU3JD:10.1.92.8', null, '导出宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('19', 'admin', '查询个案信息', null, '2018-05-25 18:33:50', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('20', 'admin', '查询个案信息', null, '2018-05-25 18:33:55', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('18', 'admin', '查询信息', null, '2018-05-25 18:33:46', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('21', 'admin', '酒店信息', null, '2018-05-28 10:50:35', 'DESKTOP-VTDU3JD:10.1.92.8', null, '删除酒店');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('22', 'admin', '宾客信息', null, '2018-05-28 11:05:25', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '新增宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('37', 'admin', '宾客信息', null, '2018-05-28 15:16:13', 'DESKTOP-VTDU3JD:10.1.92.8', null, '导出宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('38', 'admin', '酒店信息', null, '2018-05-28 15:16:41', 'DESKTOP-VTDU3JD:10.1.92.8', null, '导入酒店信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('40', 'admin', '宾客信息', null, '2018-05-28 15:17:27', 'DESKTOP-VTDU3JD:10.1.92.8', null, '删除宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('31', 'admin', '宾客信息', null, '2018-05-28 14:22:19', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '删除宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('32', 'admin', '宾客信息', null, '2018-05-28 14:22:30', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '修改宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('11', 'admin', '用户设置', null, '2018-05-22 11:41:48', 'DESKTOP-VTDU3JD:10.1.92.8', null, '修改用户');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('33', 'admin', '宾客信息', null, '2018-05-28 14:23:29', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '修改宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('34', 'admin', '宾客信息', null, '2018-05-28 14:47:55', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '删除宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('35', 'admin', '宾客信息', null, '2018-05-28 14:57:54', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '导出宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('36', 'admin', '宾客信息', null, '2018-05-28 15:06:20', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '修改宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('39', 'admin', '宾客信息', null, '2018-05-28 15:17:13', 'DESKTOP-VTDU3JD:10.1.92.8', null, '修改宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('12', 'www', '修改密码', null, '2018-05-23 10:09:06', 'DESKTOP-VTDU3JD:10.1.92.8', null, '用户修改密码');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('13', 'www', '修改密码', null, '2018-05-23 10:09:56', 'DESKTOP-VTDU3JD:10.1.92.8', null, '用户修改密码');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('14', 'www', '修改密码', null, '2018-05-23 10:12:52', 'DESKTOP-VTDU3JD:10.1.92.8', null, '用户修改密码');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('15', 'admin', '模块设置', null, '2018-05-23 10:54:44', 'DESKTOP-VTDU3JD:10.1.92.8', null, '修改模块');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('16', 'admin', '模块设置', null, '2018-05-23 10:54:57', 'DESKTOP-VTDU3JD:10.1.92.8', null, '修改模块');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('29', 'admin', '宾客信息', null, '2018-05-28 13:10:43', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '修改宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('30', 'admin', '宾客信息', null, '2018-05-28 13:12:24', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '修改宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('10', 'admin', '房间信息', null, '2018-05-22 11:07:17', 'DESKTOP-VTDU3JD:10.1.92.8', null, '导入房间信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('9', 'admin', '酒店信息', null, '2018-05-22 10:44:17', 'DESKTOP-VTDU3JD:10.1.92.8', null, '导出酒店信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('2', 'admin', '宾客信息', null, '2018-05-22 10:33:35', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('3', 'admin', '宾客信息', null, '2018-05-22 10:34:05', 'DESKTOP-VTDU3JD:10.1.92.8', null, '新增宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('1', 'admin', '宾客信息', null, '2018-05-22 10:33:28', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('4', 'admin', '宾客信息', null, '2018-05-22 10:34:06', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('5', 'admin', '宾客信息', null, '2018-05-22 10:35:34', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('6', 'admin', '宾客信息', null, '2018-05-22 10:35:37', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('7', 'admin', '宾客信息', null, '2018-05-22 10:35:40', 'DESKTOP-VTDU3JD:10.1.92.8', null, '删除宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('8', 'admin', '宾客信息', null, '2018-05-22 10:35:41', 'DESKTOP-VTDU3JD:10.1.92.8', null, '查询宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('17', 'admin', '酒店信息', null, '2018-05-23 18:26:02', 'DESKTOP-VTDU3JD:10.1.92.8', null, '导入酒店信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('23', 'admin', '酒店信息', null, '2018-05-28 11:17:06', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '导入酒店信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('24', 'admin', '酒店信息', null, '2018-05-28 11:18:08', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '导入酒店信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('25', 'admin', '酒店信息', null, '2018-05-28 11:21:35', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '导入酒店信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('26', 'admin', '宾客信息', null, '2018-05-28 11:21:43', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '导出宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('27', 'admin', '宾客信息', null, '2018-05-28 11:22:55', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '修改宾客信息');
+INSERT INTO "TEST_GS"."SYS_OPERATION_LOG" VALUES ('28', 'admin', '宾客信息', null, '2018-05-28 11:23:12', 'B0IM0BCXLXU54ZS:10.1.92.7', null, '修改宾客信息');
 
 -- ----------------------------
 -- Table structure for SYS_ROLE
@@ -1201,10 +1225,10 @@ COMMENT ON COLUMN "TEST_GS"."SYS_USER"."ROLE_ID" IS '角色id';
 -- ----------------------------
 -- Records of SYS_USER
 -- ----------------------------
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '超级管理员', 'ISMvKXpXpadDiUoOSoAfww==', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-22 10:13:01', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-22 10:08:21', 'YYYY-MM-DD HH24:MI:SS'), '0', '0');
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', 'wzNncBURtPYCDsYd7TUgWQ==', 'B0IM0BCXLXU54ZS:10.1.92.7', TO_DATE('2018-05-21 14:53:44', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:48', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('4', 'wyb', '王艳波', 'wzNncBURtPYCDsYd7TUgWQ==', null, null, TO_DATE('2018-05-21 15:39:04', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-21 15:40:22', 'YYYY-MM-DD HH24:MI:SS'), '1', '2');
-INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'wwww', '测试', 'wzNncBURtPYCDsYd7TUgWQ==', null, null, TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:12:45', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('1', 'admin', '超级管理员', 'ISMvKXpXpadDiUoOSoAfww==', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-28 15:15:04', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:39', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-22 10:08:21', 'YYYY-MM-DD HH24:MI:SS'), '0', '0');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('2', 'www', '管理员', '4QrcOUm6Wau+VuBX8g+IPg==', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-23 10:12:47', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 17:48:42', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-23 10:12:33', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('4', 'wyb', '王艳波', '4QrcOUm6Wau+VuBX8g+IPg==', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-22 11:42:55', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-21 15:39:04', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-21 15:40:22', 'YYYY-MM-DD HH24:MI:SS'), '1', '2');
+INSERT INTO "TEST_GS"."SYS_USER" VALUES ('3', 'ww', '测试', '4QrcOUm6Wau+VuBX8g+IPg==', 'DESKTOP-VTDU3JD:10.1.92.8', TO_DATE('2018-05-22 11:41:56', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-10 19:06:14', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2018-05-22 11:41:36', 'YYYY-MM-DD HH24:MI:SS'), '1', '1');
 
 -- ----------------------------
 -- Indexes structure for table ACCOMMODATION_RECORD

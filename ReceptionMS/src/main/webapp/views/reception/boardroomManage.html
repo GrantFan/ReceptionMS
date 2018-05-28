@@ -17,10 +17,7 @@
 		<div class="buttons">
 			<button onclick="add()">
 				<u class="xz"></u> <span class="webkit">新增</span>
-			</button>  
-			<button onclick="exportConFereceManage()">
-				<u class="dc"></u> <span class="webkit">导出</span>
-			</button>
+			</button>   
 		</div>
 		<div class="inputs">
 			<span>使用日期：</span>
@@ -495,8 +492,7 @@
 					 $("#REMARK").val(data.Remark);
 					 $("#SID").val(data.Id);
 				} 
-			);
-			
+			); 	
     }
     function emptyModal(){
     	$("#SID").val('');
@@ -575,25 +571,6 @@
 			}
 		})
 	}
-	function exportConFereceManage(){
-			var hotel = $("#hotel").find("option:selected").text();
-			var boardType = $("#boardType").find("option:selected").text();
-			 
-			if($("#hotel").val() == "" || $("#hotel").val() == null){
-				hotel = "";
-			}
-			
-			if($("#boardType").val() == "" || $("#boardType").val() == null){
-				boardType = "";
-			}  
-			alert(1234);
-			var utl = '../../ConferenceRecordController/export?hotelName='+hotel+'&confernce_TYPE='+boardType;
-		var form=$("<form>");//定义一个form表单 
-		        form.attr("method","get");
-		        form.attr("action",utl);
-		        $("body").append(form);//将表单放置在web中 
-		        form.submit();//表单提交   
-		        form.remove(); 
-		}
+	
 	</script>
 </html>

@@ -217,7 +217,7 @@ public class Guest_InfoAction {
     	List<String> urls = guest_infoService.selectUrl();
     	for (String url : urls) {
     		if(null != url && ! "".equals(url)){
-    		photoNames.add(url.substring(url.lastIndexOf("/")+1));
+    		photoNames.add(url.substring(url.lastIndexOf("/")+1,url.length()));
     		}
 		}
     	//获取指定路径下的全部文件名 

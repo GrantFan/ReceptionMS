@@ -15,7 +15,8 @@ import com.reception.conference.model.ConferenceEntity;
 public interface ConferenceMapper {
 	
 	@Insert("INSERT INTO conference_info VALUES"
-			+ " (#{id}, #{conference_name}, #{hotel}, #{type}, #{position},#{floor} #{capacity_num}, #{remark})")
+			+ " (#{id}, #{conference_name}, #{hotel}, #{type}, #{position}, #{capacity_num}, "
+			+ "  #{remark},#{price},#{detailedinfo})")
 	public void addConferenect(ConferenceEntity conferenceEntity);
 	
 	@Delete("<script>" 
@@ -30,7 +31,7 @@ public interface ConferenceMapper {
 	
 	@Update("UPDATE conference_info SET "
 			+ "conference_name = #{conference_name}, hotel = #{hotel}, type = #{type}, position = #{position},"
-			+ "capacity_num = #{capacity_num}, remark = #{remark}"
+			+ "capacity_num = #{capacity_num},price = #{price},detailedinfo = #{detailedinfo}, remark = #{remark}"
 			+ "WHERE id = #{id}")
 	public int modConferenect(ConferenceEntity conferenceEntity);
 	 

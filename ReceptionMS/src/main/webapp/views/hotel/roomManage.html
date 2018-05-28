@@ -8,11 +8,11 @@
 
 <script type="text/javascript" src="../assets/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../assets/js/html2canvas.min.js"></script>
-s<script type="text/javascript" src="js/roomManage.js"></script>
+<script type="text/javascript" src="js/roomManage.js"></script>
 <style type="text/css">
 			.HotelName{
 				width:12vw;
-				height: 77.8vh;
+				height:83vh;
 				background:rgba(0,0,0,0.1);
 			}
 			.HotelName>li{
@@ -28,6 +28,8 @@ s<script type="text/javascript" src="js/roomManage.js"></script>
 			}
 			.seat{
 				width:calc(100% - 12vw);
+				height:77.8vh;
+				overflow-y:auto;
 				padding-left: 0px !important;
 			}
 		</style>
@@ -67,20 +69,11 @@ s<script type="text/javascript" src="js/roomManage.js"></script>
 				<span class="webkit">清空</span>
 			</button>
 		</div> -->
-		<!--startprint-->
+
 		<div id="tab" class="tab">
-			<h6 class="title overflow">
-				<span class="lt" id="hotelName">酒店房间信息</span>
-				<p class="lt idleIcon">
-					<i class="idle"></i> <span class="webkit">空闲</span>
-				</p>
-				<p class="lt inUseIcon">
-					<i class="inUse"></i> <span class="webkit">预定</span>
-				</p>
-			</h6>
 			<!--酒店 -->
-				<ul id="hotel" class="HotelName lt">
-					<!-- <li class="active">光明大酒店</li>
+			<ul id="hotel" class="HotelName lt">
+				<!-- <li class="active">光明大酒店</li>
 					<li>宏兴大酒店</li>
 					<li>东方国际大酒店</li>
 					<li>惠城大酒店</li>
@@ -89,10 +82,20 @@ s<script type="text/javascript" src="js/roomManage.js"></script>
 					<li>敦煌天润大酒店</li>
 					<li>敦煌太阳大酒店</li>
 					<li>行星酒店</li> -->
-				</ul>
+			</ul>
+			<!--startprint-->
+			<h6 class="title overflow" style="width:calc(100% - 12vw)">
+				<span class="lt" id="hotelName">酒店房间信息</span>
+				<p class="lt idleIcon">
+					<i class="idle"></i> <span class="webkit">空闲</span>
+				</p>
+				<p class="lt inUseIcon">
+					<i class="inUse"></i> <span class="webkit">预定</span>
+				</p>
+			</h6>
 			<div id="seat" class="seat"></div>
+			<!--endprint-->
 		</div>
-		<!--endprint-->
 	</div>
 	<!-- 模态框 -->
 	<div id="modal" class="modal none">

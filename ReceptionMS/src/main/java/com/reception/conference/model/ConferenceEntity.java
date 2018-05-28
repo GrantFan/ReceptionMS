@@ -12,7 +12,7 @@ import com.reception.util.poi.ModelTitle;
  */
 @ModelTitle(name = "会议室基本信息")
 public class ConferenceEntity {
-	
+
 	private String id;
 	@ModelProp(name = "会议室名字",colIndex = 3)
 	private String conference_name;
@@ -28,12 +28,18 @@ public class ConferenceEntity {
 	//capacity_num
 	@ModelProp(name = "人数",colIndex = 5)
 	private String capacity_num;
+	//PRICE
+	@ModelProp(name = "价格",colIndex = 6)
+	private String price;
+	//DETAILEDINFO
+	@ModelProp(name = "详细信息",colIndex = 7)
+	private String detailedinfo;
 	//备注
-	@ModelProp(name = "备注",colIndex = 6)
+	@ModelProp(name = "备注",colIndex = 8)
 	private String remark;
 
 	private String img_uri;
-	
+
 	public String getId() {
 		return id;
 	}
@@ -41,7 +47,7 @@ public class ConferenceEntity {
 	public void setId(String id) {
 		this.id = id;
 	}
-	              
+
 	public String getConference_name() {
 		return conference_name;
 	}
@@ -89,13 +95,29 @@ public class ConferenceEntity {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}  
-	
+
 	public String getImg_uri() {
 		return img_uri;
 	}
 
 	public void setImg_uri(String img_uri) {
 		this.img_uri = img_uri;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getDetailedinfo() {
+		return detailedinfo;
+	}
+
+	public void setDetailedinfo(String detailedinfo) {
+		this.detailedinfo = detailedinfo;
 	}
 
 	@Override

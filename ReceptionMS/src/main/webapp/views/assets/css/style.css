@@ -197,7 +197,7 @@ html,body{
 	width: 100%;
 	height: 5.556vh;
 	line-height:5.556vh;
-	background-color: rgba(0,128,128,0.6);
+	background-color: rgba(0,156,156,0.6);
 	padding: 0px 1.875vw 0px  5.6vw;
 }
 .header>div.lt>a>span{
@@ -246,7 +246,7 @@ article td,article th{
 	font-size: 0.729vw;
 	font-weight: 700;
 	border-bottom: 1px solid #597ab2;
-	background-color: rgba(60,179,113,0.4);
+	background-color:rgba(65, 170, 112, 0.4);
 	position: relative;
 	-webkit-transition: all 0.4s ease;
 	-o-transition: all 0.4s ease;
@@ -309,7 +309,8 @@ article#right>section{
 article#right>section>#Tab{
 	height: 3.518vh;
 	line-height: 3.518vh;
-	background-color: #067373;
+	background-color: #078484;
+	color:#e6ebff;
 }
 article#right>section>#Tab>span{
 	margin-left: 0.9375vw;
@@ -396,7 +397,7 @@ iframe{
 .operationsArea>.tab{
 	width: 100%;
 	height: 83vh;
-	background: rgba(0,128,128,0.7);	
+	background: rgba(1,162,162,0.7);	
 	margin-top: 1.67vh;
 }
 /*表格*/
@@ -472,7 +473,7 @@ iframe{
 	float: left;
 	width: 8.48vw;
 	height: 50px;
-	background: rgba(38,54,64,0.5);
+	background: rgba(38,54,64,0.4);
 	border-radius: 4px;
 	margin:0px 0.24vw;
 	margin-bottom:6px;
