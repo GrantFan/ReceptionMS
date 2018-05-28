@@ -46,9 +46,9 @@ public interface Guest_InfoMapper {
      * 导出信息查询
      * @return
      */
-    @Select("SELECT A . ID,A .guest_name,A .main_position,A .deputy_position,A .office_area,a. sex AS xb,"
-    		+ "A .BIRTH_DATE AS birthDate,A . nation AS nation_name,A. education AS education_name,"
-	        +"A .origin_place,A .telphone,A .phone,A .email,A .address,A .guest_type,A .remark FROM guest_info A")
+    @Select("SELECT A . ID,A .guest_name,A .main_position,A .deputy_position,A .office_area,a. sex,"
+    		+ "A .BIRTH_DATE,A . nation,A. menu,"
+	        +"A .origin_place,A .drink,A .flavor,A .sleep,A .remark FROM guest_info A")
     List<Guest_Info> SelectGuest_Info();
     
     

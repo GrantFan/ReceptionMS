@@ -37,6 +37,7 @@ import com.reception.dictionary.model.DictionaryTableEntity;
 import com.reception.guest.entity.Guest_Info;
 import com.reception.guest.entity.ResponseResult;
 import com.reception.guest.service.Guest_InfoService;
+import com.reception.hotel.model.HotelInfoEntity;
 import com.reception.operate_log.util.LogAnnotation;
 import com.reception.util.JSONHelper;
 import com.reception.util.poi.ImportExcelUtil;
@@ -318,4 +319,37 @@ public class Guest_InfoAction {
     	Guest_Info guest_info = guest_infoService.SelectGuest_InfoById(Integer.parseInt(id));
     	return JSONHelper.toJSON(guest_info);
     }
+    
+    
+    /**
+	 * 获取文件的路径
+	 * @param url
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@LogAnnotation(module = "酒店信息",remark = "导入酒店信息")
+	@RequestMapping(value = "upLoadFile", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	public String getFileUrl(@RequestParam(value = "file", required = false) MultipartFile file) {
+		File f = new File(location+ file.getOriginalFilename());
+		int count = 0;
+		try {
+			file.transferTo(f);
+			InputStream in =   new FileInputStream(f);
+			List<Guest_Info> list = ImportExcelUtil.importExcel(Guest_Info.class, in);
+//			System.out.println(list.size());
+			for(Guest_Info guest_info : list){
+				guest_infoService.InsertGuest_Info(guest_info);
+				count++;
+			}
+			return "{\"flag\":\"true\",\"count\":\""+count+"\"}";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "{\"flag\":\"false\",\"count\":\""+count+"\"}";
+		} finally {
+			if (f.exists()) {
+				f.delete();
+			}
+		}
+	}
 }

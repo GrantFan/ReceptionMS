@@ -32,13 +32,11 @@ public class Guest_InfoSql {
                 VALUES("sex", "#{sex}");
                 VALUES("birth_date", "#{birth_date}");
                 VALUES("nation", "#{nation}");
-                VALUES("education", "#{education}");
+                VALUES("menu", "#{menu}");
+                VALUES("drink", "#{drink}");
+                VALUES("flavor", "#{flavor}");
+                VALUES("sleep", "#{sleep}");
                 VALUES("origin_place", "#{origin_place}");
-                VALUES("telphone", "#{telphone}");
-                VALUES("phone", "#{phone}");
-                VALUES("email", "#{email}");
-                VALUES("address", "#{address}");
-                VALUES("guest_type", "#{guest_type}");
                 VALUES("remark", "#{remark}");
                 VALUES("url", "#{url}");
             }
@@ -60,16 +58,13 @@ public class Guest_InfoSql {
                     SET("deputy_position = #{deputy_position}");
                     SET("office_area = #{office_area}");
                     SET("sex = #{sex}");
-                    SET("age = #{age}");
                     SET("birth_date = #{birth_date}");
                     SET("nation = #{nation}");
-                    SET("education = #{education}");
                     SET("origin_place = #{origin_place}");
-                    SET("telphone = #{telphone}");
-                    SET("phone = #{phone}");
-                    SET("email = #{email}");
-                    SET("address = #{address}");
-                    SET("guest_type = #{guest_type}");
+                    SET("menu = #{menu}");
+                    SET("drink = #{drink}");
+                    SET("flavor = #{flavor}");
+                    SET("sleep = #{sleep}");
                     SET("remark = #{remark}");
                     SET("url = #{url}");
                     WHERE("id=#{id}");

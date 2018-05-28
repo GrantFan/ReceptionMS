@@ -47,73 +47,53 @@ public class Guest_Info implements Serializable{
     /**
      * 性别
      */
-	
+	 @ModelProp(name="性别",colIndex=4)
     private String sex = "";
-    
-    @ModelProp(name="性别",colIndex=4)
-	private String xb  = "";
 	
-    /**
-     * 年龄
-     */
-    private String age = "";
     /**
      * 出生日期
      */
-   
-    private String birth_date;
-    
     @ModelProp(name="出生日期",colIndex=5)
-    private String birthDate;
+    private String birth_date;
     /**
      * 民族
      */
-    private String nation = "";
-    
     @ModelProp(name="民族",colIndex=6)
-	private String nation_name = "";
+    private String nation = "";
+   
     /**
-     * 学历
+     * 菜品喜好
      */
-	
-    private String education = "";
-	
-    @ModelProp(name="学历",colIndex=7)
-	private String education_name = "";
+    @ModelProp(name="菜品喜好",colIndex=7)
+    private String menu = "";
+    
+    /**
+     * 饮品喜好
+     */
+    @ModelProp(name="饮品喜好",colIndex=8)
+    private String drink = "";
+    
+    /**
+     * 口味喜好
+     */
+    @ModelProp(name="口味喜好",colIndex=9)
+    private String flavor = "";
+    
+    /**
+     * 住宿喜好
+     */
+    @ModelProp(name="住宿喜好",colIndex=10)
+    private String sleep = "";
     /**
      * 籍贯
      */
-	@ModelProp(name="籍贯",colIndex=8)
+	@ModelProp(name="籍贯",colIndex=11)
     private String origin_place = "";
-    /**
-     * 联系电话
-     */
-	@ModelProp(name="联系电话",colIndex=9)
-    private String telphone = "";
-    /**
-     * 家庭/办公电话
-     */
-	@ModelProp(name="家庭/办公电话",colIndex=10)
-    private String phone = "";
-    /**
-     * 邮件地址
-     */
-	@ModelProp(name="邮件地址",colIndex=11)
-    private String email = "";
-    /**
-     * 家庭地址
-     */
-	@ModelProp(name="家庭地址",colIndex=12)
-    private String address = "";
-    /**
-     * 宾客类型
-     */
-	@ModelProp(name="宾客类型",colIndex=13)
-    private String guest_type = "";
+   
     /**
      * 备注
      */
-	@ModelProp(name="备注",colIndex=14)
+	@ModelProp(name="备注",colIndex=12)
     private String remark = "";
     
     private String url = "";
@@ -166,22 +146,6 @@ public class Guest_Info implements Serializable{
 		this.sex = sex;
 	}
 
-	public String getXb() {
-		return xb;
-	}
-
-	public void setXb(String xb) {
-		this.xb = xb;
-	}
-
-	public String getAge() {
-		return age;
-	}
-
-	public void setAge(String age) {
-		this.age = age;
-	}
-
 	public String getBirth_date() {
 		return birth_date;
 	}
@@ -198,28 +162,37 @@ public class Guest_Info implements Serializable{
 		this.nation = nation;
 	}
 
-	public String getNation_name() {
-		return nation_name;
+
+	public String getMenu() {
+		return menu;
 	}
 
-	public void setNation_name(String nation_name) {
-		this.nation_name = nation_name;
+	public void setMenu(String menu) {
+		this.menu = menu;
 	}
 
-	public String getEducation() {
-		return education;
+	public String getDrink() {
+		return drink;
 	}
 
-	public void setEducation(String education) {
-		this.education = education;
+	public void setDrink(String drink) {
+		this.drink = drink;
 	}
 
-	public String getEducation_name() {
-		return education_name;
+	public String getFlavor() {
+		return flavor;
 	}
 
-	public void setEducation_name(String education_name) {
-		this.education_name = education_name;
+	public void setFlavor(String flavor) {
+		this.flavor = flavor;
+	}
+
+	public String getSleep() {
+		return sleep;
+	}
+
+	public void setSleep(String sleep) {
+		this.sleep = sleep;
 	}
 
 	public String getOrigin_place() {
@@ -228,46 +201,6 @@ public class Guest_Info implements Serializable{
 
 	public void setOrigin_place(String origin_place) {
 		this.origin_place = origin_place;
-	}
-
-	public String getTelphone() {
-		return telphone;
-	}
-
-	public void setTelphone(String telphone) {
-		this.telphone = telphone;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getGuest_type() {
-		return guest_type;
-	}
-
-	public void setGuest_type(String guest_type) {
-		this.guest_type = guest_type;
 	}
 
 	public String getRemark() {
@@ -290,23 +223,14 @@ public class Guest_Info implements Serializable{
 		return serialVersionUID;
 	}
 
-	
-	public String getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
-	}
-
 	@Override
 	public String toString() {
 		return "Guest_Info [id=" + id + ", guest_name=" + guest_name + ", main_position=" + main_position
-				+ ", deputy_position=" + deputy_position + ", office_area=" + office_area + ", sex=" + sex + ", xb="
-				+ xb + ", age=" + age + ", birth_date=" + birth_date + ", birthDate=" + birthDate + ", nation=" + nation
-				+ ", nation_name=" + nation_name + ", education=" + education + ", education_name=" + education_name
-				+ ", origin_place=" + origin_place + ", telphone=" + telphone + ", phone=" + phone + ", email=" + email
-				+ ", address=" + address + ", guest_type=" + guest_type + ", remark=" + remark + ", url=" + url + "]";
+				+ ", deputy_position=" + deputy_position + ", office_area=" + office_area + ", sex=" + sex
+				+ ", birth_date=" + birth_date + ", nation=" + nation + ", menu=" + menu + ", drink=" + drink
+				+ ", flavor=" + flavor + ", sleep=" + sleep + ", origin_place=" + origin_place + ", remark=" + remark
+				+ ", url=" + url + "]";
 	}
+
 
 }

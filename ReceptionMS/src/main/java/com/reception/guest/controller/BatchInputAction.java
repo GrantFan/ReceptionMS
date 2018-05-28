@@ -44,7 +44,7 @@ public class BatchInputAction {
 	 * @param response
 	 * @return
 	 */
-	  @RequestMapping(value="upLoadFile",method = RequestMethod.POST)
+	  //@RequestMapping(value="upLoadFile",method = RequestMethod.POST)
       public int getFileUrl(@RequestParam(value="file",required=false)MultipartFile file,HttpServletRequest request){
     	  //File file = new File(url);
 		  File f = new File("E:/YLQHworkspace"+file.getOriginalFilename());
@@ -203,11 +203,11 @@ public class BatchInputAction {
 				guest_info.setNation(parms[i][6]);
 				guest_info.setNation(parms[i][7]);
 				guest_info.setOrigin_place(parms[i][8]);
-				guest_info.setTelphone(parms[i][9]);
+			/*	guest_info.setTelphone(parms[i][9]);
 				guest_info.setPhone(parms[i][10]);
 				guest_info.setEmail(parms[i][11]);
 				guest_info.setAddress(parms[i][12]);
-				guest_info.setGuest_type(parms[i][13]);
+				guest_info.setGuest_type(parms[i][13]);*/
 				guest_info.setRemark(parms[i][14]);
 				guest_infos.add(guest_info);
 		}

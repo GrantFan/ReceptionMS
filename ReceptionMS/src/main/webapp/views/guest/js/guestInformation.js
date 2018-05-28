@@ -32,23 +32,19 @@ function select_guest(pageNum,pageSize){
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
             		var list = result.list[i];
-            		info.append("<tr><td><label><input type='checkbox' onclick='singleCheck()' name='gueat_info' value="+list.id+
+            		info.append("<tr ondblclick='select_detail("+list.id+")'><td><label><input type='checkbox' onclick='singleCheck()' name='gueat_info' value="+JSON.stringify(list)+
             				"><u></u></label></td>"+
             				"<td  id= 'id' style='display:none' >"+list.id+
             				"</td><td>"+list.guest_name+
             				"</td><td>"+list.main_position+
             				"</td><td>"+list.deputy_position+
             				"</td><td>"+list.office_area+
-            				/*"</td><td>"+list.sex+*/
             				"</td><td>"+list.birth_date.substr(0,10)+
-            				/*"</td><td>"+list.nation+
-            				"</td><td>"+list.education+*/
             				"</td><td>"+list.origin_place+
-            				"</td><td>"+list.telphone+
-            				"</td><td>"+list.phone+
-            				"</td><td>"+list.email+
-            				"</td><td>"+list.address+
-            				"</td><td>"+list.guest_type+
+            				"</td><td>"+list.menu+
+            				"</td><td>"+list.drink+
+            				"</td><td>"+list.flavor+
+            				"</td><td>"+list.sleep+
             				"</td><td>"+list.remark+"</td></tr> ");
             	};
             	page(result);
@@ -114,8 +110,7 @@ function page(result){
  */
 function save_guest(){
 	if($('#add_guest_name').val()=='' || $('#add_birth_date').val()==''||
-			$('#add_sex').val()=='' ||$('#add_nation').val()=='' ||  $('#add_education').val()==''||
-			$('#add_guest_type').val()==''){
+			$('#add_sex').val()=='' ||$('#add_nation').val()==''){
 		alert("请检查必填项！");
 		return;
 	}
@@ -130,13 +125,11 @@ function save_guest(){
       	    "sex" : $('#add_sex').val(),
       	    "birth_date": $('#add_birth_date').val(),
       	    "nation" : $('#add_nation').val(),
-      	    "education" : $('#add_education').val(),
       	    "origin_place" : $('#add_origin_place').val(),
-      	    "telphone" : $('#add_telphone').val(),
-      	    "phone" : $('#add_phone').val(),
-      	    "email" : $('#add_email').val(),
-      	    "address" : $('#add_address').val(),
-      	    "guest_type" : $('#add_guest_type').val(),
+      	    "menu" : $('#add_menu').val(),
+      	    "drink" : $('#add_drink').val(),
+      	    "flavor" : $('#add_flavor').val(),
+      	    "sleep" : $('#add_sleep').val(),
       	    "remark" : $('#add_remark').val(),
       	    "url" : $("#thumburlShow").attr("src")
          },
@@ -158,21 +151,11 @@ function save_guest(){
 /**
  * 查看详情
  */
-function select_detail(){
-	  var obj = document.getElementsByName("gueat_info");
-	  var id = -1;
-	  for(k in obj){
-	        if(obj[k].checked)
-	           id = obj[k].value;
-	   }
-	  if(id != -1){
+function select_detail(id){
 		  document.getElementById("modal").style.visibility="visible";//显示
 		  $('#modal').show(500);
 		  $("#tijiao").hide();
 		  selectById(id);
-	  }else{
-		  alert("请选择一条记录...");
-	  }
 }
 
 /**
@@ -196,17 +179,14 @@ function selectById(id){
             	   $('#add_sex').val(result.sex),
             	   $('#add_birth_date').val(result.birth_date.substr(0,10)),
             	   $('#add_nation').val(result.nation),
-                   $('#add_education').val(result.education),
             	   $('#add_origin_place').val(result.origin_place),
-            	   $('#add_telphone').val(result.telphone),
-                   $('#add_phone').val(result.phone),
-           	       $('#add_email').val(result.email),
-           	       $('#add_address').val(result.address),
-           	       $('#add_guest_type').val(result.guest_type),
+            	   $('#add_menu').val(result.menu),
+                   $('#add_drink').val(result.drink),
+           	       $('#add_flavor').val(result.flavor),
+           	       $('#add_sleep').val(result.sleep),
            	       $('#add_remark').val(result.remark),
-           	    $("#thumburlShow").attr("src",result.url);//显示图片        
+           	       $("#thumburlShow").attr("src",result.url);//显示图片     
         	  }
-        	    
           },
           error:function(){
         	  alert("信息发生异常！");
@@ -222,7 +202,7 @@ function delete_guest(){
 	   var id = -1;
 	   for(k in obj){
 	        if(obj[k].checked)
-	           id = obj[k].value;
+	           id = JSON.parse(obj[k].value).id;
 	    }
 	  if(id != -1){
 		if (confirm("确认删除吗?")==true){
@@ -249,7 +229,7 @@ function edit_guest(){
 	   var id = -1;
 	   for(k in obj){
 	        if(obj[k].checked)
-	           id = obj[k].value;
+	           id = JSON.parse(obj[k].value).id;
 	    }
 	  if(id != -1){
 		 document.getElementById("modal").style.visibility="visible";//显示
@@ -260,12 +240,11 @@ function edit_guest(){
 	 }else{
 		 alert("请选择一条记录...");
 	}
-	 }
+}
 
 function update_guest(id){
 	if($('#add_guest_name').val()=='' || $('#add_birth_date').val()==''||
-			$('#add_sex').val()=='' ||$('#add_nation').val()=='' ||  $('#add_education').val()==''||
-			$('#add_guest_type').val()==''){
+			$('#add_sex').val()=='' ||$('#add_nation').val()==''){
 		alert("请检查必填项！");
 		return;
 	}
@@ -281,13 +260,11 @@ function update_guest(id){
     	    "sex" : $('#add_sex').val(),
     	    "birth_date": $('#add_birth_date').val(),
     	    "nation" : $('#add_nation').val(),
-    	    "education" : $('#add_education').val(),
     	    "origin_place" : $('#add_origin_place').val(),
-    	    "telphone" : $('#add_telphone').val(),
-    	    "phone" : $('#add_phone').val(),
-    	    "email" : $('#add_email').val(),
-    	    "address" : $('#add_address').val(),
-    	    "guest_type" : $('#add_guest_type').val(),
+    	    "menu" : $('#add_menu').val(),
+    	    "drink" : $('#add_drink').val(),
+    	    "flavor" : $('#add_flavor').val(),
+    	    "sleep" : $('#add_sleep').val(),
     	    "remark" : $('#add_remark').val(),
     	    "url": $("#thumburlShow").attr("src")
        },
@@ -401,7 +378,7 @@ function import_Excel(obj){
 	    })
 	 $.ajax({
 	        type: "POST",
-	        url: "/ReceptionMS/import/upLoadFile",
+	        url: "/ReceptionMS/guest/upLoadFile",
 	        data:data,
 	        cache: false,
 	        processData: false,
@@ -423,5 +400,86 @@ function import_Excel(obj){
 function singleCheck(){
     $('#guest_info tr td label').find('input[type=checkbox]').bind('click', function(){
    $('#guest_info tr td label').find('input[type=checkbox]').not(this).attr("checked", false);
+  });
+}
+
+/**
+ * 查看记录
+ */
+function checkRecord(){
+	var obj = document.getElementsByName("gueat_info");
+	   var guest_name = -1;
+	   for(k in obj){
+	        if(obj[k].checked)
+	        	guest_name = JSON.parse(obj[k].value).guest_name;
+	    }
+	  if(guest_name != -1){
+		  $("#recordModal").show(500);
+		  selectMeal(guest_name);
+		  selectAccom(guest_name);
+	  }else{
+		 alert("请选择一条记录...");
+	}
+}
+
+/**
+ * 查看用餐记录
+ */
+function selectMeal(guest_name){
+	//alert("查看用餐记录"+guest_name);
+	$.ajax({
+        url:"/ReceptionMS/meals/listByGuest",
+        type:"post",
+        data:{
+       	 "guestName":guest_name
+        },
+        success:function(data){
+        	var info = $("#meals").empty();
+        	//渲染数据
+        	for(var i =0;i< data.length;i++){
+        		var list = data[i];
+        		info.append("<tr>"+
+        				"</td><td>"+list.menuNumber+
+        				"</td><td>"+list.hotel+
+        				"</td><td>"+list.mealsTime+
+        				"</td><td>"+list.hobby+
+        				"</td><td>"+list.recordTime+
+        				"</td><td>"+list.remark+"</td></tr> ");
+        	};
+        },
+        error:function(){
+           	alert("请求发生异常！");
+         }
+  });
+}
+/**
+ * 查看住房记录
+ */
+function selectAccom(guest_name){
+	//alert("查看住房记录"+guest_name);
+	$.ajax({
+        url:"/ReceptionMS/accom/listByGuest",
+        type:"post",
+        data:{
+       	 "guestName":guest_name
+        },
+        success:function(data){
+        	var info = $("#accoms").empty();
+        	//渲染数据
+        	for(var i =0;i< data.length;i++){
+        		var list = data[i];
+        		info.append("<tr>"+
+        				"</td><td>"+list.hotel+
+        				"</td><td>"+list.roomNumber+
+        				"</td><td>"+list.checkinTime+
+        				"</td><td>"+list.checkoutTime+
+        				"</td><td>"+list.hobby+
+        				"</td><td>"+list.recordTime+
+        				"</td><td>"+(list.remark==null?"":list.remark)+"</td></tr> ");
+        	};
+         },
+        error:function(){
+           	alert("请求发生异常！");
+         }
   });
 }
