@@ -21,7 +21,7 @@ function hotelShow() {
 					"<option value='" + obj[i].id + "'>" + obj[i].hotelName + "</option>"
 				);
 			}
-			selectMenu(); //加载套餐列表
+			//selectMenu(); //加载套餐列表
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
@@ -42,7 +42,7 @@ function hotelShow1() {
 					"<option value='" + obj[i].id + "'>" + obj[i].hotelName + "</option>"
 				);
 			}
-			selectMenu(); //加载套餐列表
+			//selectMenu(); //加载套餐列表
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
@@ -89,8 +89,8 @@ function addMealsColumn(){
 	$("#table1").append("<tr>"
 						+"<td><input onchange=\"addMealsColumn()\" type=\"text\"  value=\"\" /></td>"
 //						+"<td><input type=\"text\" name=\"\"  value=\"\" /></td>"
-						+"<td><select  class=\"hotel1\" onchange=\"selectMenu()\"><option>东方国际大酒店</option></select></td>"
-						+"<td><select class=\"menu\"><option>套餐一</option></select></td>"
+						+"<td><select  class=\"hotel1\"><option>东方国际大酒店</option></select></td>"
+						+"<td><input type=\"text\" name=\"\"  value=\"\" /></td>"
 						+"<td><input type=\"text\" name=\"\" value=\"\" /></td>"
 						+"</tr>");
 }
@@ -129,7 +129,7 @@ function addSubmit() {
 		var tds = $(tr1[i]).find("td")
 		//		console.log(tds[2]);
 		var hotel = $(tds[1]).find("select option:selected").text();
-		var menuNumber = $(tds[2]).find("select option:selected").text();
+		var menuNumber = $(tds[2]).find("input").val();
 		var mealsTime = $(tds[0]).find("input").val();
 //		var hobby = $(tds[1]).find("input").val();
 		var remark = $(tds[3]).find("input").val();

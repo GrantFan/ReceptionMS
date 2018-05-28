@@ -175,7 +175,7 @@ function add() {
 	$("#phone").val("");
 	$("#area").val("");
 	$("#address").val("");
-	$("#graph").val("");
+//	$("#graph").val("");
 	$("#remark").val("");
 	loadArea();
 }
@@ -188,7 +188,7 @@ function addSubmit() {
 		phone : $("#phone").val(),
 		area : $("#area option:selected").text(),
 		address : $("#address").val(),
-		planeGraph : $("#graph").val(),
+//		planeGraph : $("#graph").val(),
 		remark : $("#remark").val()
 	}, function(result) {
 		alert(result);
@@ -228,7 +228,7 @@ function edit() {
 			//$("#area").val(json.area);
 			loadArea();
 			$("#address").val(json.address);
-			$("#graph").val(json.planeGraph);
+//			$("#graph").val(json.planeGraph);
 			$("#remark").val(json.remark);
 			getImage(id);
 		}
@@ -247,7 +247,7 @@ function editSubmit() {
 			phone : $("#phone").val(),
 			area : $("#area option:selected").text(),
 			address : $("#address").val(),
-			planeGraph : $("#graph").val(),
+//			planeGraph : $("#graph").val(),
 			remark : $("#remark").val()
 		},
 		success : function(result) {
@@ -409,7 +409,7 @@ function setImg(obj) { //用于进行图片上传，返回地址
 	data.append("hotel", $("#hotelId").val());
 	$.ajax({
 		type : "POST",
-		url : "/ReceptionMS/hotel_graph/uploadImg",
+		url : "../../hotel_graph/uploadImg",
 		data : data,
 		cache : false,
 		contentType : false, //不可缺
@@ -441,7 +441,7 @@ function delImg() {
 	console.log(graphId);
 	$.ajax({
 		type : "GET",
-		url : "/ReceptionMS/hotel_graph/deleetImpById",
+		url : "../../hotel_graph/deleetImpById",
 		data : {
 			"id" : graphId
 		},

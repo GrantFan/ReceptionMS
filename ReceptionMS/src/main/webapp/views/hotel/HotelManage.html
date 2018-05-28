@@ -166,8 +166,7 @@
 							id="area"></select>
 						</label> <label for="address"> <span>酒店地址：</span> <input
 							type="text" name="address" id="address" value="" />
-						</label> <label for="graph"> <span>酒店平面图：</span> <input
-							type="text" name="graph" id="graph" value="" />
+						</label> 
 					</div>
 					<!-- 			<div class="rt" id="imgBox">
 						<div class="img" ondblclick="imgView(this)">
@@ -237,7 +236,12 @@
 			<div class="mbody">
 				<input id="hotelId" type="hidden" value="">
 				<div id="imgBox">
-			
+					<div class="img" ondblclick="imgView(this)">
+						<b class="close none"
+							onclick="$(this).parent('div.img').removeClass('active');$(this).hide();">
+							× </b>
+						<ul class="overflow" id="imageOver"></ul>
+					</div>
 					<div class="btns overflow"
 						style="margin-top:2vh;line-height:3.6vh;">
 						<!-- <span id="inmpage" class="lt text-center" style="width:4vw;">1/1</span> -->
