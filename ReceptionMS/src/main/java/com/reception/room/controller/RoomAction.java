@@ -58,10 +58,11 @@ public class RoomAction {
 	@RequestMapping(value="/batchadd",produces="application/text; charset=utf-8")
 	public @ResponseBody String batchaddHotelInfo(RoomInfoEntity room) {
 		String flag = "false";
-		int i = roomServiceImpl.addRoomInfo(room);
-		if(i>0){
-			flag = "true";
+		int count = Integer.parseInt(room.getRoomCount());
+		for (int j = 0; j < count; j++) {
+			roomServiceImpl.addRoomInfo(room);
 		}
+		flag = "true";
 		return flag;
 	};
 

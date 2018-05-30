@@ -40,7 +40,7 @@ public class RoomInfoEntity {
 	@ModelProp(name="房间状态",colIndex=14)
 	private String state;//房间状态
 	@ModelProp(name="备注",colIndex=15)
-	private String remark;
+	private String remark="";
 	private String roomCount;//批量新增房间个数
 
 	

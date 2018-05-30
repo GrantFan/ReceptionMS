@@ -183,9 +183,9 @@ function loadRoomType() {
 		},
 		function(result) {
 			//console.log(result);
-			$("#roomType").empty();
+			$(".roomType").empty();
 			for (var i = 0, len = result.length; i < len; i++) {
-				$("#roomType").append(
+				$(".roomType").append(
 					"<option value='" + result[i].value + "'>" + result[i].name + "</option>"
 				);
 			}
@@ -260,9 +260,15 @@ function batchAdd(){
 	$("#b_rackPrice").val("");
 	$("#b_agreementPrice").val("");
 	$("#roomCount").val("");
+	
+	loadRoomType();
 }
 //批量新增房间提交
 function batchAddSubmit() {
+	if($("#b_roomFloor").val()=="" || $("#roomCount").val()=="" || $("#b_roomHotel option:selected").text()==""){
+		alert("必填项不能为空");
+		return;
+	}
 	$.post("../../room/batchadd", {
 		roomNumber : $("#b_roomNumber").val(),
 		floor : $("#b_roomFloor").val(),
@@ -279,7 +285,7 @@ function batchAddSubmit() {
 		hotel : $("#b_roomHotel option:selected").text(),
 		containFood : $("#b_containFood option:selected").text(),
 		state : $("#b_state option:selected").text(),
-		roomCount : $("#roomCount").val()
+		roomCount : $("#roomCount").val().trim()
 	}, function(result) {
 		if (result == "true") {
 			alert("添加成功");
