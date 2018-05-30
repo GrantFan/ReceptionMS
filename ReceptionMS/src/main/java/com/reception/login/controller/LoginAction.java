@@ -2,6 +2,7 @@ package com.reception.login.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
@@ -31,6 +32,9 @@ public class LoginAction {
 	@Resource
 	LoginServiceImpl loginService;
 
+	/*
+	 * 登录
+	 * */
 	@RequestMapping(value = "/login")
 	public @ResponseBody String login(User user, HttpSession session) {
 		InetAddress comp = null;
@@ -60,6 +64,9 @@ public class LoginAction {
 		return "false";
 	}
 
+	/*
+	 * 登出
+	 * */
 	@RequestMapping(value = "/logout")
 	public @ResponseBody String login(HttpSession session) {
 		if (null != session.getAttribute("user")) {
@@ -69,6 +76,9 @@ public class LoginAction {
 		return "false";
 	}
 
+	/*
+	 * app下载
+	 * */
 	@RequestMapping(value = "/app")
 	public void downloadApp(HttpServletResponse response) {
 		String filename = "接待管理APP";
@@ -76,12 +86,13 @@ public class LoginAction {
 		OutputStream out = null;
 		try {
 			response.setContentType("application/octet-stream;charset=utf-8");
-			response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8")+ ".apk");
+			response.setHeader("Content-Disposition",
+					"attachment;filename=" + URLEncoder.encode(filename, "UTF-8") + ".apk");
 			response.addHeader("Pargam", "no-cache");
 			response.addHeader("Cache-Control", "no-cache");
 
-			File appFile = new File(location + "app/H518709E7_0522184714.apk");
-			if (!appFile.isDirectory()) {
+			File appFile = new File(location + "app/reception.apk");
+			if (!appFile.isDirectory() || !appFile.exists()) {
 				appFile.mkdir();
 			}
 			in = new FileInputStream(appFile);
@@ -98,6 +109,18 @@ public class LoginAction {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if (null != in) {
+					in.close();
+				}
+				if (null != out) {
+					out.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

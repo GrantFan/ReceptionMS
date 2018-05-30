@@ -32,12 +32,44 @@
 				overflow-y:auto;
 				padding-left: 0px !important;
 			}
+			
+			
+			#imgBox>div.active li>img {
+				width: 80vw;
+				height: 80vh;
+				margin: auto;
+				position: fixed;
+				left: 0px;
+				right: 0px;
+				top: -4vw;
+				bottom: 0px;
+				z-index: 1;
+			}
+			
+			#imgBox>div.active>.close {
+				width: 2vw;
+				height: 2vw;
+				line-height: 2vw;
+				text-align: center;
+				font-size: 1.6vw;
+				background: red;
+				color: #fff;
+				font-weight: bold;
+				position: relative;
+				top: -5vw;
+				right: -58.6vw;
+				z-index: 2;
+				cursor: pointer;
+			}
 		</style>
 </head>
 
 <body>
 	<div class="operationsArea">
 		<div class="buttons">
+			<button onclick="batchAdd()">
+				<u class="xz"></u><span class="webkit">批量新增</span>
+			</button>
 			<button onclick="add()">
 				<u class="xz"></u><span class="webkit">新增</span>
 			</button>
@@ -113,7 +145,7 @@
 				<input type="hidden" name="id" id="id" />
 				<div class="lt" style="width:49%;">
 					<label for="hotel"> <span>所属酒店：</span> <!-- <input type="text" name="input_hotel" id="input_hotel" value="" onchange="roomHotelLoad(this.value)" placeholder="查询酒店" /> -->
-						<select id="roomHotel" name="roomHotel">
+						<select id="roomHotel" class="roomHotel">
 							<option value="">-------------</option>
 							<option value="">东方国际大酒店</option>
 							<option value="">光明大酒店</option>
@@ -180,6 +212,82 @@
 			</div>
 		</div>
 	</div>
+	<!-- 模态框 -->
+	<div id="batchmodal" class="modal none">
+		<div class="box" style="width:80vw;">
+			<h4 class="overflow">
+				<p class="lt">
+					<span id="modal_name">批量新增房间信息</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody overflow">
+				<div class="lt" style="width:49%;">
+					<label for="hotel"> <span>*所属酒店：</span> <!-- <input type="text" name="input_hotel" id="input_hotel" value="" onchange="roomHotelLoad(this.value)" placeholder="查询酒店" /> -->
+						<select id="b_roomHotel" class="roomHotel">
+							<option value="">-------------</option>
+							<option value="">东方国际大酒店</option>
+							<option value="">光明大酒店</option>
+							<option value="">宏兴大酒店</option>
+					</select>
+					</label> <label for="roomNumber"> <span>房间号：</span> <input
+						type="text" name="roomNumber" id="b_roomNumber" value="" />
+					</label> <label for="roomFloor"> <span>*房间楼层：</span> <input
+						type="text" name="roomFloor" id="b_roomFloor" />
+					</label> <label for="orientation"> <span>房间朝向：</span> <input
+						type="text" name="orientation" id="b_orientation" />
+					</label> <label for="supportFacilities"> <span>配套设施：</span> <input
+						type="text" name="supportFacilities" id="b_supportFacilities" />
+					</label> <label for=roomType> <span>房间类型：</span> <select
+						id="b_roomType" name="roomType">
+							<option value="">-------------</option>
+							<option value="">标准间</option>
+							<option value="">商务房</option>
+					</select>
+					</label> <label for=specialType> <span>特殊类型：</span> <input
+						type="text" name="specialType" id="b_specialType" />
+					</label> <label for="specialServe"> <span>特色服务：</span> <input
+						type="text" name="specialServe" id="b_specialServe" />
+					</label>
+				</div>
+				<div class="rt" style="width:49%;">
+					<label for="outsidePhone"> <span>外线电话：</span> <input
+						type="text" name="outsidePhone" id="b_outsidePhone" />
+					</label> <label for="innerlinePhone"> <span>内线电话：</span> <input
+						type="text" name="innerlinePhone" id="b_innerlinePhone" />
+					</label> <label for="responsiblePerson"> <span>房间负责人：</span> <input
+						type="text" name="responsiblePerson" id="b_responsiblePerson" />
+					</label> <label for="rackPrice"> <span>门市价：</span> <input
+						type="text" name="rackPrice" id="b_rackPrice" />
+					</label> <label for="agreementPrice"> <span>协议价：</span> <input
+						type="text" name="agreementPrice" id="b_agreementPrice" />
+					</label> <label for="containFood"> <span>是否含餐：</span> <select
+						name="containFood" id="b_containFood">
+							<option value="Y">是</option>
+							<option value="N">否</option>
+					</select>
+					</label> <label for="state"> <span>房间状态：</span> <select
+						name="state" id="b_state">
+							<option value="1">空闲</option>
+							<option value="2">预定</option>
+					</select>
+					</label> <label for="remark"> <span>*房间数:</span> <input value="" id="roomCount"/>
+					</label>
+				</div>
+			</div>
+			<div class="mfoot" align="center">
+				<button  onclick="batchAddSubmit()">
+					<u class="confirm lt"></u> <span class="lt">确定</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
 
 	<div id="printModal" class="modal none">
 		<div class="box" style="width:80vw;">
@@ -234,6 +342,50 @@
 			</div>
 		</div>
 	</div>
+	
+	<div id="graphModal" class="modal none imgModal">
+		<div class="box" style="width:49vw;">
+			<h4 class="overflow">
+				<p class="lt">
+					<span>楼层平面图</span>
+				</p>
+				<p class="rt" id="close"
+					onclick="$(this).parents('.modal').hide(800)">
+					<u></u>
+				</p>
+			</h4>
+			<div class="mbody">
+				<input id="hotelId" type="hidden" value="">
+				<div id="imgBox">
+					<div class="img" ondblclick="imgView(this)">
+						<b class="close none"
+							onclick="$(this).parent('div.img').removeClass('active');$(this).hide();">
+							× </b>
+						<ul class="overflow" id="imageOver"></ul>
+					</div>
+					<div class="btns overflow"
+						style="margin-top:2vh;line-height:3.6vh;">
+						<!-- <span id="inmpage" class="lt text-center" style="width:4vw;">1/1</span> -->
+						<button class="change Ibtn lt">切换图片</button>
+						<!-- <label for="file" class="Ibtn lt text-center"
+							style="margin:0px 1.302vw 0px 0px;width:6.58vw;"> 添加 <input
+							onchange="setImg(this)" type="file" name="" value="" id="file"
+							class="none">
+						</label>
+						<button onclick="delImg()" class="lt Ibtn">删除</button> -->
+					</div>
+				</div>
+			</div>
+			<div class="mfoot" align="center">
+				<button onclick="print()">
+					<u class="confirm lt"></u> <span class="lt">打印</span>
+				</button>
+				<button onclick="$(this).parents('.modal').hide(800)">
+					<u class="cancel lt"></u> <span class="lt">取消</span>
+				</button>
+			</div>
+		</div>
+	</div>
 	<script type="text/javascript">
 		// 关于按钮组的切换
 		$(".buttons>button").on("click", function(e) {
@@ -244,6 +396,20 @@
 			$(this).addClass('active').siblings('li').removeClass('active');
 			showRoomList();
 		})
+			function imgView(a) {
+		$(a).addClass('active');
+		$(a).children('img').height('100%');
+		$(a).children('b.close').show();
+	}
+
+	$('.change').on('click', function() {
+		var l = $('#imgBox ul>li.block').index();
+		if (l < $('#imgBox ul>li').length && l >= 0) {
+			//$("#inmpage").text(Number(l + 1) + "/" + $('#imgBox ul>li').length);
+			$('#imgBox li').addClass('none').removeClass('block');
+			$('#imgBox li').eq(l - 1).addClass('block');
+		}
+	})
 	</script>
 </body>
 

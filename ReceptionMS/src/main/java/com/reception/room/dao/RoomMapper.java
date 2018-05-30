@@ -53,7 +53,7 @@ public interface RoomMapper {
 		"<if test=\" '' != floor  and null != floor\">",
 		" and floor = #{floor}",
 		"</if>",
-		"ORDER BY orientation,floor,room_number",
+		"ORDER BY floor,orientation,room_number",
 		"</script>"})
 	public List<RoomInfoEntity> selectListByHotel(RoomInfoEntity room);
 	

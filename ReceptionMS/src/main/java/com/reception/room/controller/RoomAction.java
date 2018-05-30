@@ -54,6 +54,16 @@ public class RoomAction {
 		}
 		return flag;
 	};
+	
+	@RequestMapping(value="/batchadd",produces="application/text; charset=utf-8")
+	public @ResponseBody String batchaddHotelInfo(RoomInfoEntity room) {
+		String flag = "false";
+		int i = roomServiceImpl.addRoomInfo(room);
+		if(i>0){
+			flag = "true";
+		}
+		return flag;
+	};
 
 	@RequestMapping(value="/update",produces="application/text; charset=utf-8")
 	public String updateHotelInfo(RoomInfoEntity room) {
@@ -211,10 +221,11 @@ public class RoomAction {
 	@RequestMapping(value = "/import", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public String getFileUrl(@RequestParam(value = "file", required = false) MultipartFile file) {
 		File f = new File(location+ file.getOriginalFilename());
+		InputStream in = null;
 		int count = 0;
 		try {
 			file.transferTo(f);
-			InputStream in =   new FileInputStream(f);
+			in = new FileInputStream(f);
 			List<RoomInfoEntity> list = ImportExcelUtil.importExcel(RoomInfoEntity.class, in);
 //			System.out.println(list.size());
 			for(RoomInfoEntity room : list){
@@ -226,6 +237,14 @@ public class RoomAction {
 			e.printStackTrace();
 			return "{\"flag\":\"false\",\"count\":\""+count+"\"}";
 		} finally {
+			try {
+				if(null != in){
+					in.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (f.exists()) {
 				f.delete();
 			}

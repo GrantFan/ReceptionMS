@@ -22,8 +22,8 @@ public class RoomServiceImpl implements RoomService {
 		// TODO Auto-generated method stub
 		return roomMapper.addRoomInfo(room);
 	}
-
-	@Override
+	
+    @Override
 	public int updateRoomInfo(RoomInfoEntity room) {
 		// TODO Auto-generated method stub
 		return roomMapper.updateRoomInfo(room);

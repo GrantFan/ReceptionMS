@@ -41,6 +41,7 @@ public class RoomInfoEntity {
 	private String state;//房间状态
 	@ModelProp(name="备注",colIndex=15)
 	private String remark;
+	private String roomCount;//批量新增房间个数
 
 	
 	private List<RoomInfoEntity> list;
@@ -188,6 +189,14 @@ public class RoomInfoEntity {
 
 	public void setList(List<RoomInfoEntity> list) {
 		this.list = list;
+	}
+
+	public String getRoomCount() {
+		return roomCount;
+	}
+
+	public void setRoomCount(String roomCount) {
+		this.roomCount = roomCount;
 	}
 
 	

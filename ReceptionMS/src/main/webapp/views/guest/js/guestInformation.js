@@ -8,6 +8,7 @@ $(function(){
 function add_guest(){
     document.getElementById("modal").style.visibility="visible";//显示
     $('#modal').show(500);
+    $('#checkRecord').hide();
     $("#tijiao").show();
     $("#tijiao").attr("onclick","save_guest()");
     $("#modal input").val("");
@@ -154,6 +155,7 @@ function save_guest(){
 function select_detail(id){
 		  document.getElementById("modal").style.visibility="visible";//显示
 		  $('#modal').show(500);
+		  $('#checkRecord').show();
 		  $("#tijiao").hide();
 		  selectById(id);
 }
@@ -234,6 +236,7 @@ function edit_guest(){
 	  if(id != -1){
 		 document.getElementById("modal").style.visibility="visible";//显示
 		    $('#modal').show(500);
+		    $('#checkRecord').hide();
 		    $("#tijiao").show();
 		    $("#tijiao").attr("onclick","update_guest("+id+")");
 		    selectById(id);
@@ -407,19 +410,21 @@ function singleCheck(){
  * 查看记录
  */
 function checkRecord(){
-	var obj = document.getElementsByName("gueat_info");
+	/*var obj = document.getElementsByName("gueat_info");
 	   var guest_name = -1;
 	   for(k in obj){
 	        if(obj[k].checked)
 	        	guest_name = JSON.parse(obj[k].value).guest_name;
 	    }
-	  if(guest_name != -1){
+	  if(guest_name != -1){*/
+	   var guest_name = $('#add_guest_name').val();
 		  $("#recordModal").show(500);
+		  $('#checkRecord').show();
 		  selectMeal(guest_name);
 		  selectAccom(guest_name);
-	  }else{
+	 /* }else{
 		 alert("请选择一条记录...");
-	}
+	}*/
 }
 
 /**

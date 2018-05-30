@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.reception.hotel.model.Hotel_graph;
 
@@ -47,9 +48,24 @@ public interface Hotel_graphMapper {
 	
 	/*
 	 * Describe 查询酒店图片信息
+	 * @param id
+	 * return int
+	 * */
+    @Select("select * from hotel_plane_graph where hotel = #{hotel} and floor=#{floor}")
+	public List<Hotel_graph> selectHotel_graphByFloor(Hotel_graph graph);
+	
+	/*
+	 * Describe 查询酒店图片信息
 	 * return int
 	 * */
     @Select("select graph_url from hotel_plane_graph")
 	public List<String> selectGraph_url();
+
+	/*
+	 * Describe 修改酒店图片信息
+	 * return int
+	 * */
+    @Update("update hotel_plane_graph set floor=#{floor},graph_name=#{graph_name} where id=#{id}")
+	public int updateHotel_graphByHotel(Hotel_graph graph);
 	
 }

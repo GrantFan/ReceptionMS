@@ -69,12 +69,18 @@ public class Hotel_graphAction {
 			fileName = new Date().getTime() + "_" + new Random().nextInt(1000) + ".png";// 新的文件名
 
 			// 先判断文件是否存在
-			String fileAdd = "hotelphoto";
-			File file1 = new File(location + fileAdd);
+			String filePath = location +  "hotelphoto";
+			File file1 = new File(filePath);
 			// 如果文件夹不存在则创建
-			if (!file1.exists() && !file1.isDirectory()) {
-				file1.mkdir();
+			if (!file1.exists()) {
+				System.out.println(file1.mkdirs());
 			}
+//			if (!file1.exists() && !file1.isDirectory()) {
+//				file1.mkdirs();
+//			}
+//			if (!file1.exists()) {
+//	            System.out.println(file1.mkdir());
+//	        }
 			targetFile = new File(file1, fileName);
 			try {
 				file.transferTo(targetFile);
@@ -91,6 +97,12 @@ public class Hotel_graphAction {
 		hotel_graph.setHotel(hotel);
 		hotel_graphservice.addHotel_graph(hotel_graph);
 		return JSONHelper.toJSON(ResponseResult.result(code, msg));
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public @ResponseBody int uploadPicture(Hotel_graph hotel_graph) {
+		int i = hotel_graphservice.updateHotel_graphByHotel(hotel_graph);
+		return i;
 	}
 
 	/**
@@ -133,7 +145,22 @@ public class Hotel_graphAction {
 		}
 		// System.out.println(list);
 		return JSONHelper.toJSON(list);
-
+	}
+	
+	/**
+	 * 根据酒店楼层，查询其对应的图片信息
+	 * 
+	 * @param hotel
+	 * @return
+	 */
+	@RequestMapping(value = "/selectImpByFloor", method = RequestMethod.GET)
+	public String selectHotel_graphByFloor(Hotel_graph hotel_graph) {
+		List<Hotel_graph> list = hotel_graphservice.selectHotel_graphByFloor(hotel_graph);
+		for (Hotel_graph graph : list) {
+			graph.setGraph_url("../../hotel_graph/img/" + graph.getGraph_url());//根据图片名拼一个返回图片的请求
+		}
+		// System.out.println(list);
+		return JSONHelper.toJSON(list);
 	}
 
 	//通过图片名获取图片文件 返回到前台生成图片
@@ -146,6 +173,9 @@ public class Hotel_graphAction {
 		OutputStream out = null;
 		try {
 			File file = new File(filePath);
+			if (!file.exists()) {
+				System.out.println(file.mkdirs());
+			}
 			fis = new FileInputStream(file);
 			response.setContentType("image/jpg");
 			int index;

@@ -54,9 +54,26 @@ public class Hotel_graphServiceImpl implements Hotel_graphService{
 	
 	/*
 	 * Describe 查询酒店图片信息
+	 * @param id
+	 * return int
+	 * */
+	public List<Hotel_graph> selectHotel_graphByFloor(Hotel_graph graph){
+		return hotel_graphmapper.selectHotel_graphByFloor(graph);
+	}
+	
+	/*
+	 * Describe 查询酒店图片信息
 	 * return int
 	 * */
 	public List<String> selectGraph_url(){
 		return hotel_graphmapper.selectGraph_url();
 	}
+
+
+	@Override
+	public int updateHotel_graphByHotel(Hotel_graph graph) {
+		// TODO Auto-generated method stub
+		return hotel_graphmapper.updateHotel_graphByHotel(graph);
+	}
+
 }

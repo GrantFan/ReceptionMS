@@ -247,17 +247,18 @@
 						<!-- <span id="inmpage" class="lt text-center" style="width:4vw;">1/1</span> -->
 						<button class="change Ibtn lt">切换图片</button>
 						<label for="file" class="Ibtn lt text-center"
-							style="margin:0px 1.302vw 0px 0px;"> 添加 <input
+							style="margin:0px 1.302vw 0px 0px;width:6.58vw;"> 添加 <input
 							onchange="setImg(this)" type="file" name="" value="" id="file"
 							class="none">
 						</label>
 						<button onclick="delImg()" class="lt Ibtn">删除</button>
+						<button onclick="print()" class="lt Ibtn">打印</button>
 					</div>
 				</div>
 			</div>
 			<div class="mfoot" align="center">
-				<button onclick="print()">
-					<u class="confirm lt"></u> <span class="lt">打印</span>
+				<button onclick="save()">
+					<u class="confirm lt"></u> <span class="lt">保存</span>
 				</button>
 				<button onclick="$(this).parents('.modal').hide(800)">
 					<u class="cancel lt"></u> <span class="lt">取消</span>
@@ -281,7 +282,7 @@
 				</label>
 				<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
 					<label class="Fbtn lt text-center" for="file_excel"
-						style="margin:0px 1.302vw 0px 0px;">选择文件<input
+						style="margin:0px 1.302vw 0px 0px;width:6.58vw;">选择文件<input
 						type="file" class="none" id="file_excel">
 					</label>
 				</div>

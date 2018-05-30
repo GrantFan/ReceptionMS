@@ -19,7 +19,7 @@ function hotelShow(){
 			$("#hotel").empty();
 			for (var i = 0, len = obj.length; i < len; i++) {
 				$("#hotel").append(
-					"<li >" + obj[i].hotelName + "</li>"
+					"<li name='"+obj[i].id+"'>" + obj[i].hotelName + "</li>"
 				);
 			}
 		},
@@ -46,17 +46,17 @@ function showRoomList() {
 				//			console.log(obj);
 				$("#seat").empty();
 				for (var i = 0, len = obj.length; i < len; i++) {
-					$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">" + obj[i].floor + "楼</p><ol id='floor_" + obj[i].floor + "' class=\"overflow rt\"></ol></div>");
+					$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">楼层：" + obj[i].floor + "</p><p onclick=\"planeGraph('" + obj[i].floor + "')\" style=\"cursor:pointer;width:8vw;\" class=\"storey lt\">【平面图】</p><ol id='floor_" + obj[i].floor + "' class=\"overflow rt\"></ol></div>");
 					var rooms = obj[i].list;
 					//console.log(rooms);
 					for (var j = 0, leng = rooms.length; j < leng; j++) {
 						var room = ""
 						if (rooms[j].state == "空闲") {
 							room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[j].id + "')\"><u class=\"idle\"></u>"
-								+ "</p> <span class=\"null\">" + rooms[j].roomNumber + "</span></li>";
+								+ "</p> <span class=\"null\">" + rooms[j].roomNumber + "</span><p style='color: #40e0d0;'>"+rooms[j].roomType+"</p></li>";
 						} else {
 							room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[j].id + "')\"><u class=\"useI\"></u>"
-								+ "</p> <span class=\"useIng\">" + rooms[j].roomNumber + "</span></li>";
+								+ "</p> <span class=\"useIng\">" + rooms[j].roomNumber + "</span><p style='color: #ffb341;'>"+rooms[j].roomType+"</p></li>";
 						}
 						if (obj[i].floor == rooms[j].floor) {
 							$("#floor_" + +obj[i].floor).append(room);
@@ -72,11 +72,41 @@ function showRoomList() {
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			//alert(XMLHttpRequest.status);
 			//alert(XMLHttpRequest.readyState);
-			//alert(textStatus);
+			//alert(textStatus);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 			console.log("ERROR:" + XMLHttpRequest.status, XMLHttpRequest.readyState, textStatus);
 		}
 	})
 }
+
+function planeGraph(floor) {
+	$("#graphModal").show(800);
+	var hotel = $("#hotel>li.active").attr("name");
+//	console.log(floor)
+	$.ajax({
+		url : '../../hotel_graph/selectImpByFloor',
+		type : 'get',
+		data : {
+			"hotel" : hotel,
+			"floor" : floor
+		},
+		success : function(result) {
+			var list = eval("(" + result + ")");
+//			console.log(list)
+			var info = $("#imageOver").empty();
+			for (var i = 0; i < list.length; i++) {
+				if (i == 0) {
+					info.append('<li name=\"' + list[i].id + '\" class="block"><img src="' + list[i].graph_url + '" width="100%" height="88%" /><div style="margin:0.384vw 0px;">名称：<input style="padding:0px 0.256vw;" disabled="disabled" value=\"'+list[i].graph_name+'\" /><span style="margin-left:0.384vw;">楼层:</span><input disabled="disabled"  value="'+list[i].floor+'"/></div></li>');
+				} else {
+					info.append('<li name=\"' + list[i].id + '\" class="none"><img src="' + list[i].graph_url + '" width="100%" height="88%" /><div style="margin:0.384vw 0px;">名称：<input style="padding:0px 0.256vw;" disabled="disabled" value=\"'+list[i].graph_name+'\" /><span style="margin-left:0.384vw;">楼层:</span><input disabled="disabled"  value="'+list[i].floor+'"/></div></li>');
+				}
+			}
+		},
+		error : function() {
+			alert("获取图片失败！");
+		}
+	})
+}
+
 /*//加载房间
 function showFloorRoomList() {
 	$.ajax({
@@ -130,9 +160,9 @@ function roomHotelLoad(input) {
 		success : function(data) {
 			var obj = eval(data);
 			//console.log(obj);
-			$("#roomHotel").empty();
+			$(".roomHotel").empty();
 			for (var i = 0, len = obj.length; i < len; i++) {
-				$("#roomHotel").append(
+				$(".roomHotel").append(
 					"<option value='" + obj[i].id + "'>" + obj[i].hotelName + "</option>"
 				);
 			}
@@ -212,6 +242,59 @@ function exportExcel() {
 	location.href = '../../room/export';
 }
 
+//批量新增房间
+function batchAdd(){
+	$("#batchmodal").show(500);
+	
+	$("#b_roomHotel").val("");
+	$("#b_roomNumber").val("");
+	$("#b_roomFloor").val("");
+	$("#b_orientation").val("");
+	$("#b_supportFacilities").val("");
+	$("#b_roomType").val("");
+	$("#b_specialType").val("");
+	$("#b_specialServe").val("");
+	$("#b_innerlinePhone").val("");
+	$("#b_outsidePhone").val("");
+	$("#b_responsiblePerson").val("");
+	$("#b_rackPrice").val("");
+	$("#b_agreementPrice").val("");
+	$("#roomCount").val("");
+}
+//批量新增房间提交
+function batchAddSubmit() {
+	$.post("../../room/batchadd", {
+		roomNumber : $("#b_roomNumber").val(),
+		floor : $("#b_roomFloor").val(),
+		orientation : $("#b_orientation").val(),
+		supportFacilities : $("#b_supportFacilities").val(),
+		roomType : $("#b_roomType option:selected").text(),
+		specialType : $("#b_specialType").val(),
+		specialServe : $("#b_specialServe").val(),
+		innerlinePhone : $("#b_innerlinePhone").val(),
+		outsidePhone : $("#b_outsidePhone").val(),
+		responsiblePerson : $("#b_responsiblePerson").val(),
+		rackPrice : $("#b_rackPrice").val(),
+		agreementPrice : $("#b_agreementPrice").val(),
+		hotel : $("#b_roomHotel option:selected").text(),
+		containFood : $("#b_containFood option:selected").text(),
+		state : $("#b_state option:selected").text(),
+		roomCount : $("#roomCount").val()
+	}, function(result) {
+		if (result == "true") {
+			alert("添加成功");
+			$('#batchmodal').hide();
+		//			showRoomList();
+		} else {
+			alert("添加失败");
+		}
+	}
+	).error(function(a) {
+		console.log(a);
+	});
+}
+
+
 //新增
 function add() {
 	//重置表单
@@ -234,8 +317,8 @@ function add() {
 	$("#agreementPrice").val("");
 	$("#remark").val("");
 
-	$("#input_hotel").show();
-	roomHotelLoad($("#input_hotel").val());
+//	$("#input_hotel").show();
+	roomHotelLoad();
 	loadRoomType();
 }
 //新增提交

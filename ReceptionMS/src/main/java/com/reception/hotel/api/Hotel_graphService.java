@@ -32,6 +32,13 @@ public interface Hotel_graphService {
 	public int deleteHotel_graphByHotel(String hotel);
 	
 	/*
+	 * Describe 修改酒店图片信息
+	 * @param id
+	 * return int
+	 * */
+	public int updateHotel_graphByHotel(Hotel_graph graph);
+	
+	/*
 	 * Describe 查询酒店图片信息
 	 * @param id
 	 * return int
@@ -43,4 +50,11 @@ public interface Hotel_graphService {
 	 * return int
 	 * */
 	public List<String> selectGraph_url();
+
+	/*
+	 * Describe 查询酒店图片信息
+	 * @param id
+	 * return int
+	 * */
+	public List<Hotel_graph> selectHotel_graphByFloor(Hotel_graph hotel_graph);
 }

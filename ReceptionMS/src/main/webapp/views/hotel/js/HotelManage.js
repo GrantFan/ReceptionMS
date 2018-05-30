@@ -372,9 +372,9 @@ function getImage(hotel) {
 			var info = $("#imageOver").empty();
 			for (var i = 0; i < list.length; i++) {
 				if (i == 0) {
-					info.append('<li name=\"' + list[i].id + '\" class="block"><img src="' + list[i].graph_url + '" width="100%" height="100%" /><input value=\"'+list[i].graph_name+'\"></li>');
+					info.append('<li name=\"' + list[i].id + '\" class="block"><img src="' + list[i].graph_url + '" width="100%" height="88%" /><div style="margin:0.384vw 0px;">名称：<input style="padding:0px 0.256vw;" name="graphName" type="text" value=\"'+list[i].graph_name+'\"><span style="margin-left:0.384vw;">楼层:</span><input name="floor" style="padding:0px 0.256vw;" value=\"'+list[i].floor+'\"/></div></li>');
 				} else {
-					info.append('<li name=\"' + list[i].id + '\" class="none"><img src="' + list[i].graph_url + '" width="100%" height="100%" /><input value=\"'+list[i].graph_name+'\"></li>');
+					info.append('<li name=\"' + list[i].id + '\" class="none"><img src="' + list[i].graph_url + '" width="100%" height="88%" /><div style="margin:0.384vw 0px;">名称：<input style="padding:0px 0.256vw;" name="graphName" type="text" value=\"'+list[i].graph_name+'\"><span style="margin-left:0.384vw;">楼层:</span><input  name="floor"  style="padding:0px 0.256vw;" value=\"'+list[i].floor+'\"/></div></li>');
 				}
 			}
 		},
@@ -438,7 +438,7 @@ function setImg(obj) { //用于进行图片上传，返回地址
 
 function delImg() {
 	var graphId = $("#imageOver li.block").attr("name");
-	console.log(graphId);
+//	console.log(graphId);
 	$.ajax({
 		type : "GET",
 		url : "../../hotel_graph/deleetImpById",
@@ -452,6 +452,31 @@ function delImg() {
 				alert("删除成功");
 				getImage($("#hotelId").val());
 			//$("#thumburlShow").attr("src","");//显示图片        
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {}
+	});
+}
+
+function save() {
+	var graphId = $("#imageOver li.block").attr("name");
+	var graphName =  $("#imageOver li.block").find("input[name='graphName']").val();
+	var floor = $("#imageOver li.block").find("input[name='floor']").val();
+	console.log(graphId,graphName,floor)
+	$.ajax({
+		type : "POST",
+		url : "../../hotel_graph/update",
+		data : {
+			"id" : graphId,
+			"graph_name" : graphName,
+			"floor" : floor
+		},
+		success : function(suc) {
+//			alert(suc)
+			if (suc) {
+				alert("修改成功");
+			}else{
+				alert("修改成功");
 			}
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {}

@@ -146,7 +146,7 @@ html,body{
 }
 
 .login>.loginBox>label>input{
-	width:76%;
+	width:74%;
 	float: left;
 	background: transparent;
 	border: none;
@@ -499,15 +499,15 @@ iframe{
 	left: 0.567vw;
 }
 .operationsArea>.tab>.seat li .useIng{
-	color: #f59128;
-	font-size: 0.64vw;
+	color: #ffb341;
+	font-size: 0.9vw;
 	position: absolute;
 	bottom:6px;
 	left: 0.5769vw;
 }
 .operationsArea>.tab>.seat li .null{
 	color: #40e0d0;
-	font-size:  0.64vw;
+	font-size:  0.9vw;
 	position: absolute;
 	bottom:6px;
 	left: 0.5769vw;
@@ -534,7 +534,7 @@ iframe{
 }
 .operationsArea>.tab>.seat>.xBox>.storey+ol.overflow li{
 	float: left;
-	width: 3.846vw;
+	width: 5.846vw;
 	height: 6.634vh;
 	background-color: transparent;
 	margin: 0px 0.384vw 18px 0.384vw;
