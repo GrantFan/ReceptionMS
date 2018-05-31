@@ -90,8 +90,8 @@ public class LoginAction {
 					"attachment;filename=" + URLEncoder.encode(filename, "UTF-8") + ".apk");
 			response.addHeader("Pargam", "no-cache");
 			response.addHeader("Cache-Control", "no-cache");
-
 			File appFile = new File(location + "app/reception.apk");
+			response.setContentLengthLong(appFile.length());
 			if (!appFile.isDirectory() || !appFile.exists()) {
 				appFile.mkdir();
 			}
