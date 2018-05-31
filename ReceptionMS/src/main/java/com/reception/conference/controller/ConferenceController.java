@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -65,15 +66,27 @@ public class ConferenceController {
 			@RequestParam(value="pageNum",required = false,defaultValue = "1")   int pageNum,
 			@RequestParam(value="pageSize",required = false,defaultValue = "10") int pageSize,
 			@RequestParam(value="hotel",required = false) String hotel,
-			@RequestParam(value="boardType",required = false) String boardType){
+			@RequestParam(value="boardType",required = false) String boardType,
+			HttpServletRequest req){
 		PageHelper.startPage(pageNum, pageSize);  
 		Map map = new HashMap(2);
 		map.put("hotel", hotel);
 		map.put("boardType", boardType);
-		List<ConferenceEntity> list =  this.ConferenceServiceImpl.queryConferenectByPage(map);  
+		List<ConferenceEntity> list =  this.ConferenceServiceImpl.queryConferenectByPage(map);   
 		PageInfo<ConferenceEntity> pageInfo = new PageInfo<ConferenceEntity>(list);  
 	 
 		return JSONHelper.toJSON(pageInfo);
+	}
+	@RequestMapping(value="/queryConferenect.App",method = RequestMethod.GET)
+	public String queryConferenectByPage( 
+			@RequestParam(value="hotel",required = false) String hotel,
+			@RequestParam(value="boardType",required = false) String boardType,
+			HttpServletRequest req){ 
+		Map map = new HashMap(2);
+		map.put("hotel", hotel);
+		map.put("boardType", boardType);
+		List<ConferenceEntity> list =  this.ConferenceServiceImpl.queryConferenectByPage(map);   
+		return JSONHelper.toJSON(list);
 	}
 	@RequestMapping(value = "export",method = RequestMethod.GET)
 	public void queryConferenectExport( 

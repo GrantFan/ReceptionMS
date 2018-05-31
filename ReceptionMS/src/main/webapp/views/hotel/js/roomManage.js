@@ -486,3 +486,13 @@ function printHtml(){
 	newWin.document.write(prnhtml);
 	newWin.print();
 }
+
+//打印
+function printImg(){
+var img = $("#imageOver li.block img");
+var newImg = document.createElement("img");  
+newImg.src = img[0].src;  
+var printWindow = window.open(newImg.src);  
+printWindow.document.write('<img src="'+newImg.src+'" />')  
+printWindow.print();  
+}

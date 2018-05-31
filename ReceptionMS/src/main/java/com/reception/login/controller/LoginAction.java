@@ -81,7 +81,7 @@ public class LoginAction {
 	 * */
 	@RequestMapping(value = "/app")
 	public void downloadApp(HttpServletResponse response) {
-		String filename = "接待管理APP";
+		String filename = "接待管理";
 		FileInputStream in = null;
 		OutputStream out = null;
 		try {

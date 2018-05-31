@@ -67,9 +67,18 @@ public class RestaurantInfoController {
 		map.put("hotel", hotel);
 		map.put("restaurantType", restaurantType);
 		List<RestaurantInfoEntity> list =  this.iRestaurantInfoService.queryRestaurantInfoByPage(map);  
-		PageInfo<RestaurantInfoEntity> pageInfo = new PageInfo<RestaurantInfoEntity>(list);  
-	 
+		PageInfo<RestaurantInfoEntity> pageInfo = new PageInfo<RestaurantInfoEntity>(list);   
 		return JSONHelper.toJSON(pageInfo);
+	}
+	@RequestMapping(value="queryRestaurantInfo.App",method = RequestMethod.GET)
+	public String queryRestaurantInfoByPage( 
+			@RequestParam(value="hotel",required = false) String hotel,
+			@RequestParam(value="restaurantType",required = false) String restaurantType){ 
+		Map map = new HashMap(2);
+		map.put("hotel", hotel);
+		map.put("restaurantType", restaurantType);
+		List<RestaurantInfoEntity> list =  this.iRestaurantInfoService.queryRestaurantInfoByPage(map);      
+		return JSONHelper.toJSON(list);
 	}
 	@RequestMapping(value = "export",method = RequestMethod.GET)
 	public void queryRestaurantInfoExport( 

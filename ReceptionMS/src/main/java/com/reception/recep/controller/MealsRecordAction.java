@@ -123,7 +123,8 @@ public class MealsRecordAction {
 	};
 	
 	@RequestMapping(value="/listByGuest",produces="application/json; charset=utf-8")
-	public @ResponseBody String mealsRecordListByGuest(String guestName){
+	public @ResponseBody String mealsRecordListByGuest(String guestName,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		List<MealsRecordEntity> list = mealsRecordService.selectListBuGuest(guestName);
 		String json = JSONHelper.toJSON(list);
 		return json;

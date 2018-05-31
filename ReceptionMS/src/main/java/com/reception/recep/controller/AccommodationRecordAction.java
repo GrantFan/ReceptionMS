@@ -121,7 +121,8 @@ public class AccommodationRecordAction {
 	};
 	
 	@RequestMapping(value="/listByGuest",produces="application/json; charset=utf-8")
-	public @ResponseBody String accomRecordListByGuest(String guestName){
+	public @ResponseBody String accomRecordListByGuest(String guestName,HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		List<AccommodationRecordEntity> list = accommodationRecordService.selectByGuestName(guestName);
 		String json = JSONHelper.toJSON(list);
 		return json;

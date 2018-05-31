@@ -92,6 +92,20 @@ public class ConferenceRecordController {
 		PageInfo<ConferenceRecordEntity> pageInfo = new PageInfo<ConferenceRecordEntity>(list);   
 		return JSONHelper.toJSON(pageInfo);
 	}
+	@RequestMapping(value = "queryConferenceRecord.App",method = RequestMethod.GET)
+	public String queryConferenceRecordByPage( 
+			@RequestParam(value="hotelName",required = false) String hotelName,
+			@RequestParam(value="conference_name",required = false) String conference_name,
+			@RequestParam(value="begin_DATE",required = false) String begin_DATE,
+			@RequestParam(value="end_DATE",required = false) String end_DATE){ 
+		Map map = new HashMap(4);
+		map.put("hotelName", hotelName);
+		map.put("conference_name", conference_name);
+		map.put("begin_DATE", begin_DATE);
+		map.put("end_DATE", end_DATE);
+		List<ConferenceRecordEntity> list =  this.conferenceRecordServiceImpl.queryConferenceRecordByPage(map);    
+		return JSONHelper.toJSON(list);
+	}
 	@RequestMapping(value = "queryConferenceRecordList",method = RequestMethod.GET)
 	public String queryConferenceRecordList(
 			@RequestParam(required = false)String hotelName,

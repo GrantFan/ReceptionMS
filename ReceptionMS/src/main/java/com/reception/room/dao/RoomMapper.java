@@ -71,4 +71,16 @@ public interface RoomMapper {
 
 	@Select("select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where id=#{id} ")
 	public RoomInfoEntity selectById(String id);
+
+	@Select({"<script>",
+		"SELECT id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where 1=1 ",
+		"<if test=\" '' != hotel  and null != hotel\">",
+		" and hotel = #{hotel}",
+		"</if>",
+		"<if test=\" '' != roomType  and null != roomType\">",
+		" and room_type = #{roomType}",
+		"</if>",
+		" order by room_number",
+		"</script>"})
+	public List<RoomInfoEntity> selectListByHotelApp(RoomInfoEntity room);
 }
