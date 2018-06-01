@@ -99,7 +99,7 @@ public class HotelAction {
 		return json;
 	};
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
 	public String queryHotelById(@PathVariable("id") String id) {
 		HotelInfoEntity hotel = this.hotelServiceImpl.selectById(id);
 		if (hotel == null) {

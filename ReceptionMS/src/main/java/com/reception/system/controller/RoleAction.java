@@ -93,7 +93,7 @@ public class RoleAction {
 		}
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "text/plain; charset=utf-8")
 	public String queryRoleById(@PathVariable("id") String id) {
 		Role role = this.roleService.selectById(id);
 		if (role == null) {

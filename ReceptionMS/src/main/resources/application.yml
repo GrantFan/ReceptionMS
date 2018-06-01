@@ -45,6 +45,10 @@ spring:
       maxRequestSize: 10MB 
       location: E:\local\ #windows格式 
       #location: /app/tmp  linux格式 
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
 # 分页配置
 pagehelper:
 #  helper-dialect: mysql  #指定分页插件使用方言

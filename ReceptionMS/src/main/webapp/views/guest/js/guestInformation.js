@@ -28,7 +28,7 @@ function select_guest(pageNum,pageSize){
             	"pageSize":pageSize
             },
             success:function(data){
-            	var result =  eval('(' + data + ')');
+            	var result =  eval(data);
             	var info = $("#guest_info").empty();
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
@@ -171,7 +171,7 @@ function selectById(id){
       	    "id" : id
          },
           success:function(data){
-        	  var result =  eval('(' + data + ')');
+        	  var result =  eval(data);
         	  if(result != null){
         		   $('#id').val(id),
         		   $('#add_guest_name').val(result.guest_name),

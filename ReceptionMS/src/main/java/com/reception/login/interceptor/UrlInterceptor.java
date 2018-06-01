@@ -31,7 +31,7 @@ public class UrlInterceptor implements HandlerInterceptor {
 		if (null != requestUrl && requestUrl.contains("login")) {//登录请求放开
 			return true;
 		}
-		if (requestUrl.contains(".app")) {//app接口全部放开
+		if (requestUrl.contains(".app") || requestUrl.contains(".App") || requestUrl.contains("/app")) {//app接口全部放开
 			return true;
 		} else {
 			HttpSession session = request.getSession();

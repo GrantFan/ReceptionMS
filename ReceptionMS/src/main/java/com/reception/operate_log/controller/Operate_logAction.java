@@ -21,7 +21,7 @@ import com.reception.operate_log.service.Operate_logService;
 import com.reception.util.JSONHelper;
 
 @RestController
-@RequestMapping("/log")
+@RequestMapping(value="/log", produces = "application/text; charset=utf-8")
 public class Operate_logAction {
 	
 	   @Autowired

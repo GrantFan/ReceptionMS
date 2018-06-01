@@ -35,7 +35,7 @@ public class LoginAction {
 	/*
 	 * 登录
 	 * */
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/login", produces = "application/text; charset=utf-8")
 	public @ResponseBody String login(User user, HttpSession session) {
 		InetAddress comp = null;
 		String ip = "";

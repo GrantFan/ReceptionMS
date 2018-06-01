@@ -49,7 +49,7 @@ import com.reception.util.poi.ImportExcelUtil;
  * @throws Exception
  */
 @RestController
-@RequestMapping("/guest")
+@RequestMapping(value="/guest", produces = "application/json; charset=utf-8")
 public class Guest_InfoAction {
 
     private static final Logger log = LoggerFactory.getLogger(Guest_InfoAction.class);

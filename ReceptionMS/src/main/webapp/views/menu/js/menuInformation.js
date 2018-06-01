@@ -32,7 +32,7 @@ function select_menu(pageNum,pageSize){
             	"pageSize":pageSize
             },
             success:function(data){
-            	var result =  eval('(' + data + ')');
+            	var result =  eval(data);
             	var info = $("#menu_info").empty();
             	//渲染数据
             	for(var i =0;i< result.list.length;i++){
@@ -184,13 +184,13 @@ function select_detail(){
  */
 function selectById(menu_number){
 	  $.ajax({
-          url:'/ReceptionMS/menu_info/selectById',
+          url:'/ReceptionMS/menu_info/selectById.app',
           type:'GET',
           data:{
       	    "menu_number" : menu_number
          },
           success:function(data){
-        	  var result =  eval('(' + data + ')');
+        	  var result =  eval(data);
         	  if(result != null){
         		  $('#menu_number').val(result.menu_number),
         		  $('#short_name').val(result.short_name),
@@ -325,7 +325,7 @@ function select_hotel(){
         type:'post',
         data: {},
         success:function(data){
-      	  var list = eval('(' + data + ')');
+      	  var list = eval(data);
       	  $("#hotel").empty();
       	  for(var i =0 ; i< list.length;i++){
       		$("#hotel").append("<option value="+list[i].hotelName+">"+list[i].hotelName+"</option>");

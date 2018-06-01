@@ -64,7 +64,7 @@ public class ModuleAction {
 		return result;
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "text/plain; charset=utf-8")
 	public String queryModuleById(@PathVariable("id") String id) {
 		Module modulee = this.moduleServiceImpl.selectModuleById(id);
 		if (modulee == null) {

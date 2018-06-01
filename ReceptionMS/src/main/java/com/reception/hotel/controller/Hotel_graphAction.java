@@ -137,7 +137,7 @@ public class Hotel_graphAction {
 	 * @param hotel
 	 * @return
 	 */
-	@RequestMapping(value = "/selectImpByHotel", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectImpByHotel", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
 	public String selectHotel_graphByHotel(@RequestParam("hotel") String hotel) {
 		List<Hotel_graph> list = hotel_graphservice.selectHotel_graphByHotel(hotel);
 		for (Hotel_graph graph : list) {
@@ -153,7 +153,7 @@ public class Hotel_graphAction {
 	 * @param hotel
 	 * @return
 	 */
-	@RequestMapping(value = "/selectImpByFloor", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectImpByFloor", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
 	public String selectHotel_graphByFloor(Hotel_graph hotel_graph) {
 		List<Hotel_graph> list = hotel_graphservice.selectHotel_graphByFloor(hotel_graph);
 		for (Hotel_graph graph : list) {

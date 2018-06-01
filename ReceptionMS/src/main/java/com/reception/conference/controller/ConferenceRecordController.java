@@ -32,7 +32,7 @@ import com.reception.util.JSONHelper;
 import com.reception.util.poi.ImportExcelUtil;
  
 @RestController
-@RequestMapping(value="ConferenceRecordController")
+@RequestMapping(value="ConferenceRecordController",produces = "application/json;charset=UTF-8")
 public class ConferenceRecordController {
 	
 	@Resource

@@ -1,7 +1,5 @@
 package com.reception.menu.controller;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,7 +41,7 @@ import com.reception.util.poi.ModelTitle;
  * @throws Exception
  */
 @RestController
-@RequestMapping("/menu_info")
+@RequestMapping(value="/menu_info", produces = "application/json; charset=utf-8")
 public class Menu_InfoAction {
 	private static final Logger log = LoggerFactory.getLogger(Menu_InfoAction.class);
 
@@ -103,9 +101,10 @@ public class Menu_InfoAction {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/selectById", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectById.app", method = RequestMethod.GET)
 	@ResponseBody
-	public String selectMenu_InfoByMenu_num(@RequestParam("menu_number") String menu_number) {
+	public String selectMenu_InfoByMenu_num(@RequestParam("menu_number") String menu_number,HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		Menu_Info menu_info = menu_InfoApi.selectMenu_InfoById(menu_number);
 		String result = JSONHelper.toJSON(menu_info);
 		return result;
@@ -211,5 +210,19 @@ public class Menu_InfoAction {
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * 查询菜品信息
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/select.app", method = RequestMethod.GET)
+	@ResponseBody
+	public String selectMenu_InfoApp(HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		List<Menu_Info> list = menu_InfoApi.SelectMenu_Info();
+		//String result = JSONHelper.toJSON(list);
+		return JSONHelper.toJSON(list);
 	}
 }

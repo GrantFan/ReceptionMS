@@ -73,7 +73,7 @@ public class UserAction {
 		return json;
 	}
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	public String queryUserById(@PathVariable("id") String id) {
 		User user = this.userService.selectById(id);
 		if (user == null) {

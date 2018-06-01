@@ -142,7 +142,7 @@ public class RoomAction {
 		return json;
 	};
 	
-	@RequestMapping(value = "{id}",method = RequestMethod.GET)
+	@RequestMapping(value = "{id}",method = RequestMethod.GET, produces = "application/text; charset=utf-8")
 	public String queryRoomById(@PathVariable("id")String id){
 		RoomInfoEntity room =  this.roomServiceImpl.selectById(id);  
 		if(room == null){
