@@ -120,7 +120,7 @@ public class AccommodationRecordAction {
 		return "false";
 	};
 	
-	@RequestMapping(value="/listByGuest",produces="application/json; charset=utf-8")
+	@RequestMapping(value="/listByGuest.app",produces="application/json; charset=utf-8")
 	public @ResponseBody String accomRecordListByGuest(String guestName,HttpServletResponse response){
 		response.setHeader("Access-Control-Allow-Origin", "*");
 		List<AccommodationRecordEntity> list = accommodationRecordService.selectByGuestName(guestName);
@@ -129,7 +129,8 @@ public class AccommodationRecordAction {
 	}
 	
 	@RequestMapping(value="/list.app",produces="application/json; charset=utf-8")
-	public @ResponseBody String accomRecordListApp(){
+	public @ResponseBody String accomRecordListApp(HttpServletResponse response){
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		List<AccommodationRecordEntity> list = accommodationRecordService.selectList();
 		String json = JSONHelper.toJSON(list);
 		return json;

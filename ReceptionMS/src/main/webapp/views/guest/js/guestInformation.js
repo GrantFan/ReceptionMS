@@ -433,7 +433,7 @@ function checkRecord(){
 function selectMeal(guest_name){
 	//alert("查看用餐记录"+guest_name);
 	$.ajax({
-        url:"/ReceptionMS/meals/listByGuest",
+        url:"/ReceptionMS/meals/listByGuest.app",
         type:"post",
         data:{
        	 "guestName":guest_name
@@ -463,7 +463,7 @@ function selectMeal(guest_name){
 function selectAccom(guest_name){
 	//alert("查看住房记录"+guest_name);
 	$.ajax({
-        url:"/ReceptionMS/accom/listByGuest",
+        url:"/ReceptionMS/accom/listByGuest.app",
         type:"post",
         data:{
        	 "guestName":guest_name
