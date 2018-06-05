@@ -34,7 +34,7 @@
 				<u class="QR lt"> <i></i>
 				</u>
 				<p class="lt">
-					手机扫一扫<br /> 下载APP
+					手机扫一扫<br /> <b onclick="download()">下载APP</b>
 				</p>
 			</div>
 
@@ -112,6 +112,11 @@
 			},
 			cache : false
 		});
+	}
+	
+	//下载app
+	function download(){
+		location.href = '../../app';
 	}
 </script>
 </html>
