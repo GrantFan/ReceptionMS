@@ -70,10 +70,11 @@ public class RestaurantInfoController {
 		PageInfo<RestaurantInfoEntity> pageInfo = new PageInfo<RestaurantInfoEntity>(list);   
 		return JSONHelper.toJSON(pageInfo);
 	}
-	@RequestMapping(value="queryRestaurantInfo.App",method = RequestMethod.GET)
+	@RequestMapping(value="queryRestaurantInfo.app",method = RequestMethod.GET)
 	public String queryRestaurantInfoByPage( 
-			@RequestParam(value="hotel",required = false) String hotel,
+			@RequestParam(value="hotel",required = false) String hotel,HttpServletResponse response,
 			@RequestParam(value="restaurantType",required = false) String restaurantType){ 
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		Map map = new HashMap(2);
 		map.put("hotel", hotel);
 		map.put("restaurantType", restaurantType);

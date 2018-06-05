@@ -28,7 +28,7 @@
 				</label>
 			</div>
 
-			<button onclick="login();">登录</button>
+			<button id="login" onclick="login();">登录</button>
 
 			<div class="QRCode overflow">
 				<u class="QR lt"> <i></i>
@@ -64,6 +64,7 @@
 	})
 
 	function login() {
+		$("#login").disabled=true;
 		var localStorage = window.localStorage;
 		var $uAccount = $("#userName").val();
 		var $uPassword = $("#password").val();
@@ -104,6 +105,7 @@
 				}
 			},
 			error : function(xhr, statue, error) {
+			$("#login").disabled=false;
 				alert("登录失败")
 			//console.log(error);
 			//location.href = "/ReceptionMS/views/login/login.html";

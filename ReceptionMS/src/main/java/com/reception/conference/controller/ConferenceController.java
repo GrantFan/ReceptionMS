@@ -77,11 +77,12 @@ public class ConferenceController {
 	 
 		return JSONHelper.toJSON(pageInfo);
 	}
-	@RequestMapping(value="/queryConferenect.App",method = RequestMethod.GET)
+	@RequestMapping(value="/queryConferenect.app",method = RequestMethod.GET)
 	public String queryConferenectByPage( 
 			@RequestParam(value="hotel",required = false) String hotel,
 			@RequestParam(value="boardType",required = false) String boardType,
-			HttpServletRequest req){ 
+			HttpServletRequest req,HttpServletResponse response){ 
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		Map map = new HashMap(2);
 		map.put("hotel", hotel);
 		map.put("boardType", boardType);

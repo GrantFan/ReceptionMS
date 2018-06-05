@@ -92,12 +92,13 @@ public class ConferenceRecordController {
 		PageInfo<ConferenceRecordEntity> pageInfo = new PageInfo<ConferenceRecordEntity>(list);   
 		return JSONHelper.toJSON(pageInfo);
 	}
-	@RequestMapping(value = "queryConferenceRecord.App",method = RequestMethod.GET)
+	@RequestMapping(value = "queryConferenceRecord.app",method = RequestMethod.GET)
 	public String queryConferenceRecordByPage( 
 			@RequestParam(value="hotelName",required = false) String hotelName,
 			@RequestParam(value="conference_name",required = false) String conference_name,
 			@RequestParam(value="begin_DATE",required = false) String begin_DATE,
-			@RequestParam(value="end_DATE",required = false) String end_DATE){ 
+			@RequestParam(value="end_DATE",required = false) String end_DATE,HttpServletResponse response){ 
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		Map map = new HashMap(4);
 		map.put("hotelName", hotelName);
 		map.put("conference_name", conference_name);
