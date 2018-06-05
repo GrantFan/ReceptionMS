@@ -41,25 +41,51 @@ function showRoomList() {
 		url : "../../room/listByHotel",
 		success : function(data) {
 			var obj = eval(data);
+//			console.log(obj);
 			if (obj.length != 0) {
 				$("#hotelName").text(hotel);
 				//			console.log(obj);
+//				$("#seat").empty();
+//				for (var i = 0, len = obj.length; i < len; i++) {
+//					$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">楼层：" + obj[i].floor + "</p><p onclick=\"planeGraph('" + obj[i].floor + "')\" style=\"cursor:pointer;width:8vw;\" class=\"storey lt\">【平面图】</p><div class='floors lt'><ol id='floor_" + obj[i].floor + "' class=\"overflow rt\"></ol></div></div>");
+//					var rooms = obj[i].list;
+//					//console.log(rooms);
+//					for (var j = 0, leng = rooms.length; j < leng; j++) {
+//						var room = ""
+//						if (rooms[j].state == "空闲") {
+//							room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[j].id + "')\"><u class=\"idle\"></u>"
+//								+ "</p> <span class=\"null\">" + rooms[j].roomNumber + "</span><p style='color: #40e0d0;'>"+rooms[j].roomType+"</p></li>";
+//						} else {
+//							room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[j].id + "')\"><u class=\"useI\"></u>"
+//								+ "</p> <span class=\"useIng\">" + rooms[j].roomNumber + "</span><p style='color: #ffb341;'>"+rooms[j].roomType+"</p></li>";
+//						}
+//						if (obj[i].floor == rooms[j].floor) {
+//							$("#floor_" + +obj[i].floor).append(room);
+//						}
+//					}
+//				}
 				$("#seat").empty();
 				for (var i = 0, len = obj.length; i < len; i++) {
-					$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">楼层：" + obj[i].floor + "</p><p onclick=\"planeGraph('" + obj[i].floor + "')\" style=\"cursor:pointer;width:8vw;\" class=\"storey lt\">【平面图】</p><ol id='floor_" + obj[i].floor + "' class=\"overflow rt\"></ol></div>");
-					var rooms = obj[i].list;
-					//console.log(rooms);
-					for (var j = 0, leng = rooms.length; j < leng; j++) {
-						var room = ""
-						if (rooms[j].state == "空闲") {
-							room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[j].id + "')\"><u class=\"idle\"></u>"
-								+ "</p> <span class=\"null\">" + rooms[j].roomNumber + "</span><p style='color: #40e0d0;'>"+rooms[j].roomType+"</p></li>";
-						} else {
-							room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[j].id + "')\"><u class=\"useI\"></u>"
-								+ "</p> <span class=\"useIng\">" + rooms[j].roomNumber + "</span><p style='color: #ffb341;'>"+rooms[j].roomType+"</p></li>";
-						}
-						if (obj[i].floor == rooms[j].floor) {
-							$("#floor_" + +obj[i].floor).append(room);
+					$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">楼层：" + obj[i].floor + "</p><p onclick=\"planeGraph('" + obj[i].floor + "')\" style=\"cursor:pointer;width:8vw;\" class=\"storey lt\">【平面图】</p><div id='floor_" + obj[i].floor + "'  class='floors lt'></div></div>");					
+					var orientation = obj[i].list;
+					
+					for (var j = 0, leng = orientation.length; j < leng; j++) {						
+						$("#floor_" + +obj[i].floor).append("<ol id='ora_" + i+ j + "' class=\"overflow\"><li style=\"width:1.6vw;padding-top:1.5vh;\"><span> 朝  向 "+orientation[j].orientation+" </span></li></ol>");
+						var  rooms = orientation[j].list;
+//						console.log(rooms);
+						for (var k = 0, lengths = rooms.length; k < lengths; k++) {
+							var room = ""
+							if (rooms[k].state == "空闲") {
+								room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[k].id + "')\"><u class=\"idle\"></u>"
+									+ "</p> <span class=\"null\">" + rooms[k].roomNumber + "</span><p style='color: #40e0d0;'>"+rooms[k].roomType+"</p></li>";
+							} else {
+								room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[k].id + "')\"><u class=\"useI\"></u>"
+									+ "</p> <span class=\"useIng\">" + rooms[k].roomNumber + "</span><p style='color: #ffb341;'>"+rooms[k].roomType+"</p></li>";
+							}
+							if (orientation[j].orientation == rooms[k].orientation) {
+//								alert(orientation[j].orientation);
+								$("#ora_" + i+ j).append(room);
+							}
 						}
 					}
 				}
@@ -265,7 +291,7 @@ function batchAdd(){
 }
 //批量新增房间提交
 function batchAddSubmit() {
-	if($("#b_roomFloor").val()=="" || $("#roomCount").val()=="" || $("#b_roomHotel option:selected").text()==""){
+	if($("#b_roomFloor").val()=="" || $("#roomCount").val()=="" || $("#b_orientation").val()=="" || $("#b_roomHotel option:selected").text()==""){
 		alert("必填项不能为空");
 		return;
 	}

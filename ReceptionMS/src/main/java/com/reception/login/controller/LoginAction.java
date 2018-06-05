@@ -36,7 +36,8 @@ public class LoginAction {
 	 * 登录
 	 * */
 	@RequestMapping(value = "/login", produces = "application/text; charset=utf-8")
-	public @ResponseBody String login(User user, HttpSession session) {
+	public @ResponseBody String login(User user, HttpSession session,HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
 		InetAddress comp = null;
 		String ip = "";
 		String hostName = "";

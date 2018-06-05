@@ -58,6 +58,33 @@ public interface RoomMapper {
 	public List<RoomInfoEntity> selectListByHotel(RoomInfoEntity room);
 	
 	@Select({"<script>",
+		"select id,room_number roomNumber,hotel,floor,room_type roomType,special_type specialType,orientation,support_facilities supportFacilities,special_serve specialServe,outside_phone outsidePhone,innerline_phone innerlinePhone,responsible_person responsiblePerson,rack_price rackPrice,agreement_price agreementPrice,contain_food containFood,state,remark from  room_info where 1=1 ",
+		"<if test=\" '' != hotel  and null != hotel\">",
+		" and hotel = #{hotel}",
+		"</if>",
+		"<if test=\" '' != floor  and null != floor\">",
+		" and floor = #{floor}",
+		"</if>",
+		"<if test=\" '' != orientation  and null != orientation\">",
+		" and orientation = #{orientation}",
+		"</if>",
+		"ORDER BY floor,orientation,room_number",
+		"</script>"})
+	public List<RoomInfoEntity> selectListByFloor(RoomInfoEntity room);
+	
+	@Select({"<script>",
+		"SELECT orientation,floor,hotel from room_info where 1=1 ",
+		"<if test=\" '' != hotel  and null != hotel\">",
+		" and hotel = #{hotel}",
+		"</if>",
+		"<if test=\" '' != floor  and null != floor\">",
+		" and floor = #{floor}",
+		"</if>",
+		" group by orientation,floor,hotel ORDER BY orientation",
+		"</script>"})
+	public List<RoomInfoEntity> selectFloorByOrientation(RoomInfoEntity room);
+	
+	@Select({"<script>",
 		"SELECT floor,hotel from room_info where 1=1 ",
 		"<if test=\" '' != hotel  and null != hotel\">",
 		" and hotel = #{hotel}",

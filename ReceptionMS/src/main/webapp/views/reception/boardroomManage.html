@@ -274,21 +274,21 @@
 					for(var z = 0, y = ConferenceRecordList.length; z < y ; z++){   
 						  if(ConferenceRecordList[z].Use_date == null){
 						  	str ="<li> "+
-										"<p class=\"name\" onclick=\"addRecord('"+ConferenceRecordList[z].Conference_name+"','"+ConferenceRecordList[z].Hotel+"')\"  \> "+
+										"<p class=\"name\"  > "+
 											"<span class=\"room\" >"+ConferenceRecordList[z].Conference_name+"</span> "+ 	
 						  					"<span class=\"null\">空闲</span> "+
 										"</p> "+
-										"<p class=\"icon\"> "+
+										"<p class=\"icon\" onclick=\"addRecord('"+ConferenceRecordList[z].Conference_name+"','"+ConferenceRecordList[z].Hotel+"')\"> "+
 											"<u class=\"nul\"></u> "+
 										"</p> "+
 									"</li> "
 						  }else{
 						  	str = 	"<li> "+
-										"<p class=\"name\" onclick=\"showConferenceRecord('"+ConferenceRecordList[z].Id+"'  )\"  \> "+
+										"<p class=\"name\" > "+
 											"<span class=\"room\" >"+ConferenceRecordList[z].Conference_name+"</span> "+ 
 											"<span class=\"useIng\">使用中</span> "+
 										"</p> "+
-										"<p class=\"icon\"> "+
+										"<p class=\"icon\" onclick=\"showConferenceRecord('"+ConferenceRecordList[z].Id+"'  )\"> "+
 											"<u class=\"use\"></u> "+
 										"</p> "+
 									"</li> "
@@ -307,7 +307,7 @@
 		}
 		function getUse_Number(){
 			$.post("../../ConferenceRecordController/getUse_Number",
-				function(data){ 
+				function(data){  
 					$("#Use_Number").val(data);
 				} 
 			);
@@ -478,7 +478,7 @@
 				 $('#addBut').hide(500);
     		$.get("../../ConferenceRecordController/queryConferenceRecordById/"+id, 
 				function(result){  
-					 data = $.parseJSON(result);  
+					 data = result;  
 					 $('.modal').show(500); 
 					 $("#Use_Number").val(data.Use_number);
 					 upHotelShow(data.Hotel);

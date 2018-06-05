@@ -100,7 +100,7 @@ public class RoomAction {
 		List<RoomInfoEntity> list = roomServiceImpl.selectListByHotel(room);
 		JSONHelper jsonHelper = new JSONHelper();
 		String json = jsonHelper.toJSON(list);
-//		System.out.println(json);
+		System.out.println(json);
 		return json;
 	};
 	

@@ -38,7 +38,7 @@ public class ConferenceRecordController {
 	@Resource
 	private IConferenceRecordService conferenceRecordServiceImpl;
 	
-	@RequestMapping(value = "addConferenceRecord",method = RequestMethod.POST)
+	@RequestMapping(value = "addConferenceRecord",method = RequestMethod.POST,produces = "application/text;charset=UTF-8")
 	public String addConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
 		
 		Boolean flag = this.conferenceRecordServiceImpl.checkConferenceRecord(conferenceRecordEntity); 
@@ -55,7 +55,7 @@ public class ConferenceRecordController {
 		boolean flag =  this.conferenceRecordServiceImpl.delConferenceRecord(id);  
 		return JSONHelper.toJSON(flag);
 	}	 
-	@RequestMapping(value = "modConferenceRecord",method = RequestMethod.POST)
+	@RequestMapping(value = "modConferenceRecord",method = RequestMethod.POST,produces = "application/text;charset=UTF-8")
 	public String modConferenceRecord(ConferenceRecordEntity conferenceRecordEntity){
 		Boolean flag = this.conferenceRecordServiceImpl.checkConferenceRecord(conferenceRecordEntity); 
 		
@@ -124,7 +124,7 @@ public class ConferenceRecordController {
 		return JSONHelper.toJSON(list);
 	}
 	 
-	@RequestMapping(value = "getUse_Number",method = RequestMethod.POST)
+	@RequestMapping(value = "getUse_Number",method = RequestMethod.POST,produces = "application/text;charset=UTF-8")
 	public String getUse_Number(){
 		Date now_date = new Date();  
         DateFormat format=new SimpleDateFormat("yyyyMMdd");  

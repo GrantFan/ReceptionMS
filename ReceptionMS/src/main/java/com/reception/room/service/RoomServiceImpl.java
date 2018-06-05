@@ -43,11 +43,21 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public List<RoomInfoEntity> selectListByHotel(RoomInfoEntity room){
 		List<RoomInfoEntity> roomFloor =  roomMapper.selectFloorByHotel(room);
+		RoomInfoEntity f = null;
+		RoomInfoEntity r = null;
 		for(int i=0,l=roomFloor.size();i<l;i++){
-			RoomInfoEntity r = roomFloor.get(i);
-			List<RoomInfoEntity> rooms = roomMapper.selectListByHotel(r);
-			r.setList(rooms);
+			f = roomFloor.get(i);
+			List<RoomInfoEntity> roomOrientation = roomMapper.selectFloorByOrientation(f);
+			f.setList(roomOrientation);
+			
+			List<RoomInfoEntity> orientation = f.getList();
+			for(int j=0,k=orientation.size();j<k;j++){
+				r = orientation.get(j);
+				List<RoomInfoEntity> rooms = roomMapper.selectListByFloor(r);
+				r.setList(rooms);
+			}
 		}
+		
 		return roomFloor;
 	}
 	

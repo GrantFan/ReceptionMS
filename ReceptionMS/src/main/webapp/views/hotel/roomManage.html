@@ -10,58 +10,59 @@
 <script type="text/javascript" src="../assets/js/html2canvas.min.js"></script>
 <script type="text/javascript" src="js/roomManage.js"></script>
 <style type="text/css">
-			.HotelName{
-				width:12vw;
-				height:83vh;
-				background:rgba(0,0,0,0.1);
-			}
-			.HotelName>li{
-				width:100%;
-				height: 5vh;
-				line-height: 5vh;
-				padding: 0px 2vw;
+.HotelName {
+	width: 12vw;
+	height: 83vh;
+	background: rgba(0, 0, 0, 0.1);
+}
 
-				cursor: pointer;
-			}
-			.HotelName>li.active{
-				background:rgba(0,0,0,0.4);
-			}
-			.seat{
-				width:calc(100% - 12vw);
-				height:77.8vh;
-				overflow-y:auto;
-				padding-left: 0px !important;
-			}
-			
-			
-			#imgBox>div.active li>img {
-				width: 80vw;
-				height: 80vh;
-				margin: auto;
-				position: fixed;
-				left: 0px;
-				right: 0px;
-				top: -4vw;
-				bottom: 0px;
-				z-index: 1;
-			}
-			
-			#imgBox>div.active>.close {
-				width: 2vw;
-				height: 2vw;
-				line-height: 2vw;
-				text-align: center;
-				font-size: 1.6vw;
-				background: red;
-				color: #fff;
-				font-weight: bold;
-				position: relative;
-				top: -5vw;
-				right: -58.6vw;
-				z-index: 2;
-				cursor: pointer;
-			}
-		</style>
+.HotelName>li {
+	width: 100%;
+	height: 5vh;
+	line-height: 5vh;
+	padding: 0px 2vw;
+	cursor: pointer;
+}
+
+.HotelName>li.active {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.seat {
+	width: calc(100% - 12vw);
+	height: 77.8vh;
+	overflow-y: auto;
+	padding-left: 0px !important;
+}
+
+#imgBox>div.active li>img {
+	width: 80vw;
+	height: 80vh;
+	margin: auto;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: -4vw;
+	bottom: 0px;
+	z-index: 1;
+}
+
+#imgBox>div.active>.close {
+	width: 2vw;
+	height: 2vw;
+	line-height: 2vw;
+	text-align: center;
+	font-size: 1.6vw;
+	background: red;
+	color: #fff;
+	font-weight: bold;
+	position: relative;
+	top: -5vw;
+	right: -58.6vw;
+	z-index: 2;
+	cursor: pointer;
+}
+</style>
 </head>
 
 <body>
@@ -125,7 +126,49 @@
 					<i class="inUse"></i> <span class="webkit">预定</span>
 				</p>
 			</h6>
-			<div id="seat" class="seat"></div>
+			<div id="seat" class="seat">
+				<!-- <div class="xBox overflow">
+					<p class="storey lt">楼层：1</p>
+					<p onclick="planeGraph('1')" style="cursor:pointer;width:8vw;"
+						class="storey lt">【平面图】</p>
+					<div class='floors lt'>
+						<ol id="floor_1" >
+							<li style="width:1.6vw;padding-top:1.5vh;"><span> 朝  向  南</span></li>
+							<li><p class="icon" onclick="showRoom('null')">
+									<u class="useI"></u> 
+								</p> <span class="useIng">null</span>
+							<p style="color: #ffb341;">null</p></li>
+							<li><p class="icon" onclick="showRoom('null')">
+									<u class="useI"></u> 
+								</p> <span class="useIng">null</span>
+							<p style="color: #ffb341;">null</p></li>
+						</ol>
+						<ol id="floor_1" >
+							<li style="width:1.6vw;padding-top:1.5vh;"><span> 朝  向  北</span></li>
+							<li><p class="icon" onclick="showRoom('null')">
+									<u class="useI"></u>
+								</p> <span class="useIng">null</span>
+							<p style="color: #ffb341;">null</p></li>
+							<li><p class="icon" onclick="showRoom('null')">
+									<u class="useI"></u> 
+								</p> <span class="useIng">null</span>
+							<p style="color: #ffb341;">null</p></li>
+							
+						</ol>
+						<ol id="floor_1" >
+							<li><p class="icon" onclick="showRoom('null')">
+									<u class="useI"></u>
+								</p> <span class="useIng">null</span>
+							<p style="color: #ffb341;">null</p></li>
+							<li><p class="icon" onclick="showRoom('null')">
+									<u class="useI"></u> 
+								</p> <span class="useIng">null</span>
+							<p style="color: #ffb341;">null</p></li>
+						</ol>
+					</div>	
+					
+				</div> -->
+			</div>
 			<!--endprint-->
 		</div>
 	</div>
@@ -237,7 +280,7 @@
 						type="text" name="roomNumber" id="b_roomNumber" value="" />
 					</label> <label for="roomFloor"> <span>*房间楼层：</span> <input
 						type="text" name="roomFloor" id="b_roomFloor" />
-					</label> <label for="orientation"> <span>房间朝向：</span> <input
+					</label> <label for="orientation"> <span>*房间朝向：</span> <input
 						type="text" name="orientation" id="b_orientation" />
 					</label> <label for="supportFacilities"> <span>配套设施：</span> <input
 						type="text" name="supportFacilities" id="b_supportFacilities" />
@@ -274,12 +317,13 @@
 							<option value="1">空闲</option>
 							<option value="2">预定</option>
 					</select>
-					</label> <label for="remark"> <span>*房间数:</span> <input value="" id="roomCount"/>
+					</label> <label for="remark"> <span>*房间数:</span> <input value=""
+						id="roomCount" />
 					</label>
 				</div>
 			</div>
 			<div class="mfoot" align="center">
-				<button  onclick="batchAddSubmit()">
+				<button onclick="batchAddSubmit()">
 					<u class="confirm lt"></u> <span class="lt">确定</span>
 				</button>
 				<button onclick="$(this).parents('.modal').hide(800)">
@@ -311,7 +355,7 @@
 			</div>
 		</div>
 	</div>
-		<div id="importModal" class="modal none">
+	<div id="importModal" class="modal none">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -323,15 +367,14 @@
 				</p>
 			</h4>
 			<div class="mbody">
-				<label> *请按导出文件格式填写数据，并选择对应的导入文件~
-				</label>
+				<label> *请按导出文件格式填写数据，并选择对应的导入文件~ </label>
 				<div class="btns overflow" style="margin-top:2vh;line-height:3.6vh;">
 					<label for="file_excel" class="Fbtn lt text-center"
-						style="margin:0px 1.302vw 0px 0px;">选择文件<input
-						type="file" class="none" id="file_excel">
+						style="margin:0px 1.302vw 0px 0px;">选择文件<input type="file"
+						class="none" id="file_excel">
 					</label>
 				</div>
-			</div> 
+			</div>
 			<div class="mfoot text-center">
 				<button onclick="importExcel()">
 					<u class="confirm lt"></u> <span class="lt">导入</span>
@@ -342,7 +385,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="graphModal" class="modal none imgModal">
 		<div class="box" style="width:49vw;">
 			<h4 class="overflow">
@@ -391,25 +434,25 @@
 		$(".buttons>button").on("click", function(e) {
 			$(this).addClass('active').siblings('button').removeClass('active');
 		});
-		
-		$('.HotelName').on('click','li',function(){
+	
+		$('.HotelName').on('click', 'li', function() {
 			$(this).addClass('active').siblings('li').removeClass('active');
 			showRoomList();
 		})
-			function imgView(a) {
-		$(a).addClass('active');
-		$(a).children('img').height('100%');
-		$(a).children('b.close').show();
-	}
-
-	$('.change').on('click', function() {
-		var l = $('#imgBox ul>li.block').index();
-		if (l < $('#imgBox ul>li').length && l >= 0) {
-			//$("#inmpage").text(Number(l + 1) + "/" + $('#imgBox ul>li').length);
-			$('#imgBox li').addClass('none').removeClass('block');
-			$('#imgBox li').eq(l - 1).addClass('block');
+		function imgView(a) {
+			$(a).addClass('active');
+			$(a).children('img').height('100%');
+			$(a).children('b.close').show();
 		}
-	})
+	
+		$('.change').on('click', function() {
+			var l = $('#imgBox ul>li.block').index();
+			if (l < $('#imgBox ul>li').length && l >= 0) {
+				//$("#inmpage").text(Number(l + 1) + "/" + $('#imgBox ul>li').length);
+				$('#imgBox li').addClass('none').removeClass('block');
+				$('#imgBox li').eq(l - 1).addClass('block');
+			}
+		})
 	</script>
 </body>
 

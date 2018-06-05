@@ -129,7 +129,7 @@ public class Menu_InfoAction {
 	 * @param path
 	 * @return
 	 */
-	@RequestMapping(value = "/menu.xls")
+	@RequestMapping(value = "/menu.xls",produces = "*/*; charset=utf-8")
 	public @ResponseBody String exportMenu(HttpServletRequest request, HttpServletResponse response) {
 		// 总行数
 		long rowSize = PageHelper.count(() -> {
@@ -172,7 +172,7 @@ public class Menu_InfoAction {
 		return "false";
 	}
 
-	@RequestMapping(value = "/food.xls")
+	@RequestMapping(value = "/food.xls",produces = "*/*; charset=utf-8")
    public void exportFood(HttpServletRequest request,HttpServletResponse response) {
   		 // 总行数
 		long rowSize = PageHelper.count(() -> {

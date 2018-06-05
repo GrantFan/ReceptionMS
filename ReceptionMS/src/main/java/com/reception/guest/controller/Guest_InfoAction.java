@@ -170,7 +170,7 @@ public class Guest_InfoAction {
     }
     
   //通过图片名获取图片文件 返回到前台生成图片
-  	@RequestMapping(value = "/img/{filePath}", method = RequestMethod.GET)
+  	@RequestMapping(value = "/img/{filePath}", method = RequestMethod.GET,produces = "*/*; charset=utf-8")
   	public void getImage(@PathVariable("filePath") String filePath, HttpServletResponse response) {
   		String fileAdd = "guestphoto/";
   		filePath = location + fileAdd + filePath + ".png";
@@ -243,7 +243,7 @@ public class Guest_InfoAction {
      * @return
      */
     @LogAnnotation(module = "宾客信息",remark = "导出宾客信息")
-    @RequestMapping(value="/guest.xls")
+    @RequestMapping(value="/guest.xls", produces = "*/*; charset=utf-8")
 	public @ResponseBody String export(HttpServletRequest request,HttpServletResponse response) {
 		// 总行数
 		long rowSize = PageHelper.count(() -> {

@@ -62,7 +62,7 @@
 					<span>会议室记录明细</span>
 				</p>
 				<p class="rt" id="close"
-					onclick="$(this).parents('.modal').hide(800);emptyModal();">
+					onclick="$(this).parents('.modal').hide(800);">
 					<u></u>
 				</p>
 			</h4>
@@ -97,7 +97,7 @@
 				</label>
 			</div>
 			<div class="mfoot" align="center"> 
-				<button onclick="$(this).parents('.modal').hide(800);emptyModal()">
+				<button onclick="$(this).parents('.modal').hide(800);">
 					<u class="cancel lt"></u> <span class="lt">关闭</span>
 				</button>
 			</div>
@@ -131,7 +131,8 @@
 			begin_DATE : $('#begin_DATE').val(),
 			end_DATE : $('#end_DATE').val()
 		}, function(result) {
-			result = $.parseJSON(result); 
+		    //console.log(result);
+			//result = $.parseJSON(result); 
 			var info = $("#info").empty(); 
 			for (var i = 0, j = result.list.length; i < j; i++) {
 				var list = result.list[i];
@@ -263,7 +264,7 @@
 				 $('#addBut').hide(500);
     		$.get("../../ConferenceRecordController/queryConferenceRecordById/"+id, 
 				function(result){  
-					 data = $.parseJSON(result);  
+					 data = result;  
 					 $('.modal').show(500); 
 					 $("#Use_Number").val(data.Use_number);
 					 upHotelShow(data.Hotel);
