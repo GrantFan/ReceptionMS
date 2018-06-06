@@ -80,11 +80,11 @@ function showModuleList(pageNum, pageSize) {
 				//可选，是否展示每页N条下拉框，默认true
 				isShowPageSizeOpt : false,
 				//可选，是否展示跳到指定页数，默认true
-				isShowSkip : true,
+				isShowSkip : false,
 				//可选，是否展示刷新，默认true
 				isShowRefresh : false,
 				//可选，是否展示共{}页，默认true
-				isShowTotalPage : true,
+				isShowTotalPage : false,
 				//可选，是否需要重新设置当前页码及总页数，默认false，如果设为true，那么在请求服务器返回数据时，需要调用setPage方法
 				isResetPage : false,
 				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
@@ -177,11 +177,11 @@ function query() {
 				//可选，是否展示每页N条下拉框，默认true
 				isShowPageSizeOpt : false,
 				//可选，是否展示跳到指定页数，默认true
-				isShowSkip : true,
+				isShowSkip : false,
 				//可选，是否展示刷新，默认true
 				isShowRefresh : false,
 				//可选，是否展示共{}页，默认true
-				isShowTotalPage : true,
+				isShowTotalPage : false,
 				//可选，是否需要重新设置当前页码及总页数，默认false，如果设为true，那么在请求服务器返回数据时，需要调用setPage方法
 				isResetPage : false,
 				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条

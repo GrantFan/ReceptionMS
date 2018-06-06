@@ -21,7 +21,7 @@ public class HotelInfoEntity {
 	@ModelProp(name="酒店地址",colIndex=5)
 	private String address;
 	@ModelProp(name="酒店平面图路径",colIndex=6)
-	private String planeGraph;
+	private String planeGraph="";
 	@ModelProp(name="备注",colIndex=7)
 	private String remark;
 	

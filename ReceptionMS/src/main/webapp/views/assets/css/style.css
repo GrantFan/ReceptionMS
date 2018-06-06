@@ -498,14 +498,14 @@ iframe{
 	top: 6px;
 	left: 0.567vw;
 }
-.operationsArea>.tab>.seat li>.useIng{
+.operationsArea>.tab>.seat>div>ul>li>p>.useIng{
 	color: #ffb341;
 	font-size: 0.9vw;
 	position: absolute;
 	bottom:6px;
 	left: 0.5769vw;
 }
-.operationsArea>.tab>.seat li>.null{
+.operationsArea>.tab>.seat>div>ul>li>p>.null{
 	color: #40e0d0;
 	font-size:  0.9vw;
 	position: absolute;

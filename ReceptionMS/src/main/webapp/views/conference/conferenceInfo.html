@@ -64,7 +64,7 @@
 	</div>
 	<input value="" type="hidden" id="id" >
 	<!--模态框-->
-	<div class="modal block">
+	<div class="modal none">
 		<div class="box">
 			<h4 class="overflow">
 				<p class="lt">
@@ -191,13 +191,13 @@
 				//可选，是否展示首页与尾页，默认true
 				isShowFL : true,
 				//可选，是否展示每页N条下拉框，默认true
-				isShowPageSizeOpt : true,
+				isShowPageSizeOpt : false,
 				//可选，是否展示跳到指定页数，默认true
-				isShowSkip : true,
+				isShowSkip : false,
 				//可选，是否展示刷新，默认true
-				isShowRefresh : true,
+				isShowRefresh : false,
 				//可选，是否展示共{}页，默认true
-				isShowTotalPage : true,
+				isShowTotalPage : false,
 				//可选，是否需要重新设置当前页码及总页数，默认false，如果设为true，那么在请求服务器返回数据时，需要调用setPage方法
 				isResetPage : false,
 				//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
@@ -352,15 +352,15 @@
 	    url: '../../ConferenceController/',
 	    type: 'Put', 
 	    data: {
-	    	id : $("#id").val(),
-	    	conference_name : $("#conference_name").val(),
-			hotel : $("#HOTEL").find("option:selected").text() ,
-			type : $("#boardType").val(),
-			position : $("#position").val(),
-			capacity_num : $("#capacity_num").val(),
-			price : $("#price").val(),
-			detailedinfo : $("#detailedinfo").val(),
-			remark : $("#remark").val()
+	    	"id" : $("#id").val(),
+	    	"conference_name" : $("#conference_name").val(),
+			"hotel" : $("#HOTEL").find("option:selected").text() ,
+			"type" : $("#boardType").val(),
+			"position" : $("#position").val(),
+			"capacity_num" : $("#capacity_num").val(),
+			"price" : $("#price").val(),
+			"detailedinfo" : $("#detailedinfo").val(),
+			"remark" : $("#remark").val()
 	    },
 	    success: function(result) {
 	        if(result == true){

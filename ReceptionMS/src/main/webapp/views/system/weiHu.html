@@ -125,8 +125,9 @@ button {
 					<li><b class="none">dm_nation</b><span>8</span>民族</li>
 					<li><b class="none">dm_room_type</b><span>9</span>房间类型</li>
 					<li><b class="none">dm_conference_type</b><span>10</span>会议室类型</li>
-					<li><b class="none"></b><span>11</span>宾客类别</li>
-					<li><b class="none"></b><span>12</span>籍贯</li>
+					<li><b class="none">DM_RESTAURANT_TYPE</b><span>11</span>餐厅类型</li>
+					<li><b class="none"></b><span>12</span>宾客类别</li>
+					<li><b class="none"></b><span>13</span>籍贯</li>
 					<!-- <li><b class="none"></b><span>11</span>楼层</li> -->
 					<!-- 	<li><b class="none">dm_room_special_type</b><span>13</span>房间特殊类型</li> -->
 				</ul>
@@ -136,11 +137,11 @@ button {
 					<li>
 						<div class="TiBox overflow">
 							<p class="lt" style="width:25.512vw;">
-								<span
-									style="width:2.564vw;margin-left:2.7564vw;text-align:center;">序号</span>
+								<span style="width:2.564vw;margin-left:2.7564vw;text-align:center;">序号</span>
 								<span style="width:2.564vw;margin-left:4.23vw;">值</span>
 							</p>
-							<p class="lt" style="width:25.512vw;padding-left:1.987vw;">备注</p>
+							<p class="lt" style="width:44.512vw;padding-left:1.987vw;">备注</p>
+							
 						</div>
 						<div id="box" class="box">
 						<!-- 	<div class="overflow"
@@ -201,7 +202,7 @@ button {
 							+ '<input type="text" id="id" style="width:2.564vw;margin-left:2.7564vw;text-align:center;" value="' + result[i].value + '"/>'
 							+ '<input type="text" id="name" style="width:56%;margin-left:5.4vw;" value="' + result[i].name + '">'
 							+ '</p>'
-							+ '<p class="lt" style="width:19.744vw;padding-left:3.7179vw;">'
+							+ '<p class="lt" style="width:44.512vw;padding-left:3.7179vw;">'
 							+ '<input id="remark" type="text" class="lt" style="line-height: 2.564vw;" value="' + result[i].remark + '"/></p>'
 							+ '</div>';
 						$("#box").append(boxContent)

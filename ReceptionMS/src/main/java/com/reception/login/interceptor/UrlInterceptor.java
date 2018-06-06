@@ -24,7 +24,7 @@ public class UrlInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg1) throws Exception {
 		// 获取请求路径
 		String requestUrl = request.getRequestURI();
-		System.out.println(requestUrl);
+		System.out.println(request.getMethod()+requestUrl);
 		// 判断是否放行
 		boolean flag = false;
 		// 如果请求是登录请求，通过拦截器，进行登录认证

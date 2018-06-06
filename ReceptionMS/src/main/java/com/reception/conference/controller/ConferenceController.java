@@ -47,9 +47,9 @@ public class ConferenceController {
 	public String delConferenect(@RequestParam(value="idArray[]")String[] idArray){ 
 		boolean flag =  this.ConferenceServiceImpl.delConferenect(idArray);  
 		return JSONHelper.toJSON(flag);
-	}	 
+	}
 	@RequestMapping(method = RequestMethod.PUT)
-	public String modConferenect(@ModelAttribute("conferenceEntity")ConferenceEntity conferenceEntity){
+	public String modConferenect(@ModelAttribute("conferenceEntity")ConferenceEntity conferenceEntity,HttpServletRequest request){
 		boolean flag =  this.ConferenceServiceImpl.modConferenect(conferenceEntity);  
 		return JSONHelper.toJSON(flag);
 	}

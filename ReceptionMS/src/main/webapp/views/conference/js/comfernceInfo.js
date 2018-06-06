@@ -16,7 +16,7 @@ $(function(){
 				var obj = eval(data);  
 				$("#QboardType").empty();
 				$("#QboardType").append(
-					"<option value=''>--请会议室类型--</option>"
+					"<option value=''>--会议室类型--</option>"
 				);
 				for (var i = 0, len = obj.length; i < len; i++) {
 					$("#QboardType").append(

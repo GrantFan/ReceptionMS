@@ -304,8 +304,9 @@ public class Guest_InfoAction {
     }
     
     
-    @RequestMapping(value = "/list.app", method =  RequestMethod.POST)
-    public @ResponseBody String SeleteGuest_InfoApp(){
+    @RequestMapping(value = "/list.app", method =  RequestMethod.GET)
+    public @ResponseBody String SeleteGuest_InfoApp(HttpServletResponse response){
+    	response.setHeader("Access-Control-Allow-Origin", "*");
     	List<Guest_Info> guest_infos = guest_infoService.SelectGuest_Infos();
         return JSONHelper.toJSON(guest_infos);
     }

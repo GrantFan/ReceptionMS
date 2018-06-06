@@ -15,7 +15,7 @@ $(function(){
 				var obj = eval(data);  
 				$("#QrestaurantType").empty();
 				$("#QrestaurantType").append(
-					"<option value=''>--请餐厅类型--</option>"
+					"<option value=''>--请选择餐厅类型--</option>"
 				);
 				for (var i = 0, len = obj.length; i < len; i++) {
 					$("#QrestaurantType").append(
@@ -136,9 +136,9 @@ $(function(){
 			success : function(data) { 
 				var obj = eval(data);  
 				$("#restaurant_type").empty();
-				$("#restaurant_type").append(
-					"<option value=''>--请会议室类型--</option>"
-				);
+//				$("#restaurant_type").append(
+//					"<option value=''>--请选择餐厅类型--</option>"
+//				);
 				for (var i = 0, len = obj.length; i < len; i++) {
 					if(restairantType == obj[i].name){
 						$("#restaurant_type").append(
