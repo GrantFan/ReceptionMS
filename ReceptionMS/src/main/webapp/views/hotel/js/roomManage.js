@@ -69,12 +69,15 @@ function showRoomList() {
 					$("#seat").append("<div class=\"xBox overflow\"><p class=\"storey lt\">楼层：" + obj[i].floor + "</p><p onclick=\"planeGraph('" + obj[i].floor + "')\" style=\"cursor:pointer;width:8vw;\" class=\"storey lt\">【平面图】</p><div id='floor_" + obj[i].floor + "'  class='floors lt'></div></div>");					
 					var orientation = obj[i].list;
 					
-					for (var j = 0, leng = orientation.length; j < leng; j++) {						
-						$("#floor_" + +obj[i].floor).append("<ol id='ora_" + i+ j + "' class=\"overflow\"><li style=\"width:1.6vw;padding-top:1.5vh;\"><span> 朝  向 "+orientation[j].orientation+" </span></li></ol>");
+					for (var j = 0, leng = orientation.length; j < leng; j++) {	
+						
+						$("#floor_" + +obj[i].floor).append("<ol id='ora_" + i+ j + "' class=\"overflow\"><li style=\"width:1.6vw;padding-top:1.5vh;\"><span> 朝  向 "+(orientation[j].orientation==null?'无':orientation[j].orientation)+" </span></li></ol>");
 						var  rooms = orientation[j].list;
 //						console.log(rooms);
 						for (var k = 0, lengths = rooms.length; k < lengths; k++) {
+							$("#ora_" + i+ j).width((7.5 * lengths)+'vw' );//设置每个ol宽度
 							var room = ""
+//							console.log($("#ora_" + i+ j).width((7.3 * lengths)+'vw' ));
 							if (rooms[k].state == "空闲") {
 								room += "<li><p class=\"icon\" onclick=\"showRoom('" + rooms[k].id + "')\"><u class=\"idle\"></u>"
 									+ "</p> <span class=\"null\">" + rooms[k].roomNumber + "</span><p style='color: #40e0d0;'>"+rooms[k].roomType+"</p></li>";
@@ -86,7 +89,11 @@ function showRoomList() {
 //								alert(orientation[j].orientation);
 								$("#ora_" + i+ j).append(room);
 							}
+							
+						
 						}
+						
+						 
 					}
 				}
 			} else {

@@ -100,7 +100,7 @@ public class ConferenceController {
 		
 		res.setContentType("application/xls");
 		try {
-			res.addHeader("Content-Disposition", "attachment;filename="+new String(("eeelist").getBytes("UTF-8"),"iso-8859-1")+".xls");
+			res.addHeader("Content-Disposition", "attachment;filename="+new String(("会议室信息").getBytes("UTF-8"),"iso-8859-1")+".xls");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

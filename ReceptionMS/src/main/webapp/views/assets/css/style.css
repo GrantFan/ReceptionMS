@@ -534,7 +534,6 @@ iframe{
 	overflow-x:auto;
 }
 .operationsArea>.tab>.seat>.xBox>.floors>ol{
-	width: 300%;
 	overflow:hidden;	
 }
 .operationsArea>.tab>.seat>.xBox>.floors>ol>li{
