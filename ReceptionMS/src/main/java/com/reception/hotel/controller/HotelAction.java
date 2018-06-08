@@ -231,7 +231,18 @@ public class HotelAction {
 		
 		List<HotelInfoEntity> list = hotelServiceImpl.selectListByName(hotel);
 		String json = JSONHelper.toJSON(list);
-		 System.out.println(json);
+//		 System.out.println(json);
 		return json;
+	};
+	
+	@RequestMapping(value = "/select.app", produces = "application/json; charset=utf-8")
+	public  String selectList(HttpServletResponse response) {
+		// 指定允许其他域名访问    
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		List<HotelInfoEntity> list = hotelServiceImpl.selectList();
+		String json = JSONHelper.toJSON(list);
+		String str = json.replace("hotelName", "text");
+//		System.out.println(str);
+		return str;
 	};
 }

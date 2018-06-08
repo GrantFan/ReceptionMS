@@ -104,9 +104,9 @@ public interface RoomMapper {
 		"<if test=\" '' != hotel  and null != hotel\">",
 		" and hotel = #{hotel}",
 		"</if>",
-		"<if test=\" '' != roomType  and null != roomType\">",
-		" and room_type = #{roomType}",
-		"</if>",
+//		"<if test=\" '' != roomType  and null != roomType\">",
+//		" and room_type = #{roomType}",
+//		"</if>",
 		" order by room_number",
 		"</script>"})
 	public List<RoomInfoEntity> selectListByHotelApp(RoomInfoEntity room);

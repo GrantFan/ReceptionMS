@@ -255,6 +255,7 @@ public class RoomAction {
 	@RequestMapping(value="/listByHotel.app",produces="application/json; charset=utf-8")
 	public String selectListByHotelApp(RoomInfoEntity room,HttpServletResponse response) {
 		response.setHeader("Access-Control-Allow-Origin", "*");
+//		System.out.println("hotel="+room.getHotel());
 		List<RoomInfoEntity> list = roomServiceImpl.selectListByHotelApp(room);
 		String json = JSONHelper.toJSON(list);
 //		System.out.println(json);
