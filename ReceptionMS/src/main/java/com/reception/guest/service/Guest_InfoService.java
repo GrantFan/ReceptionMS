@@ -66,9 +66,8 @@ public class Guest_InfoService implements Guest_InfoApi{
      * 初始化宾客信息
      * @return
      */
-    @Override
-    public List<Guest_Info> SelectGuest_Infos() {
-        return guest_InfoMapper.SelectGuest_Infos();
+    public List<Guest_Info> SelectGuest_Infos(String guestName) {
+        return guest_InfoMapper.SelectGuest_Infos(guestName);
     }
 
     /**
@@ -87,6 +86,12 @@ public class Guest_InfoService implements Guest_InfoApi{
 	@Override
 	public List<String> selectUrl() {
 		return guest_InfoMapper.selectUrl();
+	}
+
+	@Override
+	public List<Guest_Info> SelectGuest_Infos() {
+		// TODO Auto-generated method stub
+		return guest_InfoMapper.SelectGuest_Infos("");
 	}
     
     

@@ -108,7 +108,7 @@ public class Guest_InfoAction {
 //    @LogAnnotation(module = "宾客信息",remark = "查询宾客信息")
     @RequestMapping(value = "/select", method =  RequestMethod.GET)
     public @ResponseBody String SeleteGuest_Info(@RequestParam(value="pageNum")String pageNum,@RequestParam(value="pageSize")String pageSize){
-        PageHelper.startPage(Integer.parseInt(pageNum), Integer.parseInt(pageSize));
+        PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
     	List<Guest_Info> guest_infos = guest_infoService.SelectGuest_Infos();
     	PageInfo<Guest_Info> pageInfo = new PageInfo<Guest_Info>(guest_infos);
         return JSONHelper.toJSON(pageInfo);
@@ -305,9 +305,9 @@ public class Guest_InfoAction {
     
     
     @RequestMapping(value = "/list.app", method =  RequestMethod.GET)
-    public @ResponseBody String SeleteGuest_InfoApp(HttpServletResponse response){
+    public @ResponseBody String SeleteGuest_InfoApp(@RequestParam(value = "guestName", required = false, defaultValue = "")String guestName,HttpServletResponse response){
     	response.setHeader("Access-Control-Allow-Origin", "*");
-    	List<Guest_Info> guest_infos = guest_infoService.SelectGuest_Infos();
+    	List<Guest_Info> guest_infos = guest_infoService.SelectGuest_Infos(guestName);
         return JSONHelper.toJSON(guest_infos);
     }
     /**
@@ -329,7 +329,7 @@ public class Guest_InfoAction {
 	 * @param response
 	 * @return
 	 */
-	@LogAnnotation(module = "酒店信息",remark = "导入酒店信息")
+	@LogAnnotation(module = "宾客信息",remark = "导入宾客信息")
 	@RequestMapping(value = "upLoadFile", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	public String getFileUrl(@RequestParam(value = "file", required = false) MultipartFile file) {
 		File f = new File(location+ file.getOriginalFilename());

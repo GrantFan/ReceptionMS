@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.reception.dictionary.model.DictionaryTableEntity;
 import com.reception.exceptionfilter.EntityNotFoundException;
 import com.reception.hotel.model.HotelInfoEntity;
@@ -253,12 +254,17 @@ public class RoomAction {
 	}
 	
 	@RequestMapping(value="/listByHotel.app",produces="application/json; charset=utf-8")
-	public String selectListByHotelApp(RoomInfoEntity room,HttpServletResponse response) {
+	public String selectListByHotelApp(RoomInfoEntity room,
+			@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
+			@RequestParam(value = "pageSize", required = false, defaultValue = "10") String pageSize,
+			HttpServletResponse response) {
 		response.setHeader("Access-Control-Allow-Origin", "*");
 //		System.out.println("hotel="+room.getHotel());
+		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
 		List<RoomInfoEntity> list = roomServiceImpl.selectListByHotelApp(room);
-		String json = JSONHelper.toJSON(list);
-//		System.out.println(json);
+		PageInfo<RoomInfoEntity> pageInfo = new PageInfo<RoomInfoEntity>(list);
+		String json = JSONHelper.toJSON(pageInfo);
+		System.out.println(json);
 		return json;
 	};
 }

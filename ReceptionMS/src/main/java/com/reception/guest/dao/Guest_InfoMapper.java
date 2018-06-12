@@ -54,10 +54,17 @@ public interface Guest_InfoMapper {
     
     /**
      * 初始化宾客信息
+     * @param guestName 
      * @return
      */
-    @Select("SELECT a.* from guest_info a order by a.id")
-    List<Guest_Info> SelectGuest_Infos();
+	@Select({"<script>",
+		"SELECT a.* from guest_info a where 1=1 ",
+		"<if test=\" '' != guest_name  and null != guest_name\">",
+		"and guest_name = #{guest_name} ",
+		"</if>",
+		"order by a.guest_name",
+		"</script>"})
+    List<Guest_Info> SelectGuest_Infos(@Param(value="guest_name")String guestName);
 
     /**
      * 查询宾客信息
