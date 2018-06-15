@@ -9,6 +9,7 @@ spring:
     url: jdbc:oracle:thin:@10.1.2.42:1521:ORCL
     username: test_gs
     password: test_gs
+#####客户数据源
 #    driver-class-name: oracle.jdbc.driver.OracleDriver
 #    url: jdbc:oracle:thin:@192.168.0.4:1521:ORCL
 #    username: db_gs
@@ -17,7 +18,7 @@ spring:
     # 初始化大小，最小，最大
     initialSize: 5
     minIdle: 5
-    maxActive: 20
+    maxActive: 50
     #配置获取连接等待超时的时间
     maxWait: 60000
     # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒

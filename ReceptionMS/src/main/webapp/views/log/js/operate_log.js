@@ -83,7 +83,7 @@ function page(result){
 		    isResetPage: false,
 		    //必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条
 		    callBack: function (currPage, pageSize) {
-		    	select_log(currPage,pageSize); 
+		    	select_log(currPage,10); 
 		    }
      });
 }
