@@ -1,6 +1,7 @@
 package com.reception.room.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -110,4 +111,7 @@ public interface RoomMapper {
 		" order by room_number",
 		"</script>"})
 	public List<RoomInfoEntity> selectListByHotelApp(RoomInfoEntity room);
+	
+	@Insert("UPDATE ROOM_INFO RI SET RI.STATE = #{state} WHERE RI.ID = #{id}")
+	public int updatestatusApp(Map<String,String> map);
 }

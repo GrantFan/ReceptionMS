@@ -266,5 +266,21 @@ public class RoomAction {
 		String json = JSONHelper.toJSON(pageInfo);
 		System.out.println(json);
 		return json;
-	};
+	}
+	
+	@RequestMapping(value="/updatestatus.app",produces="application/json; charset=utf-8")
+	public String updatestatusApp(@RequestParam(value="state",required=true)String state,
+			@RequestParam(value="id",required=true)String id
+			,HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		if(!"空闲".equals(state) && !"预定".equals(state)){
+			 return JSONHelper.toJSON("false");
+		} 
+ 		Map<String,String> map = new HashMap<String,String>(2);
+ 		map.put("state", state);
+ 		map.put("id", id);
+ 		boolean flag = roomServiceImpl.updatestatusApp(map);
+ 			 return JSONHelper.toJSON(flag);
+	}
+	
 }

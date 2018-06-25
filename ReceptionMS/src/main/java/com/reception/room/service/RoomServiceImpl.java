@@ -1,7 +1,7 @@
 package com.reception.room.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -82,5 +82,11 @@ public class RoomServiceImpl implements RoomService {
 	public List<RoomInfoEntity> selectListByHotelApp(RoomInfoEntity room) {
 		// TODO Auto-generated method stub
 		return roomMapper.selectListByHotelApp(room);
+	}
+	
+	public boolean updatestatusApp(Map<String,String> map) {
+		// TODO Auto-generated method stub
+		Integer i = roomMapper.updatestatusApp(map);
+		return i == 1 ? true : false;
 	}
 }
