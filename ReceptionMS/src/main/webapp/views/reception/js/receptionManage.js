@@ -138,7 +138,7 @@ function singleCheck(check){
 }
 function search(pageNum,pageSize){
 	var input_hotel = $("#input_hotel option:selected").text()
-	var input_receptionTitle= $("#input_receptionTitle").val();
+	var guestName= $("#input_guestName").val();
 	var input_receptionDate= $("#input_receptionDate").val();
 	
 	$.ajax({
@@ -147,7 +147,7 @@ function search(pageNum,pageSize){
 			"pageNum" : pageNum,
 			"pageSize" : pageSize,
 			"hotel" : input_hotel ,
-			"receptionTitle" :input_receptionTitle,
+			"guestName" :guestName,
 			"receptionDate" :input_receptionDate
 		},
 		url : "../../recep/search",

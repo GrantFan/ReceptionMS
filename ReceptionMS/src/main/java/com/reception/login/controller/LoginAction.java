@@ -54,7 +54,7 @@ public class LoginAction {
 				loginService.loginLog(user);
 				login.setLastLoginComputer(hostName + ":" + ip);
 				session.setAttribute("user", login);
-				return login.getUserName() + ";" + login.getUserNick() + ";" + login.getId();
+				return login.getUserName() + ";" + login.getUserNick() + ";" + login.getId()+ ";" + login.getRoleId();
 			} catch (UnknownHostException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

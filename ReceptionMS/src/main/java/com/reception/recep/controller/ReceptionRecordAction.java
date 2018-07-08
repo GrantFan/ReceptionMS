@@ -62,12 +62,12 @@ public class ReceptionRecordAction {
 	@RequestMapping(value="/search",produces="application/json; charset=utf-8")
 	public @ResponseBody String receptionRecordSearch(
 			@RequestParam(value="hotel")String hotel,
-			@RequestParam(value="receptionTitle")String receptionTitle,
+			@RequestParam(value="guestName")String guestName,
 			@RequestParam(value="receptionDate")String receptionDate,
 			@RequestParam(value="pageSize",required = false,defaultValue = "5")String pageSize,
 			@RequestParam(value="pageNum",required = false,defaultValue = "1")String pageNum){
 		ReceptionRecordEntity reception = new ReceptionRecordEntity();
-		reception.setReceptionTitle(receptionTitle);
+		reception.setGuestName(guestName);
 		reception.setReceptionDate(receptionDate);
 		reception.setHotel(hotel);
 		PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));

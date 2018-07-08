@@ -286,11 +286,11 @@ function batchAdd(){
 	$("#b_supportFacilities").val("");
 	$("#b_roomType").val("");
 	$("#b_specialType").val("");
-	$("#b_specialServe").val("");
+//	$("#b_specialServe").val("");
 	$("#b_innerlinePhone").val("");
 	$("#b_outsidePhone").val("");
-	$("#b_responsiblePerson").val("");
-	$("#b_rackPrice").val("");
+//	$("#b_responsiblePerson").val("");
+//	$("#b_rackPrice").val("");
 	$("#b_agreementPrice").val("");
 	$("#roomCount").val("");
 	
@@ -309,14 +309,14 @@ function batchAddSubmit() {
 		supportFacilities : $("#b_supportFacilities").val(),
 		roomType : $("#b_roomType option:selected").text(),
 		specialType : $("#b_specialType").val(),
-		specialServe : $("#b_specialServe").val(),
+//		specialServe : $("#b_specialServe").val(),
 		innerlinePhone : $("#b_innerlinePhone").val(),
 		outsidePhone : $("#b_outsidePhone").val(),
-		responsiblePerson : $("#b_responsiblePerson").val(),
-		rackPrice : $("#b_rackPrice").val(),
+//		responsiblePerson : $("#b_responsiblePerson").val(),
+//		rackPrice : $("#b_rackPrice").val(),
 		agreementPrice : $("#b_agreementPrice").val(),
 		hotel : $("#b_roomHotel option:selected").text(),
-		containFood : $("#b_containFood option:selected").text(),
+//		containFood : $("#b_containFood option:selected").text(),
 		state : $("#b_state option:selected").text(),
 		roomCount : $("#roomCount").val().trim()
 	}, function(result) {
@@ -348,11 +348,11 @@ function add() {
 	$("#supportFacilities").val("");
 	$("#roomType").val("");
 	$("#specialType").val("");
-	$("#specialServe").val("");
+//	$("#specialServe").val("");
 	$("#innerlinePhone").val("");
 	$("#outsidePhone").val("");
-	$("#responsiblePerson").val("");
-	$("#rackPrice").val("");
+//	$("#responsiblePerson").val("");
+//	$("#rackPrice").val("");
 	$("#agreementPrice").val("");
 	$("#remark").val("");
 
@@ -369,14 +369,14 @@ function addSubmit() {
 		supportFacilities : $("#supportFacilities").val(),
 		roomType : $("#roomType option:selected").text(),
 		specialType : $("#specialType").val(),
-		specialServe : $("#specialServe").val(),
+//		specialServe : $("#specialServe").val(),
 		innerlinePhone : $("#innerlinePhone").val(),
 		outsidePhone : $("#outsidePhone").val(),
-		responsiblePerson : $("#responsiblePerson").val(),
-		rackPrice : $("#rackPrice").val(),
+//		responsiblePerson : $("#responsiblePerson").val(),
+//		rackPrice : $("#rackPrice").val(),
 		agreementPrice : $("#agreementPrice").val(),
 		hotel : $("#roomHotel option:selected").text(),
-		containFood : $("#containFood option:selected").text(),
+//		containFood : $("#containFood option:selected").text(),
 		state : $("#state option:selected").text(),
 		remark : $("#remark").val()
 	}, function(result) {
@@ -414,11 +414,11 @@ function showRoom(roomId) {
 			$("#orientation").val(json.orientation);
 			$("#supportFacilities").val(json.supportFacilities);
 			$("#specialType").val(json.specialType);
-			$("#specialServe").val(json.specialServe);
+//			$("#specialServe").val(json.specialServe);
 			$("#outsidePhone").val(json.outsidePhone);
 			$("#innerlinePhone").val(json.innerlinePhone);
-			$("#responsiblePerson").val(json.responsiblePerson);
-			$("#rackPrice").val(json.rackPrice);
+//			$("#responsiblePerson").val(json.responsiblePerson);
+//			$("#rackPrice").val(json.rackPrice);
 			$("#agreementPrice").val(json.agreementPrice);
 			$("#remark").val(json.remark);
 
@@ -432,11 +432,11 @@ function showRoom(roomId) {
 					$("#roomType option")[i].selected = true;
 				}
 			}
-			for (var i = 0; i < $("#containFood option").length; i++) {
-				if ($($("#containFood option")[i]).text() == json.containFood) {
-					$("#containFood option")[i].selected = true;
-				}
-			}
+//			for (var i = 0; i < $("#containFood option").length; i++) {
+//				if ($($("#containFood option")[i]).text() == json.containFood) {
+//					$("#containFood option")[i].selected = true;
+//				}
+//			}
 			for (var i = 0; i < $("#state option").length; i++) {
 				if ($($("#state option")[i]).text() == json.state) {
 					$("#state option")[i].selected = true;
@@ -459,14 +459,14 @@ function editSubmit() {
 			supportFacilities : $("#supportFacilities").val(),
 			roomType : $("#roomType option:selected").text(),
 			specialType : $("#specialType").val(),
-			specialServe : $("#specialServe").val(),
+//			specialServe : $("#specialServe").val(),
 			innerlinePhone : $("#innerlinePhone").val(),
 			outsidePhone : $("#outsidePhone").val(),
-			responsiblePerson : $("#responsiblePerson").val(),
-			rackPrice : $("#rackPrice").val(),
+//			responsiblePerson : $("#responsiblePerson").val(),
+//			rackPrice : $("#rackPrice").val(),
 			agreementPrice : $("#agreementPrice").val(),
 			hotel : $("#roomHotel option:selected").text(),
-			containFood : $("#containFood option:selected").text(),
+//			containFood : $("#containFood option:selected").text(),
 			state : $("#state option:selected").text(),
 			remark : $("#remark").val()
 		},
